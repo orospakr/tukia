@@ -1,0 +1,196 @@
+  [4;36;1mSQL (0.000516)[0m   [0;1mSET client_encoding TO 'UTF8'[0m
+  [4;35;1mSQL (0.000343)[0m   [0mSET client_min_messages TO 'warning'[0m
+  [4;36;1mSQL (0.003638)[0m   [0;1mCREATE TABLE schema_info (version integer)[0m
+  [4;35;1mSQL (0.013508)[0m   [0mINSERT INTO schema_info (version) VALUES(0)[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mPGError: ERROR: relation "schema_info" already exists
+: CREATE TABLE schema_info (version integer)[0m
+  [4;35;1mSQL (0.000625)[0m   [0mSELECT version FROM schema_info[0m
+Migrating to People (1)
+  [4;36;1mSQL (0.061056)[0m   [0;1mCREATE TABLE people ("id" serial primary key, "name" character varying(255), "password" character varying(255), "givenname" character varying(255), "surname" character varying(255), "email" character varying(255), "url" character varying(255), "phone" character varying(255), "organisation" character varying(255), "enabled" boolean, "admin" boolean, "created" date, "lastlogin" date) [0m
+  [4;35;1mSQL (0.015993)[0m   [0mUPDATE schema_info SET version = 1[0m
+  [4;36;1mSQL (0.000547)[0m   [0;1mSET client_encoding TO 'UTF8'[0m
+  [4;35;1mSQL (0.000345)[0m   [0mSET client_min_messages TO 'warning'[0m
+  [4;36;1mSQL (0.004422)[0m   [0;1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = 'people'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+
+
+Processing AccountsController#index (for 127.0.0.1 at 2006-03-03 13:19:01) [GET]
+  Parameters: {"action"=>"index", "controller"=>"accounts"}
+  [4;36;1mSQL (0.000587)[0m   [0;1mSET client_encoding TO 'UTF8'[0m
+  [4;35;1mSQL (0.000369)[0m   [0mSET client_min_messages TO 'warning'[0m
+  [4;36;1mPerson Count (0.026653)[0m   [0;1mSELECT COUNT(*) FROM people [0m
+  [4;35;1mPerson Load (0.000593)[0m   [0mSELECT * FROM people LIMIT 10 OFFSET 0[0m
+Rendering actionlistlayoutfalse within layouts/accounts
+Rendering accounts/list
+  [4;36;1mSQL (0.003797)[0m   [0;1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = 'people'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+Completed in 0.20884 (4 reqs/sec) | Rendering: 0.00808 (3%) | DB: 0.03200 (15%) | 200 OK [http://127.0.0.1/accounts]
+
+
+Processing AccountsController#new (for 127.0.0.1 at 2006-03-03 13:19:08) [GET]
+  Parameters: {"action"=>"new", "controller"=>"accounts"}
+  [4;35;1mSQL (0.003942)[0m   [0m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = 'people'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+Rendering  within layouts/accounts
+Rendering accounts/new
+Rendered accounts/_form (0.01143)
+Completed in 0.02641 (37 reqs/sec) | Rendering: 0.01615 (61%) | DB: 0.00394 (14%) | 200 OK [http://127.0.0.1/accounts/new]
+
+
+Processing AccountsController#list (for 127.0.0.1 at 2006-03-03 13:22:24) [GET]
+  Parameters: {"action"=>"list", "controller"=>"accounts"}
+  [4;36;1mPerson Count (0.001277)[0m   [0;1mSELECT COUNT(*) FROM people [0m
+  [4;35;1mPerson Load (0.004273)[0m   [0mSELECT * FROM people LIMIT 10 OFFSET 0[0m
+Rendering  within layouts/accounts
+Rendering accounts/list
+  [4;36;1mSQL (0.001416)[0m   [0;1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = 'people'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+Completed in 0.01465 (68 reqs/sec) | Rendering: 0.00328 (22%) | DB: 0.00697 (47%) | 200 OK [http://127.0.0.1/accounts/list]
+
+
+Processing AccountsController#new (for 127.0.0.1 at 2006-03-03 14:01:49) [GET]
+  Parameters: {"action"=>"new", "controller"=>"accounts"}
+  [4;35;1mSQL (0.001773)[0m   [0m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = 'people'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+Rendering  within layouts/accounts
+Rendering accounts/new
+Rendered accounts/_form (0.00919)
+Completed in 0.03160 (31 reqs/sec) | Rendering: 0.01313 (41%) | DB: 0.00177 (5%) | 200 OK [http://127.0.0.1/accounts/new]
+
+
+Processing AccountsController#create (for 127.0.0.1 at 2006-03-03 14:04:20) [POST]
+  Parameters: {"commit"=>"Create", "action"=>"create", "controller"=>"accounts", "person"=>{"name"=>"Andrew", "givenname"=>"Andrew", "admin"=>"true", "url"=>"infoman.ca", "enabled"=>"true", "lastlogin(1i)"=>"2006", "created(1i)"=>"2006", "created(2i)"=>"3", "lastlogin(2i)"=>"3", "phone"=>"2343244", "lastlogin(3i)"=>"3", "created(3i)"=>"3", "organisation"=>"Infoman Inc.", "surname"=>"Clunis", "password"=>"17hoX6", "email"=>"orospakr@infoman.ca"}}
+  [4;36;1mSQL (0.005357)[0m   [0;1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = 'people'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [4;35;1mSQL (0.011892)[0m   [0mBEGIN[0m
+  [4;36;1mPK and serial sequence (0.042046)[0m   [0;1m SELECT attr.attname, name.nspname, seq.relname
+ FROM pg_class seq,
+ pg_attribute attr,
+ pg_depend dep,
+ pg_namespace name,
+ pg_constraint cons
+ WHERE seq.oid = dep.objid
+ AND seq.relnamespace = name.oid
+ AND seq.relkind = 'S'
+ AND attr.attrelid = dep.refobjid
+ AND attr.attnum = dep.refobjsubid
+ AND attr.attrelid = cons.conrelid
+ AND attr.attnum = cons.conkey[1]
+ AND cons.contype = 'p'
+ AND dep.refobjid = 'people'::regclass
+[0m
+  [4;35;1mPerson Create (0.055450)[0m   [0mINSERT INTO people ("name", "givenname", "admin", "url", "enabled", "phone", "created", "lastlogin", "organisation", "password", "surname", "email") VALUES('Andrew', 'Andrew', 't', 'infoman.ca', 't', '2343244', '2006-03-03', '2006-03-03', 'Infoman Inc.', '17hoX6', 'Clunis', 'orospakr@infoman.ca')[0m
+  [4;36;1mSQL (0.002094)[0m   [0;1mSELECT currval('public.people_id_seq')[0m
+  [4;35;1mSQL (0.001036)[0m   [0mCOMMIT[0m
+Redirected to http://127.0.0.1:3000/accounts/list
+Completed in 0.13471 (7 reqs/sec) | DB: 0.11788 (87%) | 302 Found [http://127.0.0.1/accounts/create]
+
+
+Processing AccountsController#list (for 127.0.0.1 at 2006-03-03 14:04:21) [GET]
+  Parameters: {"action"=>"list", "controller"=>"accounts"}
+  [4;36;1mPerson Count (0.005482)[0m   [0;1mSELECT COUNT(*) FROM people [0m
+  [4;35;1mPerson Load (0.000794)[0m   [0mSELECT * FROM people LIMIT 10 OFFSET 0[0m
+Rendering  within layouts/accounts
+Rendering accounts/list
+  [4;36;1mSQL (0.001430)[0m   [0;1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = 'people'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+Completed in 0.02037 (49 reqs/sec) | Rendering: 0.00817 (40%) | DB: 0.00771 (37%) | 200 OK [http://127.0.0.1/accounts/list]
+
+
+Processing AccountsController#edit (for 127.0.0.1 at 2006-03-03 14:04:32) [GET]
+  Parameters: {"action"=>"edit", "id"=>"1", "controller"=>"accounts"}
+  [4;35;1mPerson Load (0.002421)[0m   [0mSELECT * FROM people WHERE (people.id = '1') LIMIT 1[0m
+Rendering  within layouts/accounts
+Rendering accounts/edit
+  [4;36;1mSQL (0.009883)[0m   [0;1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = 'people'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+Rendered accounts/_form (0.00778)
+Completed in 0.04870 (20 reqs/sec) | Rendering: 0.03200 (65%) | DB: 0.01230 (25%) | 200 OK [http://127.0.0.1/accounts/edit/1]
+
+
+Processing AccountsController#update (for 127.0.0.1 at 2006-03-03 14:04:42) [POST]
+  Parameters: {"commit"=>"Edit", "action"=>"update", "id"=>"1", "controller"=>"accounts", "person"=>{"name"=>"Andrew", "givenname"=>"Andrew", "admin"=>"false", "url"=>"infoman.ca", "enabled"=>"false", "lastlogin(1i)"=>"2006", "created(1i)"=>"2006", "created(2i)"=>"3", "lastlogin(2i)"=>"3", "phone"=>"+1.613.234.3244", "lastlogin(3i)"=>"3", "created(3i)"=>"3", "organisation"=>"Infoman Inc.", "surname"=>"Clunis", "password"=>"17hoX6", "email"=>"orospakr@infoman.ca"}}
+  [4;35;1mPerson Load (0.004712)[0m   [0mSELECT * FROM people WHERE (people.id = '1') LIMIT 1[0m
+  [4;36;1mSQL (0.002111)[0m   [0;1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = 'people'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [4;35;1mSQL (0.003169)[0m   [0mBEGIN[0m
+  [4;36;1mPerson Update (0.001481)[0m   [0;1mUPDATE people SET "phone" = '+1.613.234.3244', "email" = 'orospakr@infoman.ca', "url" = 'infoman.ca', "name" = 'Andrew', "organisation" = 'Infoman Inc.', "lastlogin" = '2006-03-03', "created" = '2006-03-03', "enabled" = 'f', "surname" = 'Clunis', "password" = '17hoX6', "admin" = 'f', "givenname" = 'Andrew' WHERE id = 1[0m
+  [4;35;1mSQL (0.003119)[0m   [0mCOMMIT[0m
+Redirected to http://127.0.0.1:3000/accounts/show/1
+Completed in 0.02812 (35 reqs/sec) | DB: 0.01459 (51%) | 302 Found [http://127.0.0.1/accounts/update/1]
+
+
+Processing AccountsController#show (for 127.0.0.1 at 2006-03-03 14:04:43) [GET]
+  Parameters: {"action"=>"show", "id"=>"1", "controller"=>"accounts"}
+  [4;36;1mPerson Load (0.002461)[0m   [0;1mSELECT * FROM people WHERE (people.id = '1') LIMIT 1[0m
+Rendering  within layouts/accounts
+Rendering accounts/show
+  [4;35;1mSQL (0.002013)[0m   [0m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = 'people'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+Completed in 0.04961 (20 reqs/sec) | Rendering: 0.04067 (81%) | DB: 0.00447 (9%) | 200 OK [http://127.0.0.1/accounts/show/1]
+
+
+Processing AccountsController#list (for 127.0.0.1 at 2006-03-03 14:04:47) [GET]
+  Parameters: {"action"=>"list", "controller"=>"accounts"}
+  [4;36;1mPerson Count (0.003717)[0m   [0;1mSELECT COUNT(*) FROM people [0m
+  [4;35;1mPerson Load (0.004137)[0m   [0mSELECT * FROM people LIMIT 10 OFFSET 0[0m
+Rendering  within layouts/accounts
+Rendering accounts/list
+  [4;36;1mSQL (0.001362)[0m   [0;1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = 'people'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+Completed in 0.02322 (43 reqs/sec) | Rendering: 0.00823 (35%) | DB: 0.00922 (39%) | 200 OK [http://127.0.0.1/accounts/list]

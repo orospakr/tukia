@@ -1,0 +1,40 @@
+<%= error_messages_for 'person' %>
+
+<!--[form:person]-->
+<p><label for="person_name">Name</label><br/>
+<%= text_field 'person', 'name'  %></p>
+
+<p><label for="person_password">Password</label><br/>
+<%= password_field 'person', 'password'  %></p>
+
+<p><label for="person_givenname">Givenname</label><br/>
+<%= text_field 'person', 'givenname'  %></p>
+
+<p><label for="person_surname">Surname</label><br/>
+<%= text_field 'person', 'surname'  %></p>
+
+<p><label for="person_email">Email</label><br/>
+<%= text_field 'person', 'email'  %></p>
+
+<p><label for="person_url">Url</label><br/>
+<%= text_field 'person', 'url'  %></p>
+
+<p><label for="person_phone">Phone</label><br/>
+<%= text_field 'person', 'phone'  %></p>
+
+<p><label for="person_organisation">Organisation</label><br/>
+<%= text_field 'person', 'organisation'  %></p>
+
+<p><label for="person_enabled">Enabled</label><br/>
+<select id="person_enabled" name="person[enabled]"><option value="false">False</option><option value="true">True</option></select></p>
+
+<p><label for="person_admin">Admin</label><br/>
+<select id="person_admin" name="person[admin]"><option value="false">False</option><option value="true">True</option></select></p>
+
+<p><label for="person_created">Created</label><br/>
+<%= date_select 'person', 'created'  %></p>
+
+<p><label for="person_lastlogin">Lastlogin</label><br/>
+<%= date_select 'person', 'lastlogin'  %></p>
+<!--[eoform:person]-->
+
