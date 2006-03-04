@@ -17,6 +17,7 @@ class Documents < ActiveRecord::Migration
       table.column :issn, :string
       table.column :external, :bool
       table.column :globalize_language_id, :integer
+    end
   end
 
   def self.down

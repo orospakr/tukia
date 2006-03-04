@@ -54,7 +54,7 @@ class GlobalizeMigration < ActiveRecord::Migration
       t.column :globalize_language_id, :integer
       # the languages for which we have a name for the above
       t.column :name_globalize_language_id, :integer
-      t.column :name, :integer
+      t.column :name, :string
     end
       
 

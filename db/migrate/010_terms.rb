@@ -16,6 +16,7 @@ class Terms < ActiveRecord::Migration
       table_column :document_section, :string
       table_column :synonmic_id, :integer
       table_column :parent_id, :integer
+    end
   end
 
   def self.down

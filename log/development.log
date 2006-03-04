@@ -514,3 +514,198 @@ Migrating to GlobalizeMigration (4)
   [4;36;1mSQL (0.009660)[0m   [0;1mCREATE INDEX globalize_languages_iso_639_3_index ON globalize_languages (iso_639_3)[0m
   [4;35;1mSQL (0.009410)[0m   [0mCREATE INDEX globalize_languages_rfc_3066_index ON globalize_languages (rfc_3066)[0m
   [4;36;1mSQL (0.000800)[0m   [0;1mUPDATE schema_info SET version = 4[0m
+  [4;36;1mSQL (0.048879)[0m   [0;1mSET client_encoding TO 'UTF8'[0m
+  [4;35;1mSQL (0.000346)[0m   [0mSET client_min_messages TO 'warning'[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mPGError: ERROR: relation "schema_info" already exists
+: CREATE TABLE schema_info (version integer)[0m
+  [4;35;1mSQL (0.000000)[0m   [0mPGError: ERROR: relation "schema_info" already exists
+: CREATE TABLE schema_info (version integer)[0m
+  [4;36;1mSQL (0.000521)[0m   [0;1mSET client_encoding TO 'UTF8'[0m
+  [4;35;1mSQL (0.000319)[0m   [0mSET client_min_messages TO 'warning'[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mPGError: ERROR: relation "schema_info" already exists
+: CREATE TABLE schema_info (version integer)[0m
+  [4;35;1mSQL (0.000000)[0m   [0mPGError: ERROR: relation "schema_info" already exists
+: CREATE TABLE schema_info (version integer)[0m
+  [4;36;1mSQL (0.000943)[0m   [0;1mSET client_encoding TO 'UTF8'[0m
+  [4;35;1mSQL (0.000628)[0m   [0mSET client_min_messages TO 'warning'[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mPGError: ERROR: relation "schema_info" already exists
+: CREATE TABLE schema_info (version integer)[0m
+  [4;35;1mSQL (0.000000)[0m   [0mPGError: ERROR: relation "schema_info" already exists
+: CREATE TABLE schema_info (version integer)[0m
+  [4;36;1mSQL (0.065266)[0m   [0;1mSELECT version FROM schema_info[0m
+  [4;35;1mSQL (0.000842)[0m   [0mSELECT version FROM schema_info[0m
+  [4;36;1mSQL (0.000714)[0m   [0;1mSELECT version FROM schema_info[0m
+  [4;35;1mSQL (0.000699)[0m   [0mSELECT version FROM schema_info[0m
+  [4;36;1mSQL (0.000697)[0m   [0;1mSELECT version FROM schema_info[0m
+Migrating to CommitteesEditors (5)
+  [4;35;1mSQL (0.122044)[0m   [0mCREATE TABLE committees_editors ("id" serial primary key, "committee_id" integer, "person_id" integer) [0m
+  [4;36;1mSQL (0.018549)[0m   [0;1mUPDATE schema_info SET version = 5[0m
+  [4;35;1mSQL (0.000779)[0m   [0mSELECT version FROM schema_info[0m
+Migrating to CommitteesConvenors (6)
+  [4;36;1mSQL (0.235844)[0m   [0;1mCREATE TABLE committees_convenors ("id" serial primary key, "committee_id" integer, "person_id" integer) [0m
+  [4;35;1mSQL (0.001510)[0m   [0mUPDATE schema_info SET version = 6[0m
+  [4;36;1mSQL (0.000750)[0m   [0;1mSELECT version FROM schema_info[0m
+Migrating to CommitteesNations (7)
+  [4;35;1mSQL (0.042107)[0m   [0mCREATE TABLE committees_nations ("id" serial primary key, "committee_id" integer, "nation_id" integer) [0m
+  [4;36;1mSQL (0.001360)[0m   [0;1mUPDATE schema_info SET version = 7[0m
+  [4;35;1mSQL (0.000750)[0m   [0mSELECT version FROM schema_info[0m
+Migrating to Documents (8)
+  [4;36;1mSQL (0.061051)[0m   [0;1mCREATE TABLE documents ("id" serial primary key, "authorexternal" character varying(255), "person_id" integer, "title" character varying(255), "committee_id" integer, "register_number" integer, "externalurl" character varying(255), "externalfullname" character varying(255), "status_id" integer, "statusiteration" integer, "modified" date, "published" date, "edition" integer, "isbn" character varying(255), "issn" character varying(255), "external" bool, "globalize_language_id" integer) [0m
+  [4;35;1mSQL (0.001896)[0m   [0mUPDATE schema_info SET version = 8[0m
+  [4;36;1mSQL (0.000826)[0m   [0;1mSELECT version FROM schema_info[0m
+Migrating to Statuses (9)
+  [4;35;1mSQL (0.037218)[0m   [0mCREATE TABLE statuses ("id" serial primary key, "name" character varying(255)) [0m
+  [4;36;1mSQL (0.001171)[0m   [0;1mUPDATE schema_info SET version = 9[0m
+  [4;35;1mSQL (0.000757)[0m   [0mSELECT version FROM schema_info[0m
+Migrating to Terms (10)
+  [4;36;1mSQL (0.000941)[0m   [0;1mSET client_encoding TO 'UTF8'[0m
+  [4;35;1mSQL (0.000618)[0m   [0mSET client_min_messages TO 'warning'[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mPGError: ERROR: relation "schema_info" already exists
+: CREATE TABLE schema_info (version integer)[0m
+  [4;35;1mSQL (0.000000)[0m   [0mPGError: ERROR: relation "schema_info" already exists
+: CREATE TABLE schema_info (version integer)[0m
+  [4;36;1mSQL (0.001800)[0m   [0;1mSELECT version FROM schema_info[0m
+  [4;35;1mSQL (0.000747)[0m   [0mSELECT version FROM schema_info[0m
+  [4;36;1mSQL (0.000687)[0m   [0;1mSELECT version FROM schema_info[0m
+  [4;35;1mSQL (0.000690)[0m   [0mSELECT version FROM schema_info[0m
+  [4;36;1mSQL (0.000687)[0m   [0;1mSELECT version FROM schema_info[0m
+  [4;35;1mSQL (0.000809)[0m   [0mSELECT version FROM schema_info[0m
+  [4;36;1mSQL (0.000743)[0m   [0;1mSELECT version FROM schema_info[0m
+  [4;35;1mSQL (0.000689)[0m   [0mSELECT version FROM schema_info[0m
+  [4;36;1mSQL (0.000694)[0m   [0;1mSELECT version FROM schema_info[0m
+  [4;35;1mSQL (0.000682)[0m   [0mSELECT version FROM schema_info[0m
+Migrating to Terms (10)
+  [4;36;1mSQL (0.000941)[0m   [0;1mSET client_encoding TO 'UTF8'[0m
+  [4;35;1mSQL (0.000617)[0m   [0mSET client_min_messages TO 'warning'[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mPGError: ERROR: relation "schema_info" already exists
+: CREATE TABLE schema_info (version integer)[0m
+  [4;35;1mSQL (0.000000)[0m   [0mPGError: ERROR: relation "schema_info" already exists
+: CREATE TABLE schema_info (version integer)[0m
+  [4;36;1mSQL (0.001807)[0m   [0;1mSELECT version FROM schema_info[0m
+  [4;35;1mSQL (0.000778)[0m   [0mSELECT version FROM schema_info[0m
+  [4;36;1mSQL (0.000707)[0m   [0;1mSELECT version FROM schema_info[0m
+  [4;35;1mSQL (0.000705)[0m   [0mSELECT version FROM schema_info[0m
+  [4;36;1mSQL (0.000676)[0m   [0;1mSELECT version FROM schema_info[0m
+  [4;35;1mSQL (0.000671)[0m   [0mSELECT version FROM schema_info[0m
+  [4;36;1mSQL (0.000823)[0m   [0;1mSELECT version FROM schema_info[0m
+  [4;35;1mSQL (0.000708)[0m   [0mSELECT version FROM schema_info[0m
+  [4;36;1mSQL (0.000685)[0m   [0;1mSELECT version FROM schema_info[0m
+Migrating to Terms (10)
+  [4;36;1mSQL (0.001096)[0m   [0;1mSET client_encoding TO 'UTF8'[0m
+  [4;35;1mSQL (0.000661)[0m   [0mSET client_min_messages TO 'warning'[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mPGError: ERROR: relation "schema_info" already exists
+: CREATE TABLE schema_info (version integer)[0m
+  [4;35;1mSQL (0.000000)[0m   [0mPGError: ERROR: relation "schema_info" already exists
+: CREATE TABLE schema_info (version integer)[0m
+  [4;36;1mSQL (0.001929)[0m   [0;1mSELECT version FROM schema_info[0m
+  [4;35;1mSQL (0.000793)[0m   [0mSELECT version FROM schema_info[0m
+  [4;36;1mSQL (0.000717)[0m   [0;1mSELECT version FROM schema_info[0m
+  [4;35;1mSQL (0.000954)[0m   [0mSELECT version FROM schema_info[0m
+  [4;36;1mSQL (0.000692)[0m   [0;1mSELECT version FROM schema_info[0m
+  [4;35;1mSQL (0.000696)[0m   [0mSELECT version FROM schema_info[0m
+  [4;36;1mSQL (0.000698)[0m   [0;1mSELECT version FROM schema_info[0m
+  [4;35;1mSQL (0.000691)[0m   [0mSELECT version FROM schema_info[0m
+  [4;36;1mSQL (0.000800)[0m   [0;1mSELECT version FROM schema_info[0m
+  [4;35;1mSQL (0.000710)[0m   [0mSELECT version FROM schema_info[0m
+Migrating to Terms (10)
+  [4;36;1mSQL (0.000522)[0m   [0;1mSET client_encoding TO 'UTF8'[0m
+  [4;35;1mSQL (0.000307)[0m   [0mSET client_min_messages TO 'warning'[0m
+  [4;36;1mSQL (0.017016)[0m   [0;1mCREATE TABLE schema_info (version integer)[0m
+  [4;35;1mSQL (0.001099)[0m   [0mINSERT INTO schema_info (version) VALUES(0)[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mPGError: ERROR: relation "schema_info" already exists
+: CREATE TABLE schema_info (version integer)[0m
+  [4;35;1mSQL (0.000944)[0m   [0mSELECT version FROM schema_info[0m
+Migrating to People (1)
+  [4;36;1mSQL (0.015053)[0m   [0;1mCREATE TABLE people ("id" serial primary key, "name" character varying(255), "password" character varying(255), "givenname" character varying(255), "surname" character varying(255), "email" character varying(255), "url" character varying(255), "phone" character varying(255), "organisation" character varying(255), "enabled" boolean, "admin" boolean, "created" date, "lastlogin" date, "nation_id" integer) [0m
+  [4;35;1mSQL (0.001327)[0m   [0mUPDATE schema_info SET version = 1[0m
+  [4;36;1mSQL (0.000394)[0m   [0;1mSELECT version FROM schema_info[0m
+Migrating to Committees (2)
+  [4;35;1mSQL (0.019235)[0m   [0mCREATE TABLE committees ("id" serial primary key, "name" character varying(255), "parent_id" integer) [0m
+  [4;36;1mSQL (0.000984)[0m   [0;1mUPDATE schema_info SET version = 2[0m
+  [4;35;1mSQL (0.000378)[0m   [0mSELECT version FROM schema_info[0m
+Migrating to Nations (3)
+  [4;36;1mSQL (0.022523)[0m   [0;1mCREATE TABLE nations ("id" serial primary key, "code" character varying(255), "name" character varying(255)) [0m
+  [4;35;1mSQL (0.001323)[0m   [0mUPDATE schema_info SET version = 3[0m
+  [4;36;1mSQL (0.000393)[0m   [0;1mSELECT version FROM schema_info[0m
+Migrating to GlobalizeMigration (4)
+  [4;35;1mSQL (0.000000)[0m   [0mPGError: ERROR: table "globalize_countries" does not exist
+: DROP TABLE globalize_countries[0m
+  [4;36;1mSQL (0.024765)[0m   [0;1mCREATE TABLE globalize_countries ("id" serial primary key, "code" character varying(2), "english_name" character varying(255), "date_format" character varying(255), "currency_format" character varying(255), "currency_code" character varying(3), "thousands_sep" character varying(2), "decimal_sep" character varying(2), "currency_decimal_sep" character varying(2), "number_grouping_scheme" character varying(255)) [0m
+  [4;35;1mSQL (0.004158)[0m   [0mCREATE INDEX globalize_countries_code_index ON globalize_countries (code)[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mPGError: ERROR: table "globalize_translations" does not exist
+: DROP TABLE globalize_translations[0m
+  [4;35;1mSQL (0.017283)[0m   [0mCREATE TABLE globalize_translations ("id" serial primary key, "type" character varying(255), "tr_key" character varying(255), "table_name" character varying(255), "item_id" integer, "facet" character varying(255), "language_id" integer, "pluralization_index" integer, "text" text) [0m
+  [4;36;1mSQL (0.009567)[0m   [0;1mCREATE INDEX globalize_translations_tr_key_index ON globalize_translations (tr_key, language_id)[0m
+  [4;35;1mSQL (0.010152)[0m   [0mCREATE INDEX globalize_translations_table_name_index ON globalize_translations (table_name, item_id, language_id)[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mPGError: ERROR: table "globalize_languages" does not exist
+: DROP TABLE globalize_languages[0m
+  [4;35;1mSQL (0.044897)[0m   [0mCREATE TABLE globalize_languages ("id" serial primary key, "iso_639_1" character varying(2), "iso_639_2" character varying(3), "iso_639_3" character varying(3), "rfc_3066" character varying(255), "english_name" character varying(255), "english_name_locale" character varying(255), "english_name_modifier" character varying(255), "native_name" character varying(255), "native_name_locale" character varying(255), "native_name_modifier" character varying(255), "macro_language" boolean, "direction" character varying(255), "pluralization" character varying(255), "scope" character varying(1)) [0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mPGError: ERROR: table "globalize_language_names" does not exist
+: DROP TABLE globalize_language_names[0m
+  [4;35;1mSQL (0.039917)[0m   [0mCREATE TABLE globalize_language_names ("id" serial primary key, "globalize_language_id" integer, "name_globalize_language_id" integer, "name" integer) [0m
+  [4;36;1mSQL (0.039134)[0m   [0;1mCREATE INDEX globalize_languages_iso_639_1_index ON globalize_languages (iso_639_1)[0m
+  [4;35;1mSQL (0.033682)[0m   [0mCREATE INDEX globalize_languages_iso_639_2_index ON globalize_languages (iso_639_2)[0m
+  [4;36;1mSQL (0.003728)[0m   [0;1mCREATE INDEX globalize_languages_iso_639_3_index ON globalize_languages (iso_639_3)[0m
+  [4;35;1mSQL (0.003238)[0m   [0mCREATE INDEX globalize_languages_rfc_3066_index ON globalize_languages (rfc_3066)[0m
+  [4;36;1mSQL (0.000507)[0m   [0;1mSET client_encoding TO 'UTF8'[0m
+  [4;35;1mSQL (0.000305)[0m   [0mSET client_min_messages TO 'warning'[0m
+  [4;36;1mSQL (0.021389)[0m   [0;1mCREATE TABLE schema_info (version integer)[0m
+  [4;35;1mSQL (0.001187)[0m   [0mINSERT INTO schema_info (version) VALUES(0)[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mPGError: ERROR: relation "schema_info" already exists
+: CREATE TABLE schema_info (version integer)[0m
+  [4;35;1mSQL (0.000902)[0m   [0mSELECT version FROM schema_info[0m
+Migrating to People (1)
+  [4;36;1mSQL (0.013259)[0m   [0;1mCREATE TABLE people ("id" serial primary key, "name" character varying(255), "password" character varying(255), "givenname" character varying(255), "surname" character varying(255), "email" character varying(255), "url" character varying(255), "phone" character varying(255), "organisation" character varying(255), "enabled" boolean, "admin" boolean, "created" date, "lastlogin" date, "nation_id" integer) [0m
+  [4;35;1mSQL (0.001068)[0m   [0mUPDATE schema_info SET version = 1[0m
+  [4;36;1mSQL (0.000399)[0m   [0;1mSELECT version FROM schema_info[0m
+Migrating to Committees (2)
+  [4;35;1mSQL (0.007858)[0m   [0mCREATE TABLE committees ("id" serial primary key, "name" character varying(255), "parent_id" integer) [0m
+  [4;36;1mSQL (0.000968)[0m   [0;1mUPDATE schema_info SET version = 2[0m
+  [4;35;1mSQL (0.000402)[0m   [0mSELECT version FROM schema_info[0m
+Migrating to Nations (3)
+  [4;36;1mSQL (0.023893)[0m   [0;1mCREATE TABLE nations ("id" serial primary key, "code" character varying(255), "name" character varying(255)) [0m
+  [4;35;1mSQL (0.001535)[0m   [0mUPDATE schema_info SET version = 3[0m
+  [4;36;1mSQL (0.000461)[0m   [0;1mSELECT version FROM schema_info[0m
+Migrating to GlobalizeMigration (4)
+  [4;35;1mSQL (0.000000)[0m   [0mPGError: ERROR: table "globalize_countries" does not exist
+: DROP TABLE globalize_countries[0m
+  [4;36;1mSQL (0.014155)[0m   [0;1mCREATE TABLE globalize_countries ("id" serial primary key, "code" character varying(2), "english_name" character varying(255), "date_format" character varying(255), "currency_format" character varying(255), "currency_code" character varying(3), "thousands_sep" character varying(2), "decimal_sep" character varying(2), "currency_decimal_sep" character varying(2), "number_grouping_scheme" character varying(255)) [0m
+  [4;35;1mSQL (0.005216)[0m   [0mCREATE INDEX globalize_countries_code_index ON globalize_countries (code)[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mPGError: ERROR: table "globalize_translations" does not exist
+: DROP TABLE globalize_translations[0m
+  [4;35;1mSQL (0.043605)[0m   [0mCREATE TABLE globalize_translations ("id" serial primary key, "type" character varying(255), "tr_key" character varying(255), "table_name" character varying(255), "item_id" integer, "facet" character varying(255), "language_id" integer, "pluralization_index" integer, "text" text) [0m
+  [4;36;1mSQL (0.004046)[0m   [0;1mCREATE INDEX globalize_translations_tr_key_index ON globalize_translations (tr_key, language_id)[0m
+  [4;35;1mSQL (0.009945)[0m   [0mCREATE INDEX globalize_translations_table_name_index ON globalize_translations (table_name, item_id, language_id)[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mPGError: ERROR: table "globalize_languages" does not exist
+: DROP TABLE globalize_languages[0m
+  [4;35;1mSQL (0.022665)[0m   [0mCREATE TABLE globalize_languages ("id" serial primary key, "iso_639_1" character varying(2), "iso_639_2" character varying(3), "iso_639_3" character varying(3), "rfc_3066" character varying(255), "english_name" character varying(255), "english_name_locale" character varying(255), "english_name_modifier" character varying(255), "native_name" character varying(255), "native_name_locale" character varying(255), "native_name_modifier" character varying(255), "macro_language" boolean, "direction" character varying(255), "pluralization" character varying(255), "scope" character varying(1)) [0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mPGError: ERROR: table "globalize_language_names" does not exist
+: DROP TABLE globalize_language_names[0m
+  [4;35;1mSQL (0.052435)[0m   [0mCREATE TABLE globalize_language_names ("id" serial primary key, "globalize_language_id" integer, "name_globalize_language_id" integer, "name" character varying(255)) [0m
+  [4;36;1mSQL (0.003896)[0m   [0;1mCREATE INDEX globalize_languages_iso_639_1_index ON globalize_languages (iso_639_1)[0m
+  [4;35;1mSQL (0.029270)[0m   [0mCREATE INDEX globalize_languages_iso_639_2_index ON globalize_languages (iso_639_2)[0m
+  [4;36;1mSQL (0.028903)[0m   [0;1mCREATE INDEX globalize_languages_iso_639_3_index ON globalize_languages (iso_639_3)[0m
+  [4;35;1mSQL (0.051045)[0m   [0mCREATE INDEX globalize_languages_rfc_3066_index ON globalize_languages (rfc_3066)[0m
+  [4;36;1mSQL (0.000820)[0m   [0;1mUPDATE schema_info SET version = 4[0m
+  [4;35;1mSQL (0.000469)[0m   [0mSELECT version FROM schema_info[0m
+Migrating to CommitteesEditors (5)
+  [4;36;1mSQL (0.016752)[0m   [0;1mCREATE TABLE committees_editors ("id" serial primary key, "committee_id" integer, "person_id" integer) [0m
+  [4;35;1mSQL (0.001006)[0m   [0mUPDATE schema_info SET version = 5[0m
+  [4;36;1mSQL (0.000397)[0m   [0;1mSELECT version FROM schema_info[0m
+Migrating to CommitteesConvenors (6)
+  [4;35;1mSQL (0.013060)[0m   [0mCREATE TABLE committees_convenors ("id" serial primary key, "committee_id" integer, "person_id" integer) [0m
+  [4;36;1mSQL (0.001032)[0m   [0;1mUPDATE schema_info SET version = 6[0m
+  [4;35;1mSQL (0.000421)[0m   [0mSELECT version FROM schema_info[0m
+Migrating to CommitteesNations (7)
+  [4;36;1mSQL (0.013803)[0m   [0;1mCREATE TABLE committees_nations ("id" serial primary key, "committee_id" integer, "nation_id" integer) [0m
+  [4;35;1mSQL (0.001219)[0m   [0mUPDATE schema_info SET version = 7[0m
+  [4;36;1mSQL (0.000408)[0m   [0;1mSELECT version FROM schema_info[0m
+Migrating to Documents (8)
+  [4;35;1mSQL (0.025752)[0m   [0mCREATE TABLE documents ("id" serial primary key, "authorexternal" character varying(255), "person_id" integer, "title" character varying(255), "committee_id" integer, "register_number" integer, "externalurl" character varying(255), "externalfullname" character varying(255), "status_id" integer, "statusiteration" integer, "modified" date, "published" date, "edition" integer, "isbn" character varying(255), "issn" character varying(255), "external" bool, "globalize_language_id" integer) [0m
+  [4;36;1mSQL (0.001070)[0m   [0;1mUPDATE schema_info SET version = 8[0m
+  [4;35;1mSQL (0.000419)[0m   [0mSELECT version FROM schema_info[0m
+Migrating to Statuses (9)
+  [4;36;1mSQL (0.057726)[0m   [0;1mCREATE TABLE statuses ("id" serial primary key, "name" character varying(255)) [0m
+  [4;35;1mSQL (0.000745)[0m   [0mUPDATE schema_info SET version = 9[0m
+  [4;36;1mSQL (0.000389)[0m   [0;1mSELECT version FROM schema_info[0m
+Migrating to Terms (10)
