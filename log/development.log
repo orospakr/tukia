@@ -194,3 +194,323 @@ Rendering accounts/list
  ORDER BY a.attnum
 [0m
 Completed in 0.02322 (43 reqs/sec) | Rendering: 0.00823 (35%) | DB: 0.00922 (39%) | 200 OK [http://127.0.0.1/accounts/list]
+Controllers::RailsInfoController: missing default helper path rails_info_helper
+
+
+Processing RailsInfoController#properties (for 127.0.0.1 at 2006-03-03 19:59:08) [GET]
+  Parameters: {"action"=>"properties", "controller"=>"rails_info"}
+Completed in 0.00779 (128 reqs/sec) | Rendering: 0.00451 (57%) | 200 OK [http://localhost/rails_info/properties]
+
+
+Processing AccountsController#index (for 127.0.0.1 at 2006-03-03 19:59:18) [GET]
+  Parameters: {"action"=>"index", "controller"=>"accounts"}
+
+
+PGError (could not connect to server: Connection refused
+	Is the server running on host "infoman.ca" and accepting
+	TCP/IP connections on port 5432?
+):
+    /usr/lib/ruby/gems/1.8/gems/activerecord-1.13.2/lib/active_record/connection_adapters/postgresql_adapter.rb:24:in `connect'
+    /usr/lib/ruby/gems/1.8/gems/activerecord-1.13.2/lib/active_record/connection_adapters/postgresql_adapter.rb:24:in `postgresql_connection'
+    /usr/lib/ruby/gems/1.8/gems/activerecord-1.13.2/lib/active_record/connection_adapters/abstract/connection_specification.rb:145:in `connection_without_query_cache='
+    /usr/lib/ruby/gems/1.8/gems/activerecord-1.13.2/lib/active_record/query_cache.rb:54:in `connection='
+    /usr/lib/ruby/gems/1.8/gems/activerecord-1.13.2/lib/active_record/connection_adapters/abstract/connection_specification.rb:106:in `retrieve_connection'
+    /usr/lib/ruby/gems/1.8/gems/activerecord-1.13.2/lib/active_record/connection_adapters/abstract/connection_specification.rb:20:in `connection'
+    /usr/lib/ruby/gems/1.8/gems/activerecord-1.13.2/lib/active_record/base.rb:518:in `count_by_sql'
+    /usr/lib/ruby/gems/1.8/gems/activerecord-1.13.2/lib/active_record/base.rb:511:in `count'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-1.11.2/lib/action_controller/pagination.rb:167:in `count_collection_for_pagination'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-1.11.2/lib/action_controller/pagination.rb:188:in `paginator_and_collection_for'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-1.11.2/lib/action_controller/pagination.rb:124:in `paginate'
+    .//app/controllers/accounts_controller.rb:8:in `list'
+    .//app/controllers/accounts_controller.rb:3:in `index'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-1.11.2/lib/action_controller/base.rb:853:in `perform_action_without_filters'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-1.11.2/lib/action_controller/filters.rb:332:in `perform_action_without_benchmark'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-1.11.2/lib/action_controller/benchmarking.rb:69:in `perform_action_without_rescue'
+    /usr/lib/ruby/1.8/benchmark.rb:293:in `measure'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-1.11.2/lib/action_controller/benchmarking.rb:69:in `perform_action_without_rescue'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-1.11.2/lib/action_controller/rescue.rb:82:in `perform_action'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-1.11.2/lib/action_controller/base.rb:369:in `process_without_session_management_support'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-1.11.2/lib/action_controller/session_management.rb:116:in `process'
+    /usr/lib/ruby/gems/1.8/gems/rails-1.0.0/lib/dispatcher.rb:38:in `dispatch'
+    /usr/lib/ruby/gems/1.8/gems/rails-1.0.0/lib/webrick_server.rb:117:in `handle_dispatch'
+    /usr/lib/ruby/gems/1.8/gems/rails-1.0.0/lib/webrick_server.rb:83:in `service'
+    /usr/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    /usr/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    /usr/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    /usr/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    /usr/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    /usr/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    /usr/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    /usr/lib/ruby/1.8/webrick/server.rb:82:in `start'
+    /usr/lib/ruby/gems/1.8/gems/rails-1.0.0/lib/webrick_server.rb:69:in `dispatch'
+    /usr/lib/ruby/gems/1.8/gems/rails-1.0.0/lib/commands/servers/webrick.rb:59
+    /usr/local/lib/site_ruby/1.8/rubygems/custom_require.rb:21:in `require'
+    /usr/lib/ruby/gems/1.8/gems/activesupport-1.2.5/lib/active_support/dependencies.rb:214:in `require'
+    /usr/lib/ruby/gems/1.8/gems/rails-1.0.0/lib/commands/server.rb:28
+    /usr/local/lib/site_ruby/1.8/rubygems/custom_require.rb:21:in `require'
+    /usr/lib/ruby/gems/1.8/gems/activesupport-1.2.5/lib/active_support/dependencies.rb:214:in `require'
+    script/server:3
+
+
+Rendering /usr/lib/ruby/gems/1.8/gems/actionpack-1.11.2/lib/action_controller/templates/rescues/layout.rhtml (500 Internal Error)
+  [4;36;1mSQL (0.000959)[0m   [0;1mSET client_encoding TO 'UTF8'[0m
+  [4;35;1mSQL (0.000639)[0m   [0mSET client_min_messages TO 'warning'[0m
+  [4;36;1mSQL (0.016167)[0m   [0;1mCREATE TABLE schema_info (version integer)[0m
+  [4;35;1mSQL (0.001835)[0m   [0mINSERT INTO schema_info (version) VALUES(0)[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mPGError: ERROR: relation "schema_info" already exists
+: CREATE TABLE schema_info (version integer)[0m
+  [4;35;1mSQL (0.001389)[0m   [0mSELECT version FROM schema_info[0m
+Migrating to People (1)
+  [4;36;1mSQL (0.023903)[0m   [0;1mCREATE TABLE people ("id" serial primary key, "name" character varying(255), "password" character varying(255), "givenname" character varying(255), "surname" character varying(255), "email" character varying(255), "url" character varying(255), "phone" character varying(255), "organisation" character varying(255), "enabled" boolean, "admin" boolean, "created" date, "lastlogin" date) [0m
+  [4;35;1mSQL (0.001729)[0m   [0mUPDATE schema_info SET version = 1[0m
+  [4;36;1mSQL (0.000767)[0m   [0;1mSELECT version FROM schema_info[0m
+Migrating to Committees (2)
+  [4;35;1mSQL (0.012344)[0m   [0mCREATE TABLE committees ("id" serial primary key, "name" character varying(255), "parent_id" integer) [0m
+  [4;36;1mSQL (0.001399)[0m   [0;1mUPDATE schema_info SET version = 2[0m
+  [4;35;1mSQL (0.000753)[0m   [0mSELECT version FROM schema_info[0m
+Migrating to Nations (3)
+  [4;36;1mSQL (0.021742)[0m   [0;1mCREATE TABLE nations ("id" serial primary key, "code" character varying(255), "name" character varying(255)) [0m
+  [4;35;1mSQL (0.001468)[0m   [0mUPDATE schema_info SET version = 3[0m
+  [4;36;1mSQL (0.001259)[0m   [0;1mSELECT version FROM schema_info[0m
+Migrating to GlobalizeMigration (4)
+  [4;35;1mSQL (0.000000)[0m   [0mPGError: ERROR: table "globalize_countries" does not exist
+: DROP TABLE globalize_countries[0m
+  [4;36;1mSQL (0.016822)[0m   [0;1mCREATE TABLE globalize_countries ("id" serial primary key, "code" character varying(2), "english_name" character varying(255), "date_format" character varying(255), "currency_format" character varying(255), "currency_code" character varying(3), "thousands_sep" character varying(2), "decimal_sep" character varying(2), "currency_decimal_sep" character varying(2), "number_grouping_scheme" character varying(255)) [0m
+  [4;35;1mSQL (0.011385)[0m   [0mCREATE INDEX globalize_countries_code_index ON globalize_countries (code)[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mPGError: ERROR: table "globalize_translations" does not exist
+: DROP TABLE globalize_translations[0m
+  [4;35;1mSQL (0.021365)[0m   [0mCREATE TABLE globalize_translations ("id" serial primary key, "type" character varying(255), "tr_key" character varying(255), "table_name" character varying(255), "item_id" integer, "facet" character varying(255), "language_id" integer, "pluralization_index" integer, "text" text) [0m
+  [4;36;1mSQL (0.009819)[0m   [0;1mCREATE INDEX globalize_translations_tr_key_index ON globalize_translations (tr_key, language_id)[0m
+  [4;35;1mSQL (0.009392)[0m   [0mCREATE INDEX globalize_translations_table_name_index ON globalize_translations (table_name, item_id, language_id)[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mPGError: ERROR: table "globalize_languages" does not exist
+: DROP TABLE globalize_languages[0m
+  [4;35;1mSQL (0.074406)[0m   [0mCREATE TABLE globalize_languages ("id" serial primary key, "iso_639_1" character varying(2), "iso_639_2" character varying(3), "iso_639_3" character varying(3), "rfc_3066" character varying(255), "english_name" character varying(255), "english_name_locale" character varying(255), "english_name_modifier" character varying(255), "native_name" character varying(255), "native_name_locale" character varying(255), "native_name_modifier" character varying(255), "macro_language" boolean, "direction" character varying(255), "pluralization" character varying(255), "scope" character varying(1)) [0m
+  [4;36;1mSQL (0.003524)[0m   [0;1mCREATE INDEX globalize_languages_iso_639_1_index ON globalize_languages (iso_639_1)[0m
+  [4;35;1mSQL (0.009409)[0m   [0mCREATE INDEX globalize_languages_iso_639_2_index ON globalize_languages (iso_639_2)[0m
+  [4;36;1mSQL (0.009614)[0m   [0;1mCREATE INDEX globalize_languages_iso_639_3_index ON globalize_languages (iso_639_3)[0m
+  [4;35;1mSQL (0.009405)[0m   [0mCREATE INDEX globalize_languages_rfc_3066_index ON globalize_languages (rfc_3066)[0m
+  [4;36;1mSQL (0.000516)[0m   [0;1mSET client_encoding TO 'UTF8'[0m
+  [4;35;1mSQL (0.000325)[0m   [0mSET client_min_messages TO 'warning'[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mPGError: ERROR: relation "schema_info" already exists
+: CREATE TABLE schema_info (version integer)[0m
+  [4;35;1mSQL (0.000000)[0m   [0mPGError: ERROR: relation "schema_info" already exists
+: CREATE TABLE schema_info (version integer)[0m
+  [4;36;1mSQL (0.001199)[0m   [0;1mSELECT version FROM schema_info[0m
+  [4;35;1mSQL (0.000454)[0m   [0mSELECT version FROM schema_info[0m
+  [4;36;1mSQL (0.000330)[0m   [0;1mSELECT version FROM schema_info[0m
+  [4;35;1mSQL (0.000327)[0m   [0mSELECT version FROM schema_info[0m
+Migrating to GlobalizeMigration (4)
+  [4;36;1mSQL (0.018135)[0m   [0;1mDROP TABLE globalize_countries[0m
+  [4;35;1mSQL (0.011957)[0m   [0mCREATE TABLE globalize_countries ("id" serial primary key, "code" character varying(2), "english_name" character varying(255), "date_format" character varying(255), "currency_format" character varying(255), "currency_code" character varying(3), "thousands_sep" character varying(2), "decimal_sep" character varying(2), "currency_decimal_sep" character varying(2), "number_grouping_scheme" character varying(255)) [0m
+  [4;36;1mSQL (0.010055)[0m   [0;1mCREATE INDEX globalize_countries_code_index ON globalize_countries (code)[0m
+  [4;35;1mSQL (0.003911)[0m   [0mDROP TABLE globalize_translations[0m
+  [4;36;1mSQL (0.018684)[0m   [0;1mCREATE TABLE globalize_translations ("id" serial primary key, "type" character varying(255), "tr_key" character varying(255), "table_name" character varying(255), "item_id" integer, "facet" character varying(255), "language_id" integer, "pluralization_index" integer, "text" text) [0m
+  [4;35;1mSQL (0.009618)[0m   [0mCREATE INDEX globalize_translations_tr_key_index ON globalize_translations (tr_key, language_id)[0m
+  [4;36;1mSQL (0.009451)[0m   [0;1mCREATE INDEX globalize_translations_table_name_index ON globalize_translations (table_name, item_id, language_id)[0m
+  [4;35;1mSQL (0.004617)[0m   [0mDROP TABLE globalize_languages[0m
+  [4;36;1mSQL (0.024102)[0m   [0;1mCREATE TABLE globalize_languages ("id" serial primary key, "iso_639_1" character varying(2), "iso_639_2" character varying(3), "iso_639_3" character varying(3), "rfc_3066" character varying(255), "english_name" character varying(255), "english_name_locale" character varying(255), "english_name_modifier" character varying(255), "native_name" character varying(255), "native_name_locale" character varying(255), "native_name_modifier" character varying(255), "macro_language" boolean, "direction" character varying(255), "pluralization" character varying(255), "scope" character varying(1)) [0m
+  [4;35;1mSQL (0.009367)[0m   [0mCREATE INDEX globalize_languages_iso_639_1_index ON globalize_languages (iso_639_1)[0m
+  [4;36;1mSQL (0.010431)[0m   [0;1mCREATE INDEX globalize_languages_iso_639_2_index ON globalize_languages (iso_639_2)[0m
+  [4;35;1mSQL (0.008945)[0m   [0mCREATE INDEX globalize_languages_iso_639_3_index ON globalize_languages (iso_639_3)[0m
+  [4;36;1mSQL (0.009487)[0m   [0;1mCREATE INDEX globalize_languages_rfc_3066_index ON globalize_languages (rfc_3066)[0m
+  [4;36;1mSQL (0.000525)[0m   [0;1mSET client_encoding TO 'UTF8'[0m
+  [4;35;1mSQL (0.000311)[0m   [0mSET client_min_messages TO 'warning'[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mPGError: ERROR: relation "schema_info" already exists
+: CREATE TABLE schema_info (version integer)[0m
+  [4;35;1mSQL (0.000000)[0m   [0mPGError: ERROR: relation "schema_info" already exists
+: CREATE TABLE schema_info (version integer)[0m
+  [4;36;1mSQL (0.001211)[0m   [0;1mSELECT version FROM schema_info[0m
+  [4;35;1mSQL (0.000441)[0m   [0mSELECT version FROM schema_info[0m
+  [4;36;1mSQL (0.000342)[0m   [0;1mSELECT version FROM schema_info[0m
+  [4;35;1mSQL (0.000323)[0m   [0mSELECT version FROM schema_info[0m
+Migrating to GlobalizeMigration (4)
+  [4;36;1mSQL (0.009987)[0m   [0;1mDROP TABLE globalize_countries[0m
+  [4;35;1mSQL (0.018456)[0m   [0mCREATE TABLE globalize_countries ("id" serial primary key, "code" character varying(2), "english_name" character varying(255), "date_format" character varying(255), "currency_format" character varying(255), "currency_code" character varying(3), "thousands_sep" character varying(2), "decimal_sep" character varying(2), "currency_decimal_sep" character varying(2), "number_grouping_scheme" character varying(255)) [0m
+  [4;36;1mSQL (0.010168)[0m   [0;1mCREATE INDEX globalize_countries_code_index ON globalize_countries (code)[0m
+  [4;35;1mSQL (0.004217)[0m   [0mDROP TABLE globalize_translations[0m
+  [4;36;1mSQL (0.022258)[0m   [0;1mCREATE TABLE globalize_translations ("id" serial primary key, "type" character varying(255), "tr_key" character varying(255), "table_name" character varying(255), "item_id" integer, "facet" character varying(255), "language_id" integer, "pluralization_index" integer, "text" text) [0m
+  [4;35;1mSQL (0.009228)[0m   [0mCREATE INDEX globalize_translations_tr_key_index ON globalize_translations (tr_key, language_id)[0m
+  [4;36;1mSQL (0.009765)[0m   [0;1mCREATE INDEX globalize_translations_table_name_index ON globalize_translations (table_name, item_id, language_id)[0m
+  [4;35;1mSQL (0.004413)[0m   [0mDROP TABLE globalize_languages[0m
+  [4;36;1mSQL (0.022903)[0m   [0;1mCREATE TABLE globalize_languages ("id" serial primary key, "iso_639_1" character varying(2), "iso_639_2" character varying(3), "iso_639_3" character varying(3), "rfc_3066" character varying(255), "english_name" character varying(255), "english_name_locale" character varying(255), "english_name_modifier" character varying(255), "native_name" character varying(255), "native_name_locale" character varying(255), "native_name_modifier" character varying(255), "macro_language" boolean, "direction" character varying(255), "pluralization" character varying(255), "scope" character varying(1)) [0m
+  [4;35;1mSQL (0.008907)[0m   [0mCREATE INDEX globalize_languages_iso_639_1_index ON globalize_languages (iso_639_1)[0m
+  [4;36;1mSQL (0.008761)[0m   [0;1mCREATE INDEX globalize_languages_iso_639_2_index ON globalize_languages (iso_639_2)[0m
+  [4;35;1mSQL (0.009763)[0m   [0mCREATE INDEX globalize_languages_iso_639_3_index ON globalize_languages (iso_639_3)[0m
+  [4;36;1mSQL (0.009463)[0m   [0;1mCREATE INDEX globalize_languages_rfc_3066_index ON globalize_languages (rfc_3066)[0m
+
+
+Processing AccountsController#index (for 127.0.0.1 at 2006-03-03 21:19:15) [GET]
+  Parameters: {"action"=>"index", "controller"=>"accounts"}
+  [4;36;1mSQL (0.040907)[0m   [0;1mSET client_encoding TO 'UTF8'[0m
+  [4;35;1mSQL (0.000539)[0m   [0mSET client_min_messages TO 'warning'[0m
+  [4;36;1mPerson Count (0.041697)[0m   [0;1mSELECT COUNT(*) FROM people [0m
+  [4;35;1mPerson Load (0.001083)[0m   [0mSELECT * FROM people LIMIT 10 OFFSET 0[0m
+Rendering layoutfalseactionlist within layouts/accounts
+Rendering accounts/list
+  [4;36;1mSQL (0.007477)[0m   [0;1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = 'people'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+Completed in 0.42920 (2 reqs/sec) | Rendering: 0.07101 (16%) | DB: 0.09170 (21%) | 200 OK [http://localhost/accounts]
+
+
+Processing AccountsController#new (for 127.0.0.1 at 2006-03-03 21:19:19) [GET]
+  Parameters: {"action"=>"new", "controller"=>"accounts"}
+  [4;35;1mSQL (0.006096)[0m   [0m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = 'people'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+Rendering  within layouts/accounts
+Rendering accounts/new
+Rendered accounts/_form (0.02952)
+Completed in 0.04402 (22 reqs/sec) | Rendering: 0.03361 (76%) | DB: 0.00610 (13%) | 200 OK [http://localhost/accounts/new]
+
+
+Processing AccountsController#create (for 127.0.0.1 at 2006-03-03 21:19:22) [POST]
+  Parameters: {"commit"=>"Create", "action"=>"create", "controller"=>"accounts", "person"=>{"name"=>"", "givenname"=>"", "admin"=>"false", "url"=>"", "enabled"=>"false", "lastlogin(1i)"=>"2006", "created(1i)"=>"2006", "created(2i)"=>"3", "lastlogin(2i)"=>"3", "phone"=>"", "lastlogin(3i)"=>"3", "created(3i)"=>"3", "organisation"=>"", "surname"=>"", "password"=>"", "email"=>""}}
+  [4;36;1mSQL (0.005164)[0m   [0;1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = 'people'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [4;35;1mSQL (0.001792)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000948)[0m   [0;1mCOMMIT[0m
+Rendering layoutfalseactionnew within layouts/accounts
+Rendering accounts/new
+Rendered accounts/_form (0.01119)
+Completed in 0.03758 (26 reqs/sec) | Rendering: 0.01520 (40%) | DB: 0.00790 (21%) | 200 OK [http://localhost/accounts/create]
+  [4;36;1mSQL (0.000651)[0m   [0;1mSET client_encoding TO 'UTF8'[0m
+  [4;35;1mSQL (0.000324)[0m   [0mSET client_min_messages TO 'warning'[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mPGError: ERROR: relation "schema_info" already exists
+: CREATE TABLE schema_info (version integer)[0m
+  [4;35;1mSQL (0.000000)[0m   [0mPGError: ERROR: relation "schema_info" already exists
+: CREATE TABLE schema_info (version integer)[0m
+  [4;36;1mSQL (0.001210)[0m   [0;1mSELECT version FROM schema_info[0m
+  [4;35;1mSQL (0.000437)[0m   [0mSELECT version FROM schema_info[0m
+  [4;36;1mSQL (0.000327)[0m   [0;1mSELECT version FROM schema_info[0m
+  [4;35;1mSQL (0.000330)[0m   [0mSELECT version FROM schema_info[0m
+Migrating to GlobalizeMigration (4)
+  [4;36;1mSQL (0.059473)[0m   [0;1mDROP TABLE globalize_countries[0m
+  [4;35;1mSQL (0.026162)[0m   [0mCREATE TABLE globalize_countries ("id" serial primary key, "code" character varying(2), "english_name" character varying(255), "date_format" character varying(255), "currency_format" character varying(255), "currency_code" character varying(3), "thousands_sep" character varying(2), "decimal_sep" character varying(2), "currency_decimal_sep" character varying(2), "number_grouping_scheme" character varying(255)) [0m
+  [4;36;1mSQL (0.010217)[0m   [0;1mCREATE INDEX globalize_countries_code_index ON globalize_countries (code)[0m
+  [4;35;1mSQL (0.004503)[0m   [0mDROP TABLE globalize_translations[0m
+  [4;36;1mSQL (0.021625)[0m   [0;1mCREATE TABLE globalize_translations ("id" serial primary key, "type" character varying(255), "tr_key" character varying(255), "table_name" character varying(255), "item_id" integer, "facet" character varying(255), "language_id" integer, "pluralization_index" integer, "text" text) [0m
+  [4;35;1mSQL (0.009123)[0m   [0mCREATE INDEX globalize_translations_tr_key_index ON globalize_translations (tr_key, language_id)[0m
+  [4;36;1mSQL (0.010450)[0m   [0;1mCREATE INDEX globalize_translations_table_name_index ON globalize_translations (table_name, item_id, language_id)[0m
+  [4;35;1mSQL (0.004853)[0m   [0mDROP TABLE globalize_languages[0m
+  [4;36;1mSQL (0.023199)[0m   [0;1mCREATE TABLE globalize_languages ("id" serial primary key, "iso_639_1" character varying(2), "iso_639_2" character varying(3), "iso_639_3" character varying(3), "rfc_3066" character varying(255), "english_name" character varying(255), "english_name_locale" character varying(255), "english_name_modifier" character varying(255), "native_name" character varying(255), "native_name_locale" character varying(255), "native_name_modifier" character varying(255), "macro_language" boolean, "direction" character varying(255), "pluralization" character varying(255), "scope" character varying(1)) [0m
+  [4;35;1mSQL (0.009456)[0m   [0mCREATE INDEX globalize_languages_iso_639_1_index ON globalize_languages (iso_639_1)[0m
+  [4;36;1mSQL (0.008802)[0m   [0;1mCREATE INDEX globalize_languages_iso_639_2_index ON globalize_languages (iso_639_2)[0m
+  [4;35;1mSQL (0.010020)[0m   [0mCREATE INDEX globalize_languages_iso_639_3_index ON globalize_languages (iso_639_3)[0m
+  [4;36;1mSQL (0.010312)[0m   [0;1mCREATE INDEX globalize_languages_rfc_3066_index ON globalize_languages (rfc_3066)[0m
+  [4;36;1mSQL (0.000513)[0m   [0;1mSET client_encoding TO 'UTF8'[0m
+  [4;35;1mSQL (0.000307)[0m   [0mSET client_min_messages TO 'warning'[0m
+  [4;36;1mSQL (0.001025)[0m   [0;1mSELECT version FROM schema_info[0m
+  [4;36;1mSQL (0.004710)[0m   [0;1mSET client_encoding TO 'UTF8'[0m
+  [4;35;1mSQL (0.000305)[0m   [0mSET client_min_messages TO 'warning'[0m
+  [4;36;1mSQL (0.001037)[0m   [0;1mSELECT version FROM schema_info[0m
+  [4;36;1mSQL (0.000525)[0m   [0;1mSET client_encoding TO 'UTF8'[0m
+  [4;35;1mSQL (0.000318)[0m   [0mSET client_min_messages TO 'warning'[0m
+  [4;36;1mSQL (0.001040)[0m   [0;1mSELECT version FROM schema_info[0m
+  [4;36;1mSQL (0.000512)[0m   [0;1mSET client_encoding TO 'UTF8'[0m
+  [4;35;1mSQL (0.000301)[0m   [0mSET client_min_messages TO 'warning'[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mPGError: ERROR: relation "schema_info" already exists
+: CREATE TABLE schema_info (version integer)[0m
+  [4;35;1mSQL (0.000000)[0m   [0mPGError: ERROR: relation "schema_info" already exists
+: CREATE TABLE schema_info (version integer)[0m
+  [4;36;1mSQL (0.001142)[0m   [0;1mSELECT version FROM schema_info[0m
+  [4;35;1mSQL (0.000405)[0m   [0mSELECT version FROM schema_info[0m
+  [4;36;1mSQL (0.000321)[0m   [0;1mSELECT version FROM schema_info[0m
+  [4;35;1mSQL (0.000315)[0m   [0mSELECT version FROM schema_info[0m
+Migrating to GlobalizeMigration (4)
+  [4;36;1mSQL (0.059025)[0m   [0;1mDROP TABLE globalize_countries[0m
+  [4;35;1mSQL (0.026080)[0m   [0mCREATE TABLE globalize_countries ("id" serial primary key, "code" character varying(2), "english_name" character varying(255), "date_format" character varying(255), "currency_format" character varying(255), "currency_code" character varying(3), "thousands_sep" character varying(2), "decimal_sep" character varying(2), "currency_decimal_sep" character varying(2), "number_grouping_scheme" character varying(255)) [0m
+  [4;36;1mSQL (0.004126)[0m   [0;1mCREATE INDEX globalize_countries_code_index ON globalize_countries (code)[0m
+  [4;35;1mSQL (0.003908)[0m   [0mDROP TABLE globalize_translations[0m
+  [4;36;1mSQL (0.023580)[0m   [0;1mCREATE TABLE globalize_translations ("id" serial primary key, "type" character varying(255), "tr_key" character varying(255), "table_name" character varying(255), "item_id" integer, "facet" character varying(255), "language_id" integer, "pluralization_index" integer, "text" text) [0m
+  [4;35;1mSQL (0.010191)[0m   [0mCREATE INDEX globalize_translations_tr_key_index ON globalize_translations (tr_key, language_id)[0m
+  [4;36;1mSQL (0.009154)[0m   [0;1mCREATE INDEX globalize_translations_table_name_index ON globalize_translations (table_name, item_id, language_id)[0m
+  [4;35;1mSQL (0.004633)[0m   [0mDROP TABLE globalize_languages[0m
+  [4;36;1mSQL (0.125135)[0m   [0;1mCREATE TABLE globalize_languages ("id" serial primary key, "iso_639_1" character varying(2), "iso_639_2" character varying(3), "iso_639_3" character varying(3), "rfc_3066" character varying(255), "english_name" character varying(255), "english_name_locale" character varying(255), "english_name_modifier" character varying(255), "native_name" character varying(255), "native_name_locale" character varying(255), "native_name_modifier" character varying(255), "macro_language" boolean, "direction" character varying(255), "pluralization" character varying(255), "scope" character varying(1)) [0m
+  [4;35;1mSQL (0.009369)[0m   [0mCREATE INDEX globalize_languages_iso_639_1_index ON globalize_languages (iso_639_1)[0m
+  [4;36;1mSQL (0.008752)[0m   [0;1mCREATE INDEX globalize_languages_iso_639_2_index ON globalize_languages (iso_639_2)[0m
+  [4;35;1mSQL (0.010039)[0m   [0mCREATE INDEX globalize_languages_iso_639_3_index ON globalize_languages (iso_639_3)[0m
+  [4;36;1mSQL (0.010190)[0m   [0;1mCREATE INDEX globalize_languages_rfc_3066_index ON globalize_languages (rfc_3066)[0m
+  [4;36;1mSQL (0.000713)[0m   [0;1mSET client_encoding TO 'UTF8'[0m
+  [4;35;1mSQL (0.000292)[0m   [0mSET client_min_messages TO 'warning'[0m
+  [4;36;1mSQL (0.006434)[0m   [0;1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = 'nations'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [4;36;1mSQL (0.000947)[0m   [0;1mSET client_encoding TO 'UTF8'[0m
+  [4;35;1mSQL (0.000617)[0m   [0mSET client_min_messages TO 'warning'[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mPGError: ERROR: relation "schema_info" already exists
+: CREATE TABLE schema_info (version integer)[0m
+  [4;35;1mSQL (0.000000)[0m   [0mPGError: ERROR: relation "schema_info" already exists
+: CREATE TABLE schema_info (version integer)[0m
+  [4;36;1mSQL (0.001793)[0m   [0;1mSELECT version FROM schema_info[0m
+  [4;35;1mSQL (0.000758)[0m   [0mSELECT version FROM schema_info[0m
+  [4;36;1mSQL (0.000705)[0m   [0;1mSELECT version FROM schema_info[0m
+  [4;35;1mSQL (0.000695)[0m   [0mSELECT version FROM schema_info[0m
+Migrating to GlobalizeMigration (4)
+  [4;36;1mSQL (0.018014)[0m   [0;1mDROP TABLE globalize_countries[0m
+  [4;35;1mSQL (0.021753)[0m   [0mCREATE TABLE globalize_countries ("id" serial primary key, "code" character varying(2), "english_name" character varying(255), "date_format" character varying(255), "currency_format" character varying(255), "currency_code" character varying(3), "thousands_sep" character varying(2), "decimal_sep" character varying(2), "currency_decimal_sep" character varying(2), "number_grouping_scheme" character varying(255)) [0m
+  [4;36;1mSQL (0.011014)[0m   [0;1mCREATE INDEX globalize_countries_code_index ON globalize_countries (code)[0m
+  [4;35;1mSQL (0.014812)[0m   [0mDROP TABLE globalize_translations[0m
+  [4;36;1mSQL (0.017569)[0m   [0;1mCREATE TABLE globalize_translations ("id" serial primary key, "type" character varying(255), "tr_key" character varying(255), "table_name" character varying(255), "item_id" integer, "facet" character varying(255), "language_id" integer, "pluralization_index" integer, "text" text) [0m
+  [4;35;1mSQL (0.012211)[0m   [0mCREATE INDEX globalize_translations_tr_key_index ON globalize_translations (tr_key, language_id)[0m
+  [4;36;1mSQL (0.010645)[0m   [0;1mCREATE INDEX globalize_translations_table_name_index ON globalize_translations (table_name, item_id, language_id)[0m
+  [4;35;1mSQL (0.009553)[0m   [0mDROP TABLE globalize_languages[0m
+  [4;36;1mSQL (0.019376)[0m   [0;1mCREATE TABLE globalize_languages ("id" serial primary key, "iso_639_1" character varying(2), "iso_639_2" character varying(3), "iso_639_3" character varying(3), "rfc_3066" character varying(255), "english_name" character varying(255), "english_name_locale" character varying(255), "english_name_modifier" character varying(255), "native_name" character varying(255), "native_name_locale" character varying(255), "native_name_modifier" character varying(255), "macro_language" boolean, "direction" character varying(255), "pluralization" character varying(255), "scope" character varying(1)) [0m
+  [4;35;1mSQL (0.011448)[0m   [0mCREATE INDEX globalize_languages_iso_639_1_index ON globalize_languages (iso_639_1)[0m
+  [4;36;1mSQL (0.010713)[0m   [0;1mCREATE INDEX globalize_languages_iso_639_2_index ON globalize_languages (iso_639_2)[0m
+  [4;35;1mSQL (0.010459)[0m   [0mCREATE INDEX globalize_languages_iso_639_3_index ON globalize_languages (iso_639_3)[0m
+  [4;36;1mSQL (0.010472)[0m   [0;1mCREATE INDEX globalize_languages_rfc_3066_index ON globalize_languages (rfc_3066)[0m
+  [4;36;1mSQL (0.006824)[0m   [0;1mSET client_encoding TO 'UTF8'[0m
+  [4;35;1mSQL (0.000704)[0m   [0mSET client_min_messages TO 'warning'[0m
+  [4;36;1mSQL (0.047377)[0m   [0;1mCREATE TABLE schema_info (version integer)[0m
+  [4;35;1mSQL (0.007657)[0m   [0mINSERT INTO schema_info (version) VALUES(0)[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mPGError: ERROR: relation "schema_info" already exists
+: CREATE TABLE schema_info (version integer)[0m
+  [4;35;1mSQL (0.001339)[0m   [0mSELECT version FROM schema_info[0m
+Migrating to People (1)
+  [4;36;1mSQL (0.064147)[0m   [0;1mCREATE TABLE people ("id" serial primary key, "name" character varying(255), "password" character varying(255), "givenname" character varying(255), "surname" character varying(255), "email" character varying(255), "url" character varying(255), "phone" character varying(255), "organisation" character varying(255), "enabled" boolean, "admin" boolean, "created" date, "lastlogin" date) [0m
+  [4;35;1mSQL (0.002304)[0m   [0mUPDATE schema_info SET version = 1[0m
+  [4;36;1mSQL (0.000493)[0m   [0;1mSELECT version FROM schema_info[0m
+Migrating to Committees (2)
+  [4;35;1mSQL (0.010173)[0m   [0mCREATE TABLE committees ("id" serial primary key, "name" character varying(255), "parent_id" integer) [0m
+  [4;36;1mSQL (0.001043)[0m   [0;1mUPDATE schema_info SET version = 2[0m
+  [4;35;1mSQL (0.000379)[0m   [0mSELECT version FROM schema_info[0m
+Migrating to Nations (3)
+  [4;36;1mSQL (0.027486)[0m   [0;1mCREATE TABLE nations ("id" serial primary key, "code" character varying(255), "name" character varying(255)) [0m
+  [4;35;1mSQL (0.000980)[0m   [0mUPDATE schema_info SET version = 3[0m
+  [4;36;1mSQL (0.000386)[0m   [0;1mSELECT version FROM schema_info[0m
+Migrating to GlobalizeMigration (4)
+  [4;35;1mSQL (0.000000)[0m   [0mPGError: ERROR: table "globalize_countries" does not exist
+: DROP TABLE globalize_countries[0m
+  [4;36;1mSQL (0.023570)[0m   [0;1mCREATE TABLE globalize_countries ("id" serial primary key, "code" character varying(2), "english_name" character varying(255), "date_format" character varying(255), "currency_format" character varying(255), "currency_code" character varying(3), "thousands_sep" character varying(2), "decimal_sep" character varying(2), "currency_decimal_sep" character varying(2), "number_grouping_scheme" character varying(255)) [0m
+  [4;35;1mSQL (0.012812)[0m   [0mCREATE INDEX globalize_countries_code_index ON globalize_countries (code)[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mPGError: ERROR: table "globalize_translations" does not exist
+: DROP TABLE globalize_translations[0m
+  [4;35;1mSQL (0.031712)[0m   [0mCREATE TABLE globalize_translations ("id" serial primary key, "type" character varying(255), "tr_key" character varying(255), "table_name" character varying(255), "item_id" integer, "facet" character varying(255), "language_id" integer, "pluralization_index" integer, "text" text) [0m
+  [4;36;1mSQL (0.015111)[0m   [0;1mCREATE INDEX globalize_translations_tr_key_index ON globalize_translations (tr_key, language_id)[0m
+  [4;35;1mSQL (0.024825)[0m   [0mCREATE INDEX globalize_translations_table_name_index ON globalize_translations (table_name, item_id, language_id)[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mPGError: ERROR: table "globalize_languages" does not exist
+: DROP TABLE globalize_languages[0m
+  [4;35;1mSQL (0.019889)[0m   [0mCREATE TABLE globalize_languages ("id" serial primary key, "iso_639_1" character varying(2), "iso_639_2" character varying(3), "iso_639_3" character varying(3), "rfc_3066" character varying(255), "english_name" character varying(255), "english_name_locale" character varying(255), "english_name_modifier" character varying(255), "native_name" character varying(255), "native_name_locale" character varying(255), "native_name_modifier" character varying(255), "macro_language" boolean, "direction" character varying(255), "pluralization" character varying(255), "scope" character varying(1)) [0m
+  [4;36;1mSQL (0.009319)[0m   [0;1mCREATE INDEX globalize_languages_iso_639_1_index ON globalize_languages (iso_639_1)[0m
+  [4;35;1mSQL (0.009425)[0m   [0mCREATE INDEX globalize_languages_iso_639_2_index ON globalize_languages (iso_639_2)[0m
+  [4;36;1mSQL (0.009660)[0m   [0;1mCREATE INDEX globalize_languages_iso_639_3_index ON globalize_languages (iso_639_3)[0m
+  [4;35;1mSQL (0.009410)[0m   [0mCREATE INDEX globalize_languages_rfc_3066_index ON globalize_languages (rfc_3066)[0m
+  [4;36;1mSQL (0.000800)[0m   [0;1mUPDATE schema_info SET version = 4[0m

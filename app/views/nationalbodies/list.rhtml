@@ -1,0 +1,27 @@
+<h1>Listing nations</h1>
+
+<table>
+  <tr>
+  <% for column in Nation.content_columns %>
+    <th><%= column.human_name %></th>
+  <% end %>
+  </tr>
+  
+<% for nation in @nations %>
+  <tr>
+  <% for column in Nation.content_columns %>
+    <td><%=h nation.send(column.name) %></td>
+  <% end %>
+    <td><%= link_to 'Show', :action => 'show', :id => nation %></td>
+    <td><%= link_to 'Edit', :action => 'edit', :id => nation %></td>
+    <td><%= link_to 'Destroy', { :action => 'destroy', :id => nation }, :confirm => 'Are you sure?' %></td>
+  </tr>
+<% end %>
+</table>
+
+<%= link_to 'Previous page', { :page => @nation_pages.current.previous } if @nation_pages.current.previous %>
+<%= link_to 'Next page', { :page => @nation_pages.current.next } if @nation_pages.current.next %> 
+
+<br />
+
+<%= link_to 'New nation', :action => 'new' %>

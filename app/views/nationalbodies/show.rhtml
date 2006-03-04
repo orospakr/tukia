@@ -1,0 +1,8 @@
+<% for column in Nation.content_columns %>
+<p>
+  <b><%= column.human_name %>:</b> <%=h @nation.send(column.name) %>
+</p>
+<% end %>
+
+<%= link_to 'Edit', :action => 'edit', :id => @nation %> |
+<%= link_to 'Back', :action => 'list' %>

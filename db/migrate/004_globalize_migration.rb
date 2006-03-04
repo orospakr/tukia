@@ -72,13 +72,19 @@ class GlobalizeMigration < ActiveRecord::Migration
       reader = CSV::Reader.create(data) 
       
       columns = reader.shift.map {|column_name| cnx.quote_column_name(column_name) }
+      columns.shift # added for PostgreSQL 
       column_clause = columns.join(', ')
 
       reader.each do |row|
         next if row.first.nil? # skip blank lines
         raise "No table name defined" if !table_name
         raise "No header defined" if !column_clause
-        values_clause = row.map {|v| cnx.quote(v).gsub('\\n', "\n").gsub('\\r', "\r") }.join(', ')
+        # Changed for PostgreSQL
+        #values_clause = row.map {|v| cnx.quote(v).gsub('\\n', "\n").gsub('\\r', "\r") }.join(', ')
+        values = row.map {|v| cnx.quote(v).gsub('\\n', "\n").gsub('\\r', "\r") }
+        values.shift
+        values_clause = values.join(', ')
+
         sql = "INSERT INTO #{table_name} (#{column_clause}) VALUES (#{values_clause})"
         cnx.insert(sql) 
       end
