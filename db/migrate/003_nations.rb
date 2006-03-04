@@ -7,5 +7,6 @@ class Nations < ActiveRecord::Migration
   end
 
   def self.down
+    drop_table :nations
   end
 end

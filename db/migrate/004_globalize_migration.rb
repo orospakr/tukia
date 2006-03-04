@@ -47,6 +47,17 @@ class GlobalizeMigration < ActiveRecord::Migration
       t.column :scope, :string, :limit => 1
     end
 
+    # table added by orospakr to enable the globalize schema to store globalized names of the languages
+    # stored in globalize. ^.^
+    create_table :globalize_language_names, :force => true do |t|
+      # the language we're globalizing...
+      t.column :globalize_language_id, :integer
+      # the languages for which we have a name for the above
+      t.column :name_globalize_language_id, :integer
+      t.column :name, :integer
+    end
+      
+
     add_index :globalize_languages, :iso_639_1
     add_index :globalize_languages, :iso_639_2  
     add_index :globalize_languages, :iso_639_3  
@@ -56,12 +67,14 @@ class GlobalizeMigration < ActiveRecord::Migration
     load_from_csv("globalize_countries", country_data)
     load_from_csv("globalize_languages", language_data)
     load_from_csv("globalize_translations", translation_data)
+    load_from_csv("globalize_language_names", names_data)
   end
 
   def self.down
     drop_table :globalize_countries
     drop_table :globalize_translations
-    drop_table :globalize_languages    
+    drop_table :globalize_languages
+    drop_table :globalize_languages_names
   end
   
   def self.load_from_csv(table_name, data)
@@ -333,6 +346,14 @@ class GlobalizeMigration < ActiveRecord::Migration
 237,"ZA","South Africa",,,"ZAR",",",".",".","western"
 238,"ZM","Zambia",,,"ZMK",,,,"western"
 239,"ZW","Zimbabwe",,,"ZWD",",",".",".","western"
+END_OF_DATA
+  end
+
+  def self.names_data
+    <<'END_OF_DATA'
+"id","globalize_language_id","name_globalize_language_id","name"
+1,1819,1930,"Anglais"
+2,1819,1930,"French"
 END_OF_DATA
   end
 

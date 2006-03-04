@@ -13,6 +13,7 @@ class People < ActiveRecord::Migration
       table.column :admin, :boolean
       table.column :created, :date
       table.column :lastlogin, :date
+      table.column :nation_id, :integer
     end
   end
 
