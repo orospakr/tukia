@@ -709,3 +709,665 @@ Migrating to Statuses (9)
   [4;35;1mSQL (0.000745)[0m   [0mUPDATE schema_info SET version = 9[0m
   [4;36;1mSQL (0.000389)[0m   [0;1mSELECT version FROM schema_info[0m
 Migrating to Terms (10)
+  [4;36;1mSQL (0.000838)[0m   [0;1mSET client_encoding TO 'UTF8'[0m
+  [4;35;1mSQL (0.000463)[0m   [0mSET client_min_messages TO 'warning'[0m
+  [4;36;1mSQL (0.018946)[0m   [0;1mCREATE TABLE schema_info (version integer)[0m
+  [4;35;1mSQL (0.001317)[0m   [0mINSERT INTO schema_info (version) VALUES(0)[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mPGError: ERROR: relation "schema_info" already exists
+: CREATE TABLE schema_info (version integer)[0m
+  [4;35;1mSQL (0.000953)[0m   [0mSELECT version FROM schema_info[0m
+Migrating to People (1)
+  [4;36;1mSQL (0.016161)[0m   [0;1mCREATE TABLE people ("id" serial primary key, "name" character varying(255), "password" character varying(255), "givenname" character varying(255), "surname" character varying(255), "email" character varying(255), "url" character varying(255), "phone" character varying(255), "organisation" character varying(255), "enabled" boolean, "admin" boolean, "created" date, "lastlogin" date, "nation_id" integer) [0m
+  [4;35;1mSQL (0.001333)[0m   [0mUPDATE schema_info SET version = 1[0m
+  [4;36;1mSQL (0.000640)[0m   [0;1mSELECT version FROM schema_info[0m
+Migrating to Committees (2)
+  [4;35;1mSQL (0.007943)[0m   [0mCREATE TABLE committees ("id" serial primary key, "name" character varying(255), "parent_id" integer) [0m
+  [4;36;1mSQL (0.001215)[0m   [0;1mUPDATE schema_info SET version = 2[0m
+  [4;35;1mSQL (0.000610)[0m   [0mSELECT version FROM schema_info[0m
+Migrating to Nations (3)
+  [4;36;1mSQL (0.025435)[0m   [0;1mCREATE TABLE nations ("id" serial primary key, "code" character varying(255), "name" character varying(255)) [0m
+  [4;35;1mSQL (0.001240)[0m   [0mUPDATE schema_info SET version = 3[0m
+  [4;36;1mSQL (0.000606)[0m   [0;1mSELECT version FROM schema_info[0m
+Migrating to GlobalizeMigration (4)
+  [4;35;1mSQL (0.000000)[0m   [0mPGError: ERROR: table "globalize_countries" does not exist
+: DROP TABLE globalize_countries[0m
+  [4;36;1mSQL (0.020892)[0m   [0;1mCREATE TABLE globalize_countries ("id" serial primary key, "code" character varying(2), "english_name" character varying(255), "date_format" character varying(255), "currency_format" character varying(255), "currency_code" character varying(3), "thousands_sep" character varying(2), "decimal_sep" character varying(2), "currency_decimal_sep" character varying(2), "number_grouping_scheme" character varying(255)) [0m
+  [4;35;1mSQL (0.012142)[0m   [0mCREATE INDEX globalize_countries_code_index ON globalize_countries (code)[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mPGError: ERROR: table "globalize_translations" does not exist
+: DROP TABLE globalize_translations[0m
+  [4;35;1mSQL (0.020143)[0m   [0mCREATE TABLE globalize_translations ("id" serial primary key, "type" character varying(255), "tr_key" character varying(255), "table_name" character varying(255), "item_id" integer, "facet" character varying(255), "language_id" integer, "pluralization_index" integer, "text" text) [0m
+  [4;36;1mSQL (0.012647)[0m   [0;1mCREATE INDEX globalize_translations_tr_key_index ON globalize_translations (tr_key, language_id)[0m
+  [4;35;1mSQL (0.011159)[0m   [0mCREATE INDEX globalize_translations_table_name_index ON globalize_translations (table_name, item_id, language_id)[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mPGError: ERROR: table "globalize_languages" does not exist
+: DROP TABLE globalize_languages[0m
+  [4;35;1mSQL (0.021563)[0m   [0mCREATE TABLE globalize_languages ("id" serial primary key, "iso_639_1" character varying(2), "iso_639_2" character varying(3), "iso_639_3" character varying(3), "rfc_3066" character varying(255), "english_name" character varying(255), "english_name_locale" character varying(255), "english_name_modifier" character varying(255), "native_name" character varying(255), "native_name_locale" character varying(255), "native_name_modifier" character varying(255), "macro_language" boolean, "direction" character varying(255), "pluralization" character varying(255), "scope" character varying(1)) [0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mPGError: ERROR: table "globalize_language_names" does not exist
+: DROP TABLE globalize_language_names[0m
+  [4;35;1mSQL (0.015501)[0m   [0mCREATE TABLE globalize_language_names ("id" serial primary key, "globalize_language_id" integer, "name_globalize_language_id" integer, "name" character varying(255)) [0m
+  [4;36;1mSQL (0.011145)[0m   [0;1mCREATE INDEX globalize_languages_iso_639_1_index ON globalize_languages (iso_639_1)[0m
+  [4;35;1mSQL (0.010570)[0m   [0mCREATE INDEX globalize_languages_iso_639_2_index ON globalize_languages (iso_639_2)[0m
+  [4;36;1mSQL (0.010440)[0m   [0;1mCREATE INDEX globalize_languages_iso_639_3_index ON globalize_languages (iso_639_3)[0m
+  [4;35;1mSQL (0.010651)[0m   [0mCREATE INDEX globalize_languages_rfc_3066_index ON globalize_languages (rfc_3066)[0m
+  [4;36;1mSQL (0.001218)[0m   [0;1mUPDATE schema_info SET version = 4[0m
+  [4;35;1mSQL (0.000719)[0m   [0mSELECT version FROM schema_info[0m
+Migrating to CommitteesEditors (5)
+  [4;36;1mSQL (0.015401)[0m   [0;1mCREATE TABLE committees_editors ("id" serial primary key, "committee_id" integer, "person_id" integer) [0m
+  [4;35;1mSQL (0.001216)[0m   [0mUPDATE schema_info SET version = 5[0m
+  [4;36;1mSQL (0.000615)[0m   [0;1mSELECT version FROM schema_info[0m
+Migrating to CommitteesConvenors (6)
+  [4;35;1mSQL (0.012477)[0m   [0mCREATE TABLE committees_convenors ("id" serial primary key, "committee_id" integer, "person_id" integer) [0m
+  [4;36;1mSQL (0.003546)[0m   [0;1mUPDATE schema_info SET version = 6[0m
+  [4;35;1mSQL (0.000604)[0m   [0mSELECT version FROM schema_info[0m
+Migrating to CommitteesNations (7)
+  [4;36;1mSQL (0.012110)[0m   [0;1mCREATE TABLE committees_nations ("id" serial primary key, "committee_id" integer, "nation_id" integer) [0m
+  [4;35;1mSQL (0.001764)[0m   [0mUPDATE schema_info SET version = 7[0m
+  [4;36;1mSQL (0.000690)[0m   [0;1mSELECT version FROM schema_info[0m
+Migrating to Documents (8)
+  [4;35;1mSQL (0.023931)[0m   [0mCREATE TABLE documents ("id" serial primary key, "authorexternal" character varying(255), "person_id" integer, "title" character varying(255), "committee_id" integer, "register_number" integer, "externalurl" character varying(255), "externalfullname" character varying(255), "status_id" integer, "statusiteration" integer, "modified" date, "published" date, "edition" integer, "isbn" character varying(255), "issn" character varying(255), "external" bool, "globalize_language_id" integer) [0m
+  [4;36;1mSQL (0.001473)[0m   [0;1mUPDATE schema_info SET version = 8[0m
+  [4;35;1mSQL (0.000605)[0m   [0mSELECT version FROM schema_info[0m
+Migrating to Statuses (9)
+  [4;36;1mSQL (0.012348)[0m   [0;1mCREATE TABLE statuses ("id" serial primary key, "name" character varying(255)) [0m
+  [4;35;1mSQL (0.001649)[0m   [0mUPDATE schema_info SET version = 9[0m
+  [4;36;1mSQL (0.000615)[0m   [0;1mSELECT version FROM schema_info[0m
+Migrating to Terms (10)
+  [4;36;1mSQL (0.000618)[0m   [0;1mSET client_encoding TO 'UTF8'[0m
+  [4;35;1mSQL (0.000456)[0m   [0mSET client_min_messages TO 'warning'[0m
+  [4;36;1mSQL (0.017928)[0m   [0;1mCREATE TABLE schema_info (version integer)[0m
+  [4;35;1mSQL (0.001306)[0m   [0mINSERT INTO schema_info (version) VALUES(0)[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mPGError: ERROR: relation "schema_info" already exists
+: CREATE TABLE schema_info (version integer)[0m
+  [4;35;1mSQL (0.000933)[0m   [0mSELECT version FROM schema_info[0m
+Migrating to People (1)
+  [4;36;1mSQL (0.013839)[0m   [0;1mCREATE TABLE people ("id" serial primary key, "name" character varying(255), "password" character varying(255), "givenname" character varying(255), "surname" character varying(255), "email" character varying(255), "url" character varying(255), "phone" character varying(255), "organisation" character varying(255), "enabled" boolean, "admin" boolean, "created" date, "lastlogin" date, "nation_id" integer) [0m
+  [4;35;1mSQL (0.001264)[0m   [0mUPDATE schema_info SET version = 1[0m
+  [4;36;1mSQL (0.000620)[0m   [0;1mSELECT version FROM schema_info[0m
+Migrating to Committees (2)
+  [4;35;1mSQL (0.008049)[0m   [0mCREATE TABLE committees ("id" serial primary key, "name" character varying(255), "parent_id" integer) [0m
+  [4;36;1mSQL (0.001143)[0m   [0;1mUPDATE schema_info SET version = 2[0m
+  [4;35;1mSQL (0.000599)[0m   [0mSELECT version FROM schema_info[0m
+Migrating to Nations (3)
+  [4;36;1mSQL (0.024001)[0m   [0;1mCREATE TABLE nations ("id" serial primary key, "code" character varying(255), "name" character varying(255)) [0m
+  [4;35;1mSQL (0.001248)[0m   [0mUPDATE schema_info SET version = 3[0m
+  [4;36;1mSQL (0.000655)[0m   [0;1mSELECT version FROM schema_info[0m
+Migrating to GlobalizeMigration (4)
+  [4;35;1mSQL (0.000000)[0m   [0mPGError: ERROR: table "globalize_countries" does not exist
+: DROP TABLE globalize_countries[0m
+  [4;36;1mSQL (0.020158)[0m   [0;1mCREATE TABLE globalize_countries ("id" serial primary key, "code" character varying(2), "english_name" character varying(255), "date_format" character varying(255), "currency_format" character varying(255), "currency_code" character varying(3), "thousands_sep" character varying(2), "decimal_sep" character varying(2), "currency_decimal_sep" character varying(2), "number_grouping_scheme" character varying(255)) [0m
+  [4;35;1mSQL (0.011330)[0m   [0mCREATE INDEX globalize_countries_code_index ON globalize_countries (code)[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mPGError: ERROR: table "globalize_translations" does not exist
+: DROP TABLE globalize_translations[0m
+  [4;35;1mSQL (0.019788)[0m   [0mCREATE TABLE globalize_translations ("id" serial primary key, "type" character varying(255), "tr_key" character varying(255), "table_name" character varying(255), "item_id" integer, "facet" character varying(255), "language_id" integer, "pluralization_index" integer, "text" text) [0m
+  [4;36;1mSQL (0.012079)[0m   [0;1mCREATE INDEX globalize_translations_tr_key_index ON globalize_translations (tr_key, language_id)[0m
+  [4;35;1mSQL (0.011110)[0m   [0mCREATE INDEX globalize_translations_table_name_index ON globalize_translations (table_name, item_id, language_id)[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mPGError: ERROR: table "globalize_languages" does not exist
+: DROP TABLE globalize_languages[0m
+  [4;35;1mSQL (0.033559)[0m   [0mCREATE TABLE globalize_languages ("id" serial primary key, "iso_639_1" character varying(2), "iso_639_2" character varying(3), "iso_639_3" character varying(3), "rfc_3066" character varying(255), "english_name" character varying(255), "english_name_locale" character varying(255), "english_name_modifier" character varying(255), "native_name" character varying(255), "native_name_locale" character varying(255), "native_name_modifier" character varying(255), "macro_language" boolean, "direction" character varying(255), "pluralization" character varying(255), "scope" character varying(1)) [0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mPGError: ERROR: table "globalize_language_names" does not exist
+: DROP TABLE globalize_language_names[0m
+  [4;35;1mSQL (0.007586)[0m   [0mCREATE TABLE globalize_language_names ("id" serial primary key, "globalize_language_id" integer, "name_globalize_language_id" integer, "name" character varying(255)) [0m
+  [4;36;1mSQL (0.010621)[0m   [0;1mCREATE INDEX globalize_languages_iso_639_1_index ON globalize_languages (iso_639_1)[0m
+  [4;35;1mSQL (0.010504)[0m   [0mCREATE INDEX globalize_languages_iso_639_2_index ON globalize_languages (iso_639_2)[0m
+  [4;36;1mSQL (0.010552)[0m   [0;1mCREATE INDEX globalize_languages_iso_639_3_index ON globalize_languages (iso_639_3)[0m
+  [4;35;1mSQL (0.018223)[0m   [0mCREATE INDEX globalize_languages_rfc_3066_index ON globalize_languages (rfc_3066)[0m
+  [4;36;1mSQL (0.001507)[0m   [0;1mUPDATE schema_info SET version = 4[0m
+  [4;35;1mSQL (0.000711)[0m   [0mSELECT version FROM schema_info[0m
+Migrating to CommitteesEditors (5)
+  [4;36;1mSQL (0.014241)[0m   [0;1mCREATE TABLE committees_editors ("id" serial primary key, "committee_id" integer, "person_id" integer) [0m
+  [4;35;1mSQL (0.001376)[0m   [0mUPDATE schema_info SET version = 5[0m
+  [4;36;1mSQL (0.000582)[0m   [0;1mSELECT version FROM schema_info[0m
+Migrating to CommitteesConvenors (6)
+  [4;35;1mSQL (0.013019)[0m   [0mCREATE TABLE committees_convenors ("id" serial primary key, "committee_id" integer, "person_id" integer) [0m
+  [4;36;1mSQL (0.001311)[0m   [0;1mUPDATE schema_info SET version = 6[0m
+  [4;35;1mSQL (0.000605)[0m   [0mSELECT version FROM schema_info[0m
+Migrating to CommitteesNations (7)
+  [4;36;1mSQL (0.015135)[0m   [0;1mCREATE TABLE committees_nations ("id" serial primary key, "committee_id" integer, "nation_id" integer) [0m
+  [4;35;1mSQL (0.001395)[0m   [0mUPDATE schema_info SET version = 7[0m
+  [4;36;1mSQL (0.000594)[0m   [0;1mSELECT version FROM schema_info[0m
+Migrating to Documents (8)
+  [4;35;1mSQL (0.023413)[0m   [0mCREATE TABLE documents ("id" serial primary key, "authorexternal" character varying(255), "person_id" integer, "title" character varying(255), "committee_id" integer, "register_number" integer, "externalurl" character varying(255), "externalfullname" character varying(255), "status_id" integer, "statusiteration" integer, "modified" date, "published" date, "edition" integer, "isbn" character varying(255), "issn" character varying(255), "external" bool, "globalize_language_id" integer) [0m
+  [4;36;1mSQL (0.001327)[0m   [0;1mUPDATE schema_info SET version = 8[0m
+  [4;35;1mSQL (0.001075)[0m   [0mSELECT version FROM schema_info[0m
+Migrating to Statuses (9)
+  [4;36;1mSQL (0.012901)[0m   [0;1mCREATE TABLE statuses ("id" serial primary key, "name" character varying(255)) [0m
+  [4;35;1mSQL (0.000924)[0m   [0mUPDATE schema_info SET version = 9[0m
+  [4;36;1mSQL (0.000602)[0m   [0;1mSELECT version FROM schema_info[0m
+Migrating to Terms (10)
+  [4;35;1mSQL (0.023801)[0m   [0mCREATE TABLE terms ("id" serial primary key, "globalize_language_id" integer, "globalize_country_id" integer, "term" character varying(255), "definition" text, "gender_id" integer, "copyright" character varying(255), "licence" character varying(255), "person_id" integer, "created" date, "deleted" boolean, "comments" text, "document_id" integer, "document_section" character varying(255), "synonmic_id" integer, "parent_id" integer) [0m
+  [4;36;1mSQL (0.001729)[0m   [0;1mUPDATE schema_info SET version = 10[0m
+  [4;35;1mSQL (0.000622)[0m   [0mSELECT version FROM schema_info[0m
+Migrating to Synonmics (11)
+  [4;36;1mSQL (0.014655)[0m   [0;1mCREATE TABLE synonmics ("id" serial primary key) [0m
+  [4;35;1mSQL (0.001255)[0m   [0mUPDATE schema_info SET version = 11[0m
+  [4;36;1mSQL (0.000670)[0m   [0;1mSELECT version FROM schema_info[0m
+Migrating to Genders (12)
+  [4;35;1mSQL (0.013629)[0m   [0mCREATE TABLE genders ("id" serial primary key, "name" character varying(255), "globalize_language_id" integer) [0m
+  [4;36;1mSQL (0.001269)[0m   [0;1mUPDATE schema_info SET version = 12[0m
+
+
+Processing AccountsController#index (for 127.0.0.1 at 2006-03-04 19:37:19) [GET]
+  Parameters: {"action"=>"index", "controller"=>"accounts"}
+
+
+NoMethodError (undefined method `has_many_and_belongs_to' for Document:Class):
+    /usr/lib/ruby/gems/1.8/gems/activerecord-1.13.2/lib/active_record/base.rb:991:in `method_missing'
+    /app/models/document.rb:4
+    /usr/lib/ruby/gems/1.8/gems/activesupport-1.2.5/lib/active_support/dependencies.rb:207:in `load'
+    /usr/lib/ruby/gems/1.8/gems/activesupport-1.2.5/lib/active_support/dependencies.rb:39:in `require_or_load'
+    /usr/lib/ruby/gems/1.8/gems/activesupport-1.2.5/lib/active_support/dependencies.rb:22:in `depend_on'
+    /usr/lib/ruby/gems/1.8/gems/activesupport-1.2.5/lib/active_support/dependencies.rb:30:in `associate_with'
+    /usr/lib/ruby/gems/1.8/gems/activesupport-1.2.5/lib/active_support/dependencies.rb:179:in `require_association'
+    /usr/lib/ruby/gems/1.8/gems/activerecord-1.13.2/lib/active_record/associations.rb:780:in `require_association_class'
+    /usr/lib/ruby/gems/1.8/gems/activerecord-1.13.2/lib/active_record/associations.rb:355:in `has_many_without_reflection'
+    (eval):5:in `has_many'
+    /app/models/committee.rb:6
+    /usr/lib/ruby/gems/1.8/gems/activesupport-1.2.5/lib/active_support/dependencies.rb:207:in `load'
+    /usr/lib/ruby/gems/1.8/gems/activesupport-1.2.5/lib/active_support/dependencies.rb:39:in `require_or_load'
+    /usr/lib/ruby/gems/1.8/gems/activesupport-1.2.5/lib/active_support/dependencies.rb:22:in `depend_on'
+    /usr/lib/ruby/gems/1.8/gems/activesupport-1.2.5/lib/active_support/dependencies.rb:30:in `associate_with'
+    /usr/lib/ruby/gems/1.8/gems/activesupport-1.2.5/lib/active_support/dependencies.rb:179:in `require_association'
+    /usr/lib/ruby/gems/1.8/gems/activerecord-1.13.2/lib/active_record/associations.rb:780:in `require_association_class'
+    /usr/lib/ruby/gems/1.8/gems/activerecord-1.13.2/lib/active_record/associations.rb:650:in `has_and_belongs_to_many_without_reflection'
+    (eval):5:in `has_and_belongs_to_many'
+    /app/models/person.rb:2
+    /usr/lib/ruby/gems/1.8/gems/activesupport-1.2.5/lib/active_support/dependencies.rb:207:in `load'
+    /usr/lib/ruby/gems/1.8/gems/activesupport-1.2.5/lib/active_support/dependencies.rb:39:in `require_or_load'
+    /usr/lib/ruby/gems/1.8/gems/activesupport-1.2.5/lib/active_support/dependencies.rb:22:in `depend_on'
+    /usr/lib/ruby/gems/1.8/gems/activesupport-1.2.5/lib/active_support/dependencies.rb:178:in `require_dependency'
+    /usr/lib/ruby/gems/1.8/gems/activesupport-1.2.5/lib/active_support/dependencies.rb:194:in `const_missing'
+    /usr/lib/ruby/gems/1.8/gems/activesupport-1.2.5/lib/active_support/core_ext/string/../../inflector.rb:149:in `constantize'
+    /usr/lib/ruby/gems/1.8/gems/activesupport-1.2.5/lib/active_support/core_ext/string/inflections.rb:52:in `constantize'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-1.11.2/lib/action_controller/pagination.rb:186:in `paginator_and_collection_for'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-1.11.2/lib/action_controller/pagination.rb:124:in `paginate'
+    .//app/controllers/accounts_controller.rb:8:in `list'
+    .//app/controllers/accounts_controller.rb:3:in `index'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-1.11.2/lib/action_controller/base.rb:853:in `perform_action_without_filters'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-1.11.2/lib/action_controller/filters.rb:332:in `perform_action_without_benchmark'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-1.11.2/lib/action_controller/benchmarking.rb:69:in `perform_action_without_rescue'
+    /usr/lib/ruby/1.8/benchmark.rb:293:in `measure'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-1.11.2/lib/action_controller/benchmarking.rb:69:in `perform_action_without_rescue'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-1.11.2/lib/action_controller/rescue.rb:82:in `perform_action'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-1.11.2/lib/action_controller/base.rb:369:in `process_without_session_management_support'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-1.11.2/lib/action_controller/session_management.rb:116:in `process'
+    /usr/lib/ruby/gems/1.8/gems/rails-1.0.0/lib/dispatcher.rb:38:in `dispatch'
+    /usr/lib/ruby/gems/1.8/gems/rails-1.0.0/lib/webrick_server.rb:117:in `handle_dispatch'
+    /usr/lib/ruby/gems/1.8/gems/rails-1.0.0/lib/webrick_server.rb:83:in `service'
+    /usr/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    /usr/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    /usr/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    /usr/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    /usr/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    /usr/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    /usr/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    /usr/lib/ruby/1.8/webrick/server.rb:82:in `start'
+    /usr/lib/ruby/gems/1.8/gems/rails-1.0.0/lib/webrick_server.rb:69:in `dispatch'
+    /usr/lib/ruby/gems/1.8/gems/rails-1.0.0/lib/commands/servers/webrick.rb:59
+    /usr/local/lib/site_ruby/1.8/rubygems/custom_require.rb:21:in `require'
+    /usr/lib/ruby/gems/1.8/gems/activesupport-1.2.5/lib/active_support/dependencies.rb:214:in `require'
+    /usr/lib/ruby/gems/1.8/gems/rails-1.0.0/lib/commands/server.rb:28
+    /usr/local/lib/site_ruby/1.8/rubygems/custom_require.rb:21:in `require'
+    /usr/lib/ruby/gems/1.8/gems/activesupport-1.2.5/lib/active_support/dependencies.rb:214:in `require'
+    script/server:3
+
+
+Rendering /usr/lib/ruby/gems/1.8/gems/actionpack-1.11.2/lib/action_controller/templates/rescues/layout.rhtml (500 Internal Error)
+  [4;36;1mSQL (0.000634)[0m   [0;1mSET client_encoding TO 'UTF8'[0m
+  [4;35;1mSQL (0.000450)[0m   [0mSET client_min_messages TO 'warning'[0m
+  [4;36;1mSQL (0.004931)[0m   [0;1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = 'people'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+
+
+Processing AccountsController#index (for 127.0.0.1 at 2006-03-05 01:53:28) [GET]
+  Parameters: {"action"=>"index", "controller"=>"accounts"}
+
+
+NoMethodError (undefined method `has_many_and_belongs_to' for Document:Class):
+    /usr/lib/ruby/gems/1.8/gems/activerecord-1.13.2/lib/active_record/base.rb:991:in `method_missing'
+    /app/models/document.rb:4
+    /usr/lib/ruby/gems/1.8/gems/activesupport-1.2.5/lib/active_support/dependencies.rb:207:in `load'
+    /usr/lib/ruby/gems/1.8/gems/activesupport-1.2.5/lib/active_support/dependencies.rb:39:in `require_or_load'
+    /usr/lib/ruby/gems/1.8/gems/activesupport-1.2.5/lib/active_support/dependencies.rb:22:in `depend_on'
+    /usr/lib/ruby/gems/1.8/gems/activesupport-1.2.5/lib/active_support/dependencies.rb:30:in `associate_with'
+    /usr/lib/ruby/gems/1.8/gems/activesupport-1.2.5/lib/active_support/dependencies.rb:179:in `require_association'
+    /usr/lib/ruby/gems/1.8/gems/activerecord-1.13.2/lib/active_record/associations.rb:780:in `require_association_class'
+    /usr/lib/ruby/gems/1.8/gems/activerecord-1.13.2/lib/active_record/associations.rb:355:in `has_many_without_reflection'
+    (eval):5:in `has_many'
+    /app/models/committee.rb:6
+    /usr/lib/ruby/gems/1.8/gems/activesupport-1.2.5/lib/active_support/dependencies.rb:207:in `load'
+    /usr/lib/ruby/gems/1.8/gems/activesupport-1.2.5/lib/active_support/dependencies.rb:39:in `require_or_load'
+    /usr/lib/ruby/gems/1.8/gems/activesupport-1.2.5/lib/active_support/dependencies.rb:22:in `depend_on'
+    /usr/lib/ruby/gems/1.8/gems/activesupport-1.2.5/lib/active_support/dependencies.rb:30:in `associate_with'
+    /usr/lib/ruby/gems/1.8/gems/activesupport-1.2.5/lib/active_support/dependencies.rb:179:in `require_association'
+    /usr/lib/ruby/gems/1.8/gems/activerecord-1.13.2/lib/active_record/associations.rb:780:in `require_association_class'
+    /usr/lib/ruby/gems/1.8/gems/activerecord-1.13.2/lib/active_record/associations.rb:650:in `has_and_belongs_to_many_without_reflection'
+    (eval):5:in `has_and_belongs_to_many'
+    /app/models/person.rb:2
+    /usr/lib/ruby/gems/1.8/gems/activesupport-1.2.5/lib/active_support/dependencies.rb:207:in `load'
+    /usr/lib/ruby/gems/1.8/gems/activesupport-1.2.5/lib/active_support/dependencies.rb:39:in `require_or_load'
+    /usr/lib/ruby/gems/1.8/gems/activesupport-1.2.5/lib/active_support/dependencies.rb:22:in `depend_on'
+    /usr/lib/ruby/gems/1.8/gems/activesupport-1.2.5/lib/active_support/dependencies.rb:178:in `require_dependency'
+    /usr/lib/ruby/gems/1.8/gems/activesupport-1.2.5/lib/active_support/dependencies.rb:194:in `const_missing'
+    /usr/lib/ruby/gems/1.8/gems/activesupport-1.2.5/lib/active_support/core_ext/string/../../inflector.rb:149:in `constantize'
+    /usr/lib/ruby/gems/1.8/gems/activesupport-1.2.5/lib/active_support/core_ext/string/inflections.rb:52:in `constantize'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-1.11.2/lib/action_controller/pagination.rb:186:in `paginator_and_collection_for'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-1.11.2/lib/action_controller/pagination.rb:124:in `paginate'
+    .//app/controllers/accounts_controller.rb:8:in `list'
+    .//app/controllers/accounts_controller.rb:3:in `index'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-1.11.2/lib/action_controller/base.rb:853:in `perform_action_without_filters'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-1.11.2/lib/action_controller/filters.rb:332:in `perform_action_without_benchmark'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-1.11.2/lib/action_controller/benchmarking.rb:69:in `perform_action_without_rescue'
+    /usr/lib/ruby/1.8/benchmark.rb:293:in `measure'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-1.11.2/lib/action_controller/benchmarking.rb:69:in `perform_action_without_rescue'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-1.11.2/lib/action_controller/rescue.rb:82:in `perform_action'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-1.11.2/lib/action_controller/base.rb:369:in `process_without_session_management_support'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-1.11.2/lib/action_controller/session_management.rb:116:in `process'
+    /usr/lib/ruby/gems/1.8/gems/rails-1.0.0/lib/dispatcher.rb:38:in `dispatch'
+    /usr/lib/ruby/gems/1.8/gems/rails-1.0.0/lib/webrick_server.rb:117:in `handle_dispatch'
+    /usr/lib/ruby/gems/1.8/gems/rails-1.0.0/lib/webrick_server.rb:83:in `service'
+    /usr/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    /usr/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    /usr/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    /usr/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    /usr/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    /usr/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    /usr/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    /usr/lib/ruby/1.8/webrick/server.rb:82:in `start'
+    /usr/lib/ruby/gems/1.8/gems/rails-1.0.0/lib/webrick_server.rb:69:in `dispatch'
+    /usr/lib/ruby/gems/1.8/gems/rails-1.0.0/lib/commands/servers/webrick.rb:59
+    /usr/local/lib/site_ruby/1.8/rubygems/custom_require.rb:21:in `require'
+    /usr/lib/ruby/gems/1.8/gems/activesupport-1.2.5/lib/active_support/dependencies.rb:214:in `require'
+    /usr/lib/ruby/gems/1.8/gems/rails-1.0.0/lib/commands/server.rb:28
+    /usr/local/lib/site_ruby/1.8/rubygems/custom_require.rb:21:in `require'
+    /usr/lib/ruby/gems/1.8/gems/activesupport-1.2.5/lib/active_support/dependencies.rb:214:in `require'
+    script/server:3
+
+
+Rendering /usr/lib/ruby/gems/1.8/gems/actionpack-1.11.2/lib/action_controller/templates/rescues/layout.rhtml (500 Internal Error)
+
+
+Processing AccountsController#index (for 127.0.0.1 at 2006-03-05 01:56:20) [GET]
+  Parameters: {"action"=>"index", "controller"=>"accounts"}
+  [4;36;1mSQL (0.063169)[0m   [0;1mSET client_encoding TO 'UTF8'[0m
+  [4;35;1mSQL (0.000590)[0m   [0mSET client_min_messages TO 'warning'[0m
+  [4;36;1mPerson Count (0.180263)[0m   [0;1mSELECT COUNT(*) FROM people [0m
+  [4;35;1mPerson Load (0.000984)[0m   [0mSELECT * FROM people LIMIT 10 OFFSET 0[0m
+Rendering layoutfalseactionlist within layouts/accounts
+Rendering accounts/list
+  [4;36;1mSQL (0.069574)[0m   [0;1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = 'people'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+Completed in 0.74534 (1 reqs/sec) | Rendering: 0.00642 (0%) | DB: 0.31458 (42%) | 200 OK [http://localhost/accounts]
+
+
+Processing AccountsController#new (for 127.0.0.1 at 2006-03-05 01:56:25) [GET]
+  Parameters: {"action"=>"new", "controller"=>"accounts"}
+  [4;35;1mSQL (0.022151)[0m   [0m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = 'people'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+Rendering  within layouts/accounts
+Rendering accounts/new
+Rendered accounts/_form (0.01141)
+Completed in 0.08450 (11 reqs/sec) | Rendering: 0.01468 (17%) | DB: 0.02215 (26%) | 200 OK [http://localhost/accounts/new]
+
+
+Processing AccountsController#create (for 127.0.0.1 at 2006-03-05 01:57:52) [POST]
+  Parameters: {"commit"=>"Create", "action"=>"create", "controller"=>"accounts", "person"=>{"name"=>"I asdfasfsad", "givenname"=>"", "admin"=>"false", "url"=>"", "enabled"=>"false", "lastlogin(1i)"=>"2006", "created(1i)"=>"2006", "created(2i)"=>"3", "lastlogin(2i)"=>"3", "phone"=>"", "lastlogin(3i)"=>"5", "created(3i)"=>"5", "organisation"=>"", "surname"=>"", "password"=>"", "email"=>""}}
+  [4;36;1mSQL (0.004425)[0m   [0;1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = 'people'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [4;35;1mSQL (0.000972)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.025603)[0m   [0;1mCOMMIT[0m
+Rendering layoutfalseactionnew within layouts/accounts
+Rendering accounts/new
+Rendered accounts/_form (0.00477)
+Completed in 0.22861 (4 reqs/sec) | Rendering: 0.00703 (3%) | DB: 0.03100 (13%) | 200 OK [http://localhost/accounts/create]
+  [4;36;1mSQL (0.001404)[0m   [0;1mSET client_encoding TO 'UTF8'[0m
+  [4;35;1mSQL (0.000761)[0m   [0mSET client_min_messages TO 'warning'[0m
+  [4;36;1mSQL (0.014970)[0m   [0;1mCREATE TABLE schema_info (version integer)[0m
+  [4;35;1mSQL (0.028331)[0m   [0mINSERT INTO schema_info (version) VALUES(0)[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mPGError: ERROR: relation "schema_info" already exists
+: CREATE TABLE schema_info (version integer)[0m
+  [4;35;1mSQL (0.001020)[0m   [0mSELECT version FROM schema_info[0m
+Migrating to People (1)
+  [4;36;1mSQL (0.015297)[0m   [0;1mCREATE TABLE people ("id" serial primary key, "name" character varying(255), "password" character varying(255), "givenname" character varying(255), "surname" character varying(255), "email" character varying(255), "url" character varying(255), "phone" character varying(255), "organisation" character varying(255), "enabled" boolean, "admin" boolean, "created_at" date, "lastlogin_at" date, "nation_id" integer) [0m
+  [4;35;1mSQL (0.003067)[0m   [0mUPDATE schema_info SET version = 1[0m
+  [4;36;1mSQL (0.000617)[0m   [0;1mSELECT version FROM schema_info[0m
+Migrating to Committees (2)
+  [4;35;1mSQL (0.007755)[0m   [0mCREATE TABLE committees ("id" serial primary key, "name" character varying(255), "parent_id" integer) [0m
+  [4;36;1mSQL (0.001116)[0m   [0;1mUPDATE schema_info SET version = 2[0m
+  [4;35;1mSQL (0.000599)[0m   [0mSELECT version FROM schema_info[0m
+Migrating to Nations (3)
+  [4;36;1mSQL (0.022318)[0m   [0;1mCREATE TABLE nations ("id" serial primary key, "code" character varying(255), "name" character varying(255)) [0m
+  [4;35;1mSQL (0.001153)[0m   [0mUPDATE schema_info SET version = 3[0m
+  [4;36;1mSQL (0.000576)[0m   [0;1mSELECT version FROM schema_info[0m
+Migrating to GlobalizeMigration (4)
+  [4;35;1mSQL (0.000000)[0m   [0mPGError: ERROR: table "globalize_countries" does not exist
+: DROP TABLE globalize_countries[0m
+  [4;36;1mSQL (0.025813)[0m   [0;1mCREATE TABLE globalize_countries ("id" serial primary key, "code" character varying(2), "english_name" character varying(255), "date_format" character varying(255), "currency_format" character varying(255), "currency_code" character varying(3), "thousands_sep" character varying(2), "decimal_sep" character varying(2), "currency_decimal_sep" character varying(2), "number_grouping_scheme" character varying(255)) [0m
+  [4;35;1mSQL (0.009706)[0m   [0mCREATE INDEX globalize_countries_code_index ON globalize_countries (code)[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mPGError: ERROR: table "globalize_translations" does not exist
+: DROP TABLE globalize_translations[0m
+  [4;35;1mSQL (0.015931)[0m   [0mCREATE TABLE globalize_translations ("id" serial primary key, "type" character varying(255), "tr_key" character varying(255), "table_name" character varying(255), "item_id" integer, "facet" character varying(255), "language_id" integer, "pluralization_index" integer, "text" text) [0m
+  [4;36;1mSQL (0.011782)[0m   [0;1mCREATE INDEX globalize_translations_tr_key_index ON globalize_translations (tr_key, language_id)[0m
+  [4;35;1mSQL (0.017322)[0m   [0mCREATE INDEX globalize_translations_table_name_index ON globalize_translations (table_name, item_id, language_id)[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mPGError: ERROR: table "globalize_languages" does not exist
+: DROP TABLE globalize_languages[0m
+  [4;35;1mSQL (0.015930)[0m   [0mCREATE TABLE globalize_languages ("id" serial primary key, "iso_639_1" character varying(2), "iso_639_2" character varying(3), "iso_639_3" character varying(3), "rfc_3066" character varying(255), "english_name" character varying(255), "english_name_locale" character varying(255), "english_name_modifier" character varying(255), "native_name" character varying(255), "native_name_locale" character varying(255), "native_name_modifier" character varying(255), "macro_language" boolean, "direction" character varying(255), "pluralization" character varying(255), "scope" character varying(1)) [0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mPGError: ERROR: table "globalize_language_names" does not exist
+: DROP TABLE globalize_language_names[0m
+  [4;35;1mSQL (0.016787)[0m   [0mCREATE TABLE globalize_language_names ("id" serial primary key, "globalize_language_id" integer, "name_globalize_language_id" integer, "name" character varying(255)) [0m
+  [4;36;1mSQL (0.011060)[0m   [0;1mCREATE INDEX globalize_languages_iso_639_1_index ON globalize_languages (iso_639_1)[0m
+  [4;35;1mSQL (0.010018)[0m   [0mCREATE INDEX globalize_languages_iso_639_2_index ON globalize_languages (iso_639_2)[0m
+  [4;36;1mSQL (0.013497)[0m   [0;1mCREATE INDEX globalize_languages_iso_639_3_index ON globalize_languages (iso_639_3)[0m
+  [4;35;1mSQL (0.009154)[0m   [0mCREATE INDEX globalize_languages_rfc_3066_index ON globalize_languages (rfc_3066)[0m
+  [4;36;1mSQL (0.001345)[0m   [0;1mUPDATE schema_info SET version = 4[0m
+  [4;35;1mSQL (0.000779)[0m   [0mSELECT version FROM schema_info[0m
+Migrating to CommitteesEditors (5)
+  [4;36;1mSQL (0.015468)[0m   [0;1mCREATE TABLE committees_editors ("id" serial primary key, "committee_id" integer, "person_id" integer) [0m
+  [4;35;1mSQL (0.004201)[0m   [0mUPDATE schema_info SET version = 5[0m
+  [4;36;1mSQL (0.000627)[0m   [0;1mSELECT version FROM schema_info[0m
+Migrating to CommitteesConvenors (6)
+  [4;35;1mSQL (0.051335)[0m   [0mCREATE TABLE committees_convenors ("id" serial primary key, "committee_id" integer, "person_id" integer) [0m
+  [4;36;1mSQL (0.001224)[0m   [0;1mUPDATE schema_info SET version = 6[0m
+  [4;35;1mSQL (0.000604)[0m   [0mSELECT version FROM schema_info[0m
+Migrating to CommitteesNations (7)
+  [4;36;1mSQL (0.024190)[0m   [0;1mCREATE TABLE committees_nations ("id" serial primary key, "committee_id" integer, "nation_id" integer) [0m
+  [4;35;1mSQL (0.001213)[0m   [0mUPDATE schema_info SET version = 7[0m
+  [4;36;1mSQL (0.000642)[0m   [0;1mSELECT version FROM schema_info[0m
+Migrating to Documents (8)
+  [4;35;1mSQL (0.028469)[0m   [0mCREATE TABLE documents ("id" serial primary key, "authorexternal" character varying(255), "person_id" integer, "title" character varying(255), "committee_id" integer, "register_number" integer, "externalurl" character varying(255), "externalfullname" character varying(255), "status_id" integer, "statusiteration" integer, "modified_at" date, "published_on" date, "edition" integer, "isbn" character varying(255), "issn" character varying(255), "external" bool, "globalize_language_id" integer) [0m
+  [4;36;1mSQL (0.001328)[0m   [0;1mUPDATE schema_info SET version = 8[0m
+  [4;35;1mSQL (0.000602)[0m   [0mSELECT version FROM schema_info[0m
+Migrating to Statuses (9)
+  [4;36;1mSQL (0.014373)[0m   [0;1mCREATE TABLE statuses ("id" serial primary key, "name" character varying(255)) [0m
+  [4;35;1mSQL (0.001219)[0m   [0mUPDATE schema_info SET version = 9[0m
+  [4;36;1mSQL (0.000608)[0m   [0;1mSELECT version FROM schema_info[0m
+Migrating to Terms (10)
+  [4;35;1mSQL (0.024323)[0m   [0mCREATE TABLE terms ("id" serial primary key, "globalize_language_id" integer, "globalize_country_id" integer, "term" character varying(255), "definition" text, "gender_id" integer, "copyright" character varying(255), "licence" character varying(255), "person_id" integer, "created_at" date, "deleted" boolean, "comments" text, "document_id" integer, "document_section" character varying(255), "synonmic_id" integer, "parent_id" integer) [0m
+  [4;36;1mSQL (0.001537)[0m   [0;1mUPDATE schema_info SET version = 10[0m
+  [4;35;1mSQL (0.001667)[0m   [0mSELECT version FROM schema_info[0m
+Migrating to Synonmics (11)
+  [4;36;1mSQL (0.014309)[0m   [0;1mCREATE TABLE synonmics ("id" serial primary key) [0m
+  [4;35;1mSQL (0.001328)[0m   [0mUPDATE schema_info SET version = 11[0m
+  [4;36;1mSQL (0.000606)[0m   [0;1mSELECT version FROM schema_info[0m
+Migrating to Genders (12)
+  [4;35;1mSQL (0.014036)[0m   [0mCREATE TABLE genders ("id" serial primary key, "name" character varying(255), "globalize_language_id" integer) [0m
+  [4;36;1mSQL (0.001395)[0m   [0;1mUPDATE schema_info SET version = 12[0m
+
+
+Processing AccountsController#index (for 127.0.0.1 at 2006-03-05 03:27:13) [GET]
+  Parameters: {"action"=>"index", "controller"=>"accounts"}
+  [4;36;1mSQL (0.000694)[0m   [0;1mSET client_encoding TO 'UTF8'[0m
+  [4;35;1mSQL (0.000486)[0m   [0mSET client_min_messages TO 'warning'[0m
+  [4;36;1mPerson Count (0.002478)[0m   [0;1mSELECT COUNT(*) FROM people [0m
+  [4;35;1mPerson Load (0.000895)[0m   [0mSELECT * FROM people LIMIT 10 OFFSET 0[0m
+Rendering layoutfalseactionlist within layouts/accounts
+Rendering accounts/list
+  [4;36;1mSQL (0.004377)[0m   [0;1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = 'people'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+Completed in 0.23388 (4 reqs/sec) | Rendering: 0.00867 (3%) | DB: 0.00893 (3%) | 200 OK [http://localhost/accounts/]
+
+
+Processing AccountsController#new (for 127.0.0.1 at 2006-03-05 03:27:16) [GET]
+  Parameters: {"action"=>"new", "controller"=>"accounts"}
+  [4;35;1mSQL (0.009303)[0m   [0m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = 'people'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+Rendering  within layouts/accounts
+Rendering accounts/new
+
+
+ActionView::TemplateError (undefined method `created' for #<Person:0x2aaaacc92088>) on line #35 of app/views/accounts/_form.rhtml:
+32: <select id="person_admin" name="person[admin]"><option value="false">False</option><option value="true">True</option></select></p>
+33: 
+34: <p><label for="person_created">Created</label><br/>
+35: <%= date_select 'person', 'created'  %></p>
+36: 
+37: <p><label for="person_lastlogin">Lastlogin</label><br/>
+38: <%= date_select 'person', 'lastlogin'  %></p>
+
+    /usr/lib/ruby/gems/1.8/gems/activerecord-1.13.2/lib/active_record/base.rb:1501:in `method_missing'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-1.11.2/lib/action_view/helpers/form_helper.rb:247:in `value'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-1.11.2/lib/action_view/helpers/date_helper.rb:261:in `to_date_select_tag_without_error_wrapping'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-1.11.2/lib/action_view/helpers/active_record_helper.rb:170:in `to_date_select_tag'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-1.11.2/lib/action_view/helpers/date_helper.rb:80:in `date_select'
+    #{RAILS_ROOT}/app/views/accounts/_form.rhtml:35
+    /usr/lib/ruby/gems/1.8/gems/actionpack-1.11.2/lib/action_view/base.rb:268:in `compile_and_render_template'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-1.11.2/lib/action_view/base.rb:244:in `render_template'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-1.11.2/lib/action_view/base.rb:205:in `globalize_old_render_file'
+    ./script/../config/../vendor/plugins/globalize/lib/globalize/rails/action_view.rb:15:in `render_file'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-1.11.2/lib/action_view/base.rb:220:in `render'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-1.11.2/lib/action_view/partials.rb:58:in `render_partial'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-1.11.2/lib/action_controller/benchmarking.rb:29:in `benchmark'
+    /usr/lib/ruby/1.8/benchmark.rb:293:in `measure'
+    /usr/lib/ruby/1.8/benchmark.rb:307:in `realtime'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-1.11.2/lib/action_controller/benchmarking.rb:29:in `benchmark'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-1.11.2/lib/action_view/partials.rb:57:in `render_partial'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-1.11.2/lib/action_view/base.rb:230:in `render'
+    #{RAILS_ROOT}/app/views/accounts/new.rhtml:4
+    /usr/lib/ruby/gems/1.8/gems/actionpack-1.11.2/lib/action_view/base.rb:268:in `compile_and_render_template'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-1.11.2/lib/action_view/base.rb:244:in `render_template'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-1.11.2/lib/action_view/base.rb:205:in `globalize_old_render_file'
+    ./script/../config/../vendor/plugins/globalize/lib/globalize/rails/action_view.rb:15:in `render_file'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-1.11.2/lib/action_controller/base.rb:655:in `render_file'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-1.11.2/lib/action_controller/base.rb:595:in `render_with_no_layout'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-1.11.2/lib/action_controller/layout.rb:220:in `render_without_benchmark'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-1.11.2/lib/action_controller/benchmarking.rb:53:in `render'
+    /usr/lib/ruby/1.8/benchmark.rb:293:in `measure'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-1.11.2/lib/action_controller/benchmarking.rb:53:in `render'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-1.11.2/lib/action_controller/base.rb:854:in `perform_action_without_filters'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-1.11.2/lib/action_controller/filters.rb:332:in `perform_action_without_benchmark'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-1.11.2/lib/action_controller/benchmarking.rb:69:in `perform_action_without_rescue'
+    /usr/lib/ruby/1.8/benchmark.rb:293:in `measure'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-1.11.2/lib/action_controller/benchmarking.rb:69:in `perform_action_without_rescue'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-1.11.2/lib/action_controller/rescue.rb:82:in `perform_action'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-1.11.2/lib/action_controller/base.rb:369:in `process_without_session_management_support'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-1.11.2/lib/action_controller/session_management.rb:116:in `process'
+    /usr/lib/ruby/gems/1.8/gems/rails-1.0.0/lib/dispatcher.rb:38:in `dispatch'
+    /usr/lib/ruby/gems/1.8/gems/rails-1.0.0/lib/webrick_server.rb:117:in `handle_dispatch'
+    /usr/lib/ruby/gems/1.8/gems/rails-1.0.0/lib/webrick_server.rb:83:in `service'
+    /usr/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    /usr/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    /usr/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    /usr/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    /usr/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    /usr/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    /usr/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    /usr/lib/ruby/1.8/webrick/server.rb:82:in `start'
+    /usr/lib/ruby/gems/1.8/gems/rails-1.0.0/lib/webrick_server.rb:69:in `dispatch'
+    /usr/lib/ruby/gems/1.8/gems/rails-1.0.0/lib/commands/servers/webrick.rb:59
+    /usr/local/lib/site_ruby/1.8/rubygems/custom_require.rb:21:in `require'
+    /usr/lib/ruby/gems/1.8/gems/activesupport-1.2.5/lib/active_support/dependencies.rb:214:in `require'
+    /usr/lib/ruby/gems/1.8/gems/rails-1.0.0/lib/commands/server.rb:28
+    /usr/local/lib/site_ruby/1.8/rubygems/custom_require.rb:21:in `require'
+    /usr/lib/ruby/gems/1.8/gems/activesupport-1.2.5/lib/active_support/dependencies.rb:214:in `require'
+    script/server:3
+
+
+Rendering /usr/lib/ruby/gems/1.8/gems/actionpack-1.11.2/lib/action_controller/templates/rescues/layout.rhtml (500 Internal Error)
+  [4;36;1mSQL (0.000624)[0m   [0;1mSET client_encoding TO 'UTF8'[0m
+  [4;35;1mSQL (0.000469)[0m   [0mSET client_min_messages TO 'warning'[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mPGError: ERROR: relation "accounts" does not exist
+: SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = 'accounts'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [4;36;1mSQL (0.000645)[0m   [0;1mSET client_encoding TO 'UTF8'[0m
+  [4;35;1mSQL (0.000456)[0m   [0mSET client_min_messages TO 'warning'[0m
+  [4;36;1mSQL (0.004876)[0m   [0;1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = 'people'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+
+
+Processing AccountsController#index (for 127.0.0.1 at 2006-03-05 03:29:06) [GET]
+  Parameters: {"action"=>"index", "controller"=>"accounts"}
+  [4;36;1mSQL (0.000725)[0m   [0;1mSET client_encoding TO 'UTF8'[0m
+  [4;35;1mSQL (0.000455)[0m   [0mSET client_min_messages TO 'warning'[0m
+  [4;36;1mPerson Count (0.002650)[0m   [0;1mSELECT COUNT(*) FROM people [0m
+  [4;35;1mPerson Load (0.001025)[0m   [0mSELECT * FROM people LIMIT 10 OFFSET 0[0m
+Rendering layoutfalseactionlist within layouts/accounts
+Rendering accounts/list
+  [4;36;1mSQL (0.004566)[0m   [0;1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = 'people'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+Completed in 0.24316 (4 reqs/sec) | Rendering: 0.00701 (2%) | DB: 0.00942 (3%) | 200 OK [http://localhost/accounts/]
+
+
+Processing AccountsController#new (for 127.0.0.1 at 2006-03-05 03:29:07) [GET]
+  Parameters: {"action"=>"new", "controller"=>"accounts"}
+  [4;35;1mSQL (0.006004)[0m   [0m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = 'people'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+Rendering  within layouts/accounts
+Rendering accounts/new
+Rendered accounts/_form (0.00902)
+Completed in 0.06607 (15 reqs/sec) | Rendering: 0.01233 (18%) | DB: 0.00600 (9%) | 200 OK [http://localhost/accounts/new]
+
+
+Processing AccountsController#create (for 127.0.0.1 at 2006-03-05 03:31:34) [POST]
+  Parameters: {"commit"=>"Create", "action"=>"create", "controller"=>"accounts", "person"=>{"name"=>"", "created_at(1i)"=>"2006", "lastlogin_at(1i)"=>"2011", "givenname"=>"", "lastlogin_at(2i)"=>"12", "created_at(2i)"=>"3", "lastlogin_at(3i)"=>"5", "created_at(3i)"=>"5", "admin"=>"false", "url"=>"", "enabled"=>"false", "phone"=>"", "organisation"=>"", "surname"=>"", "password"=>"weenis", "email"=>""}}
+  [4;36;1mSQL (0.001818)[0m   [0;1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = 'people'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [4;35;1mSQL (0.001752)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000527)[0m   [0;1mCOMMIT[0m
+Rendering layoutfalseactionnew within layouts/accounts
+Rendering accounts/new
+Rendered accounts/_form (0.00524)
+Completed in 0.22760 (4 reqs/sec) | Rendering: 0.00854 (3%) | DB: 0.00410 (1%) | 200 OK [http://localhost/accounts/create]
+  [4;36;1mSQL (0.000605)[0m   [0;1mSET client_encoding TO 'UTF8'[0m
+  [4;35;1mSQL (0.000474)[0m   [0mSET client_min_messages TO 'warning'[0m
+  [4;36;1mSQL (0.005877)[0m   [0;1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = 'terms'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [4;36;1mSQL (0.000628)[0m   [0;1mSET client_encoding TO 'UTF8'[0m
+  [4;35;1mSQL (0.000448)[0m   [0mSET client_min_messages TO 'warning'[0m
+  [4;36;1mSQL (0.005050)[0m   [0;1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = 'nations'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [4;36;1mSQL (0.000615)[0m   [0;1mSET client_encoding TO 'UTF8'[0m
+  [4;35;1mSQL (0.000446)[0m   [0mSET client_min_messages TO 'warning'[0m
+  [4;36;1mSQL (0.006653)[0m   [0;1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = 'documents'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+
+
+Processing TermsController#index (for 127.0.0.1 at 2006-03-05 03:34:16) [GET]
+  Parameters: {"action"=>"index", "controller"=>"terms"}
+  [4;36;1mSQL (0.000930)[0m   [0;1mSET client_encoding TO 'UTF8'[0m
+  [4;35;1mSQL (0.000468)[0m   [0mSET client_min_messages TO 'warning'[0m
+  [4;36;1mTerm Count (0.002375)[0m   [0;1mSELECT COUNT(*) FROM terms [0m
+  [4;35;1mTerm Load (0.000894)[0m   [0mSELECT * FROM terms LIMIT 10 OFFSET 0[0m
+Rendering layoutfalseactionlist within layouts/terms
+Rendering terms/list
+  [4;36;1mSQL (0.004411)[0m   [0;1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = 'terms'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+Completed in 0.24160 (4 reqs/sec) | Rendering: 0.00819 (3%) | DB: 0.00908 (3%) | 200 OK [http://localhost/terms/]
+
+
+Processing TermsController#new (for 127.0.0.1 at 2006-03-05 03:34:18) [GET]
+  Parameters: {"action"=>"new", "controller"=>"terms"}
+  [4;35;1mSQL (0.003192)[0m   [0m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = 'terms'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+Rendering  within layouts/terms
+Rendering terms/new
+Rendered terms/_form (0.00810)
+Completed in 0.06213 (16 reqs/sec) | Rendering: 0.01689 (27%) | DB: 0.00319 (5%) | 200 OK [http://localhost/terms/new]
+
+
+Processing DocumentsController#index (for 127.0.0.1 at 2006-03-05 03:34:29) [GET]
+  Parameters: {"action"=>"index", "controller"=>"documents"}
+  [4;36;1mDocument Count (0.005054)[0m   [0;1mSELECT COUNT(*) FROM documents [0m
+  [4;35;1mDocument Load (0.004158)[0m   [0mSELECT * FROM documents LIMIT 10 OFFSET 0[0m
+Rendering layoutfalseactionlist within layouts/documents
+Rendering documents/list
+  [4;36;1mSQL (0.006262)[0m   [0;1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = 'documents'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+Completed in 0.26232 (3 reqs/sec) | Rendering: 0.00752 (2%) | DB: 0.01547 (5%) | 200 OK [http://localhost/documents/]
+
+
+Processing DocumentsController#new (for 127.0.0.1 at 2006-03-05 03:34:31) [GET]
+  Parameters: {"action"=>"new", "controller"=>"documents"}
+  [4;35;1mSQL (0.029485)[0m   [0m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = 'documents'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+Rendering  within layouts/documents
+Rendering documents/new
+Rendered documents/_form (0.01026)
+Completed in 0.09266 (10 reqs/sec) | Rendering: 0.01426 (15%) | DB: 0.02948 (31%) | 200 OK [http://localhost/documents/new]

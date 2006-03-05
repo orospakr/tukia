@@ -1,7 +1,7 @@
 class Document < ActiveRecord::Base
   belongs_to :status
   belongs_to :globalize_language
-  has_many_and_belongs_to :term
+  has_and_belongs_to_many :term
   has_many :term
   belongs_to :person
   belongs_to :committee

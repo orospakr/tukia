@@ -1,0 +1,40 @@
+<%= error_messages_for 'document' %>
+
+<!--[form:document]-->
+<p><label for="document_authorexternal">Authorexternal</label><br/>
+<%= text_field 'document', 'authorexternal'  %></p>
+
+<p><label for="document_title">Title</label><br/>
+<%= text_field 'document', 'title'  %></p>
+
+<p><label for="document_register_number">Register number</label><br/>
+<%= text_field 'document', 'register_number'  %></p>
+
+<p><label for="document_externalurl">Externalurl</label><br/>
+<%= text_field 'document', 'externalurl'  %></p>
+
+<p><label for="document_externalfullname">Externalfullname</label><br/>
+<%= text_field 'document', 'externalfullname'  %></p>
+
+<p><label for="document_statusiteration">Statusiteration</label><br/>
+<%= text_field 'document', 'statusiteration'  %></p>
+
+<p><label for="document_modified_at">Modified at</label><br/>
+<%= date_select 'document', 'modified_at'  %></p>
+
+<p><label for="document_published_on">Published on</label><br/>
+<%= date_select 'document', 'published_on'  %></p>
+
+<p><label for="document_edition">Edition</label><br/>
+<%= text_field 'document', 'edition'  %></p>
+
+<p><label for="document_isbn">Isbn</label><br/>
+<%= text_field 'document', 'isbn'  %></p>
+
+<p><label for="document_issn">Issn</label><br/>
+<%= text_field 'document', 'issn'  %></p>
+
+<p><label for="document_external">External</label><br/>
+<select id="document_external" name="document[external]"><option value="false">False</option><option value="true">True</option></select></p>
+<!--[eoform:document]-->
+

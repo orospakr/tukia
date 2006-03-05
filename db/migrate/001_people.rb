@@ -11,8 +11,8 @@ class People < ActiveRecord::Migration
       table.column :organisation, :string
       table.column :enabled, :boolean
       table.column :admin, :boolean
-      table.column :created, :date
-      table.column :lastlogin, :date
+      table.column :created_at, :date
+      table.column :lastlogin_at, :date
       table.column :nation_id, :integer
     end
   end

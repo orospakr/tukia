@@ -1,0 +1,27 @@
+<h1>Listing terms</h1>
+
+<table>
+  <tr>
+  <% for column in Term.content_columns %>
+    <th><%= column.human_name %></th>
+  <% end %>
+  </tr>
+  
+<% for term in @terms %>
+  <tr>
+  <% for column in Term.content_columns %>
+    <td><%=h term.send(column.name) %></td>
+  <% end %>
+    <td><%= link_to 'Show', :action => 'show', :id => term %></td>
+    <td><%= link_to 'Edit', :action => 'edit', :id => term %></td>
+    <td><%= link_to 'Destroy', { :action => 'destroy', :id => term }, :confirm => 'Are you sure?' %></td>
+  </tr>
+<% end %>
+</table>
+
+<%= link_to 'Previous page', { :page => @term_pages.current.previous } if @term_pages.current.previous %>
+<%= link_to 'Next page', { :page => @term_pages.current.next } if @term_pages.current.next %> 
+
+<br />
+
+<%= link_to 'New term', :action => 'new' %>
