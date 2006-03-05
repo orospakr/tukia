@@ -11,6 +11,6 @@ class Person < ActiveRecord::Base
   validates_presence_of :password
   validates_presence_of :email
   validates_presence_of :created
-  validates_presence_of :lastlogin
+  #validates_presence_of :lastlogin
   validates_presence_of :nation_id
 end

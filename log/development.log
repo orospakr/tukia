@@ -1371,3 +1371,137 @@ Rendering  within layouts/documents
 Rendering documents/new
 Rendered documents/_form (0.01026)
 Completed in 0.09266 (10 reqs/sec) | Rendering: 0.01426 (15%) | DB: 0.02948 (31%) | 200 OK [http://localhost/documents/new]
+  [4;36;1mSQL (0.000000)[0m   [0;1mSET client_encoding TO 'UTF8'[0m
+  [4;35;1mSQL (0.000000)[0m   [0mSET client_min_messages TO 'warning'[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mCREATE TABLE schema_info (version integer)[0m
+  [4;35;1mSQL (0.040000)[0m   [0mINSERT INTO schema_info (version) VALUES(0)[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mRuntimeError: ERROR	C42P07	Mrelation "schema_info" already exists	Fheap.c	L695	Rheap_create_with_catalog: CREATE TABLE schema_info (version integer)[0m
+  [4;35;1mSQL (0.000000)[0m   [0mSELECT version FROM schema_info[0m
+Migrating to People (1)
+  [4;36;1mSQL (0.271000)[0m   [0;1mCREATE TABLE people ("id" serial primary key, "name" character varying(255), "password" character varying(255), "givenname" character varying(255), "surname" character varying(255), "email" character varying(255), "url" character varying(255), "phone" character varying(255), "organisation" character varying(255), "enabled" boolean, "admin" boolean, "created_at" date, "lastlogin_at" date, "nation_id" integer) [0m
+  [4;35;1mSQL (0.010000)[0m   [0mUPDATE schema_info SET version = 1[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mSELECT version FROM schema_info[0m
+Migrating to Committees (2)
+  [4;35;1mSQL (0.070000)[0m   [0mCREATE TABLE committees ("id" serial primary key, "name" character varying(255), "parent_id" integer) [0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mUPDATE schema_info SET version = 2[0m
+  [4;35;1mSQL (0.000000)[0m   [0mSELECT version FROM schema_info[0m
+Migrating to Nations (3)
+  [4;36;1mSQL (0.200000)[0m   [0;1mCREATE TABLE nations ("id" serial primary key, "code" character varying(255), "name" character varying(255)) [0m
+  [4;35;1mSQL (0.000000)[0m   [0mUPDATE schema_info SET version = 3[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mSELECT version FROM schema_info[0m
+Migrating to GlobalizeMigration (4)
+  [4;35;1mSQL (0.000000)[0m   [0mRuntimeError: ERROR	C42P01	Mtable "globalize_countries" does not exist	Futility.c	L144	RDropErrorMsgNonExistent: DROP TABLE globalize_countries[0m
+  [4;36;1mSQL (0.090000)[0m   [0;1mCREATE TABLE globalize_countries ("id" serial primary key, "code" character varying(2), "english_name" character varying(255), "date_format" character varying(255), "currency_format" character varying(255), "currency_code" character varying(3), "thousands_sep" character varying(2), "decimal_sep" character varying(2), "currency_decimal_sep" character varying(2), "number_grouping_scheme" character varying(255)) [0m
+  [4;35;1mSQL (0.050000)[0m   [0mCREATE INDEX globalize_countries_code_index ON globalize_countries (code)[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mRuntimeError: ERROR	C42P01	Mtable "globalize_translations" does not exist	Futility.c	L144	RDropErrorMsgNonExistent: DROP TABLE globalize_translations[0m
+  [4;35;1mSQL (0.141000)[0m   [0mCREATE TABLE globalize_translations ("id" serial primary key, "type" character varying(255), "tr_key" character varying(255), "table_name" character varying(255), "item_id" integer, "facet" character varying(255), "language_id" integer, "pluralization_index" integer, "text" text) [0m
+  [4;36;1mSQL (0.050000)[0m   [0;1mCREATE INDEX globalize_translations_tr_key_index ON globalize_translations (tr_key, language_id)[0m
+  [4;35;1mSQL (0.050000)[0m   [0mCREATE INDEX globalize_translations_table_name_index ON globalize_translations (table_name, item_id, language_id)[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mRuntimeError: ERROR	C42P01	Mtable "globalize_languages" does not exist	Futility.c	L144	RDropErrorMsgNonExistent: DROP TABLE globalize_languages[0m
+  [4;35;1mSQL (0.120000)[0m   [0mCREATE TABLE globalize_languages ("id" serial primary key, "iso_639_1" character varying(2), "iso_639_2" character varying(3), "iso_639_3" character varying(3), "rfc_3066" character varying(255), "english_name" character varying(255), "english_name_locale" character varying(255), "english_name_modifier" character varying(255), "native_name" character varying(255), "native_name_locale" character varying(255), "native_name_modifier" character varying(255), "macro_language" boolean, "direction" character varying(255), "pluralization" character varying(255), "scope" character varying(1)) [0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mRuntimeError: ERROR	C42P01	Mtable "globalize_language_names" does not exist	Futility.c	L144	RDropErrorMsgNonExistent: DROP TABLE globalize_language_names[0m
+  [4;35;1mSQL (0.100000)[0m   [0mCREATE TABLE globalize_language_names ("id" serial primary key, "globalize_language_id" integer, "name_globalize_language_id" integer, "name" character varying(255)) [0m
+  [4;36;1mSQL (0.060000)[0m   [0;1mCREATE INDEX globalize_languages_iso_639_1_index ON globalize_languages (iso_639_1)[0m
+  [4;35;1mSQL (0.100000)[0m   [0mCREATE INDEX globalize_languages_iso_639_2_index ON globalize_languages (iso_639_2)[0m
+  [4;36;1mSQL (0.091000)[0m   [0;1mCREATE INDEX globalize_languages_iso_639_3_index ON globalize_languages (iso_639_3)[0m
+  [4;35;1mSQL (0.080000)[0m   [0mCREATE INDEX globalize_languages_rfc_3066_index ON globalize_languages (rfc_3066)[0m
+  [4;36;1mSQL (0.010000)[0m   [0;1mUPDATE schema_info SET version = 4[0m
+  [4;35;1mSQL (0.000000)[0m   [0mSELECT version FROM schema_info[0m
+Migrating to CommitteesEditors (5)
+  [4;36;1mSQL (0.090000)[0m   [0;1mCREATE TABLE committees_editors ("id" serial primary key, "committee_id" integer, "person_id" integer) [0m
+  [4;35;1mSQL (0.000000)[0m   [0mUPDATE schema_info SET version = 5[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mSELECT version FROM schema_info[0m
+Migrating to CommitteesConvenors (6)
+  [4;35;1mSQL (0.110000)[0m   [0mCREATE TABLE committees_convenors ("id" serial primary key, "committee_id" integer, "person_id" integer) [0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mUPDATE schema_info SET version = 6[0m
+  [4;35;1mSQL (0.000000)[0m   [0mSELECT version FROM schema_info[0m
+Migrating to CommitteesNations (7)
+  [4;36;1mSQL (0.081000)[0m   [0;1mCREATE TABLE committees_nations ("id" serial primary key, "committee_id" integer, "nation_id" integer) [0m
+  [4;35;1mSQL (0.000000)[0m   [0mUPDATE schema_info SET version = 7[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mSELECT version FROM schema_info[0m
+Migrating to Documents (8)
+  [4;35;1mSQL (0.150000)[0m   [0mCREATE TABLE documents ("id" serial primary key, "authorexternal" character varying(255), "person_id" integer, "title" character varying(255), "committee_id" integer, "register_number" integer, "externalurl" character varying(255), "externalfullname" character varying(255), "status_id" integer, "statusiteration" integer, "modified_at" date, "published_on" date, "edition" integer, "isbn" character varying(255), "issn" character varying(255), "external" bool, "globalize_language_id" integer) [0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mUPDATE schema_info SET version = 8[0m
+  [4;35;1mSQL (0.000000)[0m   [0mSELECT version FROM schema_info[0m
+Migrating to Statuses (9)
+  [4;36;1mSQL (0.100000)[0m   [0;1mCREATE TABLE statuses ("id" serial primary key, "name" character varying(255)) [0m
+  [4;35;1mSQL (0.000000)[0m   [0mUPDATE schema_info SET version = 9[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mSELECT version FROM schema_info[0m
+Migrating to Terms (10)
+  [4;35;1mSQL (0.090000)[0m   [0mCREATE TABLE terms ("id" serial primary key, "globalize_language_id" integer, "globalize_country_id" integer, "term" character varying(255), "definition" text, "gender_id" integer, "copyright" character varying(255), "licence" character varying(255), "person_id" integer, "created_at" date, "deleted" boolean, "comments" text, "document_id" integer, "document_section" character varying(255), "synonmic_id" integer, "parent_id" integer) [0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mUPDATE schema_info SET version = 10[0m
+  [4;35;1mSQL (0.000000)[0m   [0mSELECT version FROM schema_info[0m
+Migrating to Synonmics (11)
+  [4;36;1mSQL (0.090000)[0m   [0;1mCREATE TABLE synonmics ("id" serial primary key) [0m
+  [4;35;1mSQL (0.000000)[0m   [0mUPDATE schema_info SET version = 11[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mSELECT version FROM schema_info[0m
+Migrating to Genders (12)
+  [4;35;1mSQL (0.060000)[0m   [0mCREATE TABLE genders ("id" serial primary key, "name" character varying(255), "globalize_language_id" integer) [0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mUPDATE schema_info SET version = 12[0m
+
+
+Processing AccountsController#index (for 127.0.0.1 at 2006-03-05 13:56:04) [GET]
+  Parameters: {"action"=>"index", "controller"=>"accounts"}
+  [4;36;1mSQL (0.020000)[0m   [0;1mSET client_encoding TO 'UTF8'[0m
+  [4;35;1mSQL (0.020000)[0m   [0mSET client_min_messages TO 'warning'[0m
+  [4;36;1mPerson Count (0.030000)[0m   [0;1mSELECT COUNT(*) FROM people [0m
+  [4;35;1mPerson Load (0.070000)[0m   [0mSELECT * FROM people LIMIT 10 OFFSET 0[0m
+Rendering layoutfalseactionlist within layouts/accounts
+Rendering accounts/list
+  [4;36;1mSQL (0.020000)[0m   [0;1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = 'people'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+Completed in 0.51100 (1 reqs/sec) | Rendering: 0.05000 (9%) | DB: 0.16000 (31%) | 200 OK [http://localhost/accounts]
+
+
+Processing AccountsController#new (for 127.0.0.1 at 2006-03-05 13:56:06) [GET]
+  Parameters: {"action"=>"new", "controller"=>"accounts"}
+  [4;35;1mSQL (0.010000)[0m   [0m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = 'people'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+Rendering  within layouts/accounts
+Rendering accounts/new
+Rendered accounts/_form (0.03000)
+Completed in 0.11000 (9 reqs/sec) | Rendering: 0.04000 (36%) | DB: 0.01000 (9%) | 200 OK [http://localhost/accounts/new]
+
+
+Processing AccountsController#create (for 127.0.0.1 at 2006-03-05 13:57:43) [POST]
+  Parameters: {"commit"=>"Create", "action"=>"create", "controller"=>"accounts", "person"=>{"name"=>"weenis", "created_at(1i)"=>"2006", "lastlogin_at(1i)"=>"2006", "givenname"=>"sadfsadf", "lastlogin_at(2i)"=>"3", "created_at(2i)"=>"3", "lastlogin_at(3i)"=>"5", "created_at(3i)"=>"5", "admin"=>"false", "url"=>"", "enabled"=>"false", "phone"=>"", "organisation"=>"", "surname"=>"adfasdf", "password"=>"ass", "email"=>"sdafsdaf"}}
+  [4;36;1mSQL (0.010000)[0m   [0;1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = 'people'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [4;35;1mSQL (0.000000)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mCOMMIT[0m
+Rendering layoutfalseactionnew within layouts/accounts
+Rendering accounts/new
+Rendered accounts/_form (0.01000)
+Completed in 0.21100 (4 reqs/sec) | Rendering: 0.01000 (4%) | DB: 0.01000 (4%) | 200 OK [http://localhost/accounts/create]
+
+
+Processing AccountsController#create (for 127.0.0.1 at 2006-03-05 13:59:54) [POST]
+  Parameters: {"commit"=>"Create", "action"=>"create", "controller"=>"accounts", "person"=>{"name"=>"weenis", "created_at(1i)"=>"2006", "lastlogin_at(1i)"=>"2006", "givenname"=>"sadfsadf", "lastlogin_at(2i)"=>"3", "created_at(2i)"=>"3", "lastlogin_at(3i)"=>"5", "created_at(3i)"=>"5", "admin"=>"false", "url"=>"", "enabled"=>"false", "phone"=>"", "organisation"=>"", "surname"=>"adfasdf", "password"=>"ass", "email"=>"sdafsdaf"}}
+  [4;35;1mSQL (0.010000)[0m   [0m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = 'people'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000000)[0m   [0mCOMMIT[0m
+Rendering layoutfalseactionnew within layouts/accounts
+Rendering accounts/new
+Rendered accounts/_form (0.01000)
+Completed in 0.13000 (7 reqs/sec) | Rendering: 0.02000 (15%) | DB: 0.01000 (7%) | 200 OK [http://localhost/accounts/create]
