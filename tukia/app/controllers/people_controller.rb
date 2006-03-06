@@ -1,4 +1,4 @@
-class AccountsController < ApplicationController
+class PeopleController < ApplicationController
   def index
     list
     render :action => 'list'
