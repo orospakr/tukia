@@ -51,3 +51,4 @@ end
 # end
 
 # Include your application configuration below
+  Globalize::Locale.set_base_language('en-US')

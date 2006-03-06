@@ -3,4 +3,5 @@ class Gender < ActiveRecord::Base
   translates :name
   has_many :term
   validates_presence_of :name
+  validates_presence_of :code
 end
