@@ -3,6 +3,7 @@ class Nations < ActiveRecord::Migration
     create_table :nations do |table|
       table.column :globalize_country_id, :integer
       table.column :name, :string
+      table.column :url, :string
     end
   end
 

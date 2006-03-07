@@ -3,6 +3,7 @@
   <b><%= column.human_name %>:</b> <%=h @nation.send(column.name) %>
 </p>
 <% end %>
+<p><b><%= "System Locale:".t %></b><%=h @nation.globalize_country.english_name %></p>
 
 <%= link_to 'Edit', :action => 'edit', :id => @nation %> |
 <%= link_to 'Back', :action => 'list' %>

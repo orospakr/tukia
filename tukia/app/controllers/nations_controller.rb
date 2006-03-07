@@ -14,6 +14,7 @@ class NationsController < ApplicationController
 
   def new
     @nation = Nation.new
+    @gcountries = GlobalizeCountry.find(:all)
   end
 
   def create
@@ -28,6 +29,7 @@ class NationsController < ApplicationController
 
   def edit
     @nation = Nation.find(params[:id])
+    @gcountries = GlobalizeCountry.find(:all)
   end
 
   def update
