@@ -1,40 +1,41 @@
 <%= error_messages_for 'person' %>
 
 <!--[form:person]-->
-<p><label for="person_name">Name</label><br/>
+<p><label for="person_name">Login Name</label><br/>
 <%= text_field 'person', 'name'  %></p>
 
-<p><label for="person_password">Password</label><br/>
-<%= password_field 'person', 'password'  %></p>
-
-<p><label for="person_givenname">Givenname</label><br/>
+<p><label for="person_givenname">Given Name</label><br/>
 <%= text_field 'person', 'givenname'  %></p>
 
 <p><label for="person_surname">Surname</label><br/>
 <%= text_field 'person', 'surname'  %></p>
 
-<p><label for="person_email">Email</label><br/>
+<p><label for="person_password">Password</label><br/>
+<%= password_field 'person', 'password'  %></p>
+
+<p><label for="person_email">Email Address</label><br/>
 <%= text_field 'person', 'email'  %></p>
 
-<p><label for="person_url">Url</label><br/>
+<p><label for="nation">National Body</label><br/>
+<%= collection_select( :person, :nation_id, @nationalbodies, :id, :name )%></p>
+
+<p><label for="person_time_zone">Time Zone</label><br/>
+<%= time_zone_select 'person', 'time_zone', TZInfo::Timezone.all.sort, :model => TZInfo::Timezone %></p>
+
+<p><label for="person_url">URL</label><br/>
 <%= text_field 'person', 'url'  %></p>
 
-<p><label for="person_phone">Phone</label><br/>
+<p><label for="person_phone">Phone Number (include all digits please)</label><br/>
 <%= text_field 'person', 'phone'  %></p>
 
-<p><label for="person_organisation">Organisation</label><br/>
+<p><label for="person_organisation">Organisation/Company</label><br/>
 <%= text_field 'person', 'organisation'  %></p>
 
-<p><label for="person_enabled">Enabled</label><br/>
+<p><label for="person_enabled">Enabled? (if disabled, user will be unable to login)</label><br/>
 <select id="person_enabled" name="person[enabled]"><option value="false">False</option><option value="true">True</option></select></p>
 
-<p><label for="person_admin">Admin</label><br/>
+<p><label for="person_admin">Administrator?</label><br/>
 <select id="person_admin" name="person[admin]"><option value="false">False</option><option value="true">True</option></select></p>
 
-<p><label for="person_created_at">Created at</label><br/>
-<%= date_select 'person', 'created_at'  %></p>
-
-<p><label for="person_lastlogin_at">Lastlogin at</label><br/>
-<%= date_select 'person', 'lastlogin_at'  %></p>
 <!--[eoform:person]-->
 

@@ -3,6 +3,8 @@ class Committees < ActiveRecord::Migration
     create_table :committees do |table|
       table.column :name, :string
       table.column :parent_id, :integer
+      table.column :created_at, :datetime
+      table.column :updated_at, :datetime
     end
   end
 

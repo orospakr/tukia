@@ -10,7 +10,8 @@ class Documents < ActiveRecord::Migration
       table.column :externalfullname, :string
       table.column :status_id, :integer
       table.column :statusiteration, :integer
-      table.column :modified_at, :date
+      table.column :created_at, :datetime
+      table.column :updated_at, :datetime
       table.column :published_on, :date
       table.column :edition, :integer
       table.column :isbn, :string

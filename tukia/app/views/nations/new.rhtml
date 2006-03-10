@@ -4,8 +4,6 @@
 
 <%= start_form_tag :action => 'create' %>
   <%= render :partial => 'form' %>
-  <%= collection_select( :nation, :globalize_country_id, @gcountries, :id, :english_name )%>
-  <br/>
   <%= submit_tag "Create" %>
 <%= end_form_tag %>
 

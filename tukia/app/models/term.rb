@@ -9,6 +9,7 @@ class Term < ActiveRecord::Base
   # not for policy, just a submitted-by field for reference purposes
   belongs_to :person
   belongs_to :synonmic
+  attr_protected :created_at, :updated_at
   validates_presence_of :term
   validates_presence_of :definition
   validates_presence_of :copyright

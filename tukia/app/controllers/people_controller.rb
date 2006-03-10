@@ -14,6 +14,7 @@ class PeopleController < ApplicationController
 
   def new
     @person = Person.new
+    @nationalbodies = Nation.find(:all)
   end
 
   def create
@@ -28,6 +29,7 @@ class PeopleController < ApplicationController
 
   def edit
     @person = Person.find(params[:id])
+    @nationalbodies = Nation.find(:all)
   end
 
   def update

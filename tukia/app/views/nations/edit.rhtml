@@ -2,8 +2,7 @@
 
 <%= start_form_tag :action => 'update', :id => @nation %>
   <%= render :partial => 'form' %>
-  <%= collection_select( :nation, :globalize_country_id, @gcountries, :id, :english_name )%>
-  <br/>
+  
   <%= submit_tag 'Edit' %>
 <%= end_form_tag %>
 

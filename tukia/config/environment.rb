@@ -51,4 +51,6 @@ end
 # end
 
 # Include your application configuration below
-  Globalize::Locale.set_base_language('en-US')
+Globalize::Locale.set_base_language('en-CA')
+ActiveRecord::Base.default_timezone = :utc
+require_gem ('tzinfo')

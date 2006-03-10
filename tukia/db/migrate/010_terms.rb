@@ -9,7 +9,8 @@ class Terms < ActiveRecord::Migration
       table.column :copyright, :string
       table.column :licence, :string
       table.column :person_id, :integer
-      table.column :created_at, :date
+      table.column :created_at, :datetime
+      table.column :updated_at, :datetime
       table.column :deleted, :boolean
       table.column :comments, :text
       table.column :document_id, :integer

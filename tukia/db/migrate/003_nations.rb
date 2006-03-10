@@ -4,6 +4,9 @@ class Nations < ActiveRecord::Migration
       table.column :globalize_country_id, :integer
       table.column :name, :string
       table.column :url, :string
+      table.column :created_at, :datetime
+      table.column :updated_at, :datetime
+      table.column :committee_id, :datetime
     end
   end
 

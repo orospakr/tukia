@@ -5,6 +5,7 @@ class Document < ActiveRecord::Base
   has_many :term
   belongs_to :person
   belongs_to :committee
+  attr_protected :created_at, :updated_at
   validates_presence_of :person_id
   validates_presence_of :title
   validates_presence_of :committee_id
