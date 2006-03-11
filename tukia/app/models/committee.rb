@@ -6,4 +6,8 @@ class Committee < ActiveRecord::Base
   has_many :document
   attr_protected :created_at, :updated_at
   validates_presence_of :name
+
+  def get_full_name
+    ffff
+  end
 end

@@ -6,6 +6,8 @@
 
 <p><label for="nation_globalize">System Country</label><br/>
 <%= collection_select( :nation, :globalize_country_id, @gcountries, :id, :english_name )%></p>
-  
+
+<p><label for="nation_committee">Committee (that this National Body is a delegation to)</label><br/>
+<%= collection_select( :nation, :committee_id, @committees, :id, :get_full_name) %></p>
 <!--[eoform:nation]-->
 
