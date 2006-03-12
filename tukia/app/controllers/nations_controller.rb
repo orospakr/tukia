@@ -16,12 +16,14 @@ class NationsController < ApplicationController
     @nation = Nation.new
     @gcountries = GlobalizeCountry.find(:all)
     @committees = Committee.find(:all)
+    @persons = Person.find(:all)
   end
 
   def create
     @nation = Nation.new(params[:nation])
     @gcountries = GlobalizeCountry.find(:all)
     @committees = Committee.find(:all)
+    @persons = Person.find(:all)
     if @nation.save
       flash[:notice] = 'Nation was successfully created.'
       redirect_to :action => 'list'
@@ -34,6 +36,7 @@ class NationsController < ApplicationController
     @nation = Nation.find(params[:id])
     @gcountries = GlobalizeCountry.find(:all)
     @committees = Committee.find(:all)
+    @persons = Person.find(:all)
   end
 
   def update

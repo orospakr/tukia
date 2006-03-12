@@ -6,7 +6,7 @@ class Nations < ActiveRecord::Migration
       table.column :url, :string
       table.column :created_at, :datetime
       table.column :updated_at, :datetime
-      table.column :committee_id, :datetime
+      table.column :committee_id, :integer
     end
   end
 

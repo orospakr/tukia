@@ -19,6 +19,7 @@ class PeopleController < ApplicationController
 
   def create
     @person = Person.new(params[:person])
+    @nationalbodies = Nation.find(:all)
     if @person.save
       flash[:notice] = 'Person was successfully created.'
       redirect_to :action => 'list'

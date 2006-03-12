@@ -1,0 +1,10 @@
+<%= error_messages_for 'committee' %>
+
+<!--[form:committee]-->
+<p><label for="committee_name"><%=h "Name".t %></label><br/>
+<%= text_field 'committee', 'name'  %></p>
+
+<p><label for="committee_parent"><%=h "Subcommittee of (of course, if this is a root committee, like ISO/IEC, then leave this blank)".t %></label><br/>
+<%= collection_select( :committee, :parent_id, @committees, :id, :get_full_name, {:include_blank => true}) %></p>
+<!--[eoform:committee]-->
+

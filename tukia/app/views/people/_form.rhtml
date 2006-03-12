@@ -16,9 +16,6 @@
 <p><label for="person_email">Email Address</label><br/>
 <%= text_field 'person', 'email'  %></p>
 
-<p><label for="nation">National Body</label><br/>
-<%= collection_select( :person, :nation_id, @nationalbodies, :id, :name )%></p>
-
 <p><label for="person_time_zone">Time Zone</label><br/>
 <%= time_zone_select 'person', 'time_zone', TZInfo::Timezone.all.sort, :model => TZInfo::Timezone %></p>
 

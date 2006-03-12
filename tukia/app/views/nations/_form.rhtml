@@ -9,5 +9,11 @@
 
 <p><label for="nation_committee">Committee (that this National Body is a delegation to)</label><br/>
 <%= collection_select( :nation, :committee_id, @committees, :id, :get_full_name) %></p>
+
+<p>Persons</p>
+<% for p in @persons %>
+  <input type="checkbox" id="<%= p.id %>" name="persion_ids[]" value="<%= p.id %>" />
+    <%=h( p.givenname + " " + p.surname) %>
+<% end %>
 <!--[eoform:nation]-->
 

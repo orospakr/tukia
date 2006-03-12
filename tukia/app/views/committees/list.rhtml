@@ -1,0 +1,29 @@
+<h1>Committees</h1>
+
+<table>
+  <tr>
+  <th><%=h "Full Name".t %></th>
+  <% for column in Committee.content_columns %>
+    <th><%= column.human_name %></th>
+  <% end %>
+  </tr>
+  
+<% for committee in @committees %>
+  <tr>
+    <td><%=h committee.get_full_name %></td>
+  <% for column in Committee.content_columns %>
+    <td><%=h committee.send(column.name) %></td>
+  <% end %>
+    <td><%= link_to 'Show', :action => 'show', :id => committee %></td>
+    <td><%= link_to 'Edit', :action => 'edit', :id => committee %></td>
+    <td><%= link_to 'Destroy', { :action => 'destroy', :id => committee }, :confirm => 'Are you sure? BE AWARE THAT THIS WILL ALSO DESTROY ANY AND ALL SUBCOMMITTEES, AND THUSLY ANY DOCUMENTS AND NATIONAL BODIES THAT IT CONTAINED.'.t %></td>
+  </tr>
+<% end %>
+</table>
+
+<%= link_to 'Previous page', { :page => @committee_pages.current.previous } if @committee_pages.current.previous %>
+<%= link_to 'Next page', { :page => @committee_pages.current.next } if @committee_pages.current.next %> 
+
+<br />
+
+<%= link_to 'New committee', :action => 'new' %>
