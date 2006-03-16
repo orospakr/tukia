@@ -5,15 +5,21 @@
 <%= text_field 'nation', 'name'  %></p>
 
 <p><label for="nation_globalize">System Country</label><br/>
-<%= collection_select( :nation, :globalize_country_id, @gcountries, :id, :english_name )%></p>
+<%= collection_select( :nation, :globalize_country_id, GlobalizeCountry.find(:all), :id, :english_name )%></p>
 
 <p><label for="nation_committee">Committee (that this National Body is a delegation to)</label><br/>
-<%= collection_select( :nation, :committee_id, @committees, :id, :get_full_name) %></p>
+<%= collection_select( :nation, :committee_id, Committee.find(:all), :id, :get_full_name) %></p>
 
-<p>Persons</p>
-<% for p in @persons %>
-  <input type="checkbox" id="<%= p.id %>" name="persion_ids[]" value="<%= p.id %>" />
-    <%=h( p.givenname + " " + p.surname) %>
+<p>People</p>
+
+<ul>
+<% Person.find(:all).each do |p| %>
+   <li><input type="checkbox" name="nation[person_ids][]" 
+          value="<%= p.id %>"
+          <% if @nation.people.include?(p) %> checked="checked" <% end %> />
+<%= p.givenname + " " + p.surname %></li>
 <% end %>
+</ul>
+
 <!--[eoform:nation]-->
 

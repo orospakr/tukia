@@ -14,16 +14,11 @@ class NationsController < ApplicationController
 
   def new
     @nation = Nation.new
-    @gcountries = GlobalizeCountry.find(:all)
-    @committees = Committee.find(:all)
-    @persons = Person.find(:all)
   end
 
   def create
     @nation = Nation.new(params[:nation])
-    @gcountries = GlobalizeCountry.find(:all)
-    @committees = Committee.find(:all)
-    @persons = Person.find(:all)
+    # BS @nation.people = Person.find(@params[:person_ids]) if @params[:person_ids]
     if @nation.save
       flash[:notice] = 'Nation was successfully created.'
       redirect_to :action => 'list'
@@ -34,13 +29,17 @@ class NationsController < ApplicationController
 
   def edit
     @nation = Nation.find(params[:id])
-    @gcountries = GlobalizeCountry.find(:all)
-    @committees = Committee.find(:all)
-    @persons = Person.find(:all)
   end
 
   def update
     @nation = Nation.find(params[:id])
+    # BS @nation.people = Person.find(@params[:person_ids]) if @params[:person_ids]
+    
+    #this fixes the clearing-checkbox bug, as documented in the CheckboxHABTM article on the wiki.
+    if !params['nation']['person_ids']
+      @nation.people.clear
+    end
+    
     if @nation.update_attributes(params[:nation])
       flash[:notice] = 'Nation was successfully updated.'
       redirect_to :action => 'show', :id => @nation

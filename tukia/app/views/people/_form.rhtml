@@ -34,5 +34,16 @@
 <p><label for="person_admin">Administrator?</label><br/>
 <select id="person_admin" name="person[admin]"><option value="false">False</option><option value="true">True</option></select></p>
 
+<p>National Bodies</p>
+
+<ul>
+<% Nation.find(:all).each do |n| %>
+   <li><input type="checkbox" name="person[nation_ids][]" 
+          value="<%= n.id %>" 
+          <% if @person.nations.include?(n) %> checked="checked" <% end %> />
+<%= n.name %></li>
+<% end %>
+</ul>
+
 <!--[eoform:person]-->
 

@@ -5,8 +5,7 @@ class Person < ActiveRecord::Base
   composed_of :tz, :class_name => 'TZInfo::Timezone', :mapping => %w(time_zone time_zone)
 # again, just a submitted-by field for reference, not policy
   has_many :term
-  #belongs_to :nation # TODO. this has to change into a has_and_belongs_to_many, as a person needs to belong to multiple National Bodies
-  has_and_belongs_to_many :nation
+  has_and_belongs_to_many :nations
   validates_presence_of :name
   validates_uniqueness_of :name
   validates_presence_of :givenname

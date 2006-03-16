@@ -35,6 +35,12 @@ class PeopleController < ApplicationController
 
   def update
     @person = Person.find(params[:id])
+    
+    #this fixes the clearing-checkbox bug, as documented in the CheckboxHABTM article on the wiki.
+    if !params['person']['nation_ids']
+      @person.nations.clear
+    end
+    
     if @person.update_attributes(params[:person])
       flash[:notice] = 'Person was successfully updated.'
       redirect_to :action => 'show', :id => @person
