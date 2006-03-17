@@ -5,7 +5,7 @@
 <%= text_field 'nation', 'name'  %></p>
 
 <p><label for="nation_globalize">System Country</label><br/>
-<%= collection_select( :nation, :globalize_country_id, GlobalizeCountry.find(:all), :id, :english_name )%></p>
+<%= collection_select( :nation, :globalize_country_id, Globalize::Country.find(:all), :id, :english_name )%></p>
 
 <p><label for="nation_committee">Committee (that this National Body is a delegation to)</label><br/>
 <%= collection_select( :nation, :committee_id, Committee.find(:all), :id, :get_full_name) %></p>

@@ -19,22 +19,34 @@
 <p><label for="document_statusiteration">Statusiteration</label><br/>
 <%= text_field 'document', 'statusiteration'  %></p>
 
-<p><label for="document_modified_at">Modified at</label><br/>
-<%= date_select 'document', 'modified_at'  %></p>
-
 <p><label for="document_published_on">Published on</label><br/>
 <%= date_select 'document', 'published_on'  %></p>
 
 <p><label for="document_edition">Edition</label><br/>
 <%= text_field 'document', 'edition'  %></p>
 
-<p><label for="document_isbn">Isbn</label><br/>
+<p><label for="document_isbn">ISBN</label><br/>
 <%= text_field 'document', 'isbn'  %></p>
 
-<p><label for="document_issn">Issn</label><br/>
+<p><label for="document_issn">ISSN</label><br/>
 <%= text_field 'document', 'issn'  %></p>
 
 <p><label for="document_external">External</label><br/>
 <select id="document_external" name="document[external]"><option value="false">False</option><option value="true">True</option></select></p>
+
+<p><label for="document_status"><%=h "Status".t %></label><br/>
+<%= collection_select( :document, :status_id, Status.find(:all), :id, :name) %></p>
+
+<p>Languages</p>
+
+<ul>
+<% GlobalizeLanguage.find(:all).each do |l| %>
+   <li><input type="checkbox" name="document[globalize_langauge_ids][]" 
+          value="<%= l.id %>"
+          <% if @document.globalize_languages.include?(l) %> checked="checked" <% end %> />
+<%= l.english_name %></li>
+<% end %>
+</ul>
+
 <!--[eoform:document]-->
 

@@ -15,6 +15,7 @@ class People < ActiveRecord::Migration
       table.column :updated_at, :datetime
       table.column :lastlogin_at, :datetime
       table.column :nation_id, :integer
+      table.column :language_id, :integer
       table.column :time_zone, :string
     end
   end

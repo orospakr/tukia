@@ -48,7 +48,7 @@ class GlobalizeMigration < ActiveRecord::Migration
     end
 
     # table added by orospakr to enable the globalize schema to store globalized names of the languages
-    # stored in globalize. ^.^
+    # stored in globalize.
     create_table :globalize_language_names, :force => true do |t|
       # the language we're globalizing...
       t.column :globalize_language_id, :integer

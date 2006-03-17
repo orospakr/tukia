@@ -1,4 +1,8 @@
-class GlobalizeCountry < ActiveRecord::Base
-  # this is a model around a class that is not mine.  It is part of globalize.
-  has_many :term
+#here I extend the globalizecountry model provided by the globalilze plugin.
+#damn I <3 ruby.
+
+module Globalize
+  class Country < ActiveRecord::Base
+    has_many :terms
+  end
 end

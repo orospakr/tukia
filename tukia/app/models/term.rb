@@ -1,10 +1,12 @@
 class Term < ActiveRecord::Base
   acts_as_tree
+  
   # source authority
   belongs_to :document
+  
   belongs_to :gender
   belongs_to :globalize_language
-  belongs_to :globalize_country
+  #belongs_to :globalize_country
   has_and_belongs_to_many :document
   # not for policy, just a submitted-by field for reference purposes
   belongs_to :person

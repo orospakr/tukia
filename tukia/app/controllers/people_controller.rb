@@ -14,12 +14,11 @@ class PeopleController < ApplicationController
 
   def new
     @person = Person.new
-    @nationalbodies = Nation.find(:all)
+    @person.enabled = true;
   end
 
   def create
     @person = Person.new(params[:person])
-    @nationalbodies = Nation.find(:all)
     if @person.save
       flash[:notice] = 'Person was successfully created.'
       redirect_to :action => 'list'
@@ -30,7 +29,6 @@ class PeopleController < ApplicationController
 
   def edit
     @person = Person.find(params[:id])
-    @nationalbodies = Nation.find(:all)
   end
 
   def update
@@ -52,5 +50,34 @@ class PeopleController < ApplicationController
   def destroy
     Person.find(params[:id]).destroy
     redirect_to :action => 'list'
+  end
+  
+  def login
+    case @request.method
+      when :post
+      if @session[:user] = Person.authenticate(@params[:user_login], @params[:user_password])
+
+        flash['notice']  = "Login successful".t
+        redirect_back_or_default :action => "welcome"
+      else
+        flash.now['notice']  = "Login unsuccessful".t
+
+        @login = @params[:user_login]
+      end
+    end
+  end
+  
+#  def signup
+#    @user = Person.new(@params[:user])
+#
+#    if @request.post? and @user.save
+#      @session[:user] = User.authenticate(@user.name, @params[:user][:password])
+#      flash['notice']  = "Signup successful".t
+#      redirect_back_or_default :action => "welcome"
+#    end
+#  end
+  
+  def logout
+    @session[:user] = nil
   end
 end

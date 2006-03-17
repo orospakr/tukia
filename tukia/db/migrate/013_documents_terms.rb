@@ -1,6 +1,6 @@
 class DocumentsTerms < ActiveRecord::Migration
   def self.up
-    create_table :documents_terms, :primary_key => false do |t|
+    create_table :documents_terms, :id => false, :primary_key => false do |t|
       t.column :document_id, :integer
       t.column :term_id, :integer
     end

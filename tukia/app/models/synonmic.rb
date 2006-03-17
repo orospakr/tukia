@@ -1,3 +1,3 @@
 class Synonmic < ActiveRecord::Base
-  has_many :term
+  has_many :terms
 end
