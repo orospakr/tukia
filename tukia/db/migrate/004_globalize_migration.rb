@@ -51,9 +51,9 @@ class GlobalizeMigration < ActiveRecord::Migration
     # stored in globalize.
     create_table :globalize_language_names, :force => true do |t|
       # the language we're globalizing...
-      t.column :globalize_language_id, :integer
+      t.column :language_id, :integer
       # the languages for which we have a name for the above
-      t.column :name_globalize_language_id, :integer
+      t.column :name_language_id, :integer
       t.column :name, :string
     end
       
@@ -351,7 +351,7 @@ END_OF_DATA
 
   def self.names_data
     <<'END_OF_DATA'
-"id","globalize_language_id","name_globalize_language_id","name"
+"id","language_id","name_language_id","name"
 1,1819,1930,"Anglais"
 2,1819,1930,"French"
 END_OF_DATA

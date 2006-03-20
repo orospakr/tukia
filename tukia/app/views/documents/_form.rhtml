@@ -1,7 +1,7 @@
 <%= error_messages_for 'document' %>
 
 <!--[form:document]-->
-<p><label for="document_authorexternal">Authorexternal</label><br/>
+<p><label for="document_authorexternal">Author's name, if this document was not written by someone in the Tukia database</label><br/>
 <%= text_field 'document', 'authorexternal'  %></p>
 
 <p><label for="document_title">Title</label><br/>
@@ -10,13 +10,13 @@
 <p><label for="document_register_number">Register number</label><br/>
 <%= text_field 'document', 'register_number'  %></p>
 
-<p><label for="document_externalurl">Externalurl</label><br/>
+<p><label for="document_externalurl">URL, if this document is from an external source</label><br/>
 <%= text_field 'document', 'externalurl'  %></p>
 
-<p><label for="document_externalfullname">Externalfullname</label><br/>
+<p><label for="document_externalfullname">Full name/title of this document, if from an external source</label><br/>
 <%= text_field 'document', 'externalfullname'  %></p>
 
-<p><label for="document_statusiteration">Statusiteration</label><br/>
+<p><label for="document_statusiteration">Status Iteration</label><br/>
 <%= text_field 'document', 'statusiteration'  %></p>
 
 <p><label for="document_published_on">Published on</label><br/>
@@ -37,14 +37,14 @@
 <p><label for="document_status"><%=h "Status".t %></label><br/>
 <%= collection_select( :document, :status_id, Status.find(:all), :id, :name) %></p>
 
-<p>Languages</p>
+<p>Languages used in this Document</p>
 
 <ul>
-<% GlobalizeLanguage.find(:all).each do |l| %>
+<% Globalize::Language.find(:all).each do |l| %>
    <li><input type="checkbox" name="document[globalize_langauge_ids][]" 
           value="<%= l.id %>"
-          <% if @document.globalize_languages.include?(l) %> checked="checked" <% end %> />
-<%= l.english_name %></li>
+          <% if @document.languages.include?(l) %> checked="checked" <% end %> />
+<%= l.english_name.t %></li>
 <% end %>
 </ul>
 

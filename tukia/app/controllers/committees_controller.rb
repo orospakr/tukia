@@ -30,7 +30,7 @@ class CommitteesController < ApplicationController
 
   def edit
     @committee = Committee.find(params[:id])
-    @committees = Commitee.find(:all)
+    @committees = Committee.find(:all)
   end
 
   def update

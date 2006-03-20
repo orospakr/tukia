@@ -14,7 +14,7 @@
     <td><%=h nation.send(column.name) %></td>
   <% end %>
     <td>
-      <%=h nation.globalize_country.english_name %>
+      <%=h nation.country.english_name %>
     </td>
     <td><%= link_to 'Show', :action => 'show', :id => nation %></td>
     <td><%= link_to 'Edit', :action => 'edit', :id => nation %></td>

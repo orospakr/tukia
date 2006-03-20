@@ -2,7 +2,7 @@ class Document < ActiveRecord::Base
   belongs_to :status
   
   # the languages of this document.
-  has_and_belongs_to_many :globalize_languages
+  has_and_belongs_to_many :languages, :class_name => "Globalize::Language"
   
   # term usages
   has_and_belongs_to_many :term

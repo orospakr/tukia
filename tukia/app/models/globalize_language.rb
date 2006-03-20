@@ -1,14 +1,23 @@
 module Globalize
   class Language < ActiveRecord::Base
     has_and_belongs_to_many :documents
-    has_many :globalize_language_names
+    has_many :language_names
     has_many :terms
     
-    #ANDREW START HERE ANY MAKE LANGUAGE NAMES WORK (and show the i18n'd
     
-    #names in the document _form, of course)
-    #also, I need to evaluate the existence of these models wrapping the
-    #globalize classes, as I need look up the possible existence of models
-    #already implemented in Globalize
+    def get_name_current_culture(user)
+      if (user.nil?)
+        return @english_name
+      else
+        result = LanguageName.find(:first,
+                                   :conditions => ["name_language_id = ? AND language_id = ?", user.language, @id])
+        if (result.nil?)
+          return @english_name
+        else
+          return result.name
+        end
+      end
+    end
+    
   end
 end
