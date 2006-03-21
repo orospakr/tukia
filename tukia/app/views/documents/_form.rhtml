@@ -1,14 +1,22 @@
 <%= error_messages_for 'document' %>
 
 <!--[form:document]-->
-<p><label for="document_authorexternal">Author's name, if this document was not written by someone in the Tukia database</label><br/>
-<%= text_field 'document', 'authorexternal'  %></p>
 
 <p><label for="document_title">Title</label><br/>
 <%= text_field 'document', 'title'  %></p>
 
+<p>TODO OWNING COMMITTEE SELECTION GOES HERE. when this is set, autocalculate a suggested
+Register number.  Also, I should put a before_create validation callback thingie in the Document
+model to check whether the register number ID is unique to that committee.</p>
+
 <p><label for="document_register_number">Register number</label><br/>
 <%= text_field 'document', 'register_number'  %></p>
+
+<p><label for="document_external">External</label><br/>
+<select id="document_external" name="document[external]"><option value="false">False</option><option value="true">True</option></select></p>
+
+<p><label for="document_authorexternal">Author's name, if this document was not written by someone in the Tukia database</label><br/>
+<%= text_field 'document', 'authorexternal'  %></p>
 
 <p><label for="document_externalurl">URL, if this document is from an external source</label><br/>
 <%= text_field 'document', 'externalurl'  %></p>
@@ -31,8 +39,6 @@
 <p><label for="document_issn">ISSN</label><br/>
 <%= text_field 'document', 'issn'  %></p>
 
-<p><label for="document_external">External</label><br/>
-<select id="document_external" name="document[external]"><option value="false">False</option><option value="true">True</option></select></p>
 
 <p><label for="document_status"><%=h "Status".t %></label><br/>
 <%= collection_select( :document, :status_id, Status.find(:all), :id, :name) %></p>

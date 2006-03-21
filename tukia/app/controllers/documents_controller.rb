@@ -14,6 +14,8 @@ class DocumentsController < ApplicationController
 
   def new
     @document = Document.new
+    # TODO I should autoset the register_number value here if I can.
+    # although, the only way I can do that is 
   end
 
   def create
