@@ -40,11 +40,11 @@
 <p>Languages used in this Document</p>
 
 <ul>
-<% Globalize::Language.find(:all).each do |l| %>
+<% Globalize::Language.find(:all, :order => "iso_639_3 ASC").each do |l| %>
    <li><input type="checkbox" name="document[globalize_langauge_ids][]" 
           value="<%= l.id %>"
           <% if @document.languages.include?(l) %> checked="checked" <% end %> />
-<%= l.english_name.t %></li>
+<%= Globalize::Language.get_name_from_code(l.iso_639_3,l.english_name) %></li>
 <% end %>
 </ul>
 

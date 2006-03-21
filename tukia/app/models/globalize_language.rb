@@ -4,20 +4,8 @@ module Globalize
     has_many :language_names
     has_many :terms
     
-    
-    def get_name_current_culture(user)
-      if (user.nil?)
-        return @english_name
-      else
-        result = LanguageName.find(:first,
-                                   :conditions => ["name_language_id = ? AND language_id = ?", user.language, @id])
-        if (result.nil?)
-          return @english_name
-        else
-          return result.name
-        end
-      end
+    def self.get_name_from_code(iso_639_3, english_name)
+      return ("ISO 639-3: " + iso_639_3).t(english_name)
     end
-    
   end
 end

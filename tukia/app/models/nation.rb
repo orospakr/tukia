@@ -1,4 +1,8 @@
 class Nation < ActiveRecord::Base
+  @@participation_levels = [["Liason", 0], ["Observer", 1], ["Participant", 2]]
+  def self.participation_levels
+     return @@participation_levels
+  end
   translates :name
   belongs_to :country, :class_name => "Globalize::Country"
   belongs_to :committee
