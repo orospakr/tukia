@@ -1,3 +1,5 @@
+require_dependency "globalize_language"
+
 class Document < ActiveRecord::Base
   belongs_to :status
   
@@ -18,6 +20,14 @@ class Document < ActiveRecord::Base
   belongs_to :committee
   validates_presence_of :committee_id
   
+  def upload=(upload_field)
+    #self.name = base_part_of(picture_field.original_filename)
+    #self.content_type = picture_field.content_type.chomp
+    self.file = upload_field.read
+    self.extension = File.extname(upload_field.original_filename)
+  end
+  
+  
   attr_protected :created_at, :updated_at
   
   validates_presence_of :title
@@ -25,5 +35,5 @@ class Document < ActiveRecord::Base
   validates_presence_of :status_id
   validates_presence_of :statusiteration
   validates_presence_of :external
-  
+ 
 end

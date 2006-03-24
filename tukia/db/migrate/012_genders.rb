@@ -3,7 +3,7 @@ class Genders < ActiveRecord::Migration
     create_table :genders do |table|
       table.column :name, :string
       table.column :code, :integer
-      table.column :globalize_language_id, :integer
+      table.column :language_id, :integer
     end
   end
 

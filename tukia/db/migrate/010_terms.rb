@@ -1,7 +1,7 @@
 class Terms < ActiveRecord::Migration
   def self.up
     create_table :terms do |table|
-      table.column :globalize_language_id, :integer
+      table.column :language_id, :integer
       #table.column :globalize_country_id, :integer
       table.column :term, :string
       table.column :definition, :text

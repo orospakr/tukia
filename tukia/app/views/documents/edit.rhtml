@@ -1,6 +1,6 @@
 <h1>Editing Document</h1>
 
-<%= start_form_tag :action => 'update', :id => @document %>
+<%= start_form_tag :action => 'update', :id => @document, :multipart => true %>
   <%= render :partial => 'form' %>
   <%= submit_tag 'Edit' %>
 <%= end_form_tag %>

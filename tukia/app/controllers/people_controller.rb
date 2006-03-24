@@ -29,11 +29,11 @@ class PeopleController < ApplicationController
 
   def edit
     @person = Person.find(params[:id])
+    @person.password = ""
   end
 
   def update
     @person = Person.find(params[:id])
-    
     #this fixes the clearing-checkbox bug, as documented in the CheckboxHABTM article on the wiki.
     if !params['person']['nation_ids']
       @person.nations.clear

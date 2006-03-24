@@ -15,6 +15,16 @@ class Committee < ActiveRecord::Base
     result
   end
   
+  def suggest_new_register_number
+    result = Document.find(:first, :conditions => ["committee_id = ?", self.id], :order => "register_number ASC")
+    if result.nil?
+      # lol first ps0t!
+      return 1
+    end
+    return result.register_number + 1
+  end
+ 
+  
   private
   def get_parents_recurse(pile)
     if (!parent.nil?)

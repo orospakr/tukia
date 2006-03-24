@@ -32,13 +32,13 @@
 <%= text_field 'person', 'organisation'  %></p>
 
 <p><label for="person_enabled">Enabled? (if disabled, user will be unable to login)</label><br/>
-<select id="person_enabled" name="person[enabled]"><option value="false">False</option><option value="true">True</option></select></p>
+<%= check_box ( :person, :enabled) %></p>
 
 <p><label for="person_admin">Administrator? (this is essentially god mode.  It is really meant only for site administrators)</label><br/>
-<select id="person_admin" name="person[admin]"><option value="false">False</option><option value="true">True</option></select></p>
+<%= check_box ( :person, :admin) %></p>
 
 <p><label for="person_language"><%=h "Preferred Language for UI".t %></label><br/>
-<%= collection_select( :person, :language_id, Globalize::Language.find(:all), :id, :english_name) %></p>
+<%= collection_select( :person, :language_id, Globalize::Language.find(:all, :order => "iso_639_3 ASC"), :id, :english_name) %></p>
 
 <p>National Bodies</p>
 <ul>

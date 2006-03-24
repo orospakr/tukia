@@ -17,7 +17,11 @@ class Documents < ActiveRecord::Migration
       table.column :isbn, :string
       table.column :issn, :string
       table.column :external, :bool
-      table.column :globalize_language_id, :integer
+      table.column :language_id, :integer
+      table.column :file, :binary
+      table.column :extension, :string
+      # TODO should I keep this or do something fancier with MIME types?
+      # after all, I think I do want a "separate PDF" feature
     end
   end
 

@@ -46,4 +46,26 @@ class DocumentsController < ApplicationController
     Document.find(params[:id]).destroy
     redirect_to :action => 'list'
   end
+  
+  def ajax_suggest_register_number
+    # I probably should check security validations for the found committee, probably
+    if request.raw_post == ""
+      # user probably selected the blank line, let's just let it alone
+      render(:layout => false)
+      return
+    end
+    selected_committee = Committee.find(request.raw_post)
+    @latest_register_number = selected_committee.suggest_new_register_number
+    render(:layout => false)
+  end
+  
+  
+  def download
+    doc = Document.find(params[:id])
+    # check current user for appropriate security permissions
+    # ".doc" needs to be changed, obviously
+    send_data(doc.file,
+      :filename => doc.title + ".doc",
+      :disposition => "attachment")
+  end
 end

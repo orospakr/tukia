@@ -16,7 +16,19 @@ class Person < ActiveRecord::Base
   attr_protected :created_at, :updated_at
   validates_presence_of :time_zone
   
-  
+  def find_allowed_committees
+    result = []
+    if !(@editorof.nil?)
+      result = result + @editorof
+    end
+    if !(@convenorof.nil?)
+      result = result + @convenorof
+    end
+    self.nations.each do |n|
+      result << n.committee unless result.include?( n.committee )
+    end
+    return result
+  end
     # Please change the salt to something else, 
   # Every application should use a different one 
   @@salt = 'weenis'
