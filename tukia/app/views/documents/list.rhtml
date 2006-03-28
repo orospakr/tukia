@@ -12,9 +12,11 @@
   <% for column in Document.content_columns %>
     <td><%=h document.send(column.name) %></td>
   <% end %>
-    <td><%= link_to 'Show', :action => 'show', :id => document %></td>
-    <td><%= link_to 'Edit', :action => 'edit', :id => document %></td>
-    <td><%= link_to 'Destroy', { :action => 'destroy', :id => document }, :confirm => 'Are you sure?' %></td>
+    <td><%= link_to 'Show'.t, :action => 'show', :id => document %></td>
+    <td><%= link_to 'Edit'.t, :action => 'edit', :id => document %></td>
+    <td><%= link_to 'Download'.t, :action => 'download', :id => document %></td>
+    <td><%= link_to 'Download PDF'.t, :action => 'downloadpdf', :id => document %></td>
+    <td><%= link_to 'Destroy'.t, { :action => 'destroy', :id => document }, :confirm => 'Are you sure?' %></td>
   </tr>
 <% end %>
 </table>

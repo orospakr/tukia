@@ -59,13 +59,22 @@ class DocumentsController < ApplicationController
     render(:layout => false)
   end
   
-  
   def download
     doc = Document.find(params[:id])
     # check current user for appropriate security permissions
     # ".doc" needs to be changed, obviously
     send_data(doc.file,
-      :filename => doc.title + ".doc",
+      :filename => doc.title + doc.extension,
+      :disposition => "attachment")
+  end
+  
+  def downloadpdf
+    doc = Document.find(params[:id])
+    # check current user for appropriate security permissions
+    # ".doc" needs to be changed, obviously
+    send_data(doc.pdffile,
+      :filename => doc.title + ".pdf",
+      :type => "application/pdf",
       :disposition => "attachment")
   end
 end

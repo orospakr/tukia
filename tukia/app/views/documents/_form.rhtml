@@ -60,6 +60,10 @@ with system-wide administrative priveleges.</label><br/>
 <p><label for="document_upload"><%=h "Document File in a word processing/typesetting format such as OpenDocument (.odt, .ods, and .odp), Portable Document Format (.pdf), Postscript (.ps or .ps.gz), Scalable Vector Graphics (.svg), Microsoft Word (.doc), Corel WordPerfect (.wpd), or TeX (.textxt).".t %></label></br>
 <%= file_field(:document, :upload) %></p>
 
+<p><label for="document_pdfupload"><%= h "A seperate PDF equivalent of this document. Optional.".t %></label><br/>
+<%= file_field(:document, :pdfupload) %></p>
+
+
 <p>Languages used in this Document</p>
 
 <ul>

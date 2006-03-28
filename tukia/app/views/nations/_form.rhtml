@@ -17,9 +17,10 @@
 
 <ul>
 <% Person.find(:all).each do |p| %>
-   <li><input type="checkbox" name="nation[person_ids][]" 
-          value="<%= p.id %>"
-          <% if @nation.people.include?(p) %> checked="checked" <% end %> />
+
+<li><%= check_box_tag("nation[person_ids][]",
+                                p.id,
+                                @nation.people.include?(p)) %>
 <%= p.givenname + " " + p.surname %></li>
 <% end %>
 </ul>

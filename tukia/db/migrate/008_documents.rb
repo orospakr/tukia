@@ -20,6 +20,7 @@ class Documents < ActiveRecord::Migration
       table.column :language_id, :integer
       table.column :file, :binary
       table.column :extension, :string
+      table.column :pdffile, :binary
       # TODO should I keep this or do something fancier with MIME types?
       # after all, I think I do want a "separate PDF" feature
     end

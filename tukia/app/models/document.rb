@@ -27,13 +27,20 @@ class Document < ActiveRecord::Base
     self.extension = File.extname(upload_field.original_filename)
   end
   
+  def uploadpdf=(upload_field)
+    #self.name = base_part_of(picture_field.original_filename)
+    #self.content_type = picture_field.content_type.chomp
+    self.pdffilefile = upload_field.read
+  end
   
-  attr_protected :created_at, :updated_at
+  
+  attr_protected :created_at, :updated_at, :extension
   
   validates_presence_of :title
   validates_presence_of :register_number
   validates_presence_of :status_id
   validates_presence_of :statusiteration
   validates_presence_of :external
- 
+  validates_presence_of :file
 end
+ 
