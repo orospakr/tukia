@@ -43,9 +43,9 @@
 <p>National Bodies</p>
 <ul>
 <% Nation.find(:all).each do |n| %>
-   <li><input type="checkbox" name="person[nation_ids][]" 
-          value="<%= n.id %>" 
-          <% if @person.nations.include?(n) %> checked="checked" <% end %> />
+   <li><%= check_box_tag("person[nation_ids][]",
+                                n.id,
+                                @person.nations.include?(n)) %>
 <%= n.name %></li>
 <% end %>
 </ul>

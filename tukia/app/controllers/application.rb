@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
 
 end
 
-work_around_habtm_bug = true
+work_around_habtm_bug = false
 if work_around_habtm_bug
   module ActiveRecord
     module Associations

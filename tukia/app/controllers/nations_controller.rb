@@ -18,7 +18,6 @@ class NationsController < ApplicationController
 
   def create
     @nation = Nation.new(params[:nation])
-    # BS @nation.people = Person.find(@params[:person_ids]) if @params[:person_ids]
     if @nation.save
       flash[:notice] = 'Nation was successfully created.'
       redirect_to :action => 'list'
@@ -33,8 +32,6 @@ class NationsController < ApplicationController
 
   def update
     @nation = Nation.find(params[:id])
-    # BS @nation.people = Person.find(@params[:person_ids]) if @params[:person_ids]
-    
     #this fixes the clearing-checkbox bug, as documented in the CheckboxHABTM article on the wiki.
     if !params['nation']['person_ids']
       @nation.people.clear
