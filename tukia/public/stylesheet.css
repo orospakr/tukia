@@ -1,0 +1,166 @@
+body {
+    font-family: Sans, Verdana;
+    background-color: #775c1c;
+    color: #000;
+}
+
+table {
+    margin: 0.5em 0.5em 0.5em 0.5em;
+}
+
+/* Header */
+
+div.header {
+    margin-bottom: 0.5em;
+    border: 1px solid #000;
+    text-align: left;
+    # background-color: #d9451c;
+    background-color: #ffffff;
+    color: inherit;
+}
+
+.header h1 {
+    margin: 0.5;
+    padding: 0.25em 0 0.25em 0;
+    font-size: 1.5em;
+    font-weight: normal;
+}
+
+
+div.menu {
+    float: left;
+    clear: left;
+    width: 9.5em;
+    margin: 0 0 0.5em 0;
+    border-top: 1px solid;
+    border-left: 1px solid;
+    border-right: 1px solid;
+    background-color: #d2462a;
+    color: inherit;
+}
+
+.menu h2 {
+    margin: 0;
+    padding: 0.25em 0 0.25em 0.5em;
+    border-bottom: 1px solid #000;
+    font-size: 1em;
+    font-weight: normal;
+    background-color: #bbb;
+    color: #000;
+}
+
+.menu ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.menu li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    border-bottom: 1px solid #000;
+}
+
+.menu a {
+    display: block;
+    position: relative;
+    padding: 0.25em 0 0.25em 0.5em;
+    text-decoration: none;
+    background: #ddd;
+    color: #000;
+}
+
+.menu a:hover {
+    text-decoration: none;
+    background: #ccc;
+    color: #000;
+}
+
+
+div.content {
+    margin: 0 0 0.5em 10em;
+    padding: 0 0 0.25em 0;
+    border: 1px solid;
+    background-color: #fafafa;
+    color: inherit;
+}
+
+.content h2 {
+    margin: 0;
+    padding: 0.25em 0.5em 0.25em 0;
+    border-bottom: 1px solid #000;
+    font-size: 1em;
+    font-weight: normal;
+    text-align: center;
+    background-color: #bbb;
+    color: inherit;
+}
+
+.content p {
+    margin: 0.5em 0.5em 0.5em 0.5em;
+}
+
+.content a {
+    text-decoration: none;
+    border-bottom: 1px dashed #aaa;
+    background-color: inherit;
+    color: #000;
+}
+
+.content a:hover {
+    text-decoration: none;
+    border-bottom: 1px solid #000;
+    background-color: inherit;
+    color: #000;
+}
+
+
+div.oldnews {
+    margin: 0 0 0.5em 10em;
+    border: 1px solid #000;
+    text-align: center;
+    background-color: #ddd;
+    color: inherit;
+}
+
+.oldnews h2 {
+    margin: 0;
+    font-size: 1em;
+    font-weight: normal;
+}
+
+.oldnews a {
+    display: block;
+    padding: 0.25em 0 0.25em 0.5em;
+    text-decoration: none;
+    background: #ddd;
+    color: #000;
+}
+
+.oldnews a:hover {
+    text-decoration: none;
+    background: #ccc;
+    color: #000;
+}
+
+
+div.footer {
+    clear: left;
+    text-align: center;
+}
+
+.footer h3 {
+    margin: 0;
+    padding: 0.25em 0 0.25em 0;
+    font-size: 1em;
+    font-weight: normal;
+}
+
+.footer img {
+    margin: 0.25em 0.25em 0 0.25em;
+    border-width: 0;
+    width:88px;
+    height:31px
+}
+
