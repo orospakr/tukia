@@ -11,5 +11,10 @@
 
 <%= @content_for_layout %>
 
+<% if ENV['RAILS_ENV'] == 'development' %>
+<%= debug session %>
+<%= debug params %>
+<% end %>
+
 </body>
 </html>

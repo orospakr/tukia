@@ -22,6 +22,7 @@ class NationsController < ApplicationController
       flash[:notice] = 'Nation was successfully created.'
       redirect_to :action => 'list'
     else
+      
       render :action => 'new'
     end
   end
