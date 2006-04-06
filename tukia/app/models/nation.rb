@@ -12,4 +12,16 @@ class Nation < ActiveRecord::Base
   validates_presence_of :committee_id
   validates_presence_of :participation_level
   attr_protected :created_at, :updated_at
+  
+  def self.testcaselol
+    mynation = Nation.new
+    mynation.name = "Asshatasdtdasfsfgggg"
+    mynation.committee_id = Committee.find(2)
+    mynation.participation_level = 1
+    mynation.country = Globalize::Country.find(1)
+    mynation.people << Person.find(1)
+    mynation.people << Person.find(2)
+    mynation.people << Person.find(4)
+    mynation.save!
+  end
 end

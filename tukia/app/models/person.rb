@@ -81,6 +81,12 @@ class Person < ActiveRecord::Base
   validates_confirmation_of :password
   validates_length_of :name, :within => 3..40
   validates_length_of :password, :within => 5..40
-  validates_presence_of :password_confirmation
+  
+  # AAAAARRRRGGGHHH. if this is left in, it causes the the habtm relationship with Nation
+  # fail fantastically on the other side.  I SPENT TWO WHOLE FUCKING WEEKS TRYING TO FIND THIS.
+  # " is invalid." is THE most fucking useless error message ever.  I guess the root of the problem
+  # is that ActiveRecord disagrees with the idea of validation on a value that doesn't go into the
+  # database... some of the time.
+  #validates_presence_of :password_confirmation
   
 end

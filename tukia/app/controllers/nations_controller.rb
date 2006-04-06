@@ -18,6 +18,7 @@ class NationsController < ApplicationController
 
   def create
     @nation = Nation.new(params[:nation])
+    
     if @nation.save
       flash[:notice] = 'Nation was successfully created.'
       redirect_to :action => 'list'
@@ -25,6 +26,11 @@ class NationsController < ApplicationController
       
       render :action => 'new'
     end
+  end
+  
+  def testcaselol
+    Nation.testcaselol
+    render :action => 'new'
   end
 
   def edit

@@ -19,6 +19,7 @@ class PeopleController < ApplicationController
 
   def create
     @person = Person.new(params[:person])
+    
     if @person.save
       flash[:notice] = 'Person was successfully created.'
       redirect_to :action => 'list'
@@ -34,6 +35,7 @@ class PeopleController < ApplicationController
 
   def update
     @person = Person.find(params[:id])
+    
     #this fixes the clearing-checkbox bug, as documented in the CheckboxHABTM article on the wiki.
     if !params['person']['nation_ids']
       @person.nations.clear
