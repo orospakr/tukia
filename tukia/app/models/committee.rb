@@ -28,6 +28,9 @@ class Committee < ActiveRecord::Base
   private
   def get_parents_recurse(pile)
     if (!parent.nil?)
+      if (parent == self)
+        raise "Recursive parent relationship!"
+      end
       parent.get_parents_recurse(pile)
     end
     pile << self

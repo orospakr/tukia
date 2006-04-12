@@ -1,10 +1,20 @@
-<%= error_messages_for 'committee' %>
-
 <!--[form:committee]-->
-<p><label for="committee_name"><%=h "Name".t %></label><br/>
-<%= text_field 'committee', 'name'  %></p>
+<div class="comment-box">
+<div id="errors"><%= error_messages_for 'committee' %></div>
+<table cellpadding="4" cellspacing="0" class="frm-tbl">
+<tr>
+<th><p><label for="committee_name"><%=h "Name:".t %></label></p></th>
+<td><p><%= text_field ('committee', 'name', {:type => "text"})  %></p></td>
+</tr>
 
-<p><label for="committee_parent"><%=h "Subcommittee of (of course, if this is a root committee, like ISO/IEC, then leave this blank)".t %></label><br/>
-<%= collection_select( :committee, :parent_id, @committees, :id, :get_full_name, {:include_blank => true}) %></p>
+<tr>
+<th><p><label for="committee_parent_id"><%=h "Subcommittee of:".t %></label></p></th>
+<td><p><%= collection_select( :committee, :parent_id, @committees, :id, :get_full_name, {:include_blank => true}) %></p></td>
+</tr>
+<tr id="frm-btns">
+<th></th>
+<td><%= submit_tag(@button_text, { :id => "form-submit-button", :class => "button"}) %> </td>
+</tr>
+</table>
+</div>
 <!--[eoform:committee]-->
-

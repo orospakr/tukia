@@ -9,6 +9,10 @@ class Document < ActiveRecord::Base
   # term usages
   has_and_belongs_to_many :term
   
+  # REMOTE term usages.
+  # stuff
+  # 
+  
   # this document is the source authority for...
   has_many :terms
   

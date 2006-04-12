@@ -89,4 +89,6 @@ class Person < ActiveRecord::Base
   # database... some of the time.
   #validates_presence_of :password_confirmation
   
+  
+  
 end

@@ -1,9 +1,17 @@
-<h1>Editing Committee</h1>
+<div class="post">
 
-<%= start_form_tag :action => 'update', :id => @committee %>
+<h2><%= "Editing Committee".t %></h2>
+<div class="post-content">
+<p class="meta alt"><%= "Edit a committee.  A committee quite often a subunit of a large committee.  Tukia represents
+committees as a tree structure.  Please select the already created parent committee in the \"Subcommittee\" selection below.".t %></p>
+
+<%= start_form_tag ( {:action => 'update',  :id => @committee }, {:class => "tukiaobjectform", :id => "tukiaobjectform"}) %>
+<% @button_text = "Update".t %>
   <%= render :partial => 'form' %>
-  <%= submit_tag 'Edit' %>
 <%= end_form_tag %>
+<p class="meta"><%= link_to 'Show', :action => 'show', :id => @committee %> <%= link_to 'Back', :action => 'list' %></p>
+</div>
+</div>
 
-<%= link_to 'Show', :action => 'show', :id => @committee %> |
-<%= link_to 'Back', :action => 'list' %>
+
+

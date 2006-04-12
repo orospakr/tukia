@@ -68,7 +68,7 @@ with system-wide administrative priveleges.</label><br/>
 
 <ul>
 <% Globalize::Language.find(:all, :order => "iso_639_3 ASC").each do |l| %>
-   <li><input type="checkbox" name="document[langauge_ids][]" 
+   <li><input type="checkbox" name="document[language_ids][]" 
           value="<%= l.id %>"
           <% if @document.languages.include?(l) %> checked="checked" <% end %> />
 <%= "ISO 639-2 ".t + l.iso_639_3 + ": " + l.get_name_from_code %></li>

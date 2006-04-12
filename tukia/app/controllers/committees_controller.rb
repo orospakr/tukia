@@ -1,4 +1,6 @@
 class CommitteesController < ApplicationController
+  layout "standard"
+  
   def index
     list
     render :action => 'list'
@@ -20,7 +22,7 @@ class CommitteesController < ApplicationController
   def create
     @committee = Committee.new(params[:committee])
     @committees = Committee.find(:all)
-    if @committee.save
+    if (@committee.save.nil?)
       flash[:notice] = 'Committee was successfully created.'
       redirect_to :action => 'list'
     else
