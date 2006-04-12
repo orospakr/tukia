@@ -1,6 +1,6 @@
 <!--[form:committee]-->
 <div class="comment-box">
-<div id="errors"><%= error_messages_for 'committee' %></div>
+<%= error_messages_for('committee', {:id => "errors", :header_tag => "h3"}) %>
 <table cellpadding="4" cellspacing="0" class="frm-tbl">
 <tr>
 <th><p><label for="committee_name"><%=h "Name:".t %></label></p></th>

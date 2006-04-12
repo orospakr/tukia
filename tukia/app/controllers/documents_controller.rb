@@ -20,7 +20,8 @@ class DocumentsController < ApplicationController
 
   def create
     @document = Document.new(params[:document])
-    if @document.save
+    saveresult = @document.save
+    if (saveresult || saveresult.nil?)
       flash[:notice] = 'Document was successfully created.'
       redirect_to :action => 'list'
     else
@@ -34,7 +35,8 @@ class DocumentsController < ApplicationController
 
   def update
     @document = Document.find(params[:id])
-    if @document.update_attributes(params[:document])
+    updateresult = @document.update_attributes(params[:document])
+    if (updateresult || updateresult.nil?)
       flash[:notice] = 'Document was successfully updated.'
       redirect_to :action => 'show', :id => @document
     else

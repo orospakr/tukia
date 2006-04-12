@@ -368,6 +368,19 @@ a.comment-link:hover {
 	padding: 2px 0;
 	width: 100%;
 }
+/* this stuff helps the rails field helpers actually look right-ish */
+div.fieldWithErrors {
+   	background: #c2e5ff;
+	border-top: 2px #8ccfff;
+	border-style: solid solid solid solid;
+	border-color: #ff0000;
+	padding: 2px 0;
+	width: 100%;
+}
+div.errorExplanation {
+    padding: 0 2em;
+    color: #ff0000;
+}
 #tukiaobjectform input[type=text]:focus,
 #tukiaobjectform textarea:focus {
 	background: #f5f5f5;

@@ -19,9 +19,8 @@ class PeopleController < ApplicationController
 
   def create
     @person = Person.new(params[:person])
-    
-    tempresult = @person.save
-    if tempresult
+    saveresult = @person.save
+    if (saveresult || saveresult.nil?)
       flash[:notice] = 'Person was successfully created.'
       redirect_to :action => 'list'
     else
@@ -42,7 +41,8 @@ class PeopleController < ApplicationController
       @person.nations.clear
     end
     
-    if @person.update_attributes(params[:person])
+    updateresult = @person.update_attributes(params[:person])
+    if (updateresult || updateresult.nil?)
       flash[:notice] = 'Person was successfully updated.'
       redirect_to :action => 'show', :id => @person
     else

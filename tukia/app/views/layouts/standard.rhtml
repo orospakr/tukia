@@ -26,10 +26,28 @@
 
 <div id="sidebar">
 <div id="search" class="sidebar-node">
-<p>OK SEARCH TOOL GOES HERE</p>
+<form action="/articles/search" id="sform" method="get">
+<label for="q">Search</label> <input type="text" id="q" name="q" value="" size="15" />
+<span id="search_spinner" style="display:none"></span>
+</form>
+<div id="search-results"></div>
 </div>
 
-<p>OK SIDEBAR COMPONENT GOES HERE</p>
+      
+      <div class="sidebar-node">
+        <h3>Resources</h3>
+
+<ul>
+  <li><a href="/committees" title="Committees">Committees</a></li>
+  <li><a href="/documents" title="Documents">Documents</a></li>
+  <li><a href="/terms" title="Terms and Definitions">Terms and Definitions</a></li>
+  <li><a href="/nations" title="National Bodies/Liason">National Bodies/Liason</a></li>
+  <li><a href="/people" title="Directory">Directory</a></li>
+</ul>
+
+
+      </div>
+
 </div><!-- #sidebar -->
 
 <div id="footer">

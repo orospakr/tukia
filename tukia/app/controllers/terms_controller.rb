@@ -18,7 +18,8 @@ class TermsController < ApplicationController
 
   def create
     @term = Term.new(params[:term])
-    if @term.save
+    saveresult = @term.save
+    if (saveresult || saveresult.nil?)
       flash[:notice] = 'Term was successfully created.'
       redirect_to :action => 'list'
     else
@@ -32,7 +33,8 @@ class TermsController < ApplicationController
 
   def update
     @term = Term.find(params[:id])
-    if @term.update_attributes(params[:term])
+    updateresult = @term.update_attributes(params[:term])
+    if (updateresult || updateresult.nil?)
       flash[:notice] = 'Term was successfully updated.'
       redirect_to :action => 'show', :id => @term
     else

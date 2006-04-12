@@ -22,7 +22,8 @@ class CommitteesController < ApplicationController
   def create
     @committee = Committee.new(params[:committee])
     @committees = Committee.find(:all)
-    if (@committee.save.nil?)
+    saveresult = @committee.save
+    if (saveresult || saveresult.nil? )
       flash[:notice] = 'Committee was successfully created.'
       redirect_to :action => 'list'
     else
@@ -37,7 +38,8 @@ class CommitteesController < ApplicationController
 
   def update
     @committee = Committee.find(params[:id])
-    if @committee.update_attributes(params[:committee])
+    updateresult = @committee.update_attributes(params[:committee])
+    if (updateresult || updateresult.nil?)
       flash[:notice] = 'Committee was successfully updated.'
       redirect_to :action => 'show', :id => @committee
     else
