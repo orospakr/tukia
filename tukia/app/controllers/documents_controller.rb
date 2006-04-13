@@ -1,4 +1,6 @@
 class DocumentsController < ApplicationController
+  layout "standard"
+  
   def index
     list
     render :action => 'list'

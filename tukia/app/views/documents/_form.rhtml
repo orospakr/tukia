@@ -1,71 +1,100 @@
-<%= error_messages_for 'document' %>
-
 <!--[form:document]-->
-
-<p><label for="document_title">Title</label><br/>
-<%= text_field 'document', 'title'  %></p>
-
+<div class="comment-box">
+<%= error_messages_for('document', {:id => "errors", :header_tag => "h3"}) %>
+<table cellpadding="4" cellspacing="0" class="frm-tbl">
 <p>TODO OWNING COMMITTEE SELECTION GOES HERE. when this is set, autocalculate a suggested
 Register number.  Also, I should put a before_create validation callback thingie in the Document
 model to check whether the register number ID is unique to that committee.</p>
 <p>I should probably make the error message displayed if that validation check fails suggest a concurrent user
 having taken that register number already.</p>
 
-<p><label for="document_committee_id"><%=h "Owning Committee (leave this blank if External)".t %></label><br/>
-<%= collection_select( :document, :committee_id, (@session[:user]).find_allowed_committees, :id, :get_full_name, {:include_blank => true}) %></p>
+<tr>
+<th><p><label for="document_title">Title</label></p></th>
+<td><p><%= text_field 'document', 'title'  %></p></td>
+</tr>
+
+<tr>
+<th><p><label for="document_committee_id"><%=h "Owning Committee (leave this blank if External)".t %></label></p></th>
+<td><p><%= collection_select( :document, :committee_id, (@session[:user]).find_allowed_committees, :id, :get_full_name, {:include_blank => true}) %></p></td>
+</tr>
 
 <%= observe_field(:document_committee_id,
                   :frequency => 0.5,
                   :update    => :document_register_number,
-                  :url       => { :action => :ajax_suggest_register_number }) %>
+                  :url       => { :action => :ajax_suggest_register_number }) %>         
 
-<p><label for="document_register_number">Register number</label><br/>
-<%= text_area 'document', 'register_number'  %></p>
+<tr>
+<th><p><label for="document_register_number">Register number</label></p></th>
+<td><p><%= text_area 'document', 'register_number'  %></p></td>
+</tr>
 
+<tr>
+<th><p><label for="document_external">External (Documents that are marked as External may only be inserted by persons
+with system-wide administrative priveleges.</label></p></th>
+<td><p><%= check_box ( :document, :external) %></p></td>
+</tr>
 
-<p><label for="document_external">External (Documents that are marked as External may only be inserted by persons
-with system-wide administrative priveleges.</label><br/>
-<%= check_box ( :document, :external) %></p>
+<tr>
+<th><p><label for="document_authorexternal">Author's name, if this document was not written by someone in the Tukia database</label></p></th>
+<td><p><%= text_field 'document', 'authorexternal'  %></p></td>
+</tr>
 
-<div id="external_fields" style="background-color:#eee;">
-<p><label for="document_authorexternal">Author's name, if this document was not written by someone in the Tukia database</label><br/>
-<%= text_field 'document', 'authorexternal'  %></p>
+<tr>
+<th><p><label for="document_externalurl">URL, if this document is from an external source</label></p></th>
+<td><p><%= text_field 'document', 'externalurl'  %></p></td>
+</tr>
 
-<p><label for="document_externalurl">URL, if this document is from an external source</label><br/>
-<%= text_field 'document', 'externalurl'  %></p>
+<tr>
+<th><p><label for="document_externalfullname">Full name/title of this document, if from an external source</label></p></th>
+<td><p><%= text_field 'document', 'externalfullname' %></p></td>
+</tr>
 
-<p><label for="document_externalfullname">Full name/title of this document, if from an external source</label><br/>
-<%= text_field 'document', 'externalfullname'  %></p>
-</div>
+<tr>
+<th><p><label for="document_statusiteration">Status Iteration</label></p></th>
+<td><p><%= text_field 'document', 'statusiteration'  %></p></td>
+</tr>
 
-<p><label for="document_statusiteration">Status Iteration</label><br/>
-<%= text_field 'document', 'statusiteration'  %></p>
+<tr>
+<th><p><label for="document_published_on">Published on</label></p></th>
+<td><p><%= date_select 'document', 'published_on'  %></p></td>
+</tr>
 
-<p><label for="document_published_on">Published on</label><br/>
-<%= date_select 'document', 'published_on'  %></p>
+<tr>
+<th><p><label for="document_edition">Edition</label></p></th>
+<td><p><%= text_field 'document', 'edition'  %></p></td>
+</tr>
 
-<p><label for="document_edition">Edition</label><br/>
-<%= text_field 'document', 'edition'  %></p>
+<tr>
+<th><p><label for="document_isbn">ISBN</label></p></th>
+<td><p><%= text_field 'document', 'isbn'  %></p></td>
+</tr>
 
-<p><label for="document_isbn">ISBN</label><br/>
-<%= text_field 'document', 'isbn'  %></p>
+<tr>
+<th><p><label for="document_issn">ISSN</label></p></th>
+<td><p><%= text_field 'document', 'issn'  %></p></td>
+</tr>
 
-<p><label for="document_issn">ISSN</label><br/>
-<%= text_field 'document', 'issn'  %></p>
+<tr>
+<th><p><label for="document_status_id"><%=h "Status".t %></label></p></th>
+<td><p><%= collection_select( :document, :status_id, Status.find(:all), :id, :name) %></p></td>
+</tr>
 
+<tr>
+<th><p><label for="document_upload"><%=h "Document File in a word processing/typesetting format
+such as OpenDocument (.odt, .ods, and .odp), Portable Document Format (.pdf), Postscript
+(.ps or .ps.gz), Scalable Vector Graphics (.svg), Microsoft Word (.doc), Corel WordPerfect
+(.wpd), or TeX (.textxt).".t %></label></p></th>
+<td><p><%= file_field(:document, :upload) %></p></td>
+</tr>
 
-<p><label for="document_status"><%=h "Status".t %></label><br/>
-<%= collection_select( :document, :status_id, Status.find(:all), :id, :name) %></p>
+<tr>
+<th><p><label for="document_pdfupload"><%= h "A seperate PDF equivalent of this document. Optional.".t %></label></p></th>
+<td><p><%= file_field(:document, :pdfupload) %></p></td>
+</tr>
 
-<p><label for="document_upload"><%=h "Document File in a word processing/typesetting format such as OpenDocument (.odt, .ods, and .odp), Portable Document Format (.pdf), Postscript (.ps or .ps.gz), Scalable Vector Graphics (.svg), Microsoft Word (.doc), Corel WordPerfect (.wpd), or TeX (.textxt).".t %></label></br>
-<%= file_field(:document, :upload) %></p>
-
-<p><label for="document_pdfupload"><%= h "A seperate PDF equivalent of this document. Optional.".t %></label><br/>
-<%= file_field(:document, :pdfupload) %></p>
-
-
-<p>Languages used in this Document</p>
-
+<tr>
+<th><p><label><%= h "Languages used:".t %></label></p></th>
+<td><p>
 <ul>
 <% Globalize::Language.find(:all, :order => "iso_639_3 ASC").each do |l| %>
    <li><input type="checkbox" name="document[language_ids][]" 
@@ -74,6 +103,14 @@ with system-wide administrative priveleges.</label><br/>
 <%= "ISO 639-2 ".t + l.iso_639_3 + ": " + l.get_name_from_code %></li>
 <% end %>
 </ul>
+</p></td>
+</tr>
 
+<tr id="frm-btns">
+<th></th>
+<td><%= submit_tag(@button_text, { :id => "form-submit-button", :class => "button"}) %> </td>
+</tr>
+</table>
+</div>
 <!--[eoform:document]-->
 

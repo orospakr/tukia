@@ -1,9 +1,22 @@
-<h1>Editing Document</h1>
 
-<%= start_form_tag :action => 'update', :id => @document, :multipart => true %>
+<div class="post">
+
+<h2><%= "Editing Document".t %></h2>
+<div class="post-content">
+<p class="meta alt"><%= "Edit a document.  A document object generally describes a word processing (or perhaps a spreadsheet or
+presentation) document.  They are owned by a Committee, and they will be listed in that Committee's Document Register.  (TODO) If you do not supply the optional
+PDF document, Tukia will, for certain supported document formats, automatically create a PDF.  NB: not all document format features may be
+accommodated by this process.".t %></p>
+
+<%= start_form_tag( :action => 'update', :id => @document, :multipart => true, {:class => "tukiaobjectform", :id => "tukiaobjectform"}) %>
+<% @button_text = "Update".t %>
   <%= render :partial => 'form' %>
-  <%= submit_tag 'Edit' %>
 <%= end_form_tag %>
 
-<%= link_to 'Show', :action => 'show', :id => @document %> |
-<%= link_to 'Back', :action => 'list' %>
+<p class="meta"><%= link_to 'Show', :action => 'show', :id => @document %> |
+<%= link_to 'Back', :action => 'list' %></p>
+</div>
+</div>
+
+
+

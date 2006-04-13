@@ -361,6 +361,21 @@ a.comment-link:hover {
 #committee_parent_id,
 #comment_url,
 #comment_email,
+#document_title,
+#document_committee_id,
+#document_register_number,
+#document_external,
+#document_authorexternal,
+#document_externalurl,
+#document_externalfullname,
+#document_statusiteration,
+#document_published_on,
+#document_edition,
+#document_isbn,
+#document_issn,
+#document_status_id,
+#document_upload,
+#document_pdfupload,
 #comment_body {
 	background: #c2e5ff;
 	border-top: 2px #8ccfff;
