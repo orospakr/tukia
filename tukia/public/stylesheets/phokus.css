@@ -28,14 +28,14 @@ body {
 #page {
 	font-size: 1em;
 	margin: 0 auto;
-	width: 758px;
+	width: 982px;
 }
 #header {
 	background: #1381d4 url(../../images/theme/hd-bg-02.gif) no-repeat;
 	height: 168px;
 	margin: 0 4px;
 	position: relative;
-	width: 750px;
+	width: 974px;
 }
 #main {
 	background: #fff url(../../images/theme/mn-bg.gif) repeat-y;
@@ -43,7 +43,7 @@ body {
 	float: right;
 	margin: 0 4px 0 0;
 	padding: 0;
-	width: 551px;
+	width: 775px;
 }
 #sidebar {
 	background: #696969 url(../../images/theme/sb-bg.gif) repeat-y;
@@ -61,7 +61,7 @@ body {
 	font-size: .8em;
 	margin: 0 4px 0 0;
 	text-align: center;
-	width: 551px;
+	width: 775px;
 }
 .layout-002 #main {
 	float: left;
@@ -170,7 +170,7 @@ pre {
 	border: 1px solid #c2e5ff;
 	overflow: hidden;
 	padding: 10px;
-	width: 479px;
+	width: 703px;
 }
 input,
 textarea {
@@ -203,14 +203,14 @@ h1 {
 	color: #444;
 	padding: 0 25px 9px;
 	position: relative;
-	width: 501px;
+	width: 725px;
 }
 h2 {
 	background: #0a78cb url(../../images/theme/mn-top.gif) no-repeat 0 0;
 	font-size: 2.2em;
 	margin: 0 0 0 -25px;
 	padding: 15px 34px 12px 20px;
-	width: 497px;
+	width: 721px;
 }
 .auth,
 .meta,
@@ -221,7 +221,7 @@ h2 {
 	margin: 0 0 15px -25px;
 	padding: 10px 25px 10px 25px;
 	position: relative;
-	width: 501px;
+	width: 725px;
 }
 .meta {
 	background: #c2e5ff url(../../images/theme/meta-bottom.gif) no-repeat 0 100%;
@@ -261,7 +261,7 @@ h2 {
 	list-style: none;
 	margin: 0 0 10px -16px;
 	padding: 0;
-	width: 533px;
+	width: 757px;
 }
 #commentList li {
 	list-style: none;
@@ -269,7 +269,7 @@ h2 {
 	overflow: hidden;
 	padding: 5px 15px;
 	position: relative;
-	width: 503px;
+	width: 727px;
 }
 #commentList li.alt {
 	background-color: #f5f5f5;
@@ -282,7 +282,7 @@ h2 {
 	margin: 0 0 0 -15px;
 	padding: 6px 40px;
 	position: relative;
-	width: 453px;
+	width: 677px;
 }
 .author-details cite {
 	font-style: normal;
@@ -308,7 +308,7 @@ a.comment-link:hover {
 #tukiaobjectform {
 	margin: 0 0 0 -16px;
 	padding: 0;
-	width: 533px;
+	width: 757px;
 }
 .frm-tbl small {
 	font-size: .8em;
@@ -316,7 +316,7 @@ a.comment-link:hover {
 .frm-tbl {
 	margin: 0 0 10px;
 	padding: 0;
-	width: 533px;
+	width: 757px;
 }
 .frm-tbl td,
 .frm-tbl th {

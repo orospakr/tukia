@@ -9,12 +9,12 @@ model to check whether the register number ID is unique to that committee.</p>
 having taken that register number already.</p>
 
 <tr>
-<th><p><label for="document_title">Title</label></p></th>
+<th><p><label for="document_title">Title:</label></p></th>
 <td><p><%= text_field 'document', 'title'  %></p></td>
 </tr>
 
 <tr>
-<th><p><label for="document_committee_id"><%=h "Owning Committee (leave this blank if External)".t %></label></p></th>
+<th><p><label for="document_committee_id"><%=h "Owning Committee:".t %></label></p></th>
 <td><p><%= collection_select( :document, :committee_id, (@session[:user]).find_allowed_committees, :id, :get_full_name, {:include_blank => true}) %></p></td>
 </tr>
 
@@ -24,71 +24,67 @@ having taken that register number already.</p>
                   :url       => { :action => :ajax_suggest_register_number }) %>         
 
 <tr>
-<th><p><label for="document_register_number">Register number</label></p></th>
+<th><p><label for="document_register_number">Register number:</label></p></th>
 <td><p><%= text_area 'document', 'register_number'  %></p></td>
 </tr>
 
 <tr>
-<th><p><label for="document_external">External (Documents that are marked as External may only be inserted by persons
-with system-wide administrative priveleges.</label></p></th>
+<th><p><label for="document_external">External:</label></p></th>
 <td><p><%= check_box ( :document, :external) %></p></td>
 </tr>
 
 <tr>
-<th><p><label for="document_authorexternal">Author's name, if this document was not written by someone in the Tukia database</label></p></th>
+<th><p><label for="document_authorexternal">Author's name:</label></p></th>
 <td><p><%= text_field 'document', 'authorexternal'  %></p></td>
 </tr>
 
 <tr>
-<th><p><label for="document_externalurl">URL, if this document is from an external source</label></p></th>
+<th><p><label for="document_externalurl">URL:</label></p></th>
 <td><p><%= text_field 'document', 'externalurl'  %></p></td>
 </tr>
 
 <tr>
-<th><p><label for="document_externalfullname">Full name/title of this document, if from an external source</label></p></th>
+<th><p><label for="document_externalfullname">Full name/title of this document:</label></p></th>
 <td><p><%= text_field 'document', 'externalfullname' %></p></td>
 </tr>
 
 <tr>
-<th><p><label for="document_statusiteration">Status Iteration</label></p></th>
+<th><p><label for="document_statusiteration">Status Iteration:</label></p></th>
 <td><p><%= text_field 'document', 'statusiteration'  %></p></td>
 </tr>
 
 <tr>
-<th><p><label for="document_published_on">Published on</label></p></th>
+<th><p><label for="document_published_on">Published On:</label></p></th>
 <td><p><%= date_select 'document', 'published_on'  %></p></td>
 </tr>
 
 <tr>
-<th><p><label for="document_edition">Edition</label></p></th>
+<th><p><label for="document_edition">Edition:</label></p></th>
 <td><p><%= text_field 'document', 'edition'  %></p></td>
 </tr>
 
 <tr>
-<th><p><label for="document_isbn">ISBN</label></p></th>
+<th><p><label for="document_isbn">ISBN:</label></p></th>
 <td><p><%= text_field 'document', 'isbn'  %></p></td>
 </tr>
 
 <tr>
-<th><p><label for="document_issn">ISSN</label></p></th>
+<th><p><label for="document_issn">ISSN:</label></p></th>
 <td><p><%= text_field 'document', 'issn'  %></p></td>
 </tr>
 
 <tr>
-<th><p><label for="document_status_id"><%=h "Status".t %></label></p></th>
+<th><p><label for="document_status_id"><%=h "Status:".t %></label></p></th>
 <td><p><%= collection_select( :document, :status_id, Status.find(:all), :id, :name) %></p></td>
 </tr>
 
 <tr>
-<th><p><label for="document_upload"><%=h "Document File in a word processing/typesetting format
-such as OpenDocument (.odt, .ods, and .odp), Portable Document Format (.pdf), Postscript
-(.ps or .ps.gz), Scalable Vector Graphics (.svg), Microsoft Word (.doc), Corel WordPerfect
-(.wpd), or TeX (.textxt).".t %></label></p></th>
+<th><p><label for="document_upload"><%=h "Document File in a word processing/typesetting format:".t %></label></p></th>
 <td><p><%= file_field(:document, :upload) %></p></td>
 </tr>
 
 <tr>
-<th><p><label for="document_pdfupload"><%= h "A seperate PDF equivalent of this document. Optional.".t %></label></p></th>
+<th><p><label for="document_pdfupload"><%= h "An optional PDF equivalent of this document:".t %></label></p></th>
 <td><p><%= file_field(:document, :pdfupload) %></p></td>
 </tr>
 
