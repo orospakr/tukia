@@ -1,19 +1,32 @@
-<%= error_messages_for 'nation' %>
 
 <!--[form:nation]-->
-<p><label for="nation_name">Name</label><br/>
-<%= text_field 'nation', 'name'  %></p>
+<div class="comment-box">
+<%= error_messages_for('nation', {:id => "errors", :header_tag => "h3"}) %>
+<table cellpadding="4" cellspacing="0" class="frm-tbl">
 
-<p><label for="nation_globalize">System Country</label><br/>
-<%= collection_select( :nation, :country_id, Globalize::Country.find(:all), :id, :english_name )%></p>
+<tr>
+<th><p><label for="nation_name">Name:</label></p></th>
+<td><p><%= text_field 'nation', 'name'  %></p></td>
+</tr>
 
-<p><label for="nation_committee">Committee (that this National Body is a delegation to)</label><br/>
-<%= collection_select( :nation, :committee_id, Committee.find(:all), :id, :get_full_name) %></p>
+<tr>
+<th><p><label for="nation_country_id">System Country:</label></p></th>
+<td><p><%= collection_select( :nation, :country_id, Globalize::Country.find(:all), :id, :english_name )%></p></td>
+</tr>
 
-<p><label for="nation_participation_level"><%=h "Particpation Level".t %></label><br/>
-<%= select( :nation, :participation_level, Nation.participation_levels) %></p>
+<tr>
+<th><p><label for="nation_committee_id">Delegation To:</label></p></th>
+<td><p><%= collection_select( :nation, :committee_id, Committee.find(:all), :id, :get_full_name) %></p></td>
+</tr>
 
-<p>People</p>
+<tr>
+<th><p><label for="nation_participation_level"><%=h "Particpation Level:".t %></label></p></th>
+<td><p><%= select( :nation, :participation_level, Nation.participation_levels) %></p></td>
+</tr>
+
+<tr>
+<th><p><label>People:</label></p></th>
+<td><p>
 <ul>
 <% Person.find(:all).each do |p| %>
 
@@ -23,6 +36,14 @@
 <%= p.givenname + " " + p.surname %></li>
 <% end %>
 </ul>
+</p>
+</td>
+</tr>
 
+<tr id="frm-btns">
+<th></th>
+<td><%= submit_tag(@button_text, { :id => "form-submit-button", :class => "button"}) %> </td>
+</tr>
+</table>
+</div>
 <!--[eoform:nation]-->
-

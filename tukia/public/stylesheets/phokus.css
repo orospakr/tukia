@@ -376,6 +376,10 @@ a.comment-link:hover {
 #document_status_id,
 #document_upload,
 #document_pdfupload,
+#nation_name,
+#nation_country_id,
+#nation_committee_id,
+#nation_participation_level,
 #comment_body {
 	background: #c2e5ff;
 	border-top: 2px #8ccfff;

@@ -1,8 +1,22 @@
+<div class="post">
+
+<h2><%= "Committee: ".t + @committee.get_full_name  %></h2>
+<div class="post-content">
+<p class="meta alt"><%= "View a committee.  A committee is quite often a subunit of a large committee.  Tukia represents
+committees as a tree structure.  Please select the already created parent committee in the \"Subcommittee\" selection below.".t %></p>
+
+
 <% for column in Committee.content_columns %>
 <p>
   <b><%= column.human_name %>:</b> <%=h @committee.send(column.name) %>
 </p>
 <% end %>
 
-<%= link_to 'Edit', :action => 'edit', :id => @committee %> |
+<p class="meta">
+<%= link_to 'Edit', :action => 'edit', :id => @committee %>
 <%= link_to 'Back', :action => 'list' %>
+</p>
+
+</div>
+
+</div>

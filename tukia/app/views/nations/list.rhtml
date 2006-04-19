@@ -1,11 +1,14 @@
-<h1>National Bodies/Liason Organisations</h1>
+<div class="post">
+
+<h2><%= "National Bodies/Liason Organisations".t %></h2>
+<div class="post-content">
+<p class="auth"><%= "Listing of Nations. blah blah blah.".t %></p>
 
 <table>
   <tr>
   <% for column in Nation.content_columns %>
     <th><%= column.human_name %></th>
   <% end %>
-    <th><%=h "System Locale".t %>
   </tr>
   
 <% for nation in @nations %>
@@ -13,19 +16,20 @@
   <% for column in Nation.content_columns %>
     <td><%=h nation.send(column.name) %></td>
   <% end %>
-    <td>
-      <%=h nation.country.english_name %>
-    </td>
-    <td><%= link_to 'Show', :action => 'show', :id => nation %></td>
-    <td><%= link_to 'Edit', :action => 'edit', :id => nation %></td>
-    <td><%= link_to 'Destroy', { :action => 'destroy', :id => nation }, :confirm => 'Are you sure?' %></td>
+    <td><%= link_to 'Show'.t, :action => 'show', :id => nation %></td>
+    <td><%= link_to 'Edit'.t, :action => 'edit', :id => nation %></td>
+    <td><%= link_to 'Destroy'.t, { :action => 'destroy', :id => nation }, :confirm => 'Are you sure?' %></td>
   </tr>
 <% end %>
 </table>
-
 <%= link_to 'Previous page', { :page => @nation_pages.current.previous } if @nation_pages.current.previous %>
 <%= link_to 'Next page', { :page => @nation_pages.current.next } if @nation_pages.current.next %> 
 
+
 <br />
 
-<%= link_to 'New nation', :action => 'new' %>
+<p class="meta"><%= link_to 'New nation', :action => 'new' %></p>
+</div>
+</div>
+
+

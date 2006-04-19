@@ -1,43 +1,43 @@
 <%= error_messages_for 'person' %>
 
 <!--[form:person]-->
-<p><label for="person_name">Login Name</label><br/>
+<p><label for="person_name">Login Name:</label><br/>
 <%= text_field 'person', 'name'  %></p>
 
-<p><label for="person_givenname">Given Name</label><br/>
+<p><label for="person_givenname">Given Name:</label><br/>
 <%= text_field 'person', 'givenname'  %></p>
 
-<p><label for="person_surname">Surname</label><br/>
+<p><label for="person_surname">Surname:</label><br/>
 <%= text_field 'person', 'surname'  %></p>
 
-<p><label for="person_password">Password</label><br/>
+<p><label for="person_password">Password:</label><br/>
 <%= password_field 'person', 'password'  %></p>
 
-<p><label for="person_password_confirmation">Password Confirmation</label><br/>
+<p><label for="person_password_confirmation">Password Confirmation:</label><br/>
 <%= password_field 'person', 'password_confirmation'  %></p>
 
-<p><label for="person_email">Email Address</label><br/>
+<p><label for="person_email">Email Address:</label><br/>
 <%= text_field 'person', 'email'  %></p>
 
-<p><label for="person_time_zone">Time Zone</label><br/>
+<p><label for="person_time_zone">Time Zone:</label><br/>
 <%= time_zone_select 'person', 'time_zone', TZInfo::Timezone.all.sort, :model => TZInfo::Timezone %></p>
 
-<p><label for="person_url">URL</label><br/>
+<p><label for="person_url">URL:</label><br/>
 <%= text_field 'person', 'url'  %></p>
 
-<p><label for="person_phone">Phone Number (include all digits please)</label><br/>
+<p><label for="person_phone">Phone Number (include all digits please):</label><br/>
 <%= text_field 'person', 'phone'  %></p>
 
-<p><label for="person_organisation">Organisation/Company</label><br/>
+<p><label for="person_organisation">Organisation/Company:</label><br/>
 <%= text_field 'person', 'organisation'  %></p>
 
-<p><label for="person_enabled">Enabled? (if disabled, user will be unable to login)</label><br/>
+<p><label for="person_enabled">Enabled? (if disabled, user will be unable to login):</label><br/>
 <%= check_box ( :person, :enabled) %></p>
 
-<p><label for="person_admin">Administrator? (this is essentially god mode.  It is really meant only for site administrators)</label><br/>
+<p><label for="person_admin">Administrator:</label><br/>
 <%= check_box ( :person, :admin) %></p>
 
-<p><label for="person_language"><%=h "Preferred Language for UI".t %></label><br/>
+<p><label for="person_language"><%=h "Preferred UI Language:".t %></label><br/>
 <%= collection_select( :person, :language_id, Globalize::Language.find(:all, :order => "iso_639_3 ASC"), :id, :english_name) %></p>
 
 <p>National Bodies</p>
