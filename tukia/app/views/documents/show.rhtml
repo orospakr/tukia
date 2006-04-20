@@ -1,8 +1,22 @@
+<div class="post">
+
+<h2><%= "Document: ".t + @document.name %></h2>
+<div class="post-content">
+<p class="meta alt"><%= "View a document.".t %></p>
+
+
 <% for column in Document.content_columns %>
 <p>
   <b><%= column.human_name %>:</b> <%=h @document.send(column.name) %>
 </p>
 <% end %>
 
+<p class="meta">
 <%= link_to 'Edit', :action => 'edit', :id => @document %> |
 <%= link_to 'Back', :action => 'list' %>
+</p>
+
+</div>
+
+</div>
+

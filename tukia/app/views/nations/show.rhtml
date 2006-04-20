@@ -1,3 +1,11 @@
+
+<div class="post">
+
+<h2><%= "National Body/Liason: ".t + @nation.name + " to " + @nation.committee.get_full_name  %></h2>
+<div class="post-content">
+<p class="meta alt"><%= "View a nation.".t %></p>
+
+
 <% for column in Nation.content_columns %>
 <p>
   <b><%= column.human_name %>:</b> <%=h @nation.send(column.name) %>
@@ -5,5 +13,11 @@
 <% end %>
 <p><b><%= "System Locale:".t %></b><%=h @nation.country.english_name.t %></p>
 
+<p class="meta">
 <%= link_to 'Edit', :action => 'edit', :id => @nation %> |
 <%= link_to 'Back', :action => 'list' %>
+</p>
+
+</div>
+
+</div>
