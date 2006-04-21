@@ -65,7 +65,7 @@ module LoginSystem
   # example use :
   # a popup window might just close itself for instance
   def access_denied
-    redirect_to :controller=>"/account", :action =>"login"
+    redirect_to :controller=>"people", :action =>"login"
   end  
   
   # store current uri in  the session.

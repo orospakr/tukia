@@ -1,4 +1,8 @@
-<h1>Listing terms</h1>
+<div class="post">
+
+<h2><%= "Terms".t %></h2>
+<div class="post-content">
+<p class="auth"><%= "Listing of Terms. blah blah blah.".t %></p>
 
 <table>
   <tr>
@@ -18,10 +22,15 @@
   </tr>
 <% end %>
 </table>
-
 <%= link_to 'Previous page', { :page => @term_pages.current.previous } if @term_pages.current.previous %>
 <%= link_to 'Next page', { :page => @term_pages.current.next } if @term_pages.current.next %> 
 
+
 <br />
 
-<%= link_to 'New term', :action => 'new' %>
+<p class="meta"><%= link_to 'New term', :action => 'new' %></p>
+</div>
+</div>
+
+
+

@@ -1,5 +1,6 @@
 class PeopleController < ApplicationController
   layout "standard"
+  before_filter :login_required, :except => [ :login ]
   
   def index
     list

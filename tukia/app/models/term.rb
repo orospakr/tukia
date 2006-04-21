@@ -21,4 +21,5 @@ class Term < ActiveRecord::Base
   validates_presence_of :document_id
   validates_presence_of :document_section
   validates_presence_of :synonmic_id
+  validates_presence_of :language_id
 end

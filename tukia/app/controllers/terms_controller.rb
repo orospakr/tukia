@@ -1,5 +1,6 @@
 class TermsController < ApplicationController
   layout "standard"
+  before_filter :login_required
   
   def index
     list
