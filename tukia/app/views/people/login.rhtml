@@ -1,22 +1,29 @@
-<%= start_form_tag :action=> "login" %>
-
-<div title="Account login" id="loginform" class="form">
-    <h3>Please login</h3>
-    
-    <% if @flash['notice'] %>
-      <div id="message"><%= @flash['notice'] %></div>
-    <% end %>
-
-    <label for="user_login">Login:</label><br/>
-    <input type="text" name="user_login" id="user_login" size="30" value=""/><br/>
-
-    <label for="user_password">Password:</label><br/>
-    <input type="password" name="user_password" id="user_password" size="30"/>
-
-    <br/>
-    <input type="submit" name="login" value="Login &#187;" class="primary" />
-
+<div class="post">
+	<h2><%= "Login".t %></h2>
+	<div class="post-content">
+		<p class="meta alt"><%= "Login to Tukia.".t %></p>
+		<%= start_form_tag({:action=> "login"}, {:class => "tukiaobjectform", :id => "tukiaobjectform" } )%>
+		<div class="comment-box">
+		    <% if @flash['notice'] %>
+		      <h3><%= @flash['notice'] %></h3>
+		    <% end %>
+		    <table cellpadding="4" cellspacing="0" class="frm-tbl">
+			    <tr>
+					<th><p><label for="user_login">Login:</label></p></th>
+					<td><p><input type="text" name="user_login" id="user_login" size="30" value=""/></p></td>
+				</tr>
+			
+			    <tr>
+					<th><p><label for="user_password">Password:</label></p></th>
+					<td><p><input type="password" name="user_password" id="user_password" size="30"/></p></td>
+				</tr>
+			    
+			    <tr id="frm-btns">
+					<th></th>
+					<td><%= submit_tag("Login", { :id => "form-submit-button", :class => "button"}) %> </td>
+				</tr>
+			</table>
+		</div>
+		<%= end_form_tag %>
+	</div>
 </div>
-
-<%= end_form_tag %>
-

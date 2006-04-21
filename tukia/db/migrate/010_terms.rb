@@ -6,8 +6,6 @@ class Terms < ActiveRecord::Migration
       table.column :term, :string
       table.column :definition, :text
       table.column :gender_id, :integer
-      table.column :copyright, :string
-      table.column :licence, :string
       table.column :person_id, :integer
       table.column :created_at, :datetime
       table.column :updated_at, :datetime

@@ -1,8 +1,24 @@
+
+
+
+<div class="post">
+
+<h2><%= "Person: ".t + @person.givenname + " " + @person.surname  %></h2>
+<div class="post-content">
+<p class="meta alt"><%= "View a person.".t %></p>
+
+
 <% for column in Person.content_columns %>
 <p>
   <b><%= column.human_name %>:</b> <%=h @person.send(column.name) %>
 </p>
 <% end %>
 
+<p class="meta">
 <%= link_to 'Edit', :action => 'edit', :id => @person %> |
 <%= link_to 'Back', :action => 'list' %>
+</p>
+
+</div>
+
+</div>

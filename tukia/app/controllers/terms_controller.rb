@@ -1,4 +1,6 @@
 class TermsController < ApplicationController
+  layout "standard"
+  
   def index
     list
     render :action => 'list'
@@ -14,10 +16,12 @@ class TermsController < ApplicationController
 
   def new
     @term = Term.new
+    @term.deleted = false
   end
 
   def create
     @term = Term.new(params[:term])
+    # TODO SET @term.person = to THE LOGGED IN PERSION
     saveresult = @term.save
     if (saveresult || saveresult.nil?)
       flash[:notice] = 'Term was successfully created.'

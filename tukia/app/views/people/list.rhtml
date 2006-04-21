@@ -1,11 +1,15 @@
-<h1>Listing people</h1>
+
+<div class="post">
+
+<h2><%= "People".t %></h2>
+<div class="post-content">
+<p class="auth"><%= "Listing of People. blah blah blah.".t %></p>
 
 <table>
   <tr>
   <% for column in Person.content_columns %>
     <th><%= column.human_name %></th>
   <% end %>
-  <th>
   </tr>
   
 <% for person in @people %>
@@ -19,10 +23,15 @@
   </tr>
 <% end %>
 </table>
-
 <%= link_to 'Previous page', { :page => @person_pages.current.previous } if @person_pages.current.previous %>
 <%= link_to 'Next page', { :page => @person_pages.current.next } if @person_pages.current.next %> 
 
+
 <br />
 
-<%= link_to 'New person', :action => 'new' %>
+<p class="meta"><%= link_to 'New person', :action => 'new' %></p>
+</div>
+</div>
+
+
+

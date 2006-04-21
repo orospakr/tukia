@@ -1,25 +1,47 @@
-<%= error_messages_for 'term' %>
-
 <!--[form:term]-->
-<p><label for="term_term">Term</label><br/>
-<%= text_field 'term', 'term'  %></p>
+<div class="comment-box">
+<%= error_messages_for('term', {:id => "errors", :header_tag => "h3"}) %>
+<table cellpadding="4" cellspacing="0" class="frm-tbl">
 
-<p><label for="term_definition">Definition</label><br/>
-<%= text_area 'term', 'definition'  %></p>
+<tr>
+<th><p><label for="term_document_id"><%=h "Source Authority:".t %></p></th>
+<td><p><%= collection_select( :term, :document_id, Document.find(:all), :id, :title) %></p></td>
+</tr>
 
-<p><label for="term_copyright">Copyright</label><br/>
-<%= text_field 'term', 'copyright'  %></p>
+<tr>
+<th><p><label for="term_document_section">SA Section:</label></p></th>
+<td><p><%= text_field 'term', 'document_section'  %></p></td>
+</tr>
 
-<p><label for="term_licence">Licence</label><br/>
-<%= text_field 'term', 'licence'  %></p>
+<tr>
+<th><p><label for="term_synonmic_id">Synonmic Group (needs ajaxy search thingy):</label></p></th>
+<td><p><%= collection_select( :term, :synonmic_id, Synonmic.find(:all), :id, :id) %></p></td>
+</tr>
 
-<p><label for="term_deleted">Deleted</label><br/>
-<select id="term_deleted" name="term[deleted]"><option value="false">False</option><option value="true">True</option></select></p>
+<tr>
+<th><p><label for="term_language"><%=h "Language:".t %></p></th>
+<td><p><%= collection_select( :term, :language_id, Globalize::Language.find(:all, :order => "iso_639_3 ASC"), :id, :english_name) %></p></td>
+</tr>
 
-<p><label for="term_comments">Comments</label><br/>
-<%= text_area 'term', 'comments'  %></p>
+<tr>
+<th><p><label for="term_term">Term:</label></p></th>
+<td><p><%= text_field 'term', 'term'  %></p></td>
+</tr>
 
-<p><label for="term_document_section">Document section</label><br/>
-<%= text_field 'term', 'document_section'  %></p>
+<tr>
+<th><p><label for="term_definition">Definition:</label></p></th>
+<td><p><%= text_area 'term', 'definition'  %></p></td>
+</tr>
+
+<tr>
+<th><p><label for="term_comments">Comments:</label></p></th>
+<td><p><%= text_area 'term', 'comments'  %></p></td>
+</tr>
+
+<tr id="frm-btns">
+<th></th>
+<td><%= submit_tag(@button_text, { :id => "form-submit-button", :class => "button"}) %> </td>
+</tr>
+</table>
+</div>
 <!--[eoform:term]-->
-

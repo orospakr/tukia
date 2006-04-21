@@ -1,46 +1,77 @@
-<%= error_messages_for 'person' %>
 
 <!--[form:person]-->
-<p><label for="person_name">Login Name:</label><br/>
-<%= text_field 'person', 'name'  %></p>
+<div class="comment-box">
+<%= error_messages_for('person', {:id => "errors", :header_tag => "h3"}) %>
+<table cellpadding="4" cellspacing="0" class="frm-tbl">
 
-<p><label for="person_givenname">Given Name:</label><br/>
-<%= text_field 'person', 'givenname'  %></p>
+<tr>
+<th><p><label for="person_name">Login Name:</label></p></th>
+<td><p><%= text_field 'person', 'name'  %></p></td>
+</tr>
 
-<p><label for="person_surname">Surname:</label><br/>
-<%= text_field 'person', 'surname'  %></p>
+<tr>
+<th><p><label for="person_givenname">Given Name:</label></p></th>
+<td><p><%= text_field 'person', 'givenname'  %></p></td>
+</tr>
 
-<p><label for="person_password">Password:</label><br/>
-<%= password_field 'person', 'password'  %></p>
+<tr>
+<th><p><label for="person_surname">Surname:</label></p></th>
+<td><p><%= text_field 'person', 'surname'  %></p></td>
+</tr>
 
-<p><label for="person_password_confirmation">Password Confirmation:</label><br/>
-<%= password_field 'person', 'password_confirmation'  %></p>
+<tr>
+<th><p><label for="person_password">Password:</label></p></th>
+<td><p><%= password_field 'person', 'password'  %></p></td>
+</tr>
 
-<p><label for="person_email">Email Address:</label><br/>
-<%= text_field 'person', 'email'  %></p>
+<tr>
+<th><p><label for="person_password_confirmation">Password Confirmation:</label></p></th>
+<td><p><%= password_field 'person', 'password_confirmation'  %></p></td>
+</tr>
 
-<p><label for="person_time_zone">Time Zone:</label><br/>
-<%= time_zone_select 'person', 'time_zone', TZInfo::Timezone.all.sort, :model => TZInfo::Timezone %></p>
+<tr>
+<th><p><label for="person_email">Email Address:</label></p></th>
+<td><p><%= text_field 'person', 'email'  %></p></td>
+</tr>
 
-<p><label for="person_url">URL:</label><br/>
-<%= text_field 'person', 'url'  %></p>
+<tr>
+<th><p><label for="person_time_zone">Time Zone:</label></p></th>
+<td><p><%= time_zone_select 'person', 'time_zone', TZInfo::Timezone.all.sort, :model => TZInfo::Timezone %></p></td>
+</tr>
 
-<p><label for="person_phone">Phone Number (include all digits please):</label><br/>
-<%= text_field 'person', 'phone'  %></p>
+<tr>
+<th><p><label for="person_url">URL:</label></p></th>
+<td><p><%= text_field 'person', 'url'  %></p></td>
+</tr>
 
-<p><label for="person_organisation">Organisation/Company:</label><br/>
-<%= text_field 'person', 'organisation'  %></p>
+<tr>
+<th><p><label for="person_phone">Phone Number:</label></p></th>
+<td><p><%= text_field 'person', 'phone'  %></p></td>
+</tr>
 
-<p><label for="person_enabled">Enabled? (if disabled, user will be unable to login):</label><br/>
-<%= check_box ( :person, :enabled) %></p>
+<tr>
+<th><p><label for="person_organisation">Organisation/Company:</label></p></th>
+<td><p><%= text_field 'person', 'organisation'  %></p></td>
+</tr>
 
-<p><label for="person_admin">Administrator:</label><br/>
-<%= check_box ( :person, :admin) %></p>
+<tr>
+<th><p><label for="person_enabled">Login Allowed?:</label></p></th>
+<td><p><%= check_box ( :person, :enabled) %></p></td>
+</tr>
 
-<p><label for="person_language"><%=h "Preferred UI Language:".t %></label><br/>
-<%= collection_select( :person, :language_id, Globalize::Language.find(:all, :order => "iso_639_3 ASC"), :id, :english_name) %></p>
+<tr>
+<th><p><label for="person_admin">Administrator?:</label></p></th>
+<td><p><%= check_box ( :person, :admin) %></p></td>
+</tr>
 
-<p>National Bodies</p>
+<tr>
+<th><p><label for="person_language"><%=h "Preferred UI Language:".t %></p></th>
+<td><p><%= collection_select( :person, :language_id, Globalize::Language.find(:all, :order => "iso_639_3 ASC"), :id, :english_name) %></p></td>
+</tr>
+
+<tr>
+<th><p><label>National Bodies:</label></p></th>
+<td><p>
 <ul>
 <% Nation.find(:all).each do |n| %>
    <li><%= check_box_tag("person[nation_ids][]",
@@ -49,6 +80,15 @@
 <%= n.name %></li>
 <% end %>
 </ul>
+</ul>
+</p>
+</td>
+</tr>
 
+<tr id="frm-btns">
+<th></th>
+<td><%= submit_tag(@button_text, { :id => "form-submit-button", :class => "button"}) %> </td>
+</tr>
+</table>
+</div>
 <!--[eoform:person]-->
-
