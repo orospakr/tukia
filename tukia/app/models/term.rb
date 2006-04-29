@@ -14,8 +14,6 @@ class Term < ActiveRecord::Base
   attr_protected :created_at, :updated_at
   validates_presence_of :term
   validates_presence_of :definition
-  validates_presence_of :copyright
-  validates_presence_of :licence
   validates_presence_of :person_id
   validates_presence_of :created
   validates_presence_of :document_id

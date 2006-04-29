@@ -23,8 +23,7 @@ class Committee < ActiveRecord::Base
     end
     return result.register_number + 1
   end
- 
-  
+
   private
   def get_parents_recurse(pile)
     if (!parent.nil?)

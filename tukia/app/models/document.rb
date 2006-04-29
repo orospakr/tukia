@@ -37,7 +37,10 @@ class Document < ActiveRecord::Base
     self.pdffilefile = upload_field.read
   end
   
-  
+  def get_full_name
+    self.committee.get_full_name + self.title
+  end
+
   attr_protected :created_at, :updated_at, :extension
   
   validates_presence_of :title
@@ -46,5 +49,7 @@ class Document < ActiveRecord::Base
   validates_presence_of :statusiteration
   validates_presence_of :external
   validates_presence_of :file
+  validates_presence_of :copyright
+  validates_presence_of :licence
 end
  

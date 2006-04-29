@@ -41,7 +41,6 @@ module LoginSystem
   #   def authorize?(user)
   # 
   def login_required
-    
     if not protect?(action_name)
       return true  
     end
