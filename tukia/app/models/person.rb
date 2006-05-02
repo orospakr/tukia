@@ -29,6 +29,11 @@ class Person < ActiveRecord::Base
     end
     return result
   end
+  
+  def full_name
+    givenname + " " + surname
+  end
+  
     # Please change the salt to something else, 
   # Every application should use a different one 
   @@salt = 'weenis'

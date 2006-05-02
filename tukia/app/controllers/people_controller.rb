@@ -17,7 +17,7 @@ class PeopleController < ApplicationController
 
   def new
     @person = Person.new
-    @person.enabled = true;
+    @person.enabled = true
   end
 
   def create
@@ -64,7 +64,7 @@ class PeopleController < ApplicationController
       if @session[:user] = Person.authenticate(@params[:user_login], @params[:user_password])
 
         flash['notice']  = "Login successful".t
-        redirect_back_or_default :action => "welcome"
+        redirect_back_or_default :controller => "site", :action => "welcome"
       else
         flash.now['notice']  = "Login unsuccessful".t
 

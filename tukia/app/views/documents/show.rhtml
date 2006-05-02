@@ -1,15 +1,36 @@
 <div class="post">
 
-<h2><%= "Document: ".t + @document.name %></h2>
+<h2><%= "Document: ".t + @document.title %></h2>
 <div class="post-content">
-<p class="meta alt"><%= "View a document.".t %></p>
+<p class="meta alt"><%= "Owning document committee and some other info should go here lol.".t %></p>
 
-
-<% for column in Document.content_columns %>
 <p>
-  <b><%= column.human_name %>:</b> <%=h @document.send(column.name) %>
+  <b><%= "Committee:".t %></b> <%=h @document.committee.get_full_name %>
 </p>
-<% end %>
+
+<p>
+  <b><%= "Created By:".t %></b> <%=h @document.person.full_name %>
+</p>
+
+<p>
+  <b><%= "Created At:".t %></b> <%=h @document.created_at %>
+</p>
+
+<p>
+  <b><%= "Updated At:".t %></b> <%=h @document.updated_at %>
+</p>
+
+<p>
+  <b><%= "Published on:".t %></b> <%=h @document.published_on %>
+</p>
+
+<p>
+  <b><%= link_to(image_tag("wordprocessing", :border => 0), :action => 'download', :id => @document) + "<br/>Download"  %></b>
+</p>
+
+<p>
+  <b><%= link_to(image_tag("pdf", :border => 0), :action => 'downloadpdf', :id => @document ) + "<br/>Download PDF"   %></b>
+</p>
 
 <p class="meta">
 <%= link_to 'Edit', :action => 'edit', :id => @document %> |

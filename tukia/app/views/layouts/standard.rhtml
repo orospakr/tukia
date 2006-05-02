@@ -18,6 +18,7 @@
 <div id="header">
 <h1>Tukia</h1>
 <small>Subtitle!</small>
+
 </div>
 
 <div id="main">
@@ -44,9 +45,15 @@
   <li><a href="/nations" title="National Bodies/Liason">National Bodies/Liason</a></li>
   <li><a href="/people" title="Directory">Directory</a></li>
 </ul>
+</div>
 
+<div class="sidebar-node">
+<h3>System</h3>
+<ul>
+<li><%= link_to("Logout".t, :controller => "people", :action => "logout") %></li>
+</ul>
 
-      </div>
+</div>
 
 </div><!-- #sidebar -->
 

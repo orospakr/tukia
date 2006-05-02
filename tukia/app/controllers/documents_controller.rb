@@ -23,6 +23,7 @@ class DocumentsController < ApplicationController
 
   def create
     @document = Document.new(params[:document])
+    @document.person = @session[:user]
     saveresult = @document.save
     if (saveresult || saveresult.nil?)
       flash[:notice] = 'Document was successfully created.'

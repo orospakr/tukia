@@ -7,7 +7,11 @@ class Term < ActiveRecord::Base
   belongs_to :gender
   belongs_to :language, :class_name => "Globalize::Language"
   #belongs_to :globalize_country
-  has_and_belongs_to_many :document
+  
+  #has_and_belongs_to_many :document
+  has_many :usages, :dependent => true
+  has_many :documents, :through => :usages
+  
   # not for policy, just a submitted-by field for reference purposes
   belongs_to :person
   belongs_to :synonmic

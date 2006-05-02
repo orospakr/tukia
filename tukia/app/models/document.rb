@@ -7,7 +7,9 @@ class Document < ActiveRecord::Base
   has_and_belongs_to_many :languages, :class_name => "Globalize::Language"
   
   # term usages
-  has_and_belongs_to_many :term
+  # has_and_belongs_to_many :term
+  has_many :usages, :dependent => true
+  has_many :terms, :through => :usages
   
   # REMOTE term usages.
   # stuff
@@ -27,14 +29,16 @@ class Document < ActiveRecord::Base
   def upload=(upload_field)
     #self.name = base_part_of(picture_field.original_filename)
     #self.content_type = picture_field.content_type.chomp
+    return if (upload_field.length <= 0)
     self.file = upload_field.read
     self.extension = File.extname(upload_field.original_filename)
   end
   
-  def uploadpdf=(upload_field)
+  def pdfupload=(upload_field)
     #self.name = base_part_of(picture_field.original_filename)
     #self.content_type = picture_field.content_type.chomp
-    self.pdffilefile = upload_field.read
+    return if (upload_field.length <= 0)
+    self.pdffile = upload_field.read
   end
   
   def get_full_name
