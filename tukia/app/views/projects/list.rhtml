@@ -1,0 +1,34 @@
+<div class="post">
+
+<h2><%= "Project/Source Reference".t %></h2>
+<div class="post-content">
+<p class="auth"><%= "Blah blah".t %></p>
+
+<table>
+  <tr>
+    <th><%= "Title".t %></th>
+    <th><%= "Committee ID".t %></th>
+  </tr>
+  
+<% for project in @projects %>
+  <tr>
+  
+    <td><%=h project.title %></td>
+    <td><%=h project.committee.get_full_name %></td>
+    <td><%= link_to 'Show'.t, :action => 'show', :id => project %></td>
+    <td><%= link_to 'Edit'.t, :action => 'edit', :id => project %></td>
+    <td><%= link_to 'Destroy'.t, { :action => 'destroy', :id => project }, :confirm => 'Are you sure?' %></td>
+  </tr>
+<% end %>
+</table>
+<%= link_to 'Previous page', { :page => @project_pages.current.previous } if @project_pages.current.previous %>
+<%= link_to 'Next page', { :page => @project_pages.current.next } if @project_pages.current.next %> 
+
+
+<br />
+
+<p class="meta"><%= link_to 'New project', :action => 'new' %></p>
+</div>
+</div>
+
+

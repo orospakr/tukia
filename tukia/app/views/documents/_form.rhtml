@@ -29,41 +29,6 @@ having taken that register number already.</p>
 </tr>
 
 <tr>
-<th><p><label for="document_external">External:</label></p></th>
-<td><p><%= check_box ( :document, :external) %></p></td>
-</tr>
-
-<tr>
-<th><p><label for="document_authorexternal">Author's name:</label></p></th>
-<td><p><%= text_field 'document', 'authorexternal'  %></p></td>
-</tr>
-
-<tr>
-<th><p><label for="document_externalurl">URL:</label></p></th>
-<td><p><%= text_field 'document', 'externalurl'  %></p></td>
-</tr>
-
-<tr>
-<th><p><label for="document_externalfullname">Full name/title of this document:</label></p></th>
-<td><p><%= text_field 'document', 'externalfullname' %></p></td>
-</tr>
-
-<tr>
-<th><p><label for="document_statusiteration">Status Iteration:</label></p></th>
-<td><p><%= text_field 'document', 'statusiteration'  %></p></td>
-</tr>
-
-<tr>
-<th><p><label for="document_published_on">Published On:</label></p></th>
-<td><p><%= date_select 'document', 'published_on'  %></p></td>
-</tr>
-
-<tr>
-<th><p><label for="document_edition">Edition:</label></p></th>
-<td><p><%= text_field 'document', 'edition'  %></p></td>
-</tr>
-
-<tr>
 <th><p><label for="document_copyright">Copyright:</label></p></th>
 <td><p><%= text_field 'document', 'copyright'  %></p></td>
 </tr>
@@ -71,21 +36,6 @@ having taken that register number already.</p>
 <tr>
 <th><p><label for="document_licence">Licence:</label></p></th>
 <td><p><%= text_area 'document', 'licence'  %></p></td>
-</tr>
-
-<tr>
-<th><p><label for="document_isbn">ISBN:</label></p></th>
-<td><p><%= text_field 'document', 'isbn'  %></p></td>
-</tr>
-
-<tr>
-<th><p><label for="document_issn">ISSN:</label></p></th>
-<td><p><%= text_field 'document', 'issn'  %></p></td>
-</tr>
-
-<tr>
-<th><p><label for="document_status_id"><%=h "Status:".t %></label></p></th>
-<td><p><%= collection_select( :document, :status_id, Status.find(:all), :id, :name) %></p></td>
 </tr>
 
 <tr>
@@ -98,6 +48,7 @@ having taken that register number already.</p>
 <td><p><%= file_field(:document, :pdfupload) %></p></td>
 </tr>
 
+<!--
 <tr>
 <th><p><label><%= h "Languages used:".t %></label></p></th>
 <td><p>
@@ -110,7 +61,7 @@ having taken that register number already.</p>
 <% end %>
 </ul>
 </p></td>
-</tr>
+</tr> -->
 
 <tr id="frm-btns">
 <th></th>

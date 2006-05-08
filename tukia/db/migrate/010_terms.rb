@@ -11,8 +11,7 @@ class Terms < ActiveRecord::Migration
       table.column :updated_at, :datetime
       table.column :deleted, :boolean
       table.column :comments, :text
-      table.column :document_id, :integer
-      table.column :document_section, :string
+      table.column :project_id, :integer
       table.column :synonmic_id, :integer
       table.column :parent_id, :integer
     end

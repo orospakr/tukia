@@ -1,0 +1,84 @@
+<!--[form:project]-->
+<div class="comment-box">
+<%= error_messages_for('project', {:id => "errors", :header_tag => "h3"}) %>
+<table cellpadding="4" cellspacing="0" class="frm-tbl">
+
+<tr>
+<th><p><label for="project_referenceid">Reference ID:</label></p></th>
+<td><p><%= text_field 'project', 'referenceid'  %></p></td>
+</tr>
+
+<tr>
+<th><p><label for="project_bodyissuedinternalid">Body-Issued Internal ID:</label></p></th>
+<td><p><%= text_field 'project', 'bodyissuedinternalid'  %></p></td>
+</tr>
+
+<tr>
+<th><p><label for="project_name">Name:</label></p></th>
+<td><p><%= text_field 'project', 'name'  %></p></td>
+</tr>
+
+<tr>
+<th><p><label for="project_committee_id"><%=h "Owning Committee (if left blank, means external):".t %></label></p></th>
+<td><p><%= collection_select( :project, :committee_id, Committee.find(:all), :id, :get_full_name, {:include_blank => true}) %></p></td>
+</tr>
+
+<tr>
+<th><p><label for="project_externalbody">External issuing body:</label></p></th>
+<td><p><%= text_field 'project', 'externalbody'  %></p></td>
+</tr>
+
+<tr>
+<th><p><label for="project_externalurl">External URL:</label></p></th>
+<td><p><%= text_field 'project', 'externalurl'  %></p></td>
+</tr>
+
+<tr>
+<th><p><label for="document_status_id"><%=h "Status:".t %></label></p></th>
+<td><p><%= collection_select( :document, :status_id, Status.find(:all), :id, :name) %></p></td>
+</tr>
+
+<tr>
+<th><p><label for="project_statusiteration">Status Iteration:</label></p></th>
+<td><p><%= text_field 'project', 'statusiteration'  %></p></td>
+</tr>
+
+<tr>
+<th><p><label for="project_published_on">Published on:</label></p></th>
+<td><p><%= date_select 'project', 'published_on'  %></p></td>
+</tr>
+
+<tr>
+<th><p><label for="project_edition">Edition:</label></p></th>
+<td><p><%= text_field 'project', 'edition'  %></p></td>
+</tr>
+
+<tr>
+<th><p><label for="project_licence">Licence:</label></p></th>
+<td><p><%= text_area 'project', 'licence'  %></p></td>
+</tr>
+
+<tr>
+<th><p><label for="project_copyright">Copyright:</label></p></th>
+<td><p><%= text_field 'project', 'copyright'  %></p></td>
+</tr>
+
+<tr>
+<th><p><label for="project_isbn">ISBN:</label></p></th>
+<td><p><%= text_field 'project', 'isbn'  %></p></td>
+</tr>
+
+<tr>
+<th><p><label for="project_issn">ISSN:</label></p></th>
+<td><p><%= text_field 'project', 'issn'  %></p></td>
+</tr>
+
+<tr id="frm-btns">
+<th></th>
+<td><%= submit_tag(@button_text, { :id => "form-submit-button", :class => "button"}) %> </td>
+</tr>
+
+</table>
+</div>
+<!--[eoform:project]-->
+

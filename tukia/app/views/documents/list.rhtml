@@ -1,24 +1,24 @@
 
 <div class="post">
 
-<h2><%= "Documents".t %></h2>
+<h2><%= "All Correspondence".t %></h2>
 <div class="post-content">
-<p class="auth"><%= "Listing of Documents. Edit a document.  A document object generally describes a word processing (or perhaps a spreadsheet or
-presentation) document.  They are owned by a Committee, and they will be listed in that Committee's Document Register.  The below is a all-inclusive list
-of all documents in this instance of Tukia, regardless of Committee.".t %></p>
+<p class="auth"><%= "This is an all-inclusive list of corespondence documents belonging to all the committees in this system.  Please look at a specific committee to see its register.
+A document object generally describes a word processing (or perhaps a spreadsheet or
+presentation) document.".t %></p>
 
 <table>
   <tr>
-  <% for column in Document.content_columns %>
-    <th><%= column.human_name %></th>
-  <% end %>
+    <th><%= "Title".t %></th>
+    <th><%= "Committee ID".t %></th>
+    <th><%= "N number".t %></th>
   </tr>
   
 <% for document in @documents %>
   <tr>
-  <% for column in Document.content_columns %>
-    <td><%=h document.send(column.name) %></td>
-  <% end %>
+    <td><%=h document.title %></td>
+    <td><%=h document.committee.get_full_name %></td>
+    <td><%=h document.register_number %></td>
     <td><%= link_to 'Show'.t, :action => 'show', :id => document %></td>
     <td><%= link_to 'Edit'.t, :action => 'edit', :id => document %></td>
     <td><%= link_to 'Download'.t, :action => 'download', :id => document %></td>

@@ -22,6 +22,8 @@ class Document < ActiveRecord::Base
   belongs_to :person
   validates_presence_of :person_id
   
+  belongs_to :project
+  
   # owning committee, used for security policy
   belongs_to :committee
   validates_presence_of :committee_id

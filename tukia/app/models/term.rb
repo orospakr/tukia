@@ -2,7 +2,7 @@ class Term < ActiveRecord::Base
   acts_as_tree
   
   # source authority
-  belongs_to :document
+  belongs_to :project
   
   belongs_to :gender
   belongs_to :language, :class_name => "Globalize::Language"

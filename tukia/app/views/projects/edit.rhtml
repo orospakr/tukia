@@ -1,0 +1,13 @@
+<div class="post">
+
+<h2><%= "Editing Project/Source Reference".t %></h2>
+<div class="post-content">
+<p class="meta alt"><%= "Edit a source authority reference.".t %></p>
+
+<%= start_form_tag ( {:action => 'update',  :id => @project }, {:class => "tukiaobjectform", :id => "tukiaobjectform"}) %>
+<% @button_text = "Update".t %>
+  <%= render :partial => 'form' %>
+<%= end_form_tag %>
+<p class="meta"><%= link_to 'Show', :action => 'show', :id => @project %> <%= link_to 'Back', :action => 'list' %></p>
+</div>
+</div>

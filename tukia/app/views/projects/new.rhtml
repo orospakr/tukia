@@ -1,0 +1,17 @@
+<div class="post">
+
+<h2><%= "New Project/Source Reference".t %></h2>
+<div class="post-content">
+<p class="meta alt"><%= "Create a new Project/Source Reference.".t %></p>
+
+
+<%= start_form_tag ( {:action => 'create'}, {:class => "tukiaobjectform", :id => "tukiaobjectform"}) %>
+<% @button_text = "Create".t %>
+  <%= render :partial => 'form' %>
+<%= end_form_tag %>
+
+<p class="meta"><%= link_to 'Back', :action => 'list' %></p>
+</div>
+</div>
+
+

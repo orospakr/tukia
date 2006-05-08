@@ -6,6 +6,10 @@ class DocumentsController < ApplicationController
     list
     render :action => 'list'
   end
+  
+    # GETs should be safe (see http://www.w3.org/2001/tag/doc/whenToUseGet.html)
+  verify :method => :post, :only => [ :destroy, :create, :update ],
+         :redirect_to => { :action => :list }
 
   def list
     @document_pages, @documents = paginate :documents, :per_page => 10
@@ -68,7 +72,6 @@ class DocumentsController < ApplicationController
   def download
     doc = Document.find(params[:id])
     # check current user for appropriate security permissions
-    # ".doc" needs to be changed, obviously
     send_data(doc.file,
       :filename => doc.title + doc.extension,
       :disposition => "attachment")
@@ -77,7 +80,6 @@ class DocumentsController < ApplicationController
   def downloadpdf
     doc = Document.find(params[:id])
     # check current user for appropriate security permissions
-    # ".doc" needs to be changed, obviously
     send_data(doc.pdffile,
       :filename => doc.title + ".pdf",
       :type => "application/pdf",

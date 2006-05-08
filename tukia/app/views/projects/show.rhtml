@@ -1,0 +1,21 @@
+<div class="post">
+
+<h2><%= "Project: ".t + @project.get_full_name  %></h2>
+<div class="post-content">
+<p class="meta alt"><%= "View a project.".t %></p>
+
+
+<% for column in Project.content_columns %>
+<p>
+  <b><%= column.human_name %>:</b> <%=h @project.send(column.name) %>
+</p>
+<% end %>
+
+<p class="meta">
+<%= link_to 'Edit', :action => 'edit', :id => @project %>
+<%= link_to 'Back', :action => 'list' %>
+</p>
+
+</div>
+
+</div>
