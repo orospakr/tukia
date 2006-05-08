@@ -6,10 +6,7 @@ class Document < ActiveRecord::Base
   # the languages of this document.
   has_and_belongs_to_many :languages, :class_name => "Globalize::Language"
   
-  # term usages
-  # has_and_belongs_to_many :term
-  has_many :usages, :dependent => true
-  has_many :terms, :through => :usages
+
   
   # REMOTE term usages.
   # stuff

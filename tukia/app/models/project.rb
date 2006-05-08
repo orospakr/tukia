@@ -4,7 +4,15 @@ class Project < ActiveRecord::Base
   
   belongs_to :committee
   
+  # term usages
+  has_and_belongs_to_many :terms
+  #has_many :usages, :dependent => true
+  #has_many :terms, :through => :usages
+  
   attr_protected :created_at, :updated_at
+  
+  validates_presence_of :title
+  validates_presence_of :referenceid
   
   def get_full_name
     @committee.get_full_name + " " + @title + "-" + @part
