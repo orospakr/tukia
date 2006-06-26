@@ -1,0 +1,20 @@
+<div class="post">
+
+<h2><%= "Report: ".t + @report.name  %></h2>
+<div class="post-content">
+<p class="meta alt"><%= "View a report job.".t %></p>
+
+
+<% for column in Report.content_columns %>
+<p>
+  <b><%= column.human_name %>:</b> <%=h @report.send(column.name) %>
+</p>
+<% end %>
+
+<p class="meta">
+<%= link_to 'Edit', :action => 'edit', :id => @report %>
+<%= link_to 'Back', :action => 'list' %>
+</p>
+
+</div>
+</div>

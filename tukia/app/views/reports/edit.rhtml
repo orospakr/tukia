@@ -1,0 +1,13 @@
+<div class="post">
+
+<h2><%= "Editing Report Job".t %></h2>
+<div class="post-content">
+<p class="meta alt"><%= "Edit a report job.".t %></p>
+
+<%= start_form_tag ( {:action => 'update',  :id => @report }, {:class => "tukiaobjectform", :id => "tukiaobjectform"}) %>
+<% @button_text = "Update".t %>
+  <%= render :partial => 'form' %>
+<%= end_form_tag %>
+<p class="meta"><%= link_to 'Show', :action => 'show', :id => @report %> <%= link_to 'Back', :action => 'list' %></p>
+</div>
+</div>

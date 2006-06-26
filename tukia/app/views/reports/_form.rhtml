@@ -1,0 +1,23 @@
+<!--[form:report]-->
+<div class="comment-box">
+<%= error_messages_for('report', {:id => "errors", :header_tag => "h3"}) %>
+<table cellpadding="4" cellspacing="0" class="frm-tbl">
+
+<tr>
+<th><p><label for="report_name">Name:</label></p></th>
+<td><p><%= text_field 'report', 'name'  %></p></td>
+</tr>
+
+<tr>
+<th><p><label for="report_template">Template:</label></p></th>
+<td><p><%= text_field 'report', 'name'  %></p></td>
+</tr>
+
+<tr id="frm-btns">
+<th></th>
+<td><%= submit_tag(@button_text, { :id => "form-submit-button", :class => "button"}) %> </td>
+</tr>
+
+</table>
+</div>
+<!--[eoform:report]-->

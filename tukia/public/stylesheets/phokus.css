@@ -412,6 +412,8 @@ a.comment-link:hover {
 #project_copyright,
 #project_isbn,
 #project_issn,
+#report_name,
+#report_template,
 #comment_body {
 	background: #c2e5ff;
 	border-top: 2px #8ccfff;

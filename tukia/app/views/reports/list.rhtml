@@ -1,0 +1,34 @@
+<div class="post">
+
+<h2><%= "Report Jobs".t %></h2>
+<div class="post-content">
+<p class="auth"><%= "Blah blah".t %></p>
+
+<table>
+  <tr>
+    <th><%= "Name".t %></th>
+    <th><%= "Template".t %></th>
+  </tr>
+  
+<% for report in @reports %>
+  <tr>
+  
+    <td><%=h report.name %></td>
+    <td><%=h report.template %></td>
+    <td><%= link_to 'Show'.t, :action => 'show', :id => report %></td>
+    <td><%= link_to 'Edit'.t, :action => 'edit', :id => report %></td>
+    <td><%= link_to 'Destroy'.t, { :action => 'destroy', :id => report }, :confirm => 'Are you sure?' %></td>
+  </tr>
+<% end %>
+</table>
+<%= link_to 'Previous page', { :page => @report_pages.current.previous } if @report_pages.current.previous %>
+<%= link_to 'Next page', { :page => @report_pages.current.next } if @report_pages.current.next %> 
+
+
+<br />
+
+<p class="meta"><%= link_to 'New report', :action => 'new' %></p>
+</div>
+</div>
+
+
