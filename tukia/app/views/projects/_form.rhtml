@@ -34,8 +34,8 @@
 </tr>
 
 <tr>
-<th><p><label for="document_status_id"><%=h "Status:".t %></label></p></th>
-<td><p><%= collection_select( :document, :status_id, Status.find(:all), :id, :name) %></p></td>
+<th><p><label for="project_status_id"><%=h "Status:".t %></label></p></th>
+<td><p><%= collection_select( :project, :status_id, Status.find(:all), :id, :name) %></p></td>
 </tr>
 
 <tr>
@@ -45,7 +45,7 @@
 
 <tr>
 <th><p><label for="project_published_on">Published on:</label></p></th>
-<td><p><%= date_select 'project', 'published_on'  %></p></td>
+<td><p><%= date_select('project', 'published_on', :start_year => 1900) %></p></td>
 </tr>
 
 <tr>
