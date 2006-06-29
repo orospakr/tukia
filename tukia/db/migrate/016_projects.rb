@@ -1,7 +1,7 @@
 class Projects < ActiveRecord::Migration
   def self.up
     create_table :projects do |table|
-      table.column :name, :string
+      table.column :title, :string
       table.column :referenceid, :string
       table.column :bodyissuedinternalid, :string
      

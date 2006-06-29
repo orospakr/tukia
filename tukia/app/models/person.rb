@@ -5,7 +5,8 @@ class Person < ActiveRecord::Base
   belongs_to :language, :class_name => "Globalize::Language"
   composed_of :tz, :class_name => 'TZInfo::Timezone', :mapping => %w(time_zone time_zone)
 # again, just a submitted-by field for reference, not policy
-  has_many :terms
+  has_many :terms # no dependent-destroy on here because that would just be a pain in the ass (all of the terms
+  # a user ever created would get toasted if they were removed)
   has_and_belongs_to_many :nations, :class_name => "Nation"
   validates_presence_of :name
   validates_uniqueness_of :name

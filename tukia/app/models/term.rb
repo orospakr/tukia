@@ -8,7 +8,7 @@ class Term < ActiveRecord::Base
   belongs_to :language, :class_name => "Globalize::Language"
   #belongs_to :globalize_country
   
-  has_and_belongs_to_many :projects
+  has_many :projects, :through => :usages
   #has_many :usages, :dependent => true
   #has_many :projects, :through => :usages
   

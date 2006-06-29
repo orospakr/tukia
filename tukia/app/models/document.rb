@@ -1,19 +1,11 @@
 require_dependency "globalize_language"
 
 class Document < ActiveRecord::Base
-  belongs_to :status
-  
   # the languages of this document.
   has_and_belongs_to_many :languages, :class_name => "Globalize::Language"
   
-
-  
-  # REMOTE term usages.
-  # stuff
-  # 
-  
   # this document is the source authority for...
-  has_many :terms
+  has_many :terms, :through => :usages
   
   # creator, for informative purposes, not security policy
   belongs_to :person
