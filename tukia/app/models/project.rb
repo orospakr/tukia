@@ -1,7 +1,7 @@
 class Project < ActiveRecord::Base
   belongs_to :status
  
-  # documents created by committees that pertain to this standard/project. things like CDs, WDs, FCDs, etc.
+  # "n-" documents created by committees that pertain to this standard/project. things like CDs, WDs, FCDs, etc.
   has_many :documents, :dependent => :destroy
   
   belongs_to :committee

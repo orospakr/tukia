@@ -252,6 +252,13 @@ h2 {
 	display: none;
 }
 
+/* Added by Orospakr to make the table headers on the List actions a left-justified */
+.post-content th {
+  	text-align: left;
+}
+
+
+
 /* Comments
 *******************************************************************************/
 

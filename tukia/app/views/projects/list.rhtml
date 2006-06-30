@@ -6,13 +6,14 @@
 
 <table>
   <tr>
+    <th><%= "Full Reference ID".t %></th>
     <th><%= "Title".t %></th>
     <th><%= "Committee ID".t %></th>
   </tr>
   
 <% for project in @projects %>
   <tr>
-  
+    <td><%=h project.get_full_name %></td>
     <td><%=h project.title %></td>
     <td><%=h project.committee.get_full_name %></td>
     <td><%= link_to 'Show'.t, :action => 'show', :id => project %></td>
