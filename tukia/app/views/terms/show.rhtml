@@ -4,5 +4,6 @@
 </p>
 <% end %>
 
+<%= link_to 'Create Synonym/Translation', :action => 'new', :synonmic => @term.synonmic.id %> |
 <%= link_to 'Edit', :action => 'edit', :id => @term %> |
 <%= link_to 'Back', :action => 'list' %>

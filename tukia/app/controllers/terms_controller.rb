@@ -7,7 +7,7 @@ class TermsController < ApplicationController
     render :action => 'list'
   end
   
-    # GETs should be safe (see http://www.w3.org/2001/tag/doc/whenToUseGet.html)
+  # GETs should be safe (see http://www.w3.org/2001/tag/doc/whenToUseGet.html)
   verify :method => :post, :only => [ :destroy, :create, :update ],
          :redirect_to => { :action => :list }
 
@@ -21,12 +21,22 @@ class TermsController < ApplicationController
 
   def new
     @term = Term.new
+    # check to see if a synonmic group was submitted
+    if (Synonmic.exists?(params[:synonmic]))
+      @preselected_synonmic = Synonmic.find(params[:synonmic])
+    end
+    # default value for 'deleted' should be false.
     @term.deleted = false
   end
 
   def create
     @term = Term.new(params[:term])
-    # TODO SET @term.person = to THE LOGGED IN PERSION
+    if (!Synonmic.exists?(@term.synonmic))
+      @term.synonmic = Synonmic.new()
+      @term.synonmic.save
+      #@term.synonmic = Synonmic.new() sdfdsafttdstrdsyrdsyhdrh
+    end
+    @term.person = @session[:user]
     saveresult = @term.save
     if (saveresult || saveresult.nil?)
       flash[:notice] = 'Term was successfully created.'

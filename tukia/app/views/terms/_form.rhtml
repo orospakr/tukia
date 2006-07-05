@@ -9,14 +9,15 @@
 </tr>
 
 <tr>
-<th><p><label for="term_synonmic_id">Synonmic Group (needs ajaxy search thingy):</label></p></th>
-<td><p><%= collection_select( :term, :synonmic_id, Synonmic.find(:all), :id, :id) %></p></td>
-</tr>
-
-<tr>
 <th><p><label for="term_language"><%=h "Language:".t %></p></th>
 <td><p><%= collection_select( :term, :language_id, Globalize::Language.find(:all, :order => "iso_639_3 ASC"), :id, :english_name) %></p></td>
 </tr>
+
+<% if (!@preselected_synonmic.nil?) %>
+<%= hidden_field :term, :synonmic_id, {:value => @preselected_synonmic.id} %>
+<% else %>
+<%= hidden_field :term, :synonmic_id, {} %>
+<% end %>
 
 <tr>
 <th><p><label for="term_term">Term:</label></p></th>

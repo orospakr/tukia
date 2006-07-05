@@ -49,7 +49,6 @@ class Person < ActiveRecord::Base
     find_first(["name = ? AND password = ?", login, sha1(pass)])
   end  
   
-
   protected
 
   # Apply SHA1 encryption to the supplied password. 
@@ -94,7 +93,4 @@ class Person < ActiveRecord::Base
   # is that ActiveRecord disagrees with the idea of validation on a value that doesn't go into the
   # database... some of the time.
   #validates_presence_of :password_confirmation
-  
-  
-  
 end
