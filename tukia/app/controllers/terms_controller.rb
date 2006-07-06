@@ -33,11 +33,13 @@ class TermsController < ApplicationController
     @term = Term.new(params[:term])
     if (!Synonmic.exists?(@term.synonmic))
       @term.synonmic = Synonmic.new()
-      @term.synonmic.save
-      #@term.synonmic = Synonmic.new() sdfdsafttdstrdsyrdsyhdrh
+      @term.synonmic.save!
     end
     @term.person = @session[:user]
-    saveresult = @term.save
+    if (@term.synonmic.nil?)
+      warning "WTF?! synonmic is nil!"
+    end
+    saveresult = @term.save!
     if (saveresult || saveresult.nil?)
       flash[:notice] = 'Term was successfully created.'
       redirect_to :action => 'list'

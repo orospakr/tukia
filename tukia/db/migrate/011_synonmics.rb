@@ -1,6 +1,7 @@
 class Synonmics < ActiveRecord::Migration
   def self.up
     create_table :synonmics do |table|
+      table.column :comment, :text
     end
   end
 

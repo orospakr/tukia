@@ -19,7 +19,7 @@ class Term < ActiveRecord::Base
   validates_presence_of :term
   validates_presence_of :definition
   validates_presence_of :person_id
-  validates_presence_of :created_at
+  #validates_presence_of :created_at
   validates_presence_of :synonmic_id
   validates_presence_of :language_id
 end
