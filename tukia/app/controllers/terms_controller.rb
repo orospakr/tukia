@@ -31,7 +31,7 @@ class TermsController < ApplicationController
 
   def create
     @term = Term.new(params[:term])
-    if (!Synonmic.exists?(@term.synonmic))
+    if (!((!@term.synonmic.nil?) && Synonmic.exists?(@term.synonmic.id)))
       @term.synonmic = Synonmic.new()
       @term.synonmic.save!
     end

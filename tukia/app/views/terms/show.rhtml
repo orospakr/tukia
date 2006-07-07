@@ -1,9 +1,29 @@
+<div class="post">
+
+<h2><%= "Term: ".t + @term.term  %></h2>
+<div class="post-content">
+<p class="meta alt"><%= "View a term.".t %></p>
+
+
 <% for column in Term.content_columns %>
 <p>
   <b><%= column.human_name %>:</b> <%=h @term.send(column.name) %>
 </p>
 <% end %>
 
+<p>Synonyms:</p>
+
+<% for synonym in @term.synonyms %>
+<%= link_to synonym.term + " in " + synonym.language.english_name, :action => 'show', :id => synonym %>
+<% end %>
+
+<p class="meta">
 <%= link_to 'Create Synonym/Translation', :action => 'new', :synonmic => @term.synonmic.id %> |
 <%= link_to 'Edit', :action => 'edit', :id => @term %> |
-<%= link_to 'Back', :action => 'list' %>
+<%= link_to 'Back', :action => 'list' %> |
+</p>
+
+</div>
+
+</div>
+

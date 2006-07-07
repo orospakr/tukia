@@ -20,6 +20,12 @@ class Term < ActiveRecord::Base
   validates_presence_of :definition
   validates_presence_of :person_id
   #validates_presence_of :created_at
-  validates_presence_of :synonmic_id
+  validates_presence_of :synonmic
   validates_presence_of :language_id
+  
+  # returns all synonyms and translations of this term by looking up all other terms
+  # in the same synonmic group.
+  def synonyms
+    Term.find(:all, :conditions => ["synonmic_id = ?", self.synonmic_id], :order => "term ASC")
+  end
 end
