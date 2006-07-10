@@ -6,11 +6,9 @@ class Term < ActiveRecord::Base
   
   belongs_to :gender
   belongs_to :language, :class_name => "Globalize::Language"
-  #belongs_to :globalize_country
   
+  has_many :usages
   has_many :projects, :through => :usages
-  #has_many :usages, :dependent => true
-  #has_many :projects, :through => :usages
   
   # not for policy, just a submitted-by field for reference purposes
   belongs_to :person
@@ -26,6 +24,6 @@ class Term < ActiveRecord::Base
   # returns all synonyms and translations of this term by looking up all other terms
   # in the same synonmic group.
   def synonyms
-    Term.find(:all, :conditions => ["synonmic_id = ?", self.synonmic_id], :order => "term ASC")
+    Term.find(:all, :conditions => ["synonmic_id = ? AND id != ?", self.synonmic_id, self.id], :order => "term ASC")
   end
 end

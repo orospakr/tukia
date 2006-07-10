@@ -54,6 +54,15 @@ class TermsController < ApplicationController
 
   def update
     @term = Term.find(params[:id])
+    #this fixes the clearing-checkbox bug, as documented in the CheckboxHABTM article on the wiki.
+    if !params['term']['project_ids']
+      @term.projects.clear
+    end
+    
+    for methodthingie in @term.methods
+    print methodthingie + "\n"
+    end
+    
     updateresult = @term.update_attributes(params[:term])
     if (updateresult || updateresult.nil?)
       flash[:notice] = 'Term was successfully updated.'

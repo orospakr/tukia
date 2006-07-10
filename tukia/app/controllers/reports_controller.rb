@@ -51,4 +51,11 @@ class ReportsController < ApplicationController
     Report.find(params[:id]).destroy
     redirect_to :action => 'list'
   end
+  
+  # Reports.  It was easier to implement them as actions on the controller.
+  # Doing it any other way, while it might be more elegant from some perspectives,
+  # would involve introspection or some shit.
+  
+  def lollerskates
+  end
 end

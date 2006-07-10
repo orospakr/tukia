@@ -9,6 +9,22 @@
 </tr>
 
 <tr>
+<th><p><label>Used In:</label></p></th>
+<td><p>
+<ul>
+<% Project.find(:all).each do |p| %>
+
+<li><%= check_box_tag("term[project_ids][]",
+                                p.id,
+                                @term.projects.include?(p)) %>
+<%= p.title %></li>
+<% end %>
+</ul>
+</p>
+</td>
+</tr>
+
+<tr>
 <th><p><label for="term_language"><%=h "Language:".t %></p></th>
 <td><p><%= collection_select( :term, :language_id, Globalize::Language.find(:all, :order => "iso_639_3 ASC"), :id, :english_name) %></p></td>
 </tr>

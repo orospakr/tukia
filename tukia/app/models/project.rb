@@ -7,10 +7,15 @@ class Project < ActiveRecord::Base
   belongs_to :committee
   
   # term usages
-  has_and_belongs_to_many :terms
+  has_many :usages
+  has_many :terms, :through => :usages, :dependent => :destroy
+  
+  # source authorities.
+  has_many :authorityof, :class_name => "Term"
+
+  # has_and_belongs_to_many :terms
   #has_many :usages, :dependent => true
-  #has_many :terms, :through => :usages
-  has_one :term, :dependent => :destroy # kill all terms that are sourced from this project
+  #has_one :term, :dependent => :destroy # kill all terms that are sourced from this project
   # if it is nuked.
   
   attr_protected :created_at, :updated_at

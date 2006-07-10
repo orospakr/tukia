@@ -1,9 +1,15 @@
-<h1>Editing term</h1>
+<div class="post">
 
-<%= start_form_tag :action => 'update', :id => @term %>
+<h2><%= "Editing Term".t %></h2>
+<div class="post-content">
+<p class="meta alt"><%= "Edit a term blah blah".t %></p>
+
+<%= start_form_tag ( {:action => 'update',  :id => @term }, {:class => "tukiaobjectform", :id => "tukiaobjectform"}) %>
+<% @button_text = "Update".t %>
   <%= render :partial => 'form' %>
-  <%= submit_tag 'Edit' %>
 <%= end_form_tag %>
 
-<%= link_to 'Show', :action => 'show', :id => @term %> |
-<%= link_to 'Back', :action => 'list' %>
+<p class="meta"><%= link_to 'Show', :action => 'show', :id => @term %> |
+<%= link_to 'Back', :action => 'list' %></p>
+</div>
+</div>
