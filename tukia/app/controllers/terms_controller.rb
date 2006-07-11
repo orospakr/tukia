@@ -21,9 +21,17 @@ class TermsController < ApplicationController
 
   def new
     @term = Term.new
-    # check to see if a synonmic group was submitted
-    if (Synonmic.exists?(params[:synonmic]))
-      @preselected_synonmic = Synonmic.find(params[:synonmic])
+    # detect if this is a new fork
+    if (Term.exists?(params[:parent]))
+      # set all fields on new term to the parent, and set parent_id to the parent
+      parent = Term.find(params[:parent])
+      @term.setup_from_parent(parent)
+    else
+      # do the normal stuff for a new term.
+      # check to see if a synonmic group was submitted
+      if (Synonmic.exists?(params[:synonmic]))
+        @term.synonmic = Synonmic.find(params[:synonmic])
+      end
     end
     # default value for 'deleted' should be false.
     @term.deleted = false
@@ -36,9 +44,6 @@ class TermsController < ApplicationController
       @term.synonmic.save!
     end
     @term.person = @session[:user]
-    if (@term.synonmic.nil?)
-      warning "WTF?! synonmic is nil!"
-    end
     saveresult = @term.save!
     if (saveresult || saveresult.nil?)
       flash[:notice] = 'Term was successfully created.'
@@ -57,10 +62,6 @@ class TermsController < ApplicationController
     #this fixes the clearing-checkbox bug, as documented in the CheckboxHABTM article on the wiki.
     if !params['term']['project_ids']
       @term.projects.clear
-    end
-    
-    for methodthingie in @term.methods
-    print methodthingie + "\n"
     end
     
     updateresult = @term.update_attributes(params[:term])

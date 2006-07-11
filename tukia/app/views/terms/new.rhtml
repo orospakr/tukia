@@ -1,7 +1,11 @@
 
 <div class="post">
 
+<% if (@term.parent.nil?) %>
 <h2><%= "New Term".t %></h2>
+<% else %>
+<h2><%= "New Term, based on ".t %><strong><%= @term.parent.term %></strong></h2>
+<% end %>
 <div class="post-content">
 <p class="meta alt">
 <%= "Here you can create a new term.  ".t %>

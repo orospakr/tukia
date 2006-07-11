@@ -17,7 +17,7 @@
 <li><%= check_box_tag("term[project_ids][]",
                                 p.id,
                                 @term.projects.include?(p)) %>
-<%= p.title %></li>
+<%= p.get_full_name %></li>
 <% end %>
 </ul>
 </p>
@@ -29,11 +29,13 @@
 <td><p><%= collection_select( :term, :language_id, Globalize::Language.find(:all, :order => "iso_639_3 ASC"), :id, :english_name) %></p></td>
 </tr>
 
-<% if (!@preselected_synonmic.nil?) %>
-<%= hidden_field :term, :synonmic_id, {:value => @preselected_synonmic.id} %>
-<% else %>
-<%= hidden_field :term, :synonmic_id, {} %>
-<% end %>
+<tr>
+<th><p><label for="term_gender"><%=h "Gender:".t %></p></th>
+<td><p><%= collection_select( :term, :gender_id, Gender.find(:all), :id, :get_full_name) %></p></td>
+</tr>
+
+
+<%= hidden_field :term, :synonmic_id %>
 
 <tr>
 <th><p><label for="term_term">Term:</label></p></th>

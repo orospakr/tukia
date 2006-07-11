@@ -39,6 +39,11 @@ class ReportsController < ApplicationController
 
   def update
     @report = Report.find(params[:id])
+    #this fixes the clearing-checkbox bug, as documented in the CheckboxHABTM article on the wiki.
+    if !params['report']['project_ids']
+      @report.projects.clear
+    end
+    
     if @report.update_attributes(params[:report])
       flash[:notice] = 'Report was successfully updated.'
       redirect_to :action => 'show', :id => @report

@@ -24,6 +24,6 @@ class Project < ActiveRecord::Base
   validates_presence_of :referenceid
   
   def get_full_name
-    committee.get_full_name + " " + referenceid
+    committee.get_full_name + " " + self.referenceid + " " + self.title
   end
 end

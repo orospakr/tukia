@@ -13,6 +13,22 @@
 <td><p><%= text_field 'report', 'name'  %></p></td>
 </tr>
 
+<tr>
+<th><p><label>Include Projects:</label></p></th>
+<td><p>
+<ul>
+<% Project.find(:all).each do |p| %>
+
+<li><%= check_box_tag("report[project_ids][]",
+                                p.id,
+                                @report.projects.include?(p)) %>
+<%= p.get_full_name %></li>
+<% end %>
+</ul>
+</p>
+</td>
+</tr>
+
 <tr id="frm-btns">
 <th></th>
 <td><%= submit_tag(@button_text, { :id => "form-submit-button", :class => "button"}) %> </td>

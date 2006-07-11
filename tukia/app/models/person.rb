@@ -20,10 +20,10 @@ class Person < ActiveRecord::Base
   def find_allowed_committees
     result = []
     if !(@editorof.nil?)
-      result = result + @editorof
+      result = result + self.editorof
     end
     if !(@convenorof.nil?)
-      result = result + @convenorof
+      result = result + self.convenorof
     end
     self.nations.each do |n|
       result << n.committee unless result.include?( n.committee )
@@ -32,7 +32,7 @@ class Person < ActiveRecord::Base
   end
   
   def full_name
-    givenname + " " + surname
+    self.givenname + " " + self.surname
   end
   
     # Please change the salt to something else, 
