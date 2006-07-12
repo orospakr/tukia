@@ -22,7 +22,7 @@ class Term < ActiveRecord::Base
   validates_presence_of :synonmic
   validates_presence_of :language_id
   
-  def before_validation()
+  def before_validation
     projects.each { |item|
       if (item.id == project.id)
         errors.add("Used In:".t, "may not contain the Source Authority.".t)

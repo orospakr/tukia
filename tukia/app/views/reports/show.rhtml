@@ -12,7 +12,8 @@
 <% end %>
 
 <p class="meta">
-<%= link_to 'Edit', :action => 'edit', :id => @report %>
+<%= link_to 'Run Report', :action => @report.template, :id => @report %> |
+<%= link_to 'Edit', :action => 'edit', :id => @report %> |
 <%= link_to 'Back', :action => 'list' %>
 </p>
 

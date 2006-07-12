@@ -57,10 +57,25 @@ class ReportsController < ApplicationController
     redirect_to :action => 'list'
   end
   
+  helper_method :find_all_template_actions
+  # returns an array of all the available templates.
+  def find_all_template_actions
+    result = []
+    for m in self.methods
+      if (m =~ /^report_template_/)
+        result << m
+      end
+    end
+    result
+  end
+  
   # Reports.  It was easier to implement them as actions on the controller.
   # Doing it any other way, while it might be more elegant from some perspectives,
   # would involve introspection or some shit.
   
-  def lollerskates
+  
+  def report_template_clause3
+    @report = Report.find(params[:id])
+    render :layout => "template"
   end
 end

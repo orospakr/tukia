@@ -10,8 +10,13 @@
 
 <tr>
 <th><p><label for="report_template">Template:</label></p></th>
-<td><p><%= text_field 'report', 'name'  %></p></td>
+<td><p><select id="report_template" name="report[template]">
+<% for t in find_all_template_actions %>
+<%= "<option value=\"" + h(t) + "\">" + h(t) + "</option>" %>
+<% end %>
+</select></p></td>
 </tr>
+
 
 <tr>
 <th><p><label>Include Projects:</label></p></th>
