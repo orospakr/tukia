@@ -49,4 +49,9 @@ class Term < ActiveRecord::Base
   def synonyms
     Term.find(:all, :conditions => ["synonmic_id = ? AND id != ?", self.synonmic_id, self.id], :order => "term ASC")
   end
+  
+  # return the first equivalent from a single other language.
+  def equiv_term_from(lang)
+    Term.find(:first, :conditions => ["synonmic_id = ? AND language_id = ?", self.synonmic_id, lang.id])
+  end
 end

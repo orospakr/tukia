@@ -1,5 +1,30 @@
 <h3>It's magic!</h3>
-
+<% clause3counter = 1 %>
 <table width="100%"><col width="50%"/><col width="50%"/>
+<% for t in @report.all_terms() %>
 
+<tr valign="top">
+<td>
+<strong>3.<%=h clause3counter %> </strong><br/>
+<strong><%=h t.term %></strong>
+<%=sanitize t.definition %><br/>
+<% if (!@report.term_sourced_from_any_project(t)) %>
+[<%=h t.project.get_full_name %>]<br />
+<% end %>
+</td>
+<td>
+<% begin # there may not be a French term... %>
+<% frenchterm = t.equiv_term_from(Globalize::Language.find(:first, :conditions => ["english_name = 'French'"])) %>
+<strong>3.<%=h clause3counter %></strong><br/>
+<strong><%=h frenchterm.term %></strong>
+<%=sanitize frenchterm.definition %><br/>
+<% rescue %>
+<% end %>
+</td>
+</tr>
+
+<% clause3counter = clause3counter + 1 %>
+
+<% end %>
 </table>
+
