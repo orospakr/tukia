@@ -77,6 +77,13 @@ module Globalize
 
     def to_s;    english_name end
     def inspect; english_name end
-
+    
+    def full_english_name
+      begin
+        self.english_name + " " + self.english_name_modifier
+      rescue
+        self.english_name
+      end
+    end
   end
 end

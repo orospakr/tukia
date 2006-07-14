@@ -26,7 +26,7 @@
 
 <tr>
 <th><p><label for="term_language"><%=h "Language:".t %></p></th>
-<td><p><%= collection_select( :term, :language_id, Globalize::Language.find(:all, :order => "iso_639_3 ASC"), :id, :english_name) %></p></td>
+<td><p><%= collection_select( :term, :language_id, Globalize::Language.find(:all, :order => "iso_639_3 ASC"), :id, :full_english_name) %></p></td>
 </tr>
 
 <tr>

@@ -1,7 +1,7 @@
 <h3>It's magic!</h3>
 <% clause3counter = 1 %>
 <table width="100%"><col width="50%"/><col width="50%"/>
-<% for t in @report.all_terms() %>
+<% for t in @report.all_terms_by_lang(Globalize::Language.find(:first, :conditions => ["iso_639_3 = 'eng'"])) %>
 
 <tr valign="top">
 <td>
@@ -14,7 +14,7 @@
 </td>
 <td>
 <% begin # there may not be a French term... %>
-<% frenchterm = t.equiv_term_from(Globalize::Language.find(:first, :conditions => ["english_name = 'French'"])) %>
+<% frenchterm = t.equiv_term_from(Globalize::Language.find(:first, :conditions => ["iso_639_3 = 'fra'"])) %>
 <strong>3.<%=h clause3counter %></strong><br/>
 <strong><%=h frenchterm.term %></strong>
 <%=sanitize frenchterm.definition %><br/>

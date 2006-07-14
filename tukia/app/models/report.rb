@@ -9,7 +9,7 @@ class Report < ActiveRecord::Base
   validates_presence_of :template
   
   @@find_all_no_synonmics_query = <<EOQ
-SELECT * FROM terms WHERE
+SELECT * FROM terms WHERE language_id = ? AND
 (
   (
     id IN
@@ -36,7 +36,7 @@ SELECT * FROM terms WHERE
 EOQ
 
   @@find_all_with_synonmics_query = <<EOQ
-SELECT * FROM terms WHERE 
+SELECT * FROM terms WHERE language_id = ? AND
 (
   id IN
   (
@@ -64,7 +64,7 @@ SELECT * FROM terms WHERE
           )
         )
       )
-    ) AND language_id = ?
+    )
   )
 ) ORDER BY UPPER( REPLACE (term, '(', '0' ));
 EOQ
@@ -79,12 +79,12 @@ EOQ
   
   # find all the terms associated with all of the reports in this term.
   # uses the RDBMS directly instead of the AR polymorphic associations, for perf. reasons
-  def all_terms()
-    Term.find_by_sql([@@find_all_no_synonmics_query, self.id, self.id])
+  def all_terms_by_lang(l)
+    Term.find_by_sql([@@find_all_no_synonmics_query, l.id, self.id, self.id])
   end
   
-  def all_terms_synonyms(language)
-    Term.find_by_sql([@@find_all_with_synonmics_query, self.id, self.id, language.id])
+  def all_terms_synonyms_by_lang(l)
+    Term.find_by_sql([@@find_all_with_synonmics_query, l.id, self.id, self.id])
   end
   
   # returns true if the term's source authority is any of the projects in this report.

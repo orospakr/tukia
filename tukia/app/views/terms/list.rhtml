@@ -6,16 +6,25 @@
 
 <table>
   <tr>
-  <% for column in Term.content_columns %>
-    <th><%= column.human_name %></th>
-  <% end %>
+    <th><%=h "Term".t %></th>
+    <th><%=h "Language".t %>
+    <th><%=h "Definition".t %></th>
+    <th><%=h "Created At".t %></th>
+    <th><%=h "Updated At".t %></th>
+    <th><%=h "Deleted".t %></th>
+    <th><%=h "Comments".t %></th>
   </tr>
   
 <% for term in @terms %>
   <tr>
-  <% for column in Term.content_columns %>
-    <td><%=h term.send(column.name) %></td>
-  <% end %>
+
+    <td><%=h term.term %></td>
+    <td><%=h term.language.full_english_name %></td>
+    <td><%=h term.definition %></td>
+    <td><%=h term.created_at %></td>
+    <td><%=h term.updated_at %></td>
+    <td><%=h term.deleted %></td>
+    <td><%=h term.comments %></td>
     <td><%= link_to 'Show', :action => 'show', :id => term %></td>
     <td><%= link_to 'Edit', :action => 'edit', :id => term %></td>
     <td><%= link_to 'Destroy', { :action => 'destroy', :id => term }, :confirm => 'Are you sure?' %></td>

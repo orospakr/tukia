@@ -52,6 +52,6 @@ class Term < ActiveRecord::Base
   
   # return the first equivalent from a single other language.
   def equiv_term_from(lang)
-    Term.find(:first, :conditions => ["synonmic_id = ? AND language_id = ?", self.synonmic_id, lang.id])
+    Term.find(:first, :conditions => ["synonmic_id = ? AND language_id = ? AND NOT id = ?", self.synonmic_id, lang.id, self.id])
   end
 end
