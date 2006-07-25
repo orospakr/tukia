@@ -73,9 +73,47 @@ class ReportsController < ApplicationController
   # Doing it any other way, while it might be more elegant from some perspectives,
   # would involve introspection or some shit.
   
-  
   def report_template_clause3
     @report = Report.find(params[:id])
     render :layout => "template"
+  end
+  
+  helper_method :prepare_boldify_regex
+  def prepare_boldify_regex(terms_to_bold_from)
+    return "" if (terms_to_bold_from.count <= 0)
+    bigfuckingregex = ""
+    terms_to_bold = terms_to_bold_from.sort do |a,b|
+      a.term.length <=> b.term.length
+    end
+    for t in terms_to_bold
+        bigfuckingregex += "(\\b" + Regexp.escape(t) + "(|s|es)\\b)|" if (t.length != 0)  
+    end
+    bigfuckingregex = bigfuckingregex.chop
+    return Regexp.compile(bigfuckingregex)
+  end
+  
+  def boldify(target_definition, termsregex)
+    # make a huge fucking ass regexp and apply it to DefinitionToBold.
+    # why not lots of little regexps, you say? WELL, isn't that a funny thing!
+    # you see, if I have lots of little ones, small terms that turn out to be substrings
+    # of others will get double-bolded, potentially. stupid, huh?
+    # I hate the world of text processing.
+    notes_example_start = 0
+    example_pos = target_definition.IndexOf("EXAMPLE")
+    note_pos = target_definition.IndexOf("NOTE")
+    exemple_pos = target_definition.IndexOf("EXEMPLE")
+    notes_example_start = example_pos if ((example_pos > 0) && (example_pos < notes_example_start || notes_example_start == 0))
+    notes_example_start = note_pos if ((note_pos > 0) && (note_pos < notes_example_start || notes_example_start == 0))
+    notes_example_start = exemple_pos if ((exemple_pos > 0) && (exemple_pos < notes_example_start || notes_example_start == 0))
+    string to_bold
+    string not_to_bold
+    if (notes_example_start > 0)
+      to_bold = target_definition.Substring(0, notes_example_start)
+      not_to_bold = target_definition.Substring(notes_example_start, target_definition.Length - notes_example_start)
+    else
+      to_bold = target_definition
+      not_to_bold = ""
+    end
+    return Regex.Replace(to_bold, PreparedREgex, "<b>$0</b>") + not_to_bold
   end
 end
