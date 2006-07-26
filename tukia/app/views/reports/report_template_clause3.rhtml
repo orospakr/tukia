@@ -1,13 +1,17 @@
 <h3>It's magic!</h3>
 <% clause3counter = 1 %>
 <table width="100%"><col width="50%"/><col width="50%"/>
+
+<% engboldregex = prepare_boldify_regex((@report.all_terms_by_lang(Globalize::Language.find(:first, :conditions => ["iso_639_3 = 'eng'"])))) %>
+<% fraboldregex = prepare_boldify_regex((@report.all_terms_by_lang(Globalize::Language.find(:first, :conditions => ["iso_639_3 = 'fra'"])))) %>
+
 <% for t in @report.all_terms_by_lang(Globalize::Language.find(:first, :conditions => ["iso_639_3 = 'eng'"])) %>
 
 <tr valign="top">
 <td>
 <strong>3.<%=h clause3counter %> </strong><br/>
 <strong><%=h t.term %></strong>
-<%=sanitize t.definition %><br/>
+<%=sanitize(boldify(t.definition,engboldregex)) %><br/>
 <% if (!@report.term_sourced_from_any_project(t)) %>
 [<%=h t.project.get_full_name %>]<br />
 <% end %>
@@ -17,7 +21,7 @@
 <% frenchterm = t.equiv_term_from(Globalize::Language.find(:first, :conditions => ["iso_639_3 = 'fra'"])) %>
 <strong>3.<%=h clause3counter %></strong><br/>
 <strong><%=h frenchterm.term %></strong>
-<%=sanitize frenchterm.definition %><br/>
+<%=sanitize(boldify(frenchterm.definition,fraboldregex)) %><br/>
 <% rescue %>
 <% end %>
 </td>
