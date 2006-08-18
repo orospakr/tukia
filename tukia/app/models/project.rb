@@ -22,6 +22,7 @@ class Project < ActiveRecord::Base
   
   validates_presence_of :title
   validates_presence_of :referenceid
+  validates_presence_of :committee_id
   
   def get_full_name
     committee.get_full_name + " " + self.referenceid + " " + self.title

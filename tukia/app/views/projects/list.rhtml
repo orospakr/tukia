@@ -18,7 +18,7 @@
     <td><%=h project.committee.get_full_name %></td>
     <td><%= link_to 'Show'.t, :action => 'show', :id => project %></td>
     <td><%= link_to 'Edit'.t, :action => 'edit', :id => project %></td>
-    <td><%= link_to 'Destroy'.t, { :action => 'destroy', :id => project }, :confirm => 'Are you sure?' %></td>
+    <td><%= link_to 'Destroy'.t, { :action => 'destroy', :id => project }, :confirm => 'Are you sure?'.t, :post => true  %></td>
   </tr>
 <% end %>
 </table>

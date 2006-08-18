@@ -20,7 +20,7 @@
   <% end %>
     <td><%= link_to 'Show', :action => 'show', :id => committee %></td>
     <td><%= link_to 'Edit', :action => 'edit', :id => committee %></td>
-    <td><%= link_to 'Destroy', { :action => 'destroy', :id => committee }, :confirm => 'Are you sure? BE AWARE THAT THIS WILL ALSO DESTROY ANY AND ALL SUBCOMMITTEES, AND THUSLY ANY DOCUMENTS AND NATIONAL BODIES THAT IT CONTAINED.'.t %></td>
+    <td><%= link_to 'Destroy'.t, { :action => 'destroy', :id => committee }, :confirm => 'Are you sure? BE AWARE THAT THIS WILL ALSO DESTROY ANY AND ALL SUBCOMMITTEES, AND THUSLY ANY DOCUMENTS AND NATIONAL BODIES THAT IT CONTAINED.'.t, :post => true  %></td>
   </tr>
 <% end %>
 </table>

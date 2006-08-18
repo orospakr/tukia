@@ -23,8 +23,7 @@ presentation) document.".t %></p>
     <td><%= link_to 'Edit'.t, :action => 'edit', :id => document %></td>
     <td><%= link_to 'Download'.t, :action => 'download', :id => document %></td>
     <td><%= link_to 'Download PDF'.t, :action => 'downloadpdf', :id => document %></td>
-    <td><%= link_to 'Destroy'.t, { :action => 'destroy', :id => document }, :confirm => 'Are you sure?' %></td>
-  </tr>
+    <td><%= link_to 'Destroy'.t, { :action => 'destroy', :id => document }, :confirm => 'Are you sure?'.t, :post => true  %></td></tr>
 <% end %>
 </table>
 <%= link_to 'Previous page', { :page => @document_pages.current.previous } if @document_pages.current.previous %>

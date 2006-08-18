@@ -17,7 +17,7 @@
     <td><%=h report.template %></td>
     <td><%= link_to 'Show'.t, :action => 'show', :id => report %></td>
     <td><%= link_to 'Edit'.t, :action => 'edit', :id => report %></td>
-    <td><%= link_to 'Destroy'.t, { :action => 'destroy', :id => report }, :confirm => 'Are you sure?' %></td>
+    <td><%= link_to 'Destroy'.t, { :action => 'destroy', :id => report }, :confirm => 'Are you sure?'.t, :post => true  %></td>
   </tr>
 <% end %>
 </table>

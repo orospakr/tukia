@@ -65,7 +65,7 @@
 </tr>
 
 <tr>
-<th><p><label for="person_language"><%=h "Preferred UI Language:".t %></p></th>
+<th><p><label for="person_language_id"><%=h "Preferred UI Language:".t %></p></th>
 <td><p><%= collection_select( :person, :language_id, Globalize::Language.find(:all, :order => "iso_639_3 ASC"), :id, :english_name) %></p></td>
 </tr>
 

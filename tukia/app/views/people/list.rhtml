@@ -19,7 +19,7 @@
   <% end %>
     <td><%= link_to 'Show', :action => 'show', :id => person %></td>
     <td><%= link_to 'Edit', :action => 'edit', :id => person %></td>
-    <td><%= link_to 'Destroy', { :action => 'destroy', :id => person }, :confirm => 'Are you sure?' %></td>
+    <td><%= link_to 'Destroy'.t, { :action => 'destroy', :id => person }, :confirm => 'Are you sure?'.t, :post => true  %></td>
   </tr>
 <% end %>
 </table>

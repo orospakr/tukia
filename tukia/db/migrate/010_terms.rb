@@ -5,6 +5,8 @@ class Terms < ActiveRecord::Migration
       #table.column :globalize_country_id, :integer
       table.column :term, :string
       table.column :definition, :text
+      table.column :acronym, :text
+      table.column :facet, :text
       table.column :gender_id, :integer
       table.column :person_id, :integer
       table.column :created_at, :datetime
