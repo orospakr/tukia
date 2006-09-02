@@ -1,3 +1,5 @@
+#require "pcre"
+
 class ReportsController < ApplicationController
   layout "standard"
   before_filter :login_required
@@ -81,6 +83,8 @@ class ReportsController < ApplicationController
     end
     bigfuckingregex = bigfuckingregex.chop
     return Regexp.compile(bigfuckingregex)
+    printf "\n BFR: " + bigfuckingregex + "\n";
+    return bigfuckingregex;
   end
   
   helper_method :boldify
@@ -98,8 +102,8 @@ class ReportsController < ApplicationController
     notes_example_start = note_pos if ((!note_pos.nil?) && (note_pos < notes_example_start || notes_example_start == 0))
     notes_example_start = exemple_pos if ((!exemple_pos.nil?) && (exemple_pos < notes_example_start || notes_example_start == 0))
     if (notes_example_start > 0)
-      to_bold = target_definition.Substring(0, notes_example_start)
-      not_to_bold = target_definition.Substring(notes_example_start, target_definition.Length - notes_example_start)
+      to_bold = target_definition[0, notes_example_start]
+      not_to_bold = target_definition[notes_example_start, target_definition.length - notes_example_start]
     else
       to_bold = target_definition
       not_to_bold = ""

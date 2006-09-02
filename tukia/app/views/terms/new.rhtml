@@ -10,7 +10,7 @@
 <p class="meta alt">
 <%= "Here you can create a new term.  ".t %>
 <% if ((!@preselected_synonmic.nil?) && Synonmic.exists?(@preselected_synonmic.id)) %>
-<%= "You have selected to create a new term that is either a synonym or an equivalent from another language.".t %>
+<%= "You have selected to create a new term that is either a synonym or an other language equivalent.".t %>
 <% else %>
 <%= "You are creating a new term.  When a new term is created in this manner, you implicitly indicate that there are no
 prexisting synonyms or equivalents from other languages.  If you wish to create a term that is a synonym/translation

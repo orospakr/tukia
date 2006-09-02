@@ -1,0 +1,16 @@
+<Combine name="tukia_conversion" fileversion="2.0">
+  <Configurations active="Debug">
+    <Configuration name="Debug" ctype="CombineConfiguration">
+      <Entry build="True" name="tukia_conversion" configuration="Debug" />
+    </Configuration>
+    <Configuration name="Release" ctype="CombineConfiguration">
+      <Entry build="True" name="tukia_conversion" configuration="Debug" />
+    </Configuration>
+  </Configurations>
+  <StartMode startupentry="tukia_conversion" single="True">
+    <Execute type="None" entry="tukia_conversion" />
+  </StartMode>
+  <Entries>
+    <Entry filename="./tukia_conversion/tukia_conversion.mdp" />
+  </Entries>
+</Combine>

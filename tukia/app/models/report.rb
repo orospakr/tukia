@@ -69,13 +69,13 @@ SELECT * FROM terms WHERE language_id = ? AND
 ) ORDER BY UPPER( REPLACE (term, '(', '0' ));
 EOQ
   
-  def before_save
-    if ( projects.count < 1)
-      errors.add("projects", "list must have at least one project selected.")
-      return false
-    end
-    true
-  end
+#  def before_validation
+#    if ( @projects.count < 1)
+#      errors.add("projects", "list must have at least one project selected.")
+#      return false
+#    end
+#    true
+#  end
   
   # find all the terms associated with all of the reports in this term.
   # uses the RDBMS directly instead of the AR polymorphic associations, for perf. reasons
