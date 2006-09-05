@@ -8,7 +8,7 @@ namespace tukia_conversion
 	class MainClass
 	{
 		private const string LegacyConnString = "Server=10.154.0.1;Database=definitions;Password=sausagepizza;User Id=definitions;Encoding=UNICODE";
-		private const string NewConnString = "Server=127.0.0.1;Database=tukia_development;Password=deadlock;User Id=tukia;Encoding=UNICODE";
+		private const string NewConnString = "Server=10.154.2.244;Database=tukia_development;Password=deadlock;User Id=tukia;Encoding=UNICODE";
 		
 		public static void Main(string[] args)
 		{
@@ -61,7 +61,7 @@ namespace tukia_conversion
 		    			engTermInsert.Parameters.Add(new NpgsqlParameter("comments", DbType.String));
 		    			engTermInsert.Parameters[6].Value = "Migrated from the legacy database on " + System.DateTime.Now.ToString() + ".\n\n'MiscNotes' field contained:\n" + term["MiscNotes"];
 		    			engTermInsert.Parameters.Add(new NpgsqlParameter("project_id", DbType.Int32));
-		    			engTermInsert.Parameters[7].Value = 1; // source authority. obviously this needs to be determined
+		    			engTermInsert.Parameters[7].Value = GetSourceAuthority(term); // source authority. obviously this needs to be determined
 		    			engTermInsert.Parameters.Add(new NpgsqlParameter("synonmic_id", DbType.Int32));
 		    			engTermInsert.Parameters[8].Value = synonmic;
 		    			engTermInsert.Parameters.Add(new NpgsqlParameter("facet", DbType.String));
@@ -69,13 +69,14 @@ namespace tukia_conversion
 		    			engTermInsert.Parameters.Add(new NpgsqlParameter("acronym", DbType.String));
 		    			engTermInsert.Parameters[10].Value = term["English_acronym"];
 		    			engTermInsert.ExecuteNonQuery();
+		    			AddProjectUsages(term, newConn, Convert.ToInt32((new NpgsqlCommand("SELECT currval('terms_id_seq')", newConn)).ExecuteScalar()));
 	    			}
 	    			else
 	    			{
 	    				System.Console.WriteLine("Skipping english term, it's blank.");
 	    			}
 	    		}
-    			catch
+    			catch (InvalidCastException e)
     			{
     				System.Console.WriteLine("Skipping english term, it's null.");
     			}
@@ -84,6 +85,8 @@ namespace tukia_conversion
     			{
 	    			if (((string)term["French_Term"]).Length > 0)
 	    			{
+	    				
+	    				
 		    			NpgsqlCommand fraTermInsert = new NpgsqlCommand("INSERT INTO terms (\"language_id\", \"term\", \"definition\", \"gender_id\", \"person_id\", \"created_at\", \"deleted\", \"comments\", \"project_id\", \"synonmic_id\", \"facet\", \"acronym\") VALUES (:language_id, :term, :definition, :gender_id, :person_id, now(), :deleted, :comments, :project_id, :synonmic_id, :facet, :acronym)", newConn);
 		    			fraTermInsert.Parameters.Add(new NpgsqlParameter("language_id", DbType.Int32));
 		    			fraTermInsert.Parameters[0].Value = 1930; // I could replace this with a search thing that will make this hard-coded value unecessary
@@ -100,7 +103,7 @@ namespace tukia_conversion
 		    			fraTermInsert.Parameters.Add(new NpgsqlParameter("comments", DbType.String));
 		    			fraTermInsert.Parameters[6].Value = "Migrated from the legacy database on " + System.DateTime.Now.ToString() + ".\n\n'MiscNotes' field contained:\n" + term["MiscNotes"];
 		    			fraTermInsert.Parameters.Add(new NpgsqlParameter("project_id", DbType.Int32));
-		    			fraTermInsert.Parameters[7].Value = 1; // source authority. obviously this needs to be determined
+		    			fraTermInsert.Parameters[7].Value = GetSourceAuthority(term); // source authority. obviously this needs to be determined
 		    			fraTermInsert.Parameters.Add(new NpgsqlParameter("synonmic_id", DbType.Int32));
 		    			fraTermInsert.Parameters[8].Value = synonmic;
 		    			fraTermInsert.Parameters.Add(new NpgsqlParameter("facet", DbType.String));
@@ -108,6 +111,9 @@ namespace tukia_conversion
 		    			fraTermInsert.Parameters.Add(new NpgsqlParameter("acronym", DbType.String));
 		    			fraTermInsert.Parameters[10].Value = term["French_acronym"];
 		    			fraTermInsert.ExecuteNonQuery();
+		    			AddProjectUsages(term, newConn, Convert.ToInt32((new NpgsqlCommand("SELECT currval('terms_id_seq')", newConn)).ExecuteScalar()));
+	    			
+		    			
 	    			}
 	    			else
 	    			{
@@ -132,5 +138,187 @@ namespace tukia_conversion
     		
     		System.Console.WriteLine("Yay! Done!");
 		}
+		
+		private static int GetSourceAuthority(DataRow dr)
+		{
+			try { if ((string)dr["ISO_15944_1"] == "1") return 1; } catch (InvalidCastException e) {}
+			try { if ((string)dr["ISO_15944_2"] == "1") return 2; } catch (InvalidCastException e) {}
+			try { if ((string)dr["ISO_15944_3"] == "1") return 4; } catch (InvalidCastException e) {}
+			try { if ((string)dr["ISO_15944_4"] == "1") return 5; } catch (InvalidCastException e) {}
+			try { if ((string)dr["ISO_15944_5"] == "1") return 6; } catch (InvalidCastException e) {}
+			//if ((string)dr["ISO_15944_6"] == "1") return 7;
+			try { if ((string)dr["VSEC_1"] == "1") return 8; } catch (InvalidCastException e) {}
+			try { if ((string)dr["VSEC_2"] == "1") return 9; } catch (InvalidCastException e) {}
+			try { if ((string)dr["VSEC_3"] == "1") return 10; } catch (InvalidCastException e) {}
+			try { if ((string)dr["VSEC_4"] == "1") return 11; } catch (InvalidCastException e) {}
+			try { if ((string)dr["VSEC_5"] == "1") return 12; } catch (InvalidCastException e) {}
+			try { if ((string)dr["ppt-104"] == "1") return 18; } catch (InvalidCastException e) {}
+			try { if ((string)dr["ppt-106"] == "1") return 19; } catch (InvalidCastException e) {}
+			try { if ((string)dr["ISO_24751_1"] == "1") return 20; } catch (InvalidCastException e) {}
+			try { if ((string)dr["ISO_24751_2"] == "1") return 21; } catch (InvalidCastException e) {}
+			try { if ((string)dr["ISO_24751_3"] == "1") return 22; } catch (InvalidCastException e) {}
+			System.Console.WriteLine("Orphan term!");
+			return 23;
+		}
+		
+		private static void AddProjectUsages(DataRow oldterm, NpgsqlConnection conn, int newterm)
+		{
+			NpgsqlCommand usage = new NpgsqlCommand("INSERT INTO usages (\"project_id\", \"term_id\") VALUES (:project_id, :term_id)", conn);
+			usage.Parameters.Add(new NpgsqlParameter("project_id", DbType.Int32));
+			usage.Parameters.Add(new NpgsqlParameter("term_id", DbType.Int32));
+			
+			try
+			{
+				if ((string)oldterm["ISO_15944_1"] == "2")
+				{
+					usage.Parameters[0].Value = 1;
+					usage.Parameters[1].Value = newterm;
+					usage.ExecuteNonQuery();
+				}
+			}
+			catch (InvalidCastException e) {}
+			try
+			{
+				if ((string)oldterm["ISO_15944_2"] == "2")
+				{
+					usage.Parameters[0].Value = 2;
+					usage.Parameters[1].Value = newterm;
+					usage.ExecuteNonQuery();
+				}
+			}
+			catch (InvalidCastException e) {}
+			try
+			{
+				if ((string)oldterm["ISO_15944_3"] == "2")
+				{
+					usage.Parameters[0].Value = 4;
+					usage.Parameters[1].Value = newterm;
+					usage.ExecuteNonQuery();
+				}
+			}
+			catch (InvalidCastException e) {}
+			try
+			{
+				if ((string)oldterm["ISO_15944_4"] == "2")
+				{
+					usage.Parameters[0].Value = 5;
+					usage.Parameters[1].Value = newterm;
+					usage.ExecuteNonQuery();
+				}
+			}
+			catch (InvalidCastException e) {}
+			try
+			{
+				if ((string)oldterm["ISO_15944_5"] == "2")
+				{
+					usage.Parameters[0].Value = 6;
+					usage.Parameters[1].Value = newterm;
+					usage.ExecuteNonQuery();
+				}
+			}
+			catch (InvalidCastException e) {}
+			try
+			{
+				//if ((string)oldterm["ISO_15944_6"] == "1") return 7;
+				if ((string)oldterm["VSEC_1"] == "2")
+				{
+					usage.Parameters[0].Value = 8;
+					usage.Parameters[1].Value = newterm;
+					usage.ExecuteNonQuery();
+				}
+			}
+			catch (InvalidCastException e) {}
+			try
+			{
+				if ((string)oldterm["VSEC_2"] == "2")
+				{
+					usage.Parameters[0].Value = 9;
+					usage.Parameters[1].Value = newterm;
+					usage.ExecuteNonQuery();
+				}
+			}
+			catch (InvalidCastException e) {}
+			try
+			{
+				if ((string)oldterm["VSEC_3"] == "2")
+				{
+					usage.Parameters[0].Value = 10;
+					usage.Parameters[1].Value = newterm;
+					usage.ExecuteNonQuery();
+				}
+			}
+			catch (InvalidCastException e) {}
+			try
+			{
+				if ((string)oldterm["VSEC_4"] == "2")
+				{
+					usage.Parameters[0].Value = 11;
+					usage.Parameters[1].Value = newterm;
+					usage.ExecuteNonQuery();
+				}
+			}
+			catch (InvalidCastException e) {}
+			try
+			{
+				if ((string)oldterm["VSEC_5"] == "2")
+				{
+					usage.Parameters[0].Value = 12;
+					usage.Parameters[1].Value = newterm;
+					usage.ExecuteNonQuery();
+				}
+			}
+			catch (InvalidCastException e) {}
+			try
+			{
+				if ((string)oldterm["ppt-104"] == "2")
+				{
+					usage.Parameters[0].Value = 18;
+					usage.Parameters[1].Value = newterm;
+					usage.ExecuteNonQuery();
+				}
+			}
+			catch (InvalidCastException e) {}
+			try
+			{
+				if ((string)oldterm["ppt-106"] == "2")
+				{
+					usage.Parameters[0].Value = 19;
+					usage.Parameters[1].Value = newterm;
+					usage.ExecuteNonQuery();
+				}
+			}
+			catch (InvalidCastException e) {}
+			try
+			{
+				if ((string)oldterm["ISO_24751_1"] == "2")
+				{
+					usage.Parameters[0].Value = 20;
+					usage.Parameters[1].Value = newterm;
+					usage.ExecuteNonQuery();
+				}
+			}
+			catch (InvalidCastException e) {}
+			try
+			{
+				if ((string)oldterm["ISO_24751_2"] == "2")
+				{
+					usage.Parameters[0].Value = 21;
+					usage.Parameters[1].Value = newterm;
+					usage.ExecuteNonQuery();
+				}
+			}
+			catch (InvalidCastException e) {}
+			try
+			{
+				if ((string)oldterm["ISO_24751_3"] == "2")
+				{
+					usage.Parameters[0].Value = 22;
+					usage.Parameters[1].Value = newterm;
+					usage.ExecuteNonQuery();
+				}
+			}
+			catch (InvalidCastException e) {}
+		}
+		
 	}
 }
