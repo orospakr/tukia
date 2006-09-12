@@ -10,6 +10,8 @@
 <![endif]-->
 <%= javascript_include_tag "prototype" %>
 <%= javascript_include_tag "effects" %>
+<%= javascript_include_tag "phokus" %>
+<%= javascript_include_tag "cookies" %>
 </head>
 <body>
 <div id="page">
@@ -26,16 +28,23 @@
 
 <div id="sidebar">
 <div id="search" class="sidebar-node">
-<form action="/articles/search" id="sform" method="get">
+<%= start_form_tag({:controller => 'terms',  :action => 'search'}, {:method => 'get', :id => 'sform'}) %>
 <label for="q">Search</label> <input type="text" id="q" name="q" value="" size="15" />
 <span id="search_spinner" style="display:none"></span>
-</form>
+<%= end_form_tag %>
 <div id="search-results"></div>
+<%= observe_field "q", :frequency => 1,
+    :url => { :controller => "terms", :action => "live_search" },
+    :loading => "Element.show('search_spinner')",
+    :complete => "Element.hide('search_spinner')",
+    :update => "search-results",
+    :with => "'q=' + escape($F('q'))" -%>
+
 </div>
 
       
-      <div class="sidebar-node">
-        <h3>Resources</h3>
+<div class="sidebar-node">
+<h3>Resources</h3>
 
 <ul>
   <li><a href="/projects" title="Projects">Projects</a></li>

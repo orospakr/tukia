@@ -1,0 +1,26 @@
+<div class="post">
+
+<h2><%= "Search Results for search  ".t + @search.to_s  %></h2>
+<div class="post-content">
+<p class="meta alt"><%= "Results: ".t + @terms.to_a.length.to_s + @fullsearchterms.to_a.length.to_s %></p>
+
+<h3>Matching Terms:</h3>
+<% for t in @terms.to_a -%>
+<p>
+  <b><%= link_to(t.term, :controller => "terms", :action => "show", :id => t.id) %></b> in <i><%= t.language.english_name %></i>
+</p>
+<% end %>
+
+<h3>Matching Definitions:</h3>
+<% for t in @fullsearchterms.to_a -%>
+<p>
+  <b><%= link_to(t.term, :controller => "terms", :action => "show", :id => t.id) %></b> in <i><%= t.language.english_name %></i>
+</p>
+<% end %>
+
+<p class="meta">
+
+</p>
+
+</div>
+</div>

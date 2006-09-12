@@ -77,4 +77,20 @@ class TermsController < ApplicationController
     Term.find(params[:id]).destroy
     redirect_to :action => 'list'
   end
+  
+  def search
+    @search = params[:q]
+    @terms = Term.search(@search)
+    @fullsearchterms = Term.full_text_search(@search)
+    
+  end
+  
+  # ajax search
+  def live_search
+    @search = params[:q]
+    @terms = Term.search(@search)
+    @fullsearchterms = Term.full_text_search(@search)
+    @headers["Content-Type"] = "text/html; charset=utf-8"
+    render :layout => false
+  end
 end

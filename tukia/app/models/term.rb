@@ -63,4 +63,12 @@ class Term < ActiveRecord::Base
       self.project.get_full_name + " (" + self.source_section + ")"
     end
   end
+  
+  def Term.search(searchterm)
+    Term.find(:all, :conditions => ["term ILIKE ('%' || ? || '%')", searchterm], :order => "term")
+  end
+  
+  def Term.full_text_search(searchterm)
+    Term.find(:all, :conditions => ["definition ILIKE ('%' || ? || '%')", searchterm], :order => "term")
+  end
 end

@@ -1,0 +1,16 @@
+<% if !@search.to_s.blank? -%>
+  <h4>Results: <em><%= @terms.to_a.length + @fullsearchterms.to_a.length -%></em><span title="Clear Search" onclick="phokus.closeSearch()"></span></h4>
+  <b>Matching Terms:</b>
+  <ul>
+  <% for t in @terms.to_a -%>
+    <li><%= link_to(t.term, :controller => "terms", :action => "show", :id => t.id) %></li>
+  <% end -%>
+  </ul>
+  <br />
+  <b>Matching definitions:</b>
+  <% for t in @fullsearchterms.to_a -%>
+    <li><%= link_to(t.term, :controller => "terms", :action => "show", :id => t.id) %></li>
+  <% end -%>
+	
+<% else %>
+<% end -%>
