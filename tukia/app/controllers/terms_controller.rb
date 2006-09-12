@@ -12,7 +12,7 @@ class TermsController < ApplicationController
          :redirect_to => { :action => :list }
 
   def list
-    @term_pages, @terms = paginate :terms, :per_page => 100
+    @term_pages, @terms = paginate :terms, :per_page => 300, :order => "term"
   end
 
   def show

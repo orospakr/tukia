@@ -5,16 +5,68 @@
 <p class="meta alt"><%= "View a project.".t %></p>
 
 
-<% for column in Project.content_columns %>
 <p>
-  <b><%= column.human_name %>:</b> <%=h @project.send(column.name) %>
+  <b><%= "Reference ID".t %>:</b> <%=h @project.referenceid %>
 </p>
+<p>
+  <b><%= "Title".t %>:</b> <%=h @project.title %>
+</p>
+<p>
+  <b><%= "Body-Issued Internal ID".t %>:</b> <%=h @project.bodyissuedinternalid %>
+</p>
+<p>
+  <b><%= "Status".t %>:</b> <%=h @project.status.name %>
+</p>
+<p>
+  <b><%= "Created at".t %>:</b> <%=h @project.created_at %>
+</p>
+<p>
+  <b><%= "Updated at".t %>:</b> <%=h @project.updated_at %>
+</p>
+<p>
+  <b><%= "PUblished on".t %>:</b> <%=h @project.published_on %>
+</p>
+<p>
+  <b><%= "Edition".t %>:</b> <%=h @project.edition %>
+</p>
+<p>
+  <b><%= "Licence".t %>:</b> <%=h @project.licence %>
+</p>
+<p>
+  <b><%= "Copyright".t %>:</b> <%=h @project.copyright %>
+</p>
+<p>
+  <b><%= "ISBN".t %>:</b> <%=h @project.isbn %>
+</p>
+<p>
+  <b><%= "ISSN".t %>:</b> <%=h @project.issn %>
+</p>
+<p>
+  <b><%= "External Body".t %>:</b> <%=h @project.externalbody %>
+</p>
+
+<p>
+  <b><%= "Authority of Terms".t %>:</b><br/>
+<% for t in @project.authorityof %>
+  <%= link_to(t.term , :controller => "terms", :action => "edit", :id => t.id) %>
+  <i> in <%=h t.language %></i><br/>
 <% end %>
+</p>
+
+<p>
+  <b><%= "Other Used Terms".t %>:</b><br/>
+<% for t in @project.terms %>
+  <%= link_to(t.term , :controller => "terms", :action => "edit", :id => t.id) %>
+  <i> in <%=h t.language %>, from <%=h t.source_authority %></i><br/>
+<% end %>
+</p>
 
 <p class="meta">
 <%= link_to 'Edit', :action => 'edit', :id => @project %> |
 <%= link_to 'Back', :action => 'list' %>
 </p>
+
+
 
 </div>
 

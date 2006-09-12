@@ -12,7 +12,7 @@ class ProjectsController < ApplicationController
          :redirect_to => { :action => :list }
 
   def list
-    @project_pages, @projects = paginate :projects, :per_page => 10
+    @project_pages, @projects = paginate :projects, :per_page => 100
   end
 
   def show
@@ -40,6 +40,11 @@ class ProjectsController < ApplicationController
 
   def update
     @project = Project.find(params[:id])
+    #this fixes the clearing-checkbox bug, as documented in the CheckboxHABTM article on the wiki.
+    if !params['project']['authorityof_ids']
+      @project.authorityof.clear
+    end
+    
     updateresult = @project.update_attributes(params[:project])
     if (updateresult || updateresult.nil?)
       flash[:notice] = 'Project was successfully updated.'

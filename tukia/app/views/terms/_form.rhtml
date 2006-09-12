@@ -2,10 +2,24 @@
 <div class="comment-box">
 <%= error_messages_for('term', {:id => "errors", :header_tag => "h3"}) %>
 <table cellpadding="4" cellspacing="0" class="frm-tbl">
+<tr>
+<th><p><label for="term_term">Term:</label></p></th>
+<td><p><%= text_field 'term', 'term'  %></p></td>
+</tr>
+
+<tr>
+<th><p><label for="term_definition">Definition:</label></p></th>
+<td><p><%= text_area 'term', 'definition'  %></p></td>
+</tr>
 
 <tr>
 <th><p><label for="term_project_id"><%=h "Source Authority:".t %></p></th>
 <td><p><%= collection_select( :term, :project_id, Project.find(:all), :id, :get_full_name) %></p></td>
+</tr>
+
+<tr>
+<th><p><label for="term_source_section">Source Authority Subsection:</label></p></th>
+<td><p><%= text_field 'term', 'source_section'  %></p></td>
 </tr>
 
 <tr>
@@ -37,10 +51,6 @@
 
 <%= hidden_field :term, :synonmic_id %>
 
-<tr>
-<th><p><label for="term_term">Term:</label></p></th>
-<td><p><%= text_field 'term', 'term'  %></p></td>
-</tr>
 
 <tr>
 <th><p><label for="term_acronym">Acronym:</label></p></th>
@@ -50,11 +60,6 @@
 <tr>
 <th><p><label for="term_facet">Facet:</label></p></th>
 <td><p><%= text_field 'term', 'facet'  %></p></td>
-</tr>
-
-<tr>
-<th><p><label for="term_definition">Definition:</label></p></th>
-<td><p><%= text_area 'term', 'definition'  %></p></td>
 </tr>
 
 <tr>

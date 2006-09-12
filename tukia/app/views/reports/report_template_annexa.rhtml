@@ -13,15 +13,7 @@
 <tr valign="top">
 <td>
 <strong>3.<%=h clause3counter %> </strong><br/>
-<strong>
-<%=h t.term %>
-<% if !(t.facet.nil? || t.facet.length < 1)%>
- (<%=h(t.facet)%>)
-<% end %>
-<% if !(t.acronym.nil? || t.acronym.length < 1)%>
- (<%=h(t.acronym)%>)
-<% end %>
-</strong><br/>
+<strong><%=h t.term %></strong><br/>
 <%=sanitize(boldify(t.definition,engboldterms,t)) %><br/>
 <% if (!@report.term_sourced_from_any_project(t)) %>
 [<%=h t.source_authority %>]<br/>
@@ -30,15 +22,7 @@
 <td>
 <% begin # there may not be a French term... %>
 <strong>3.<%=h clause3counter %></strong><br/>
-<strong>
-<%=h frenchterm.term %>
-<% if !(frenchterm.facet.nil? || frenchterm.facet.length < 1)%>
- (<%=h(frenchterm.facet)%>)
-<% end %>
-<% if !(frenchterm.acronym.nil? || frenchterm.acronym.length < 1)%>
- (<%=h(frenchterm.acronym)%>)
-<% end %>
-</strong>
+<strong><%=h frenchterm.term %></strong>
 <%=sanitize(boldify(frenchterm.definition,fraboldterms,frenchterm)) %><br/>
 <% rescue %>
 <% end %>

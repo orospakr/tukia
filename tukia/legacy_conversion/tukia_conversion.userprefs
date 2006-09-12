@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<UserCombinePreferences filename="/home/orospakr/Projects/tukia_conversion/tukia_conversion.mds">
+<UserCombinePreferences filename="/home/orospakr/workspace/tukia/legacy_conversion/tukia_conversion.mds">
   <Files>
     <File filename="./tukia_conversion/Main.cs" />
   </Files>
@@ -17,9 +17,7 @@
     <ViewMemento Id="MonoDevelop.Ide.Gui.Pads.ClassPad">
       <TreeView>
         <Node expanded="True" selected="True">
-          <Node name="tukia_conversion" expanded="True">
-            <Node name="tukia_conversion" expanded="True" />
-          </Node>
+          <Node name="tukia_conversion" expanded="True" />
         </Node>
       </TreeView>
     </ViewMemento>
@@ -37,7 +35,7 @@
   <Properties>
     <Properties>
       <Property key="ActiveConfiguration" value="Debug" />
-      <Property key="ActiveWindow" value="/home/orospakr/Projects/tukia_conversion/tukia_conversion/Main.cs" />
+      <Property key="ActiveWindow" value="/home/orospakr/workspace/tukia/legacy_conversion/tukia_conversion/Main.cs" />
     </Properties>
   </Properties>
 </UserCombinePreferences>

@@ -73,6 +73,27 @@
 <td><p><%= text_field 'project', 'issn'  %></p></td>
 </tr>
 
+<tr>
+<th><p><label for="project_do_not_show_committee_in_report">Do not show committee name in reports:</label></p></th>
+<td><p><%= check_box ( :project, :do_not_show_committee_in_report) %></p></td>
+</tr>
+
+<tr>
+<th><p><label>Authority Of:</label></p></th>
+<td><p>
+<ul>
+<% Term.find(:all).each do |t| %>
+
+<li><%= check_box_tag("project[authorityof_ids][]",
+                                t.id,
+                                @project.authorityof.include?(t)) %>
+<%= t.term %>, Language <%= t.language.english_name %></li>
+<% end %>
+</ul>
+</p>
+</td>
+</tr>
+
 <tr id="frm-btns">
 <th></th>
 <td><%= submit_tag(@button_text, { :id => "form-submit-button", :class => "button"}) %> </td>

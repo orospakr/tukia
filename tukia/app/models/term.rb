@@ -54,4 +54,13 @@ class Term < ActiveRecord::Base
   def equiv_term_from(lang)
     Term.find(:first, :conditions => ["synonmic_id = ? AND language_id = ? AND NOT id = ?", self.synonmic_id, lang.id, self.id])
   end
+  
+  # readable source authority
+  def source_authority
+    if ( self.source_section.nil? || self.source_section.length < 1)
+      self.project.get_full_name
+    else
+      self.project.get_full_name + " (" + self.source_section + ")"
+    end
+  end
 end

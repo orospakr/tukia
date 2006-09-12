@@ -68,6 +68,41 @@ SELECT * FROM terms WHERE language_id = ? AND
   )
 ) ORDER BY UPPER( REPLACE (term, '(', '0' ));
 EOQ
+
+  @@find_sourced_only_no_synonmics_query = <<EOQ
+SELECT * FROM terms WHERE language_id = ? AND
+(
+  project_id IN
+  (
+    SELECT id FROM projects WHERE id IN
+    (
+      SELECT project_id FROM projects_reports WHERE report_id = ?
+    )
+  )
+) ORDER BY UPPER( REPLACE (term, '(', '0' ));
+EOQ
+
+ @@find_sourced_only_with_synonmics_query = <<EOQ
+SELECT * FROM terms WHERE language_id = ?
+(
+  id IN
+  (
+    SELECT id FROM terms WHERE synonmic_id IN
+    (
+      SELECT synonmic_id FROM terms WHERE
+      (
+        project_id IN
+        (
+          SELECT id FROM projects WHERE id IN
+          (
+            SELECT project_id FROM projects_reports WHERE report_id = ?
+          )
+        )
+      )
+    )
+  )
+) ORDER BY UPPER( REPLACE (term, '(', '0' ));
+EOQ
   
 #  def before_validation
 #    if ( @projects.count < 1)
@@ -83,14 +118,26 @@ EOQ
     Term.find_by_sql([@@find_all_no_synonmics_query, l.id, self.id, self.id])
   end
   
+  # same as above, but will also include any synonyms/equivalents (in the requested language)
   def all_terms_synonyms_by_lang(l)
     Term.find_by_sql([@@find_all_with_synonmics_query, l.id, self.id, self.id])
+  end
+  
+  # same as first one, but it will only include terms that are sourced from the projects in
+  # this report, and not the terms *used* by the projects.
+  def sourced_terms_by_lang(l)
+    Term.find_by_sql([@@find_sourced_only_no_synonmics_query, l.id, self.id])
+  end
+  
+  # same as above, but will also include any synonyms/equivalents (in the requested language)
+  def sourced_terms_synonyms_by_lang(l)
+    Term.find_by_sql([@@find_sourced_only_with_synonmics_query, l.id, self.id])
   end
   
   # returns true if the term's source authority is any of the projects in this report.
   def term_sourced_from_any_project(term)
     for p in self.projects
-      if (term.project == p)
+      if (term.project.id == p.id)
         return true
       end
     end

@@ -16,6 +16,7 @@ class Terms < ActiveRecord::Migration
       table.column :project_id, :integer
       table.column :synonmic_id, :integer
       table.column :parent_id, :integer
+      table.column :source_section, :string
     end
   end
 

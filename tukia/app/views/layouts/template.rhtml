@@ -13,7 +13,7 @@
 <p><strong><%= "Included Projects:".t %></strong></p>
 <ul>
 <% for p in @report.projects %>
-<li><%= p.get_full_name %></li>
+<li><%= link_to(p.get_full_name_with_title, :controller => 'projects', :action => 'show', :id => p.id)%></li>
 <% end %>
 </ul>
 <%= @content_for_layout %>

@@ -59,7 +59,7 @@ namespace tukia_conversion
 		    			engTermInsert.Parameters.Add(new NpgsqlParameter("deleted", DbType.Boolean));
 		    			engTermInsert.Parameters[5].Value = false;
 		    			engTermInsert.Parameters.Add(new NpgsqlParameter("comments", DbType.String));
-		    			engTermInsert.Parameters[6].Value = "Migrated from the legacy database on " + System.DateTime.Now.ToString() + ".\n\n'MiscNotes' field contained:\n" + term["MiscNotes"];
+		    			engTermInsert.Parameters[6].Value = "Migrated from the legacy database on " + System.DateTime.Now.ToString() + ".\n\n'MiscNotes' field contained:\n" + term["MiscNotes"] + "\n\nSource Authority: " + term["Source"];
 		    			engTermInsert.Parameters.Add(new NpgsqlParameter("project_id", DbType.Int32));
 		    			engTermInsert.Parameters[7].Value = GetSourceAuthority(term); // source authority. obviously this needs to be determined
 		    			engTermInsert.Parameters.Add(new NpgsqlParameter("synonmic_id", DbType.Int32));
@@ -101,7 +101,7 @@ namespace tukia_conversion
 		    			fraTermInsert.Parameters.Add(new NpgsqlParameter("deleted", DbType.Boolean));
 		    			fraTermInsert.Parameters[5].Value = false;
 		    			fraTermInsert.Parameters.Add(new NpgsqlParameter("comments", DbType.String));
-		    			fraTermInsert.Parameters[6].Value = "Migrated from the legacy database on " + System.DateTime.Now.ToString() + ".\n\n'MiscNotes' field contained:\n" + term["MiscNotes"];
+		    			fraTermInsert.Parameters[6].Value = "Migrated from the legacy database on " + System.DateTime.Now.ToString() + ".\n\n'MiscNotes' field contained:\n" + term["MiscNotes"] + "\n\nSource Authority: " + term["Source"];
 		    			fraTermInsert.Parameters.Add(new NpgsqlParameter("project_id", DbType.Int32));
 		    			fraTermInsert.Parameters[7].Value = GetSourceAuthority(term); // source authority. obviously this needs to be determined
 		    			fraTermInsert.Parameters.Add(new NpgsqlParameter("synonmic_id", DbType.Int32));

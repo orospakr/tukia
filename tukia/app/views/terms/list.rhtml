@@ -11,8 +11,6 @@
     <th><%=h "Definition".t %></th>
     <th><%=h "Created At".t %></th>
     <th><%=h "Updated At".t %></th>
-    <th><%=h "Deleted".t %></th>
-    <th><%=h "Comments".t %></th>
   </tr>
   
 <% for term in @terms %>
@@ -23,8 +21,6 @@
     <td><%=h term.definition %></td>
     <td><%=h term.created_at %></td>
     <td><%=h term.updated_at %></td>
-    <td><%=h term.deleted %></td>
-    <td><%=h term.comments %></td>
     <td><%= link_to 'Show', :action => 'show', :id => term %></td>
     <td><%= link_to 'Edit', :action => 'edit', :id => term %></td>
     <td><%= link_to 'Destroy'.t, { :action => 'destroy', :id => term }, :confirm => 'Are you sure?'.t, :post => true  %></td>

@@ -1,0 +1,44 @@
+
+<table width="100%">
+<tr>
+<th>English Symbol</th>
+<th>English Term</th>
+<th>Symbole française</th>
+<th>Terme française</th>
+</tr>
+<% engboldterms = @report.all_terms_by_lang(Globalize::Language.find(:first, :conditions => ["iso_639_3 = 'eng'"])) %>
+<% fraboldterms = @report.all_terms_by_lang(Globalize::Language.find(:first, :conditions => ["iso_639_3 = 'fra'"])) %>
+
+<% for t in @report.all_terms_by_lang(Globalize::Language.find(:first, :conditions => ["iso_639_3 = 'eng'"])) %>
+<% frenchterm = t.equiv_term_from(Globalize::Language.find(:first, :conditions => ["iso_639_3 = 'fra'"])) %>
+
+<% if !(t.acronym.nil? || t.acronym.length < 1)%>
+<tr valign="top">
+<td>
+<%=h t.acronym %>
+</td>
+
+<td>
+<%=h t.term %>
+</td>
+
+<td>
+<% begin # there may not be a French term... %>
+<%=h frenchterm.acronym %>
+<% rescue %>
+<% end %>
+</td>
+
+<td>
+<% begin # there may not be a French term... %>
+<%=h frenchterm.term %>
+<% rescue %>
+<% end %>
+</td>
+
+</tr>
+<% end %>
+
+<% end %>
+</table>
+

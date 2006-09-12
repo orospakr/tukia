@@ -23,6 +23,8 @@ class Projects < ActiveRecord::Migration
       
       table.column :externalbody, :string
       table.column :externalurl, :string
+      
+      table.column :do_not_show_committee_in_report, :boolean
     end
   end
 

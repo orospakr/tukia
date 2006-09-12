@@ -403,6 +403,7 @@ a.comment-link:hover {
 #term_definition,
 #term_gender_id,
 #term_project_id,
+#term_source_section,
 #term_comments,
 #term_document_section,
 #term_document_id,
@@ -422,6 +423,7 @@ a.comment-link:hover {
 #project_copyright,
 #project_isbn,
 #project_issn,
+#project_do_not_show_committee_in_report,
 #report_name,
 #report_template,
 #comment_body {
