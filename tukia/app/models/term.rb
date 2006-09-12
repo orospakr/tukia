@@ -16,6 +16,7 @@ class Term < ActiveRecord::Base
   belongs_to :synonmic
   attr_protected :created_at, :updated_at
   validates_presence_of :term
+  validates_presence_of :gender_id
   validates_presence_of :definition
   validates_presence_of :person_id
   #validates_presence_of :created_at
@@ -62,6 +63,17 @@ class Term < ActiveRecord::Base
     else
       self.project.get_full_name + " (" + self.source_section + ")"
     end
+  end
+  
+  def get_full_term_with_facet_and_acronym
+    result = self.term
+    if !(self.facet.nil? || self.facet.length < 1)
+     result += " (" + (self.facet) + ")"
+    end
+    if !(self.acronym.nil? || self.acronym.length < 1)
+     result += " (" + (self.acronym) + ")"
+    end
+    result
   end
   
   def Term.search(searchterm)

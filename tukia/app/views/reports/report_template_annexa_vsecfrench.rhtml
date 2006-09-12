@@ -1,0 +1,43 @@
+
+<% clause3counter = 1 %>
+<table width="100%">
+
+<% engboldterms = @report.all_terms_by_lang(Globalize::Language.find(:first, :conditions => ["iso_639_3 = 'eng'"])) %>
+<% fraboldterms = @report.all_terms_by_lang(Globalize::Language.find(:first, :conditions => ["iso_639_3 = 'fra'"])) %>
+
+<% for t in @report.all_terms_by_lang(Globalize::Language.find(:first, :conditions => ["iso_639_3 = 'fra'"])) %>
+<% begin %>
+<% englishterm = t.equiv_term_from(Globalize::Language.find(:first, :conditions => ["iso_639_3 = 'eng'"])) %>
+<% rescue %>
+<% end %>
+<tr valign="top">
+<td>
+3.<%=h clause3counter %>
+</td>
+<td>
+<%=h t.get_full_term_with_facet_and_acronym %>
+</td>
+<td>
+<% if !(t.gender.nil?)  %>
+<%=h t.gender.code %>
+<% end %>
+</td>
+<td>
+<% begin # there may not be an English term... %>
+<td>
+<%=h englishterm.get_full_term_with_facet_and_acronym %>
+</td>
+<td>
+<%=h englishterm.gender.code %>
+</td>
+
+<% rescue %>
+<% end %>
+</td>
+</tr>
+
+<% clause3counter = clause3counter + 1 %>
+
+<% end %>
+</table>
+

@@ -7,14 +7,14 @@
 <h3>Matching Terms:</h3>
 <% for t in @terms.to_a -%>
 <p>
-  <b><%= link_to(t.term, :controller => "terms", :action => "show", :id => t.id) %></b> in <i><%= t.language.english_name %></i>
+  <b><%= link_to(t.term, :controller => "terms", :action => "show", :id => t.id) %></b> in <i><%= t.language.english_name %></i>, from <i><%= t.source_authority %></i>
 </p>
 <% end %>
 
 <h3>Matching Definitions:</h3>
 <% for t in @fullsearchterms.to_a -%>
 <p>
-  <b><%= link_to(t.term, :controller => "terms", :action => "show", :id => t.id) %></b> in <i><%= t.language.english_name %></i>
+  <b><%= link_to(t.term, :controller => "terms", :action => "show", :id => t.id) %></b> in <i><%= t.language.english_name %></i>, from <i><%= t.source_authority %></i>
 </p>
 <% end %>
 

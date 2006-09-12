@@ -12,7 +12,7 @@ class Committee < ActiveRecord::Base
     result = ""
     parents = get_parents_recurse([])
     parents.each {|a| result += a.name + " "}
-    result
+    result.chop
   end
   
   def suggest_new_register_number

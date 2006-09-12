@@ -5,11 +5,31 @@
 <p class="meta alt"><%= "View a term.".t %></p>
 
 
-<% for column in Term.content_columns %>
+
 <p>
-  <b><%= column.human_name %>:</b> <%=h @term.send(column.name) %>
+  <b><%= "Term:".t %></b> <%=h @term.term %>
 </p>
-<% end %>
+<p>
+  <b><%= "Acronym:".t %></b> <%=h @term.acronym %>
+</p>
+<p>
+  <b><%= "Facet:".t %></b> <%=h @term.facet %>
+</p>
+<p>
+  <b><%= "Definition:".t %></b> <%=sanitize @term.definition %>
+</p>
+<p>
+  <b><%= "Gender:".t %></b> <%=h @term.gender.get_full_name %>
+</p>
+<p>
+  <b><%= "Created At:".t %></b> <%=h @term.created_at.to_s %>
+</p>
+<p>
+  <b><%= "Updated At:".t %></b> <%=h @term.updated_at.to_s %>
+</p>
+<p>
+  <b><%= "Comments:".t %></b> <%=h @term.comments %>
+</p>
 
 <p><strong>Synonyms and Other Language Equivalents:</strong></p>
 

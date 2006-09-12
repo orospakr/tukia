@@ -7,6 +7,6 @@ class Gender < ActiveRecord::Base
   
   # gah! hardcoded for English! yuck!
   def get_full_name
-    self.language.english_name + " " + self.name
+    self.language.english_name + " " + self.name + " (" + self.code.to_s + ")"
   end
 end
