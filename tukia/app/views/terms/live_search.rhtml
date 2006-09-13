@@ -3,13 +3,13 @@
   <b>Matching Terms:</b>
   <ul>
   <% for t in @terms.to_a -%>
-    <li><%= link_to(t.term, :controller => "terms", :action => "show", :id => t.id) %></li>
+    <li><%= link_to(t.get_full_term_with_facet_and_acronym, :controller => "terms", :action => "show", :id => t.id) %></li>
   <% end -%>
   </ul>
   <br />
   <b>Matching definitions:</b>
   <% for t in @fullsearchterms.to_a -%>
-    <li><%= link_to(t.term, :controller => "terms", :action => "show", :id => t.id) %></li>
+    <li><%= link_to(t.get_full_term_with_facet_and_acronym, :controller => "terms", :action => "show", :id => t.id) %></li>
   <% end -%>
 	
 <% else %>
