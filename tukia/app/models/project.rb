@@ -8,10 +8,10 @@ class Project < ActiveRecord::Base
   
   # term usages
   has_many :usages
-  has_many :terms, :through => :usages, :dependent => :destroy
+  has_many :terms, :through => :usages, :dependent => :destroy, :order => "term ASC"
   
   # source authorities.
-  has_many :authorityof, :class_name => "Term"
+  has_many :authorityof, :class_name => "Term", :order => "term ASC"
   
   # has_and_belongs_to_many :terms
   #has_many :usages, :dependent => true
