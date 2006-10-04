@@ -4,7 +4,7 @@
 <div class="post-content">
 <p class="meta alt"><%= "Edit a source authority reference.".t %></p>
 
-<%= start_form_tag ( {:action => 'update',  :id => @project }, {:class => "tukiaobjectform", :id => "tukiaobjectform"}) %>
+<%= start_form_tag( {:action => 'update',  :id => @project }, {:class => "tukiaobjectform", :id => "tukiaobjectform"}) %>
 <% @button_text = "Update".t %>
   <%= render :partial => 'form' %>
 <%= end_form_tag %>
