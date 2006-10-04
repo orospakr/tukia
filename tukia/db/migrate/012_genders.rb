@@ -18,7 +18,7 @@ class Genders < ActiveRecord::Migration
   def self.genders_data
     <<'END_OF_DATA'
 "id","name","code","language_id"
-1,"Not Applicable",-9,1819
+1,"Not Applicable",9,1819
 2,"Masculin",1,1930
 3,"Feminin",2,1930
 4,"Neutre",3,1930

@@ -8,4 +8,13 @@ module ApplicationHelper
   def tukia_version
     "1.0"
   end
+  
+  def leading_zeroes(anumber,minsigdigits)
+    stringoutput = anumber.to_s
+    minsigdigits.downto(1) { |count|
+      stringoutput = "0" + stringoutput if anumber < (10 ** (count - 1))
+    }
+    stringoutput
+  end
+  
 end

@@ -158,7 +158,17 @@ class ReportsController < ApplicationController
     render :layout => "template"
   end
   
-  def report_template_annexa_vsecfrench
+  def report_template_annex_a_vsecfrench
+    @report = Report.find(params[:id])
+    render :layout => "template"
+  end
+  
+  def report_template_annex_a_4
+    @report = Report.find(params[:id])
+    render :layout => "template"
+  end
+  
+    def report_template_annex_a_6
     @report = Report.find(params[:id])
     render :layout => "template"
   end

@@ -41,10 +41,10 @@ class TermsController < ApplicationController
     @term = Term.new(params[:term])
     if (!((!@term.synonmic.nil?) && Synonmic.exists?(@term.synonmic.id)))
       @term.synonmic = Synonmic.new()
-      @term.synonmic.save!
+      @term.synonmic.save
     end
     @term.person = @session[:user]
-    saveresult = @term.save!
+    saveresult = @term.save
     if (saveresult || saveresult.nil?)
       flash[:notice] = 'Term was successfully created.'
       redirect_to :action => 'list'
@@ -86,12 +86,18 @@ class TermsController < ApplicationController
   
   # ajax search
   def live_search
-    if !(@session[:user].nil?)
-      @search = params[:q]
-      @terms = Term.search(@search)
-      @fullsearchterms = Term.full_text_search(@search)
+    begin # queries using special characters fail (something other than UTF-8 arrives
+          # at the database adapter. I suspect a rails bug.
+      if !(@session[:user].nil?)
+        @search = params[:q]
+        @terms = Term.search(@search)
+        @fullsearchterms = Term.full_text_search(@search)
+      end
+      @headers["Content-Type"] = "text/html; charset=utf-8"
+      render :layout => false
+    rescue
+      @headers["Content-Type"] = "text/html; charset=utf-8"
+      render :layout => false
     end
-    @headers["Content-Type"] = "text/html; charset=utf-8"
-    render :layout => false
   end
 end

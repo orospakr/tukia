@@ -1,6 +1,6 @@
 
 <% clause3counter = 1 %>
-<table width="100%">
+<table width="100%" border="1">
 
 <% engboldterms = @report.all_terms_by_lang(Globalize::Language.find(:first, :conditions => ["iso_639_3 = 'eng'"])) %>
 <% fraboldterms = @report.all_terms_by_lang(Globalize::Language.find(:first, :conditions => ["iso_639_3 = 'fra'"])) %>
@@ -22,13 +22,14 @@
 <%=h t.gender.code %>
 <% end %>
 </td>
-<td>
 <% begin # there may not be an English term... %>
 <td>
 <%=h englishterm.get_full_term_with_facet_and_acronym %>
 </td>
 <td>
+<% if !(englishterm.gender.nil?)  %>
 <%=h englishterm.gender.code %>
+<% end %>
 </td>
 
 <% rescue %>
