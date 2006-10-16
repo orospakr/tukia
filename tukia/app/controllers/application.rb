@@ -2,6 +2,7 @@
 # Likewise, all the methods added will be available for all controllers.
 require_dependency "login_system"
 
+
 class ApplicationController < ActionController::Base
     include LoginSystem
     model :person

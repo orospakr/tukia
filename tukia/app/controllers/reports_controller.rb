@@ -168,8 +168,13 @@ class ReportsController < ApplicationController
     render :layout => "template"
   end
   
-    def report_template_annex_a_6
+  def report_template_annex_a_6
     @report = Report.find(params[:id])
+    render :layout => "template"
+  end
+  
+  def mega_report
+    #@report = Report.find(params[:id])
     render :layout => "template"
   end
 end

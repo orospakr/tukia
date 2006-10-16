@@ -2,12 +2,10 @@
 <% counter = 1 %>
 <table width="100%">
 
-<% engboldterms = @report.all_terms_by_lang(Globalize::Language.find(:first, :conditions => ["iso_639_3 = 'eng'"])) %>
-<% fraboldterms = @report.all_terms_by_lang(Globalize::Language.find(:first, :conditions => ["iso_639_3 = 'fra'"])) %>
+<% #engboldterms = @report.all_terms_by_lang(Globalize::Language.find(:first, :conditions => ["iso_639_3 = 'eng'"])) %>
+<% #fraboldterms = @report.all_terms_by_lang(Globalize::Language.find(:first, :conditions => ["iso_639_3 = 'fra'"])) %>
 
-<p>There are <%=h (@report.all_terms_by_lang(Globalize::Language.find(:first, :conditions => ["iso_639_3 = 'eng'"]))).length %> terms</p>
-
-<% for t in @report.all_terms_by_lang(Globalize::Language.find(:first, :conditions => ["iso_639_3 = 'eng'"])) %>
+<% for t in Term.find(:all, :conditions => "language_id = 1819", :order => "term") %>
 <% begin %>
 <% frenchterm = t.equiv_term_from(Globalize::Language.find(:first, :conditions => ["iso_639_3 = 'fra'"])) %>
 <% rescue %>
@@ -26,18 +24,26 @@
 </td>
 
 <td>
+<%=h t.acronym %>
+</td>
+
+<td>
 <% if !(t.gender.nil?)  %>
 <%=h leading_zeroes(t.gender.code,2) %>
 <% end %>
 </td>
 
 <td>
-<%= sanitize(boldify(t.definition, engboldterms, t.term)) %>
+<%= sanitize(t.definition) %>
 </td>
 <% begin # there may not be an French term... %>
 
 <td>
 <%=h frenchterm.get_full_term_with_facet_and_acronym %>
+</td>
+
+<td>
+<%=h frenchterm.acronym %>
 </td>
 
 <td>
@@ -47,7 +53,7 @@
 </td>
 
 <td>
-<%= sanitize(boldify(frenchterm.definition, fraboldterms, frenchterm.term)) %>
+<%= sanitize(frenchterm.definition) %>
 </td>
 
 <% rescue %>

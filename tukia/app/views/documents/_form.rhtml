@@ -15,7 +15,10 @@ having taken that register number already.</p>
 
 <tr>
 <th><p><label for="document_committee_id"><%=h "Owning Committee:".t %></label></p></th>
-<td><p><%= collection_select( :document, :committee_id, (@session[:user]).find_allowed_committees, :id, :get_full_name, {:include_blank => true}) %></p></td>
+<td><p>
+<%= collection_select( :document, :committee_id, Committee.find(:all), :id, :get_full_name, {:include_blank => true}) %>
+
+</p></td>
 </tr>
 
 <%= observe_field(:document_committee_id,
