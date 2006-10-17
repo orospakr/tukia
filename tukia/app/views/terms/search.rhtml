@@ -1,8 +1,8 @@
 <div class="post">
 
-<h2><%= "Search Results for search  ".t + @search.to_s  %></h2>
+<h2><%= "Search Results for search: \"".t + @search.to_s + "\"" %></h2>
 <div class="post-content">
-<p class="meta alt"><%= "Results: ".t + @terms.to_a.length.to_s + @fullsearchterms.to_a.length.to_s %></p>
+<p class="meta alt"><%= "Results: ".t + (@terms.length + @fullsearchterms.length).to_s %></p>
 
 <h3>Matching Terms:</h3>
 <% for t in @terms.to_a -%>
