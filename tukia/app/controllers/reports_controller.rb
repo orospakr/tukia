@@ -1,4 +1,4 @@
-require "pcre"
+#require "pcre"
 
 class ReportsController < ApplicationController
   layout "standard"
@@ -142,6 +142,9 @@ class ReportsController < ApplicationController
       end
     end
     return to_bold + not_to_bold
+  end
+  
+  def report_arbitruary_terms
   end
   
   # Reports.  It was easier to implement them as actions on the controller.
