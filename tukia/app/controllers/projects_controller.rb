@@ -12,7 +12,7 @@ class ProjectsController < ApplicationController
          :redirect_to => { :action => :list }
 
   def list
-    @project_pages, @projects = paginate :projects, :per_page => 100
+    @project_pages, @projects = paginate :projects, :per_page => 100, :order => "referenceid"
   end
 
   def show
