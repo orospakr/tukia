@@ -6,7 +6,11 @@ module ApplicationHelper
   end
   
   def tukia_version
-    "1.0"
+     # many thanks to zardinuk on #rubyonrails for this little trick!
+     doc = REXML::Document.new(File.new(RAILS_ROOT + '/.svn/entries'))
+     doc.root.elements.each('entry[@name=""]') do |e|
+       return "0.1." + e.attribute('revision').to_s
+     end
   end
   
   def leading_zeroes(anumber,minsigdigits)
@@ -17,4 +21,11 @@ module ApplicationHelper
     stringoutput
   end
   
+  # template_name must be trusted
+  def run_template(template_name, terms)
+    erb_template = File.read(RAILS_ROOT + "/app/views/report_templates/" + template_name + ".rhtml")
+    rhtml = ERB.new(erb_template)
+    return rhtml.run(binding())
+  end
+
 end
