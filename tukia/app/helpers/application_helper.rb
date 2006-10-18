@@ -28,4 +28,5 @@ module ApplicationHelper
     return rhtml.run(binding())
   end
 
+
 end
