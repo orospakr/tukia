@@ -10,7 +10,10 @@
 
 <% for column in Person.content_columns %>
 <p>
+  <%# I want to show everything but the password.  A bit hokey maybe, but effective. %>
+  <% if !(column.human_name == "Password") %>
   <b><%= column.human_name %>:</b> <%=h @person.send(column.name) %>
+  <% end %>
 </p>
 <% end %>
 
