@@ -11,10 +11,9 @@ module Globalize
       return ("ISO 639-3: " + self.iso_639_3).t(self.english_name)
     end
     
+    # gets from ISO 639-2 Alpha 3 code. helps with brevity in the report templates
     def get_from_code(codelol)
-      #Globalize::Language.find(:first, :conditions => ["iso_639_3 = ?", codelol])
+      Globalize::Language.find(:first, :conditions => ["iso_639_3 = ?", codelol])
     end
-    
-
   end
 end
