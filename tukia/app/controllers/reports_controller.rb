@@ -92,6 +92,8 @@ class ReportsController < ApplicationController
   helper_method :boldify
   def boldify(target_definition, terms_to_bold_from, target_term)
     # make a huge fucking ass regexp and apply it to DefinitionToBold.
+    # now it does it over and over again too, just so that the term for DefinitionToBold
+    # doesn't get bolded itself.  Bleargh.
     # why not lots of little regexps, you say? WELL, isn't that a funny thing!
     # you see, if I have lots of little ones, small terms that turn out to be substrings
     # of others will get double-bolded, potentially. stupid, huh?
@@ -121,7 +123,6 @@ class ReportsController < ApplicationController
       end
     end
     for t in terms_to_bold
-      # shitcock
       if !(t.term.nil? || t.term.length < 1) 
         termregex = Regexp.compile("(\\b" + Regexp.escape(t.term) + "(|s|es)\\b)")
         to_bold = to_bold.gsub(termregex, "<b>\\0</b>")
@@ -144,7 +145,11 @@ class ReportsController < ApplicationController
     return to_bold + not_to_bold
   end
   
-  def report_arbitruary_terms
+  # a generic report that takes an arbitruary list of terms and displays them
+  # with their french equivalents. Yeah, I know. Language-specific.
+  def quick_list
+    @terms = Term.find(params['termlist']['term_ids'])
+    render :layout => "template"
   end
   
   # Reports.  It was easier to implement them as actions on the controller.

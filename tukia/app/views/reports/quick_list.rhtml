@@ -1,0 +1,72 @@
+<h2><i><%=sanitize("This is a list of arbitrary terms.  It is <b>not</b> a project report and may not be readily recreated.".t) %></i></h2>
+
+
+
+
+
+
+<% counter = 1 %>
+<table width="100%">
+
+<% for t in @terms %>
+<% begin %>
+<% frenchterm = t.equiv_term_from(Globalize::Language.find(:first, :conditions => ["iso_639_3 = 'fra'"])) %>
+<% rescue %>
+<% end %>
+<tr valign="top">
+<td>
+<%=h counter %>
+</td>
+
+<td>
+<%=h t.source_authority %>
+</td>
+
+<td>
+<%=h t.get_full_term_with_facet_and_acronym %>
+</td>
+
+<td>
+<%=h t.acronym %>
+</td>
+
+<td>
+<% if !(t.gender.nil?)  %>
+<%=h leading_zeroes(t.gender.code,2) %>
+<% end %>
+</td>
+
+<td>
+<%= sanitize(t.definition) %>
+</td>
+<% begin # there may not be an French term... %>
+
+<td>
+<%=h frenchterm.get_full_term_with_facet_and_acronym %>
+</td>
+
+<td>
+<%=h frenchterm.acronym %>
+</td>
+
+<td>
+<% if !(frenchterm.gender.nil?)  %>
+<%=h leading_zeroes(frenchterm.gender.code,2) %>
+<% end %>
+</td>
+
+<td>
+<%= sanitize(frenchterm.definition) %>
+</td>
+
+<% rescue %>
+<% end %>
+
+
+</tr>
+
+<% counter = counter + 1 %>
+
+<% end %>
+</table>
+

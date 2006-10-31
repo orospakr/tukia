@@ -28,5 +28,13 @@ module ApplicationHelper
     return rhtml.run(binding())
   end
 
+  # displays a nice list of terms, plus checkboxes so jake can POST it to a print
+  # action on the terms controller (arbitrary printing of terms from a list term list
+  # anywhere in the app)
+  # the reason I'm putting this in the application controller is because I need it
+  # everywhere.
+#  def term_table
+#    render_to_string({:file => RAILS_ROOT + "/app/views/terms/_termtable.rhtml", :layout => false, :locals => { :terms => "terms" }})
+#  end
 
 end

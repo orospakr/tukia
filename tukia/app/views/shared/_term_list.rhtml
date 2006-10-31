@@ -1,0 +1,10 @@
+
+<%= start_form_tag( {:controller => 'reports', :action => 'quick_list'}, {:class => "tukiaobjectform", :id => "tukiaobjectform"}) %>
+<% for t in terms.to_a -%>
+<p>
+<%= check_box_tag("termlist[term_ids][]", t.id, true) %>                           
+<b><%= link_to(t.get_full_term_with_facet_and_acronym, :controller => "terms", :action => "show", :id => t.id) %></b> in <i><%= t.language.english_name %></i>, from <i><%= t.source_authority %></i>
+</p>
+<% end %>
+<%= submit_tag("Print".t, { :id => "form-submit-button", :class => "button"}) %>
+<%= end_form_tag %>
