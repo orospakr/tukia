@@ -18,7 +18,7 @@
 
     <td><%=h term.term %></td>
     <td><%=h term.language.full_english_name %></td>
-    <td><%=h term.definition %></td>
+    <td><%=sanitize term.definition %></td>
     <td><%=h term.created_at %></td>
     <td><%=h term.updated_at %></td>
     <td><%= link_to 'Show', :action => 'show', :id => term %></td>

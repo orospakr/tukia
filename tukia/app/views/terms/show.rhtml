@@ -34,7 +34,7 @@
 <p><strong>Synonyms and Other Language Equivalents:</strong></p>
 
 <% for synonym in @term.synonyms %>
-<%= link_to synonym.term + " in " + synonym.language.english_name, :action => 'show', :id => synonym %>
+<p><%= link_to synonym.term + " in " + synonym.language.english_name, :action => 'show', :id => synonym %></p>
 <% end %>
 
 <p class="meta">
