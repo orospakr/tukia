@@ -4,6 +4,10 @@ module Globalize
     has_many :language_names
     has_many :terms
     
+    def full_english_name
+      self_english_name + " " + english_name_modifier
+    end
+    
     def get_name_from_code
       if (self.iso_639_3.nil?)
         return
