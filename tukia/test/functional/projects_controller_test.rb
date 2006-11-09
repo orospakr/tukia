@@ -14,12 +14,14 @@ class ProjectsControllerTest < Test::Unit::TestCase
   end
 
   def test_index
+    login_as(:joeblow)
     get :index
     assert_response :success
     assert_template 'list'
   end
 
   def test_list
+    login_as(:joeblow)
     get :list
 
     assert_response :success
@@ -29,6 +31,7 @@ class ProjectsControllerTest < Test::Unit::TestCase
   end
 
   def test_show
+    login_as(:joeblow)
     get :show, :id => 1
 
     assert_response :success
@@ -39,6 +42,7 @@ class ProjectsControllerTest < Test::Unit::TestCase
   end
 
   def test_new
+    login_as(:joeblow)
     get :new
 
     assert_response :success
@@ -48,6 +52,7 @@ class ProjectsControllerTest < Test::Unit::TestCase
   end
 
   def test_create
+    login_as(:joeblow)
     num_projects = Project.count
 
     post :create, :project => {}
@@ -59,6 +64,7 @@ class ProjectsControllerTest < Test::Unit::TestCase
   end
 
   def test_edit
+    login_as(:joeblow)
     get :edit, :id => 1
 
     assert_response :success
@@ -69,12 +75,14 @@ class ProjectsControllerTest < Test::Unit::TestCase
   end
 
   def test_update
+    login_as(:joeblow)
     post :update, :id => 1
     assert_response :redirect
     assert_redirected_to :action => 'show', :id => 1
   end
 
   def test_destroy
+    login_as(:joeblow)
     assert_not_nil Project.find(1)
 
     post :destroy, :id => 1

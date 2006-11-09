@@ -5,7 +5,7 @@
 <p class="meta alt"><%= "Here you (admin) may create new National Bodies, as delegations to Committees.".t %></p>
 
 
-<%= start_form_tag ( {:action => 'create'}, {:class => "tukiaobjectform", :id => "tukiaobjectform"}) %>
+<%= start_form_tag({:action => 'create'}, {:class => "tukiaobjectform", :id => "tukiaobjectform"}) %>
 <% @button_text = "Create".t %>
   <%= render :partial => 'form' %>
 <%= end_form_tag %>

@@ -11,6 +11,7 @@ class Committee < ActiveRecord::Base
   def get_full_name
     result = ""
     parents = get_parents_recurse([])
+    #raise "WTF." + parents.length.to_s
     parents.each {|a| result += a.name + " "}
     result.chop
   end

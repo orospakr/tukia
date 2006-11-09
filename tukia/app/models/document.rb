@@ -1,4 +1,4 @@
-require_dependency "globalize_language"
+require_dependency "language"
 
 class Document < ActiveRecord::Base
   # the languages of this document.
@@ -41,9 +41,6 @@ class Document < ActiveRecord::Base
   
   validates_presence_of :title
   validates_presence_of :register_number
-  validates_presence_of :status_id
-  validates_presence_of :statusiteration
-  validates_presence_of :external
   validates_presence_of :file
   validates_presence_of :copyright
   validates_presence_of :licence

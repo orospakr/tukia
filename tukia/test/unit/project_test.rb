@@ -5,6 +5,6 @@ class ProjectTest < Test::Unit::TestCase
 
   # Replace this with your real tests.
   def test_truth
-    assert true
+    assert_kind_of Project, projects(:rfc2549)
   end
 end

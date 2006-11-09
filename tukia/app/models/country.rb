@@ -1,4 +1,4 @@
-#here I extend the globalizecountry model provided by the globalilze plugin.
+#here I extend the globalizecountry model provided by the globalize plugin.
 #damn I <3 ruby.
 
 module Globalize

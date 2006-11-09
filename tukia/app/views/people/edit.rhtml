@@ -8,7 +8,7 @@
 <div class="post-content">
 <p class="meta alt"><%= "Edit a person blah blah".t %></p>
 
-<%= start_form_tag ( {:action => 'update',  :id => @person }, {:class => "tukiaobjectform", :id => "tukiaobjectform"}) %>
+<%= start_form_tag( {:action => 'update',  :id => @person }, {:class => "tukiaobjectform", :id => "tukiaobjectform"}) %>
 <% @button_text = "Update".t %>
   <%= render :partial => 'form' %>
 <%= end_form_tag %>
@@ -17,6 +17,3 @@
 <%= link_to 'Back', :action => 'list' %></p>
 </div>
 </div>
-
-
-

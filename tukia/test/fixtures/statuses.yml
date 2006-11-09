@@ -1,5 +1,16 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
-first:
+wd:
   id: 1
-another:
+  name: WD
+cd:
   id: 2
+  name: CD
+fcd:
+  id: 3
+  name: FCD
+fdis:
+  id: 4
+  name: FDUS
+is:
+  id: 5
+  name: IS

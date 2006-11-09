@@ -5,6 +5,6 @@ class DocumentTest < Test::Unit::TestCase
 
   # Replace this with your real tests.
   def test_truth
-    assert_kind_of Document, documents(:first)
+    assert_kind_of Document, documents(:nuclearphusion)
   end
 end

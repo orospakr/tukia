@@ -1,5 +1,25 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
-first:
-  id: 1
-another:
-  id: 2
+isoiec:
+  id:          1
+  name:        ISO/IEC
+  parent_id:
+  created_at:  1965-10-18 23:02:13
+  updated_at:  2005-10-18 14:02:13
+jtc1:
+  id:          2
+  name:        JTC1
+  parent_id:   1
+  created_at:  2004-10-18 16:02:13
+  updated_at:  2006-04-18 12:02:16
+oasis:
+  id:          3
+  name:        OASIS
+  parent_id:   
+  created_at:  2006-04-18 12:02:16
+  updated_at:  2006-04-18 12:02:16
+ietf:
+  id:          4
+  name:        Internet Engineering Task Force
+  parent_id:   
+  created_at:  2006-04-18 12:02:16
+  updated_at:  2006-04-18 12:02:16

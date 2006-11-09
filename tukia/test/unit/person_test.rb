@@ -5,6 +5,6 @@ class PersonTest < Test::Unit::TestCase
 
   # Replace this with your real tests.
   def test_truth
-    assert_kind_of Person, people(:first)
+    assert_kind_of Person, people(:joeblow)
   end
 end

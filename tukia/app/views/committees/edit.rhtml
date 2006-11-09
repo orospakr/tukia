@@ -5,7 +5,7 @@
 <p class="meta alt"><%= "Edit a committee.  A committee is quite often a subunit of a large committee.  Tukia represents
 committees as a tree structure.  Please select the already created parent committee in the \"Subcommittee\" selection below.".t %></p>
 
-<%= start_form_tag ( {:action => 'update',  :id => @committee }, {:class => "tukiaobjectform", :id => "tukiaobjectform"}) %>
+<%= start_form_tag( {:action => 'update',  :id => @committee }, {:class => "tukiaobjectform", :id => "tukiaobjectform"}) %>
 <% @button_text = "Update".t %>
   <%= render :partial => 'form' %>
 <%= end_form_tag %>

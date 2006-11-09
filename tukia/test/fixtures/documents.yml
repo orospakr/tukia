@@ -1,5 +1,15 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
-first:
-  id: 1
-another:
-  id: 2
+nuclearphusion:
+  id:              1
+  title:           "Nuclear Phusion for Phun and Profit"
+  register_number: 1
+  file:            "I'ma file!"
+  copyright:       "Copyright"
+  licence:         "Licence"
+  committee_id:    1
+  person_id:       1
+  created_at:      2006-07-01 00:00:00
+  updated_at:      2006-07-01 00:00:00
+  extension:       ".doc"
+  pdffile:         "binary crap goes here"
+  language_id:     1918
