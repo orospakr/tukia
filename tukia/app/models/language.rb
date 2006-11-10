@@ -5,7 +5,11 @@ module Globalize
     has_many :terms
     
     def full_english_name
-      self_english_name + " " + english_name_modifier
+      begin
+        self_english_name + " " + english_name_modifier
+      rescue
+        self_english_name
+      end
     end
     
     def get_name_from_code
