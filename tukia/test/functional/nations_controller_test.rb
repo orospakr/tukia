@@ -5,8 +5,7 @@ require 'nations_controller'
 class NationsController; def rescue_action(e) raise e end; end
 
 class NationsControllerTest < Test::Unit::TestCase
-  fixtures :nations
-  fixtures :people
+  fixtures :nations, :people, :committees
 
   def setup
     @controller = NationsController.new
@@ -56,7 +55,9 @@ class NationsControllerTest < Test::Unit::TestCase
     login_as(:joeblow)
     num_nations = Nation.count
 
-    post :create, :nation => {}
+    post :create, :nation => {:name => "Soviet Canuckistan", :country_id => 36,
+                              :committee_id => committees(:isoiec).id,
+                              :participation_level => 1}
 
     assert_response :redirect
     assert_redirected_to :action => 'list'

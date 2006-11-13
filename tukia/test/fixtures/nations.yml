@@ -1,5 +1,7 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
-first:
+canada:
   id: 1
-another:
+  name: Canada
+  country_id: 
+unitedstates:
   id: 2
