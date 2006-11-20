@@ -6,9 +6,9 @@ module Globalize
     
     def full_english_name
       begin
-        self_english_name + " " + english_name_modifier
+        self.english_name + " " + self.english_name_modifier
       rescue
-        self_english_name
+        self.english_name
       end
     end
     
