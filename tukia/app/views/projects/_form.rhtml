@@ -24,16 +24,6 @@
 </tr>
 
 <tr>
-<th><p><label for="project_externalbody">External issuing body:</label></p></th>
-<td><p><%= text_field 'project', 'externalbody'  %></p></td>
-</tr>
-
-<tr>
-<th><p><label for="project_externalurl">External URL:</label></p></th>
-<td><p><%= text_field 'project', 'externalurl'  %></p></td>
-</tr>
-
-<tr>
 <th><p><label for="project_status_id"><%=h "Status:".t %></label></p></th>
 <td><p><%= collection_select( :project, :status_id, Status.find(:all), :id, :name) %></p></td>
 </tr>
