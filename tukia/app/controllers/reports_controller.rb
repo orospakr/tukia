@@ -14,7 +14,7 @@ class ReportsController < ApplicationController
   :redirect_to => { :action => :list }
   
   def list
-    @report_pages, @reports = paginate :reports, :per_page => 10
+    @report_pages, @reports = paginate :reports, :per_page => 100
   end
   
   def show
