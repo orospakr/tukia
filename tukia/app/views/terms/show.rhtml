@@ -10,6 +10,9 @@
   <b><%= "Term:".t %></b> <%=h @term.term %>
 </p>
 <p>
+  <b><%= "Language:".t %></b> <%=h @term.language.full_english_name %>
+</p>
+<p>
   <b><%= "Acronym:".t %></b> <%=h @term.acronym %>
 </p>
 <p>
@@ -34,7 +37,7 @@
 <p><strong>Synonyms and Other Language Equivalents:</strong></p>
 
 <% for synonym in @term.synonyms %>
-<p><%= link_to synonym.term + " in " + synonym.language.english_name, :action => 'show', :id => synonym %></p>
+<p><%= link_to synonym.term + " in " + synonym.language.full_english_name, :action => 'show', :id => synonym %></p>
 <% end %>
 
 <p class="meta">
