@@ -5,6 +5,6 @@ class NationTest < Test::Unit::TestCase
 
   # Replace this with your real tests.
   def test_truth
-    assert_kind_of Nation, nations(:first)
+    assert_kind_of Nation, nations(:canada)
   end
 end

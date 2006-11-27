@@ -5,6 +5,6 @@ class StatusTest < Test::Unit::TestCase
 
   # Replace this with your real tests.
   def test_truth
-    assert_kind_of Status, statuses(:first)
+    assert_kind_of Status, statuses(:wd)
   end
 end
