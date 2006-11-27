@@ -64,34 +64,3 @@ li {
 	display: inline-block;
 	top: 3px;
 }
-
-/* IE 5 FIXES
-*******************************************************************************/
-
-pre {
-	width /**/: 499px;
-}
-.post,
-h2,
-.auth,
-.meta,
-.meta.alt {
-	width /**/: 551px;
-}
-#commentList li,
-#commentList .author-details {
-	width /**/: 533px;
-}
-#sidebar h3,
-#sform label,
-#sidebar li a {
-	width /**/: 199px;
-}
-#search-results h4 {
-	width /**/: 191px;
-}
-#commentList li,
-#sidebar .sidebar-node,
-#sidebar li a {
-	height /**/: auto;
-}
