@@ -4,12 +4,13 @@
 <div class="post-content">
 <p class="meta alt"><%= "View a report job.".t %></p>
 
-
-<% for column in Report.content_columns %>
 <p>
-  <b><%= column.human_name %>:</b> <%=h @report.send(column.name) %>
+  <b><%= "Name".t %>:</b> <%=h @report.name %>
 </p>
-<% end %>
+
+<p>
+  <b><%= "Template".t %>:</b> <%=h @report.template %>
+</p>
 
 <p class="meta">
 <%= link_to 'Run Report', :action => @report.template, :id => @report %> |

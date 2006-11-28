@@ -68,6 +68,7 @@ class PeopleController < ApplicationController
       if @session[:user] = Person.authenticate(@params[:user_login], @params[:user_password])
 
         flash['notice']  = "Login successful".t
+        @session[:user].update_login_time()
         redirect_back_or_default :controller => "site", :action => "welcome"
       else
         flash.now['notice']  = "Login unsuccessful".t

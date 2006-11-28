@@ -27,6 +27,10 @@ module ApplicationHelper
     rhtml = ERB.new(erb_template)
     return rhtml.run(binding())
   end
+  
+  def nice_from_utc(t)
+    @session[:user].tz.strftime("%a %b %d %H:%M:%S %Z %Y", t)
+  end
 
   # displays a nice list of terms, plus checkboxes so jake can POST it to a print
   # action on the terms controller (arbitrary printing of terms from a list term list

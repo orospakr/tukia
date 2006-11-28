@@ -8,14 +8,74 @@
 <p class="meta alt"><%= "View a person.".t %></p>
 
 
-<% for column in Person.content_columns %>
+
 <p>
-  <%# I want to show everything but the password.  A bit hokey maybe, but effective. %>
-  <% if !(column.human_name == "Password") %>
-  <b><%= column.human_name %>:</b> <%=h @person.send(column.name) %>
-  <% end %>
+  <b><%= "Login Name".t %>:</b> <%=h @person.name %>
 </p>
-<% end %>
+
+<p>
+  <b><%= "Name".t %>:</b> <%=h @person.full_name %>
+</p>
+
+<p>
+  <b><%= "Email Address".t %>:</b> <%=link_to( @person.email, "mailto:" + @person.email) %>
+</p>
+
+<p>
+  <b><%= "Name".t %>:</b> <%=h @person.name %>
+</p>
+
+<p>
+  <b><%= "Website".t %>:</b> <%=link_to(@person.url, @person.url) %>
+</p>
+
+<p>
+  <b><%= "Phone".t %>:</b> <%=h @person.phone %>
+</p>
+
+<p>
+  <b><%= "Organisation".t %>:</b> <%=h @person.organisation %>
+</p>
+
+<p>
+  <b><%= "Name".t %>:</b> <%=h @person.name %>
+</p>
+
+<p>
+  <b><%= "Enabled".t %>:</b> <%=h @person.enabled %>
+</p>
+
+<p>
+  <b><%= "Created At".t %>:</b> <%=h @person.created_at %>
+</p>
+
+<p>
+  <b><%= "Updated At".t %>:</b> <%=h @person.updated_at %>
+</p>
+
+<p>
+  <b><%= "Last Login At".t %>:</b> <%=h @person.lastlogin_at %>
+</p>
+
+<p>
+  <b><%= "Name".t %>:</b> <%=h @person.name %>
+</p>
+
+<p>
+  <b><%= "Timezone".t %>:</b> <%=h @person.time_zone %>
+</p>
+
+
+
+
+
+
+
+
+
+
+
+
 
 <p class="meta">
 <%= link_to 'Edit', :action => 'edit', :id => @person %> |

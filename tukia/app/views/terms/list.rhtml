@@ -7,20 +7,18 @@
 <table>
   <tr>
     <th><%=h "Term".t %></th>
-    <th><%=h "Language".t %>
+    <th><%=h "Language".t %></th>
+    <th><%=h "Source Authority".t %></th>
     <th><%=h "Definition".t %></th>
-    <th><%=h "Created At".t %></th>
-    <th><%=h "Updated At".t %></th>
   </tr>
   
 <% for term in @terms %>
   <tr>
 
-    <td><%=h term.term %></td>
+    <td><%=h term.get_full_term_with_facet_and_acronym %></td>
     <td><%=h term.language.full_english_name %></td>
+    <td><%= link_to(term.project.get_full_name, :controller => "projects", :action => "show", :id => term.project)%></td>
     <td><%=sanitize term.definition %></td>
-    <td><%=h term.created_at %></td>
-    <td><%=h term.updated_at %></td>
     <td><%= link_to 'Show', :action => 'show', :id => term %></td>
     <td><%= link_to 'Edit', :action => 'edit', :id => term %></td>
     <td><%= link_to 'Destroy'.t, { :action => 'destroy', :id => term }, :confirm => 'Are you sure?'.t, :post => true  %></td>

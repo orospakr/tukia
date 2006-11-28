@@ -10,6 +10,11 @@
 </tr>
 
 <tr>
+<th><p><label for="nation_url">URL:</label></p></th>
+<td><p><%= text_field 'nation', 'url'  %></p></td>
+</tr>
+
+<tr>
 <th><p><label for="nation_country_id">System Country:</label></p></th>
 <td><p><%= collection_select( :nation, :country_id, Globalize::Country.find(:all), :id, :english_name )%></p></td>
 </tr>

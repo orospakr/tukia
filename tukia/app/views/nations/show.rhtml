@@ -6,12 +6,24 @@
 <p class="meta alt"><%= "View a nation.".t %></p>
 
 
-<% for column in Nation.content_columns %>
 <p>
-  <b><%= column.human_name %>:</b> <%=h @nation.send(column.name) %>
+  <b><%= "Name".t %>:</b> <%=h @nation.name %>
 </p>
-<% end %>
-<p><b><%= "System Locale:".t %></b><%=h @nation.country.english_name.t %></p>
+<p>
+  <b><%= "URL".t %>:</b> <%=h @nation.url %>
+</p>
+<p>
+  <b><%= "Created At".t %>:</b> <%=h @nation.created_at %>
+</p>
+<p>
+  <b><%= "Updated At".t %>:</b> <%=h @nation.updated_at %>
+</p>
+<p>
+  <b><%= "Particpation Level".t %>:</b> <%=h @nation.participation_level %>
+</p>
+<p>
+  <b><%= "System Locale:".t %></b><%=h @nation.country.english_name.t %>
+</p>
 
 <p class="meta">
 <%= link_to 'Edit', :action => 'edit', :id => @nation %> |

@@ -10,6 +10,7 @@
   <th><%=h "Username".t %></th>
   <th><%=h "Full Name".t %></th>
   <th><%=h "Email Address".t %></th>
+  <th><%=h "Last Login".t %></th>
   </tr>
   
 <% for person in @people %>
@@ -17,8 +18,8 @@
 
     <td><%=h person.name %></td>
     <td><%=h person.givenname + " " + person.surname %></td>
-    <td><%=h person.email %></td>
-    
+    <td><%=link_to(person.email, "mailto:" + person.email)%></td>
+    <td><%=h person.lastlogin_at %></td>
     <td><%= link_to 'Show', :action => 'show', :id => person %></td>
     <td><%= link_to 'Edit', :action => 'edit', :id => person %></td>
     <td><%= link_to 'Destroy'.t, { :action => 'destroy', :id => person }, :confirm => 'Are you sure?'.t, :post => true  %></td>

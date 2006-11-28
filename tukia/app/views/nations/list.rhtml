@@ -6,16 +6,16 @@
 
 <table>
   <tr>
-  <% for column in Nation.content_columns %>
-    <th><%= column.human_name %></th>
-  <% end %>
+    <th><%= "Name".t %></th>
+    <th><%= "Site".t %></th>
+    <th><%= "Participation Level".t %></th>
   </tr>
   
 <% for nation in @nations %>
   <tr>
-  <% for column in Nation.content_columns %>
-    <td><%=h nation.send(column.name) %></td>
-  <% end %>
+    <td><%=h nation.name %></td>
+    <td><%=link_to(nation.url, nation.url) %></td>
+    <td><%=h nation.participation_level %></td>
     <td><%= link_to 'Show'.t, :action => 'show', :id => nation %></td>
     <td><%= link_to 'Edit'.t, :action => 'edit', :id => nation %></td>
     <td><%= link_to 'Destroy'.t, { :action => 'destroy', :id => nation }, :confirm => 'Are you sure?'.t, :post => true  %></td>
