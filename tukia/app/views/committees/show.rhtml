@@ -2,8 +2,7 @@
 
 <h2><%= "Committee: ".t + @committee.get_full_name  %></h2>
 <div class="post-content">
-<p class="meta alt"><%= "View a committee.  A committee is quite often a subunit of a large committee.  Tukia represents
-committees as a tree structure.  Please select the already created parent committee in the \"Subcommittee\" selection below.".t %></p>
+<p class="meta alt"><%= "View a committee's properties.".t %></p>
 
 <p>
   <b><%= "Full Name:".t %>:</b> <%=h @committee.get_full_name %>
@@ -16,7 +15,7 @@ committees as a tree structure.  Please select the already created parent commit
 </p>
 <% begin %>
 <p>
-  <b><%= "Parent Committee".t %>:</b> <%=h @committee.parent.get_full_name %>
+  <b><%= "Parent Committee".t %>:</b> <%= link_to(@committee.parent.get_full_name, :action => "show", :id => @committee.parent) %>
 </p>
 <% rescue %>
 <% end %>
@@ -27,6 +26,11 @@ committees as a tree structure.  Please select the already created parent commit
   <b><%= "Updated At".t %>:</b> <%=h @committee.updated_at %>
 </p>
 
+<p><b><%= "Subcommittees".t %>:</b></p>
+
+<% for child in @committee.children %>
+<p><%= link_to(child.name + " " + child.title, :action => "show", :id => child) %></p>
+<% end %>
 <p class="meta">
 <%= link_to 'Edit', :action => 'edit', :id => @committee %> |
 <%= link_to 'Back', :action => 'list' %>
