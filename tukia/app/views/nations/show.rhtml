@@ -7,23 +7,27 @@
 
 
 <p>
-  <b><%= "Name".t %>:</b> <%=h @nation.name %>
+  <b><%=h "Name".t %>:</b> <%=h @nation.name %>
 </p>
 <p>
-  <b><%= "URL".t %>:</b> <%=h @nation.url %>
+  <b><%=h "URL".t %>:</b> <%=h @nation.url %>
 </p>
 <p>
-  <b><%= "Created At".t %>:</b> <%=h @nation.created_at %>
+  <b><%=h "Created At".t %>:</b> <%=h @nation.created_at %>
 </p>
 <p>
-  <b><%= "Updated At".t %>:</b> <%=h @nation.updated_at %>
+  <b><%=h "Updated At".t %>:</b> <%=h @nation.updated_at %>
 </p>
 <p>
-  <b><%= "Particpation Level".t %>:</b> <%=h @nation.participation_level %>
+  <b><%=h "Particpation Level".t %>:</b> <%=h @nation.participation_level %>
 </p>
 <p>
-  <b><%= "System Locale:".t %></b><%=h @nation.country.english_name.t %>
+  <b><%=h "System Locale:".t %></b> <%=h @nation.country.english_name.t %>
 </p>
+<p><b><%=h "People".t%>:</b></p>
+<% for dude in @nation.people %>
+<p><%= link_to(dude.full_name, {:controller => "people", :action => "show", :id => dude}) %></p>
+<% end %>
 
 <p class="meta">
 <%= link_to 'Edit', :action => 'edit', :id => @nation %> |
