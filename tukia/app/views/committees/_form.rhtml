@@ -8,6 +8,12 @@
 </tr>
 
 <tr>
+<th><p><label for="committee_title"><%=h "Title:".t %></label></p></th>
+<td><p><%= text_field('committee', 'title', {:type => "text"})  %></p></td>
+</tr>
+
+
+<tr>
 <th><p><label for="committee_parent_id"><%=h "Subcommittee of:".t %></label></p></th>
 <td><p><%= collection_select( :committee, :parent_id, @committees, :id, :get_full_name, {:include_blank => true}) %></p></td>
 </tr>

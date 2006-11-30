@@ -6,12 +6,14 @@
 
 <table>
   <tr>
-  <th><%=h "Full Name".t %></th>
+  <th><%=h "Name".t %></th>
+  <th><%=h "Title".t %></th>
   </tr>
   
 <% for committee in @committees %>
   <tr>
     <td><%=h committee.get_full_name %></td>
+    <td><%=h committee.title %></td>
     <td><%= link_to 'Show', :action => 'show', :id => committee %></td>
     <td><%= link_to 'Edit', :action => 'edit', :id => committee %></td>
     <td><%= link_to 'Destroy'.t, { :action => 'destroy', :id => committee }, :confirm => 'Are you sure? BE AWARE THAT THIS WILL ALSO DESTROY ANY AND ALL SUBCOMMITTEES, AND THUSLY ANY DOCUMENTS AND NATIONAL BODIES THAT IT CONTAINED.'.t, :post => true  %></td>

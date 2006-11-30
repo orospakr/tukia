@@ -5,10 +5,21 @@
 <p class="meta alt"><%= "View a committee.  A committee is quite often a subunit of a large committee.  Tukia represents
 committees as a tree structure.  Please select the already created parent committee in the \"Subcommittee\" selection below.".t %></p>
 
-
+<p>
+  <b><%= "Full Name:".t %>:</b> <%=h @committee.get_full_name %>
+</p>
 <p>
   <b><%= "Name".t %>:</b> <%=h @committee.name %>
 </p>
+<p>
+  <b><%= "Title".t %>:</b> <%=h @committee.title %>
+</p>
+<% begin %>
+<p>
+  <b><%= "Parent Committee".t %>:</b> <%=h @committee.parent.get_full_name %>
+</p>
+<% rescue %>
+<% end %>
 <p>
   <b><%= "Created At".t %>:</b> <%=h @committee.created_at %>
 </p>
