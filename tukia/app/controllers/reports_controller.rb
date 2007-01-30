@@ -91,6 +91,7 @@ class ReportsController < ApplicationController
   
   helper_method :boldify
   def boldify(target_definition, terms_to_bold_from, target_term)
+    logger.warn("Entering boldify()...")
     # make a huge fucking ass regexp and apply it to DefinitionToBold.
     # now it does it over and over again too, just so that the term for DefinitionToBold
     # doesn't get bolded itself.  Bleargh.
@@ -115,6 +116,7 @@ class ReportsController < ApplicationController
     end
     # loop through the terms, from longest to shortest.
     #terms_to_bold_from.delete(target_term)
+    logger.warn("Sorting...")
     terms_to_bold = terms_to_bold_from.sort do |a,b|
       begin
         b.term.length <=> a.term.length
@@ -122,26 +124,30 @@ class ReportsController < ApplicationController
         -1
       end
     end
+    logger.warn("Done sorting.  Building and running regexes...")
     for t in terms_to_bold
       if !(t.term.nil? || t.term.length < 1) 
         termregex = Regexp.compile("(\\b" + Regexp.escape(t.term) + "(|s|es)\\b)")
         to_bold = to_bold.gsub(termregex, "<b>\\0</b>")
       end
     end
-    # now do it again, but with the acronyms
-    acronyms_to_bold = terms_to_bold_from.sort do |a,b|
-      begin
-        b.acronym.length <=> a.acronym.length
-      rescue
-        -1
-      end
-    end
-    for a in acronyms_to_bold
-      if !(a.acronym.nil? || a.acronym.length < 1) 
-        acronymregex = Regexp.compile("(\\b" + Regexp.escape(a.acronym) + "(|s|es)\\b)")
-        to_bold = to_bold.gsub(acronymregex, "<b>\\0</b>")
-      end
-    end
+    logger.warn("Done.  Sorting acronyms...")
+#    # now do it again, but with the acronyms
+#    acronyms_to_bold = terms_to_bold_from.sort do |a,b|
+#      begin
+#        b.acronym.length <=> a.acronym.length
+#      rescue
+#        -1
+#      end
+#    end
+#    logger.warn("Done sorting acronyms.  Building and running regexes...")
+#    for a in acronyms_to_bold
+#      if !(a.acronym.nil? || a.acronym.length < 1) 
+#        acronymregex = Regexp.compile("(\\b" + Regexp.escape(a.acronym) + "(|s|es)\\b)")
+#        to_bold = to_bold.gsub(acronymregex, "<b>\\0</b>")
+#      end
+#    end
+    logger.warn("Done. Leaving boldify()...")
     return to_bold + not_to_bold
   end
   
@@ -157,6 +163,11 @@ class ReportsController < ApplicationController
   # would involve introspection or some shit.
   
   def report_template_clause3
+    @report = Report.find(params[:id])
+    render :layout => "template"
+  end
+  
+  def report_template_clause3_allref
     @report = Report.find(params[:id])
     render :layout => "template"
   end

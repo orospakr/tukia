@@ -1,3 +1,5 @@
+require 'digest/sha1'
+
 class Person < ActiveRecord::Base
   has_and_belongs_to_many :editorof, :class_name => "Committee", :join_table => "committees_editors"
   has_and_belongs_to_many :convenorof, :class_name => "Committee", :join_table => "committees_convenors"

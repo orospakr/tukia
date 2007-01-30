@@ -6,6 +6,7 @@ module ApplicationHelper
   end
   
   def tukia_version
+     # BROKEN because subversion no longer stores .svn/entries as xml.
      # many thanks to zardinuk on #rubyonrails for this little trick!
      doc = REXML::Document.new(File.new(RAILS_ROOT + '/.svn/entries'))
      doc.root.elements.each('entry[@name=""]') do |e|
