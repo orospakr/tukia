@@ -32,7 +32,7 @@ SELECT * FROM terms WHERE language_id = ? AND
       )
     )
   )
-) ORDER BY UPPER( REPLACE (term, '(', '0' ));
+) ORDER BY UPPER(term);
 EOQ
 
   @@find_all_with_synonmics_query = <<EOQ
@@ -66,7 +66,7 @@ SELECT * FROM terms WHERE language_id = ? AND
       )
     )
   )
-) ORDER BY UPPER( REPLACE (term, '(', '0' ));
+) ORDER BY UPPER(term);
 EOQ
 
   @@find_sourced_only_no_synonmics_query = <<EOQ
@@ -79,7 +79,7 @@ SELECT * FROM terms WHERE language_id = ? AND
       SELECT project_id FROM projects_reports WHERE report_id = ?
     )
   )
-) ORDER BY UPPER( REPLACE (term, '(', '0' ));
+) ORDER BY UPPER(term);
 EOQ
 
  @@find_sourced_only_with_synonmics_query = <<EOQ
@@ -101,7 +101,7 @@ SELECT * FROM terms WHERE language_id = ?
       )
     )
   )
-) ORDER BY UPPER( REPLACE (term, '(', '0' ));
+) ORDER BY UPPER(term);
 EOQ
   
 #  def before_validation
