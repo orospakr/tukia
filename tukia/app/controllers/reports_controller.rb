@@ -132,21 +132,21 @@ class ReportsController < ApplicationController
       end
     end
     logger.warn("Done.  Sorting acronyms...")
-#    # now do it again, but with the acronyms
-#    acronyms_to_bold = terms_to_bold_from.sort do |a,b|
-#      begin
-#        b.acronym.length <=> a.acronym.length
-#      rescue
-#        -1
-#      end
-#    end
-#    logger.warn("Done sorting acronyms.  Building and running regexes...")
-#    for a in acronyms_to_bold
-#      if !(a.acronym.nil? || a.acronym.length < 1) 
-#        acronymregex = Regexp.compile("(\\b" + Regexp.escape(a.acronym) + "(|s|es)\\b)")
-#        to_bold = to_bold.gsub(acronymregex, "<b>\\0</b>")
-#      end
-#    end
+    # now do it again, but with the acronyms
+    acronyms_to_bold = terms_to_bold_from.sort do |a,b|
+      begin
+        b.acronym.length <=> a.acronym.length
+      rescue
+        -1
+      end
+    end
+    logger.warn("Done sorting acronyms.  Building and running regexes...")
+    for a in acronyms_to_bold
+      if !(a.acronym.nil? || a.acronym.length < 1) 
+        acronymregex = Regexp.compile("(\\b" + Regexp.escape(a.acronym) + "(|s|es)\\b)")
+        to_bold = to_bold.gsub(acronymregex, "<b>\\0</b>")
+      end
+    end
     logger.warn("Done. Leaving boldify()...")
     return to_bold + not_to_bold
   end
