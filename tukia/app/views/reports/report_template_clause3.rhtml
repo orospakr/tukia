@@ -19,6 +19,8 @@
 <%=sanitize(boldify(t.definition,engboldterms,t)) %><br/>
 <% if (!@report.term_sourced_from_any_project(t)) %>
 [<%=h t.source_authority %>]<br/>
+<% else %>
+<%= "bummer"%>
 <% end %>
 </td>
 <td>
