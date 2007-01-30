@@ -167,6 +167,11 @@ class ReportsController < ApplicationController
     render :layout => "template"
   end
   
+  def report_template_clause3_allref
+    @report = Report.find(params[:id])
+    render :layout => "template"
+  end
+  
   def report_template_clause4
     @report = Report.find(params[:id])
     render :layout => "template"

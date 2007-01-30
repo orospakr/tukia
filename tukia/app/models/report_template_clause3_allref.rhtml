@@ -17,9 +17,9 @@
 <%=h t.get_full_term_with_facet_and_acronym %>
 </strong><br/>
 <%=sanitize(boldify(t.definition,engboldterms,t)) %><br/>
-<% if (!@report.term_sourced_from_any_project(t)) %>
+<%# if (!@report.term_sourced_from_any_project(t)) %>
 [<%=h t.source_authority %>]<br/>
-<% end %>
+<%# end %>
 </td>
 <td>
 <% begin # there may not be a French term... %>
