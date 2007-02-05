@@ -35,7 +35,7 @@
 
 <tr>
 <th><p><label for="project_published_on">Published on:</label></p></th>
-<td><p><%= date_select('project', 'published_on', :start_year => 1900) %></p></td>
+<td><p><%= date_select('project', 'published_on', :start_year => 1900, :end_year => Time.now.year) %></p></td>
 </tr>
 
 <tr>
