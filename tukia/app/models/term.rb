@@ -1,3 +1,5 @@
+require_dependency "language"
+
 class Term < ActiveRecord::Base
   acts_as_tree
   

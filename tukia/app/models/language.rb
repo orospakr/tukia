@@ -1,3 +1,5 @@
+require_dependency "#{RAILS_ROOT}/vendor/plugins/globalize/lib/globalize/models/language.rb"
+
 module Globalize
   class Language < ActiveRecord::Base
     has_and_belongs_to_many :documents
