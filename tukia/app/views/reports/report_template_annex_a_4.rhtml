@@ -21,7 +21,10 @@
 </td>
 
 <td>
-<%=h leading_zeroes(french_term.gender_id,2) %>
+<% begin %>
+<%=h leading_zeroes(french_term.gender.code,2) %>
+<% rescue %>
+<% end %>
 </td>
 
 <td>
@@ -33,7 +36,7 @@
 
 <td>
 <% begin # there may not be an English term... %>
-<%=h leading_zeroes(english_term.gender_id,2) %>
+<%=h leading_zeroes(english_term.gender.code,2) %>
 <% rescue %>
 <% end %>
 </td>
