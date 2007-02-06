@@ -2,12 +2,12 @@
 <% clause3counter = 1 %>
 <table width="100%">
 
-<% engboldterms = @report.all_terms_by_lang(Globalize::Language.find(:first, :conditions => ["iso_639_3 = 'eng'"])) %>
-<% fraboldterms = @report.all_terms_by_lang(Globalize::Language.find(:first, :conditions => ["iso_639_3 = 'fra'"])) %>
+<% english_terms = @report.all_terms_by_lang(Globalize::Language.find(:first, :conditions => ["iso_639_3 = 'eng'"])) %>
+<% french_terms = @report.all_terms_by_lang(Globalize::Language.find(:first, :conditions => ["iso_639_3 = 'fra'"])) %>
 
-<% for t in @report.all_terms_by_lang(Globalize::Language.find(:first, :conditions => ["iso_639_3 = 'eng'"])) %>
+<% for french_term in french_terms %>
 <% begin %>
-<% frenchterm = t.equiv_term_from(Globalize::Language.find(:first, :conditions => ["iso_639_3 = 'fra'"])) %>
+<% english_term = french_term.equiv_term_from(Globalize::Language.find(:first, :conditions => ["iso_639_3 = 'eng'"])) %>
 <% rescue %>
 <% end %>
 <tr valign="top">
@@ -15,16 +15,27 @@
 3.<%=h clause3counter %>
 </td>
 
-<% begin # there may not be an French term... %>
+
 <td>
-<%=h frenchterm.get_full_term_with_facet_and_acronym %>
+<%=h french_term.get_full_term_with_facet_and_acronym %>
 </td>
 
-<% rescue %>
-<% end %>
+<td>
+<%=h leading_zeroes(french_term.gender_id,2) %>
+</td>
 
 <td>
-<%=h t.get_full_term_with_facet_and_acronym %>
+<% begin # there may not be an English term... %>
+<%=h english_term.get_full_term_with_facet_and_acronym %>
+<% rescue %>
+<% end %>
+</td>
+
+<td>
+<% begin # there may not be an English term... %>
+<%=h leading_zeroes(english_term.gender_id,2) %>
+<% rescue %>
+<% end %>
 </td>
 
 
