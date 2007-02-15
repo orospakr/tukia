@@ -47,7 +47,7 @@ class TermsController < ApplicationController
     saveresult = @term.save
     if (saveresult || saveresult.nil?)
       flash[:notice] = 'Term was successfully created.'
-      redirect_to :action => 'list'
+      redirect_to :action => 'show', :id => @term
     else
       render :action => 'new'
     end
