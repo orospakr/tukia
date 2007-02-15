@@ -26,7 +26,7 @@
 <th><p><label>Used In:</label></p></th>
 <td><p>
 <ul>
-<% Project.find(:all).each do |p| %>
+<% Project.find(:all, :order => "committee_id, referenceid").each do |p| %>
 
 <li><%= check_box_tag("term[project_ids][]",
                                 p.id,
