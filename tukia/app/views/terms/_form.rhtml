@@ -14,7 +14,7 @@
 
 <tr>
 <th><p><label for="term_project_id"><%=h "Source Authority:".t %></p></th>
-<td><p><%= collection_select( :term, :project_id, Project.find(:all), :id, :get_full_name, :order => "committee_id, referenceid") %></p></td>
+<td><p><%= collection_select( :term, :project_id, Project.find(:all, :order => "committee_id, referenceid"), :id, :get_full_name) %></p></td>
 </tr>
 
 <tr>
